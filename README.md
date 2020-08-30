@@ -10,8 +10,8 @@ I'm a Brooklyn based solutions engineer working in AdTech using really cool tech
 
 <!--START_SECTION:activity-->
 
-[![John's github stats](https://github-readme-stats.vercel.app/api?username=johnhodge&show_icons=true)](https://github.com/johnhodge)
+[![John's github stats](https://github-readme-stats.johnhodge.vercel.app/api?username=johnhodge&show_icons=true)](https://github.com/johnhodge)
 
 ## What I'm listening to
 
-[![Spotify](spotify-readme.johnhodge.vercel.app)](https://open.spotify.com/user/jhodgeman)
+[![Spotify](https://spotify-readme.johnhodge.vercel.app/api/spotify)](https://open.spotify.com/user/jhodgeman)
