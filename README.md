@@ -10,4 +10,4 @@ I'm a Brooklyn based solutions engineer working in AdTech using really cool tech
 
 <!--START_SECTION:activity-->
 
-[![John's github stats](https://github-readme-stats.johnhodge.vercel.app/api?username=johnhodge&show_icons=true)](https://github.com/johnhodge)
+[![John's github stats](https://github-readme-stats.johnhodge.vercel.app/api?username=johnhodge&show_icons=true&count_private=true)](https://github.com/johnhodge?tab=repositories)
