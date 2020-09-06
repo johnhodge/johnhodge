@@ -38,8 +38,12 @@ h6 {
 }
 
 div#main {
-  margin: 7% 0;
+  max-height: 100vh;
+  min-height: 100vh;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 *::selection {
