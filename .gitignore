@@ -1,0 +1,8 @@
+.gitconfig/*
+.vscode
+.well-known
+cgi-bin
+template-parts
+# Local Netlify folder
+.netlify
+.DS_Store

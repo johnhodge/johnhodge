@@ -1,0 +1,123 @@
+@import url("https://use.typekit.net/fam4veo.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:100");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+:before,
+:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: #bdbdbd;
+  font-family: filson-soft, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #bdbdbd;
+  font-family: filson-soft, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+div#main {
+  margin: 7% 0;
+  text-align: center;
+}
+
+*::selection {
+  background: #bdbdbd;
+  color: #fff;
+}
+
+/* Tablet and Phone */
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  .headline_one {
+    letter-spacing: -2vw;
+  }
+}
+
+/* Clip text element */
+.headline {
+  font-family: ganache, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20vw;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  padding: 0.1em 0.3em;
+  text-align: center;
+  color: #fff;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background */
+.headline:before {
+  z-index: -2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: inherit;
+}
+
+/* Text Background (black zone) */
+.headline:after {
+  position: absolute;
+  z-index: -1;
+  background-color: #000;
+}
+
+/* Change the background position to display letter when the black zone isn't here */
+.headline--no-textzone:before {
+  background-position: -0.75em 0;
+}
+
+.headline--no-textzone:after {
+  content: none;
+}
+
+/* Use Background-size cover for photo background and no-repeat background */
+.headline--cover,
+.headline--cover:before {
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
+.headline_one {
+  background: url(../images/web/bg.jpeg) no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(1.25);
+  text-shadow: 3px 3px 2px #00000021;
+  letter-spacing: -1vw;
+}
+/* Tablet and Phone */
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  .headline_one {
+    letter-spacing: -2vw;
+  }
+}
