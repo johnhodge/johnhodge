@@ -1,9 +1,10 @@
 @import url("https://use.typekit.net/fam4veo.css");
-@import url("https://fonts.googleapis.com/css?family=Raleway:100");
+/* @import url("https://fonts.googleapis.com/css?family=Raleway:100"); */
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: content-box;
 }
 
 *,
@@ -21,25 +22,12 @@ body {
   font-weight: 300;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #bdbdbd;
-  font-family: filson-soft, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-}
-
 .wrapper {
   text-align: center;
 }
 
 div#main {
-  max-height: 100vh;
-  min-height: 100vh;
+  height: 85vh;
   text-align: center;
   display: flex;
   align-items: center;
@@ -62,7 +50,6 @@ div#main {
 .headline {
   font-family: ganache, sans-serif;
   font-style: normal;
-  font-weight: 400;
   font-size: 20vw;
   font-weight: bold;
   line-height: 1;
@@ -70,9 +57,11 @@ div#main {
   display: inline-block;
   padding: 0.1em 0.3em;
   text-align: center;
-  color: #fff;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent;
+  background-clip: border-box;
+  color: #fff;
+  margin: 0;
 }
 
 /* Background */
