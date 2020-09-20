@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: johnhodge/test
+  repo: johnhodge/johnhodge
 
 media_folder: content/assets
 public_folder: ../assets
