@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `TEST Blog`,
-    author: `John`,
-    description: `Man i hope this works.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `John Hodge`,
+    author: `John Hodge`,
+    description: `This is John Hodge's website.`,
+    siteUrl: `https://johnhodge.com/`,
     social: {
       twitter: `hodgecity`,
     },
@@ -114,14 +114,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `John Hodge`,
+        short_name: `Hodge`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#000000`,
         display: `minimal-ui`,
         // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/laptop.png`,
       },
     },
     {
