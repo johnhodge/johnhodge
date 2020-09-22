@@ -132,4 +132,9 @@ img.icon:hover {
 
 a.icon-link {
   margin: 10px;
+  box-shadow: none;
+}
+
+address {
+  margin-bottom: 0;
 }
