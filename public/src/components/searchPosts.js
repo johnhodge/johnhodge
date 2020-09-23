@@ -110,7 +110,7 @@ const SearchPosts = ({ posts, localSearchBlog, location, navigate }) => {
   const results = useFlexSearch(
     query,
     localSearchBlog.index,
-    JSON.parse(localSearchBlog.store)
+    localSearchBlog.store
   )
 
   return (
