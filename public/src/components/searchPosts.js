@@ -71,10 +71,10 @@ const SearchedPosts = ({ results }) =>
       )
     })
   ) : (
-    <p style={{ textAlign: "center" }}>
-      Sorry, couldn't find any posts matching this search.
-    </p>
-  )
+      <p style={{ textAlign: "center" }}>
+        Sorry, couldn't find any posts matching this search.
+      </p>
+    )
 
 const AllPosts = ({ posts }) => (
   <div style={{ margin: "20px 0 40px" }}>
@@ -110,7 +110,7 @@ const SearchPosts = ({ posts, localSearchBlog, location, navigate }) => {
   const results = useFlexSearch(
     query,
     localSearchBlog.index,
-    JSON.parse(localSearchBlog.store)
+    localSearchBlog.store
   )
 
   return (
