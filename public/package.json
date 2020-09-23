@@ -39,13 +39,13 @@
     "react-dom": "^16.13.1",
     "react-helmet": "6.1.0",
     "react-switch": "5.0.1",
-    "react-typography": "1.0.0",
-    "react-use-flexsearch": "1.0.0",
+    "react-typography": "0.16.19",
+    "react-use-flexsearch": "0.1.1",
     "styled-components": "5.2.0",
-    "typeface-merriweather": "1.0.0",
-    "typeface-montserrat": "1.0.0",
-    "typography": "1.0.0",
-    "typography-theme-wordpress-2016": "1.0.0"
+    "typeface-merriweather": "0.0.72",
+    "typeface-montserrat": "0.0.75",
+    "typography": "0.16.19",
+    "typography-theme-wordpress-2016": "0.16.19"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1",
