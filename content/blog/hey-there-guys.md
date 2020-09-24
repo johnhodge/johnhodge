@@ -1,7 +1,7 @@
 ---
 path: what-is-path
 date: 2020-09-24T23:51:17.483Z
-title: Hey there guys
+title: Here's a test blog post
 description: This is a description of a blog post. So here's a little bit more
   content... Idk just trying to make it like 200 characters or something.
 ---
