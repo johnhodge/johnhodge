@@ -7,7 +7,7 @@ description: This is a description of a blog post. So here's a little bit more
 ---
 I'm baby intelligentsia DIY copper mug chambray butcher cred. Single-origin coffee franzen mustache jean shorts skateboard affogato cornhole, YOLO synth gentrify hella drinking vinegar ethical. 
 
-## Bitters tumeric vape, shabby chic photo booth 
+## Bitters tumeric vape, shabby chic photo booth
 
 iPhone lumbersexual kogi street art +1. Trust fund XOXO artisan, disrupt listicle heirloom mlkshk hot chicken before they sold out `location.pathname === rootPath` locavore post-ironic sartorial roof party narwhal.
 
@@ -15,9 +15,11 @@ iPhone lumbersexual kogi street art +1. Trust fund XOXO artisan, disrupt listicl
 
 Tacos iPhone cred, marfa post-ironic *street art artisan chia fingerstache*. 
 
-### Raw denim fixie bitters vexillologist, scenester hell of yr pickled salvia sriracha wolf affogato vegan. 
+### Raw denim fixie bitters vexillologist, scenester hell of yr pickled salvia sriracha wolf affogato vegan.
 
 Cray cardigan af gochujang fingerstache green juice messenger bag palo santo whatever brooklyn meh. 
+
+![Great picture dude](../assets/great.jpg "Wow this is great")
 
 * Pork belly hexagon live-edge
 * Freegan vaporware four dollar toast 
@@ -26,7 +28,7 @@ Cray cardigan af gochujang fingerstache green juice messenger bag palo santo wha
 
 Artisan ***master cleanse*** organic blue bottle thundercats cardigan vape art party. Roof party bicycle rights poutine beard austin pickled. **Try-hard literally** XOXO, glossier cray vegan [fingerstache shabby chic](https://#) 
 
-### hoodie organic art party man braid lumbersexual 
+### hoodie organic art party man braid lumbersexual
 
 Letterpress meggings ramps raw denim. Dummy text? More like dummy thicc text, amirite?
 
