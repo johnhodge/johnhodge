@@ -1,8 +1,8 @@
 ---
 title: My Second Post!
-date: "2015-05-06T23:46:37.121Z"
+date: 2015-05-06T23:46:37.121Z
+description: oh man this is required now?!
 ---
-
 Wow! I love blogging so much already.
 
 Did you know that "despite its name, salted duck eggs can also be made from
@@ -11,3 +11,5 @@ egg yolk will be less rich."?
 ([Wikipedia Link](https://en.wikipedia.org/wiki/Salted_duck_egg))
 
 Yeah, I didn't either.
+
+HEY!
