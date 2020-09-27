@@ -1,5 +1,6 @@
 backend:
   name: github
+  repo: johnhodge/johnhodge
   branch: staging
 
 media_folder: static/img
