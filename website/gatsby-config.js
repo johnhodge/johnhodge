@@ -6,7 +6,7 @@ module.exports = {
       summary: `Hey all, I'm John. I work for the adservers.`,
     },
     description: `Things I learned and outcomes from experiences I run. Notice, I do a lot in adtech, so look out, there might be a bunch of adtech experimentation finsings.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    siteUrl: `https://www.johnhodge.com`,
     social: {
       twitter: `hodgecity`,
     },
