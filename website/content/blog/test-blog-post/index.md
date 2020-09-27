@@ -7,7 +7,7 @@ I'm baby microdosing enamel pin cold-pressed, distillery jean shorts chambray fo
 
 Lomo four loko tacos chia. Chartreuse meh yr taxidermy, cloud bread food truck intelligentsia semiotics health goth stumptown [mustache](https://#) chia microdosing. Lumbersexual **air plant chicharrones chartreuse**, waistcoat yuccie artisan cold-pressed mlkshk photo booth chia leggings. 
 
-## Viral hashtag paleo, heirloom hell of taiyaki kickstarter raclette irony salvia. 
+## Viral hashtag paleo, heirloom hell of taiyaki kickstarter raclette irony salvia.
 
 3 wolf moon PBR&B gochujang freegan asymmetrical bicycle rights. Etsy cred normcore vape snackwave fixie humblebrag offal iPhone `fingerstache poke polaroid`. Hella put a bird on it tumeric bicycle rights, four loko kitsch salvia everyday carry migas etsy. 
 
@@ -23,14 +23,12 @@ Small batch pabst synth. Woke microdosing subway tile drinking vinegar jianbing 
 
 Bicycle rights plaid gastropub, intelligentsia twee succulents 3 wolf moon live-edge woke seitan williamsburg put a bird on it `kombucha poke unicorn`. 
 
-```jsonc
+```json
 resolve: `gatsby-source-filesystem`,
 options: {
   path: `${__dirname}/content/blog`,
   name: `blog`,
 ```
-
- 
 
 Sartorial kitsch cred, dreamcatcher shaman woke mustache butcher tattooed 90's pinterest. 
 
@@ -40,7 +38,7 @@ Pickled kinfolk skateboard, austin pop-up celiac ennui franzen yr VHS live-edge 
 
 > Succulents fingerstache street art enamel pin squid microdosing. Lo-fi etsy hexagon put a bird on it. Everyday carry freegan ethical, coloring book pok pok tilde stumptown sartorial tumeric meh fanny pack asymmetrical. 
 
-## Hoodie snackwave deep v tacos. 
+## Hoodie snackwave deep v tacos.
 
 Taxidermy copper mug hell of, authentic mixtape quinoa banh mi whatever.
 
@@ -67,7 +65,7 @@ Kinfolk paleo meggings literally next level distillery. Normcore flannel taiyaki
 
 Bitters banjo leggings ennui iPhone, PBR&B blog shabby chic. Tattooed taiyaki prism semiotics portland cloud bread letterpress pitchfork green juice.
 
-## Meh hexagon church-key, craft beer kinfolk fam artisan williamsburg offal 90's. 
+## Meh hexagon church-key, craft beer kinfolk fam artisan williamsburg offal 90's.
 
 Narwhal waistcoat bespoke before they sold out, tousled messenger bag chia VHS marfa kinfolk art party intelligentsia hell of forage kombucha. 
 
