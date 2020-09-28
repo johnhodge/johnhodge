@@ -1,3 +1,7 @@
+/* Adobe Type Kit */
+
+@import url("https://use.typekit.net/vtv0jca.css");
+
 /* CSS Custom Properties Definitions */
 
 :root {
@@ -11,7 +15,7 @@
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-4xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -27,20 +31,18 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
-  --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-sans);
+  --fontFamily-brand: VAL;
+  --fontFamily-sans: hero-new, sans-serif;
+  --font-body: var(--fontFamily-sans);
+  --font-heading: var(--fontFamily-heavy);
+  --font-brand: var(--fontFamily-brand);
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
   --fontWeight-bold: 700;
   --fontWeight-extrabold: 800;
   --fontWeight-black: 900;
-  --fontSize-root: 16px;
+  --fontSize-root: calc(1vh + 6.5px);
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.5;
@@ -55,11 +57,12 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
-  --color-text: #2e353f;
+  --color-white: #ffffff;
+  --color-text: #000000;
   --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
+  --color-heading: #000000;
+  --color-heading-black: #000000;
+  --color-accent: #4ABDE7;
 }
 
 /* HTML elements */
@@ -85,6 +88,23 @@ body {
 
 footer {
   padding: var(--spacing-6) var(--spacing-0);
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+div#footer-container{
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.twitter{
+  background-image: url('/website/static/twitter.svg');
+}
+
+.footer-container-item {
+  flex: 1 1 250px;
+  text-align: center;
 }
 
 hr {
@@ -101,11 +121,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
+  font-weight: var(--fontWeight-black);
+  font-family: var(--fontFamily-sans);
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;
+  font-style: italic;
 }
 
 h2,
@@ -123,12 +145,23 @@ h1 {
   color: var(--color-heading-black);
 }
 
+h1.main-heading{
+  font-family: var(--font-brand);
+  color: var(--color-accent);
+}
+
 h2 {
   font-size: var(--fontSize-5);
 }
 
 h3 {
   font-size: var(--fontSize-4);
+}
+
+h3.footer-heading{
+  font-family: var(--font-brand);
+  margin: 0;
+  color: var(--color-white)
 }
 
 h4 {
@@ -269,8 +302,8 @@ a:focus {
 }
 
 .post-list-item h2 {
-  font-size: var(--fontSize-4);
-  color: var(--color-primary);
+  /* font-size: var(--fontSize-4);
+  color: var(--color-primary); */
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
