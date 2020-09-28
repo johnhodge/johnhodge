@@ -14,28 +14,38 @@ const Layout = ({ location, title, children }) => {
     </h1>
   )
 
-  return (
-    <div>
-      <div className="global-wrapper" data-is-root-path={isRootPath}>
-        <header className="global-header">{header}</header>
+  let url = new URL(document.URL)
+  if (url == `http://${url.host}/`) {
+    return (
+      <div>
         <main>{children}</main>
       </div>
-      <footer>
-        <div className="global-wrapper" id="footer-container" data-is-root-path={isRootPath}>
-          <div class="footer-container-item left">
-            <h3 className="footer-heading">
-              <Link to="/">{title}</Link>
-            </h3>
-            <small>&copy; {new Date().getFullYear()}</small>
-          </div>
-          <div class="footer-container-item right">
-            <FontAwesomeIcon icon={[fab, "twitter"]} />
-            <FontAwesomeIcon icon={[fab, "github"]} />
-          </div>
+    )
+  } else {
+    return (
+      <div>
+        <div className="global-wrapper" data-is-root-path={isRootPath}>
+          <header className="global-header">{header}</header>
+          <main>{children}</main>
         </div>
-      </footer>
-    </div>
-  )
+        <footer>
+          <div className="global-wrapper" id="footer-container" data-is-root-path={isRootPath}>
+            <div className="footer-container-item left">
+              <h3 className="footer-heading">
+                <Link to="/">{title}</Link>
+              </h3>
+              <small>&copy; {new Date().getFullYear()}</small>
+            </div>
+            <div className="footer-container-item right">
+              <FontAwesomeIcon icon={[fab, "twitter"]} />
+              <FontAwesomeIcon icon={[fab, "github"]} />
+            </div>
+          </div>
+        </footer>
+      </div>
+    )
+  }
+
 }
 
 export default Layout

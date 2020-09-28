@@ -1,72 +1,24 @@
+
 import React from "react"
-import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Layout from "../components/layout"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+class IndexPage extends React.Component {
+  render() {
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="Home" />
-      <Bio />
-      {posts.map(post => {
-        const title = post.frontmatter.title || post.fields.slug
-        return (
-          <article
-            key={post.fields.slug}
-            className="post-list-item"
-            itemScope
-            itemType="http://schema.org/Article"
-          >
-            <header>
-              <h2>
-                <Link to={`${post.fields.slug}`} itemProp="url">
-                  <span itemProp="headline">{title} </span>
-                </Link>
-              </h2>
-              <small>{post.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: post.frontmatter.description || post.excerpt,
-                }}
-                itemProp="description"
-              />
-            </section>
-          </article>
-        )
-      })}
-    </Layout>
-  )
+    return (
+      <Layout location={this.props.location}>
+        <SEO
+          title="Yo"
+          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+        />
+        <h1 class="display">John Hodge</h1>
+        <div class="icons">
+          <a href="https://github.com/johnhodge" target="_blank" rel="noreferrer" class="icon-link" title="Follow me on Github"><img class="icon" alt="Follow me on Github" src="https://unpkg.com/simple-icons@v3/icons/github.svg" /></a><a href="https://twitter.com/hodgecity" target="_blank" rel="noreferrer" class="icon-link" title="Peep my Tweets"><img class="icon" alt="Peep my Tweets" src="https://unpkg.com/simple-icons@v3/icons/twitter.svg" /></a>
+        </div>
+      </Layout>
+    )
+  }
 }
 
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        id
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
-      }
-    }
-  }
-`
+export default IndexPage
