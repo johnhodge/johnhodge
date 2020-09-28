@@ -364,3 +364,38 @@ a:focus {
     list-style-position: inside;
   }
 }
+
+/* Temporary styling for parking lot front page */
+
+.display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1.display{
+  margin: 0;
+  height: 60vh;
+  font-size: 16vw
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35vh;
+}
+
+img.icon {
+  width: 32px;
+}
+
+img.icon:hover {
+  opacity: 0.35;
+  transition: ease-out 0.15s opacity;
+}
+
+a.icon-link {
+  margin: 0 10px;
+  box-shadow: none;
+}
