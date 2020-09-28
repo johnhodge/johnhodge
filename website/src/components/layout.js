@@ -14,8 +14,7 @@ const Layout = ({ location, title, children }) => {
     </h1>
   )
 
-  let url = new URL(document.URL)
-  if (url == `http://${url.host}/`) {
+  if (location.pathname === rootPath) {
     return (
       <div>
         <main>{children}</main>

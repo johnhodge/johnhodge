@@ -365,7 +365,11 @@ a:focus {
   }
 }
 
-/* Temporary styling for parking lot front page */
+/* Temporary styling for parking lot front page
+
+DELETE THIS WHEN SHIPPING PRODUCTION
+
+*/
 
 .display {
   display: flex;
