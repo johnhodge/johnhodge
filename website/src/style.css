@@ -391,7 +391,7 @@ h1.display{
 }
 
 img.icon {
-  width: 32px;
+  height: 7vh;
 }
 
 img.icon:hover {
@@ -400,6 +400,10 @@ img.icon:hover {
 }
 
 a.icon-link {
-  margin: 0 10px;
+  margin: 0 1vh;
   box-shadow: none;
+}
+
+span.hightlight {
+  background: linear-gradient(180deg, transparent 24%,rgb(0, 217, 255) 10%,rgb(0, 217, 255) 70%, transparent 50%);
 }
