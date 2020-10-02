@@ -380,7 +380,7 @@ DELETE THIS WHEN SHIPPING PRODUCTION
 
 h1.display{
   margin: 0;
-  height: 75vh;
+  height: 70vh;
   font-size: 16vw;
 }
 
@@ -388,7 +388,7 @@ h1.display{
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 25vh;
+  height: 15vh;
 }
 
 img.icon {
