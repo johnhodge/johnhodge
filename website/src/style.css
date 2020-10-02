@@ -62,7 +62,8 @@
   --color-text-light: #4f5969;
   --color-heading: #000000;
   --color-heading-black: #000000;
-  --color-accent: #4ABDE7;
+  --color-accent-1: #4adde7;
+  --color-accent-2: #00d9ff;
 }
 
 /* HTML elements */
@@ -276,7 +277,7 @@ a:focus {
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
+  padding: var(--spacing-0) var(--spacing-5);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -284,7 +285,7 @@ a:focus {
 }
 
 .global-header {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-0);
 }
 
 .main-heading {
@@ -379,15 +380,15 @@ DELETE THIS WHEN SHIPPING PRODUCTION
 
 h1.display{
   margin: 0;
-  height: 60vh;
-  font-size: 16vw
+  height: 75vh;
+  font-size: 16vw;
 }
 
 .icons {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 35vh;
+  justify-content: flex-end;
+  height: 25vh;
 }
 
 img.icon {
@@ -405,5 +406,5 @@ a.icon-link {
 }
 
 span.hightlight {
-  background: linear-gradient(180deg, transparent 24%,rgb(0, 217, 255) 10%,rgb(0, 217, 255) 70%, transparent 50%);
+  background: linear-gradient(180deg, transparent 24%,var(--color-accent-2) 10%,var(--color-accent-2) 70%, transparent 50%);
 }

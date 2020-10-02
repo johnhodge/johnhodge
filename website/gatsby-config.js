@@ -10,6 +10,20 @@ module.exports = {
     social: {
       twitter: `hodgecity`,
     },
+    menuLinks: [
+      {
+        name: 'home',
+        link: '/'
+      },
+      {
+        name: 'about',
+        link: '/about'
+      },
+      {
+        name: 'blog',
+        link: '/blog'
+      }
+    ],
   },
   plugins: [
     `gatsby-plugin-netlify-cms`,
