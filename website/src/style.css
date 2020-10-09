@@ -1,7 +1,3 @@
-/* Adobe Type Kit */
-
-@import url("https://use.typekit.net/vtv0jca.css");
-
 /* CSS Custom Properties Definitions */
 
 :root {
@@ -31,11 +27,9 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-brand: VAL;
-  --fontFamily-sans: hero-new, sans-serif;
-  --font-body: var(--fontFamily-sans);
-  --font-heading: var(--fontFamily-heavy);
-  --font-brand: var(--fontFamily-brand);
+  --font-body: 'Hero New Light', sans-serif;
+  --font-heading: 'Hero New Super', sans-serif;
+  --font-brand: 'VAL', sans-serif;
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
@@ -122,13 +116,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--fontWeight-black);
-  font-family: var(--fontFamily-sans);
+  font-family: var( --font-heading);
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;
-  font-style: italic;
+    font-style: italic;
 }
 
 h2,
@@ -391,8 +384,9 @@ h1.display{
   height: 15vh;
 }
 
+
 img.icon {
-  height: 8vh;
+  height: 6vh;
 }
 
 img.icon:hover {
@@ -403,6 +397,12 @@ img.icon:hover {
 a.icon-link {
   margin: 0 1vh;
   box-shadow: none;
+}
+
+.icon-bucket {
+  padding: 15px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  border-radius: 15px;
 }
 
 span.hightlight {
