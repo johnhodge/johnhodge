@@ -68,6 +68,10 @@
   box-sizing: border-box;
 }
 
+* {
+  transition: all ease-in-out .2s;
+}
+
 html {
   line-height: var(--lineHeight-normal);
   font-size: var(--fontSize-root);
@@ -387,22 +391,27 @@ h1.display{
 
 img.icon {
   height: 6vh;
+  margin: 1vh 0;
 }
 
 img.icon:hover {
   opacity: 0.35;
-  transition: ease-out 0.15s opacity;
+  transform: scale(1.2)
 }
 
 a.icon-link {
   margin: 0 1vh;
   box-shadow: none;
+  display: flex;
 }
 
 .icon-bucket {
   padding: 15px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.12);
   border-radius: 15px;
+  position: absolute;
+  bottom: 5vw;
+  right: 5vw;
 }
 
 span.hightlight {
