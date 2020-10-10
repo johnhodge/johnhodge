@@ -114,7 +114,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {
-          families: ["VAL"],
+          families: ["VAL", "Hero New Super Italic", "Hero New Light"],
           urls: ["/fonts/fonts.css"],
         },
       },

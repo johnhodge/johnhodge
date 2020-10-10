@@ -28,7 +28,7 @@
   --spacing-24: 6rem;
   --spacing-32: 8rem;
   --font-body: 'Hero New Light', sans-serif;
-  --font-heading: 'Hero New Super', sans-serif;
+  --font-heading: 'Hero New Super Italic', sans-serif;
   --font-brand: 'VAL', sans-serif;
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
@@ -377,17 +377,9 @@ DELETE THIS WHEN SHIPPING PRODUCTION
 
 h1.display{
   margin: 0;
-  height: 70vh;
+  height: 80vh;
   font-size: 16vw;
 }
-
-.icons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 15vh;
-}
-
 
 img.icon {
   height: 6vh;
@@ -406,10 +398,11 @@ a.icon-link {
 }
 
 .icon-bucket {
-  padding: 15px;
+  background: #ffffff;
   box-shadow: 0 30px 60px rgba(0,0,0,0.12);
   border-radius: 15px;
-  position: absolute;
+  padding: 15px;
+  position: fixed;
   bottom: 5vw;
   right: 5vw;
 }
