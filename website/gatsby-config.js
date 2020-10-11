@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://www.johnhodge.com`,
     social: {
       twitter: `hodgecity`,
+      github: `johnhodge`
     },
     menuLinks: [
       {
@@ -23,6 +24,16 @@ module.exports = {
         name: 'blog',
         link: '/blog'
       }
+    ],
+    menuLinksSecondary: [
+      {
+        name: 'sign up',
+        link: '/sign-up'
+      },
+      {
+        name: 'sign in',
+        link: '/sign-in'
+      },
     ],
   },
   plugins: [

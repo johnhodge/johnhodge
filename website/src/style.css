@@ -29,14 +29,13 @@
   --spacing-32: 8rem;
   --font-body: 'Hero New Light', sans-serif;
   --font-heading: 'Hero New Super Italic', sans-serif;
-  --font-brand: 'VAL', sans-serif;
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
   --fontWeight-bold: 700;
   --fontWeight-extrabold: 800;
   --fontWeight-black: 900;
-  --fontSize-root: calc(1vh + 6.5px);
+  --fontSize-root: calc(1vh + 12px);
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.5;
@@ -51,13 +50,25 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
+  --color-black: #000000;
   --color-white: #ffffff;
+  --shade-1: #f5f5f5;
+  --shade-2: #eaeaea;
+  --shade-3: #999;
+  --shade-4: #888;
+  --shade-5: #666;
+  --shade-6: #444;
+  --shade-7: #333;
+  --shade-8: #111;
   --color-text: #000000;
   --color-text-light: #4f5969;
   --color-heading: #000000;
-  --color-heading-black: #000000;
   --color-accent-1: #4adde7;
   --color-accent-2: #00d9ff;
+  --small-box-shadow: 0 .25rem .5rem rgba(0,0,0,0.12); 
+  --medium-box-shadow: 0 1rem 2rem rgba(0,0,0,0.12); 
+  --large-box-shadow: 0 2rem 3rem rgba(0,0,0,0.12); 
+  --xlarge-box-shadow: 0 3rem 5rem rgba(0,0,0,0.12); 
 }
 
 /* HTML elements */
@@ -69,7 +80,7 @@
 }
 
 * {
-  transition: all ease-in-out .2s;
+  transition: all ease-in-out .15s;
 }
 
 html {
@@ -89,21 +100,6 @@ footer {
   padding: var(--spacing-6) var(--spacing-0);
   background-color: var(--color-accent);
   color: var(--color-white);
-}
-
-div#footer-container{
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap-reverse;
-}
-
-.twitter{
-  background-image: url('/website/static/twitter.svg');
-}
-
-.footer-container-item {
-  flex: 1 1 250px;
-  text-align: center;
 }
 
 hr {
@@ -140,7 +136,7 @@ h6 {
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
-  color: var(--color-heading-black);
+  color: var(--color-black);
 }
 
 h1.main-heading{
@@ -154,12 +150,6 @@ h2 {
 
 h3 {
   font-size: var(--fontSize-4);
-}
-
-h3.footer-heading{
-  font-family: var(--font-brand);
-  margin: 0;
-  color: var(--color-white)
 }
 
 h4 {
@@ -350,6 +340,19 @@ a:focus {
   margin-bottom: var(--spacing-8);
 }
 
+/* Icon bucket */
+.hide-icon-bucket {
+  transform: scale(0);
+  filter: opacity(0);
+}
+
+.show-icon-bucket {
+  transform: scale(1);
+  filter: opacity(1);
+}
+
+
+
 /* Media queries */
 
 @media (max-width: 42rem) {
@@ -379,32 +382,6 @@ h1.display{
   margin: 0;
   height: 80vh;
   font-size: 16vw;
-}
-
-img.icon {
-  height: 6vh;
-  margin: 1vh 0;
-}
-
-img.icon:hover {
-  opacity: 0.35;
-  transform: scale(1.2)
-}
-
-a.icon-link {
-  margin: 0 1vh;
-  box-shadow: none;
-  display: flex;
-}
-
-.icon-bucket {
-  background: #ffffff;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-  border-radius: 15px;
-  padding: 15px;
-  position: fixed;
-  bottom: 5vw;
-  right: 5vw;
 }
 
 span.hightlight {

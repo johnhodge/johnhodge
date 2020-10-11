@@ -1,24 +1,68 @@
-
 import React from "react"
-import SEO from "../components/seo"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
-class IndexPage extends React.Component {
-  render() {
+const HomePage = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const posts = data.allMarkdownRemark.nodes
 
-    return (
-      <Layout location={this.props.location}>
-        <SEO
-          title="Home"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        {/* <div class="icon-bucket">
-          <a href="https://github.com/johnhodge" target="_blank" rel="noreferrer" class="icon-link" title="Follow me on Github"><img class="icon" alt="Follow me on Github" src="https://unpkg.com/simple-icons@v3/icons/github.svg" /></a><a href="https://twitter.com/hodgecity" target="_blank" rel="noreferrer" class="icon-link" title="Peep my Tweets"><img class="icon" alt="Peep my Tweets" src="https://unpkg.com/simple-icons@v3/icons/twitter.svg" /></a>
-        </div> */}
-        <h1 class="display"><span class="hightlight">John Hodge</span></h1>
-      </Layout>
-    )
-  }
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title="Home" />
+      {posts.map(post => {
+        const title = post.frontmatter.title || post.fields.slug
+        return (
+          <article
+            key={post.fields.slug}
+            className="post-list-item"
+            itemScope
+            itemType="http://schema.org/Article"
+          >
+            <header>
+              <h2>
+                <Link to={`/blog${post.fields.slug}`} itemProp="url">
+                  <span itemProp="headline">{title}</span>
+                </Link>
+              </h2>
+              <small>{post.frontmatter.date}</small>
+            </header>
+            <section>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: post.frontmatter.description || post.excerpt,
+                }}
+                itemProp="description"
+              />
+            </section>
+          </article>
+        )
+      })}
+    </Layout>
+  )
 }
 
-export default IndexPage
+export default HomePage
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
+      }
+    }
+  }
+`
