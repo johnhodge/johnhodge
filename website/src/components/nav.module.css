@@ -1,0 +1,65 @@
+/* Global navbar styles */
+nav {
+    display: inline-flex;
+    width: 100%;
+}
+a.nav-item {
+    border-radius: .3rem;
+    text-decoration: none;
+    margin: .5rem;
+    padding: .3rem .5rem;
+    color: var(--color-black);
+}
+
+a.nav-item:hover {
+    box-shadow: var(--small-box-shadow);
+}
+
+/* Brand styles */
+.nav-brand {
+    flex: 1;
+    display: flex;
+    text-decoration: none;
+}
+a.brand {
+    text-decoration: none;
+    font-size: 2.25rem;
+    color: #000;
+    font-family: var(--font-heading);
+}
+
+/* Nav first and second */
+.nav-first,
+.nav-second {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    background-color: transparent;
+}
+
+/* nav-second child items */
+.nav-right {
+    margin-left: auto;
+    display: flex;
+}
+
+/* Buttons */
+a.nav-item.button {
+    box-shadow: var(--small-box-shadow);
+}
+
+a.nav-item.button.main {
+    background: var(--color-black);
+    color: var(--color-white)
+}
+
+a.nav-item.button:hover {
+    background: var(--shade-1);
+}
+
+a.nav-item.button.main:hover {
+    background: var(--shade-6);
+}

@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://www.johnhodge.com`,
     social: {
       twitter: `hodgecity`,
+      github: `johnhodge`
     },
     menuLinks: [
       {
@@ -23,6 +24,16 @@ module.exports = {
         name: 'blog',
         link: '/blog'
       }
+    ],
+    menuLinksSecondary: [
+      {
+        name: 'sign up',
+        link: '/sign-up'
+      },
+      {
+        name: 'sign in',
+        link: '/sign-in'
+      },
     ],
   },
   plugins: [
@@ -114,7 +125,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {
-          families: ["VAL"],
+          families: ["VAL", "Hero New Super Italic", "Hero New Light"],
           urls: ["/fonts/fonts.css"],
         },
       },

@@ -3,10 +3,11 @@
     src: url("VAL.otf");
 }
 
+
 @font-face {
-    font-family: 'Hero New Super';
-    src: url('hero_new_super-webfont.woff2') format('woff2'),
-         url('hero_new_super-webfont.woff') format('woff');
+    font-family: 'Hero New Super Italic';
+    src: url('hero_new_super_italic-webfont.woff2') format('woff2'),
+         url('hero_new_super_italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
