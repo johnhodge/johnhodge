@@ -31,7 +31,6 @@ const IconBucket = () => {
   if (socialBucket) {
     document.getElementById("social-toggle").addEventListener("click", toggleSocial);
   }
-
   function toggleSocial() {
     socialBucket.classList.toggle("hide-icon-bucket");
   }
@@ -52,5 +51,6 @@ const IconBucket = () => {
     </div>
 
   )
+
 }
 export default IconBucket

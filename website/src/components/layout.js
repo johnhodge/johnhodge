@@ -3,8 +3,7 @@ import IconBucket from "./icon-bucket"
 import Header from "./header"
 import Footer from "./footer"
 
-const Layout = ({ location, title, children }) => {
-  const brand = title
+function Layout({ location, children }) {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
