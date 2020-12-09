@@ -1,0 +1,9 @@
+/* Global header styles */
+.global-header {
+    position: sticky;
+    top: 0;
+    background: #ffffffd4;
+    border-bottom: 1px solid #000;
+    margin: var(--spacing-0) auto;
+    backdrop-filter: blur(5px);
+}
