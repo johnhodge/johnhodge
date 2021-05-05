@@ -1,6 +1,6 @@
 [build]
   base = "website"
-  publish = "website/public"
+  publish = "public"
   command = "gatsby build"
 [build.environment]
   NODE_VERSION = "12"
