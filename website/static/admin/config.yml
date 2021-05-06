@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: johnhodge/gatsby-starter-netlify-cms
+  repo: johnhodge/johnhodge
   branch: staging
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
