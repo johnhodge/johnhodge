@@ -1,7 +1,7 @@
 [build]
-  base = "website/"
-  publish = "public/"
-  command = "gatsby build --verbose"
+  base = "website"
+  publish = "public"
+  command = "npm run build"
   functions = "lambda"
 [build.environment]
   NODE_VERSION = "12"
