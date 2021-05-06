@@ -1,6 +1,6 @@
 [build]
-  base = "website"
-  publish = "public"
+  base = "website/"
+  publish = "public/"
   command = "gatsby build"
   functions = "lambda"
 [build.environment]
