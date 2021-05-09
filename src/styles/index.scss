@@ -16,7 +16,7 @@ Basic Structure
 
 html {
   font-family: var.$regularFont;
-  font-size: max(18px, 1vw);
+  font-size: max(#{var.$rootFontSize}, 1vw);
   color: var.$black;
   text-rendering: optimizeLegibility;
   line-height: var.$standardLineHeight;
@@ -109,7 +109,7 @@ p *:last-child {
 }
 
 li > p {
-  margin-bottom: calc(var.$unitsMedium / 2);
+  margin-bottom: calc(#{var.$unitsMedium} / 2);
 }
 
 ul, ol {
@@ -120,7 +120,7 @@ ul, ol {
 }
 
 li {
-  margin-bottom: calc(var.$unitsMedium / 2);
+  margin-bottom: calc(#{var.$unitsMedium} / 2);
 }
 
 ol, li {
