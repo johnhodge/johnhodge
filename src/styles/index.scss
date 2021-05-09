@@ -37,9 +37,9 @@ body {
 Typographic Elements
 */
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var.$headingFont;
-  margin: 0 0 0 0;
+  margin: 1rem 0;
 }
 
 h1 {
@@ -73,7 +73,7 @@ hgroup {
 blockquote {
   padding: var.$unitsTiny var.$unitsMedium;
   margin: 0 var.$unitsMedium;
-  border-left: var.$smallBorder solid;
+  border-left: var.$smallBorderRadius solid;
 }
 
 blockquote > p {
@@ -89,6 +89,7 @@ b, strong, dt, th {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
 }
 
 a:active,
@@ -166,10 +167,10 @@ samp {
 }
 
 pre {
-  border-radius: var.$smallBorder;
+  border-radius: var.$smallBorderRadius;
   overflow: auto;
   word-wrap: normal;
-  border-left: var.$smallBorder solid var.$black;
+  border-left: var.$smallBorderRadius solid var.$black;
   padding: 1rem .5rem;
 }
 
@@ -301,7 +302,7 @@ img {
   max-width: 100%;
   margin-bottom: var.$unitsMedium;
   border: 1px solid var.$gray3;
-  border-radius: var.$smallBorder;
+  border-radius: var.$smallBorderRadius;
 }
 
 figure {
@@ -430,3 +431,14 @@ img,
 pre {
   box-shadow: var.$shadowLarge;
 }
+
+/*
+Media Queries
+*/
+
+@media only screen and (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -1px
+  }
+}
+

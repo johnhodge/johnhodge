@@ -1,9 +1,9 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import styles from './footer.module.scss';
 
-const Footer = () => {
+const LpFooter = () => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -16,10 +16,6 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <h2>
-        Get in touch.
-      </h2>
-      <p>Have something to say? <Link to="/contact">Hit me up</Link>.</p>
       <div className={styles.iconBucket}>
         <h2>
           \\\\\
@@ -36,4 +32,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default LpFooter;

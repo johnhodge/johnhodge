@@ -11,21 +11,19 @@ External Modules
 
 .post {
   margin: 1rem 0;
+  min-height: 147px;
+  display: flex;
+  align-items: center;
+  box-shadow: $shadowMeduim;
 
   a {
-    background: $gray1;
-    color: $black;
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-  }
-
-  a:hover {
-    background: $gray2;
+    display: block;    
+    text-shadow: $textShadowMedium;
   }
 
   h2 {
-    margin-bottom: 0;
+    margin: 0;
+    color: $white;
   }
 
   p {

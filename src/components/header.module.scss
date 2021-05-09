@@ -6,13 +6,15 @@ External Modules
 
 
 .header {
-  padding: 1rem 0 3rem;
+  padding: 1rem 0;
 }
 
 .title {
   color: $black;
   font-size: 3rem;
+  font-family: $displayFont;
   text-decoration: none;
+  letter-spacing: -2px;
 }
 
 .nav-list {
