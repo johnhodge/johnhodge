@@ -1,0 +1,31 @@
+/*
+External Modules
+*/
+
+@use 'fonts';
+
+/*
+Variables
+*/
+
+$headingFont: 'Hero New Super';
+$displayFont: 'Hero New Super Italic';
+$regularFont: 'Hero New Light';
+$boldFont: 'Hero New Bold';
+$codeFont: 'Cartograph Mono CF Regular';
+$rootFontSize: max(18px, 1vw);
+$standardLineHeight: 1.3;
+$extraLineHeight: 1.65;
+$black: rgb(55, 55, 55);
+$white: rgb(255, 255, 255);
+$gray1: rgb(245, 245, 245);
+$gray2: rgb(215, 215, 215);
+$gray3: rgb(185, 185, 185);
+$gray4: rgb(155, 155, 155);
+$gray5: rgb(125, 125, 125);
+$gray6: rgb(95, 95, 95);
+$unitsMedium: 1.5rem;
+$unitsSmall: .85rem;
+$unitsTiny: .5rem;
+$shadowLarge: 0.25rem 0.25rem 2rem rgba(0, 0, 0, .2);
+$smallBorder: 5px;
