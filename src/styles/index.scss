@@ -134,8 +134,8 @@ ul li {
 li > ol,
 li > ul {
   margin-left: var.$unitsMedium;
-  margin-bottom: calc(var.$unitsMedium / 2);
-  margin-top: calc(var.$unitsMedium / 2);
+  margin-bottom: calc(#{var.$unitsMedium} / 2);
+  margin-top: calc(#{var.$unitsMedium} / 2);
 }
 
 abbr {
@@ -416,7 +416,7 @@ table {
 }
 
 hr {
-  margin-bottom: calc(var.$unitsMedium - 1px);
+  margin-bottom: calc(#{var.$unitsMedium} - 1px);
   background: var.$gray1;;
   border: none;
   height: 1px;
