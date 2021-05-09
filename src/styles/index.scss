@@ -73,7 +73,7 @@ hgroup {
 blockquote {
   padding: var.$unitsTiny var.$unitsMedium;
   margin: 0 var.$unitsMedium;
-  border-left: var.$smallBorder solid;
+  border-left: var.$smallBorderRadius solid;
 }
 
 blockquote > p {
@@ -166,10 +166,10 @@ samp {
 }
 
 pre {
-  border-radius: var.$smallBorder;
+  border-radius: var.$smallBorderRadius;
   overflow: auto;
   word-wrap: normal;
-  border-left: var.$smallBorder solid var.$black;
+  border-left: var.$smallBorderRadius solid var.$black;
   padding: 1rem .5rem;
 }
 
@@ -301,7 +301,7 @@ img {
   max-width: 100%;
   margin-bottom: var.$unitsMedium;
   border: 1px solid var.$gray3;
-  border-radius: var.$smallBorder;
+  border-radius: var.$smallBorderRadius;
 }
 
 figure {
@@ -437,7 +437,7 @@ Media Queries
 
 @media only screen and (max-width: 768px) {
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -1px;
+    letter-spacing: -1px
   }
 }
 
