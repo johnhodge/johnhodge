@@ -12,7 +12,9 @@ External Modules
 .title {
   color: $black;
   font-size: 3rem;
+  font-family: $displayFont;
   text-decoration: none;
+  letter-spacing: -2px;
 }
 
 .nav-list {

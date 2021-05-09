@@ -37,9 +37,9 @@ body {
 Typographic Elements
 */
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var.$headingFont;
-  margin: 0 0 0 0;
+  margin: 1rem 0;
 }
 
 h1 {
@@ -430,3 +430,14 @@ img,
 pre {
   box-shadow: var.$shadowLarge;
 }
+
+/*
+Media Queries
+*/
+
+@media only screen and (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -1px;
+  }
+}
+
