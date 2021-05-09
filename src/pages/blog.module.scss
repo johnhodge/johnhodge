@@ -17,14 +17,13 @@ External Modules
   box-shadow: $shadowMeduim;
 
   a {
-    color: $white;
-    display: block;
-    text-decoration: none;
+    display: block;    
     text-shadow: $textShadowMedium;
   }
 
   h2 {
     margin: 0;
+    color: $white;
   }
 
   p {

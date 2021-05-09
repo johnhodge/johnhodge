@@ -31,17 +31,17 @@ const Blog = () => {
       <ol className={styles.posts}>
         {data.allContentfulBlogPost.edges.map((edge, i) => {
           return (
-            <li className={styles.post} key={i} 
-              style = {{
-                backgroundImage: `url(https:${edge.node.heroImage.file.url})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50%',
-                padding: '1.5rem',
-              }}>
-              <Link to={`/blog/${edge.node.slug}`}>
-                <h2>{edge.node.title}</h2>
-              </Link>
-            </li>
+            <Link to={`/blog/${edge.node.slug}`}>
+              <li className={styles.post} key={i} 
+                style = {{
+                  backgroundImage: `url(https:${edge.node.heroImage.file.url})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: '50%',
+                  padding: '1.5rem',
+                }}>
+                  <h2>{edge.node.title}</h2>
+              </li>
+            </Link>
           );
         })}
       </ol>
