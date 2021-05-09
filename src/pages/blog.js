@@ -14,6 +14,11 @@ const Blog = () => {
             slug
             title
             publishDate(formatString: "MMMM Do, YYYY")
+            heroImage {
+              file {
+                url
+              }
+            }
           }
         }
       }
@@ -26,10 +31,15 @@ const Blog = () => {
       <ol className={styles.posts}>
         {data.allContentfulBlogPost.edges.map((edge, i) => {
           return (
-            <li className={styles.post} key={i}>
+            <li className={styles.post} key={i} 
+              style = {{
+                backgroundImage: `url(https:${edge.node.heroImage.file.url})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50%',
+                padding: '1.5rem',
+              }}>
               <Link to={`/blog/${edge.node.slug}`}>
                 <h2>{edge.node.title}</h2>
-                <p>{edge.node.publishDate}</p>
               </Link>
             </li>
           );

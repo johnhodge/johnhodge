@@ -34,7 +34,7 @@ const BlogPost = ({ data }) => {
     <Layout>
       <Head title={data.contentfulBlogPost.title} />
       <h1>{data.contentfulBlogPost.title}</h1>
-      <p>Published on {data.contentfulBlogPost.publishDate}</p>
+      <p>{data.contentfulBlogPost.publishDate}</p>
       <div dangerouslySetInnerHTML={{ __html: data.contentfulBlogPost.body.childMarkdownRemark.html, options }} />
     </Layout>
   );
