@@ -1,0 +1,15 @@
+.blog-featured-img {
+  border-radius: 0px;
+  border: none;
+  position: relative;
+  transform: translate(0,-35%);
+  box-shadow: none;
+}
+
+.blog-featured-img-container {
+  height: 6rem;
+  overflow-x: hidden;
+  box-sizing: content-box;
+  min-width: 100%;
+  margin: 0 -1rem 2rem;
+}
