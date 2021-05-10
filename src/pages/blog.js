@@ -39,7 +39,7 @@ const Blog = () => {
                   backgroundPosition: '50%',
                   padding: '1.5rem',
                 }}>
-                  <h2>{edge.node.title}</h2>
+                  <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
             </Link>
           );

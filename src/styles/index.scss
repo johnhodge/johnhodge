@@ -88,8 +88,8 @@ b, strong, dt, th {
 
 a {
   background-color: transparent;
+  color: var.$blue;
   -webkit-text-decoration-skip: objects;
-  // text-decoration: none;
 }
 
 a:active,
@@ -430,6 +430,11 @@ Misc
 img,
 pre {
   box-shadow: var.$shadowLarge;
+}
+
+::selection {
+  background: var.$blue;
+  color: var.$white;
 }
 
 /*
