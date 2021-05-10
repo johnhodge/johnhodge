@@ -50,6 +50,7 @@ button:hover {
 button:disabled {
   color: $gray3;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 input, textarea, button:disabled {
