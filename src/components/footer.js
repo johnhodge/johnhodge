@@ -9,6 +9,7 @@ const Footer = () => {
       site {
         siteMetadata {
           author
+          homepage
         }
       }
     }
@@ -25,11 +26,7 @@ const Footer = () => {
           \\\\\
         </h2>
         <p className={styles.footerParagraph}>
-          Created by{' '}
-          <a href="https://johnhodge.com">
-            {data.site.siteMetadata.author}
-          </a>{' '}
-          © {new Date().getFullYear()}
+          Created by <a href={data.site.siteMetadata.homepage}> {data.site.siteMetadata.author}</a> © {new Date().getFullYear()}
         </p>
       </div>
     </footer>

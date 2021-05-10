@@ -6,7 +6,7 @@ import BasicForm from '../components/form'
 
 // import styles from "./contact.module.scss";
 
-const Contact = ({values}) => {
+const Contact = () => {
   return (
     <LpLayout>
       <Head title="Contact" /> 

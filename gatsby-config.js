@@ -6,6 +6,7 @@ module.exports = {
     title: 'John Hodge',
     description:
       'I\'m a NYC based Solution\'s Engineer and I work in Adtech with some of the smartest people in the solar system.',
+    homepage: 'https://johnhodge.com',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
