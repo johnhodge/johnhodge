@@ -31,7 +31,7 @@ const Blog = () => {
       <ol className={styles.posts}>
         {data.allContentfulBlogPost.edges.map((edge, i) => {
           return (
-            <Link to={`/blog/${edge.node.slug}`}>
+            <Link className={styles.blogLink} to={`/blog/${edge.node.slug}`}>
               <li className={styles.post} key={i} 
                 style = {{
                   backgroundImage: `url(https:${edge.node.heroImage.file.url})`,

@@ -1,7 +1,13 @@
+/*
+External Modules
+*/
+
+@use '../styles/variables.scss' as *;
+
 .container {
   margin: 0 auto;
   max-width: 50rem;
-  padding: 1rem;
+  padding: $containerPadding;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

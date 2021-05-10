@@ -9,22 +9,19 @@ External Modules
   margin: 0;
 }
 
+a.blog-link {
+  margin: 0;
+  color: $white;
+  text-shadow: $textShadowMedium;
+  text-decoration: none;
+}
+
 .post {
   margin: 1rem 0;
   min-height: 147px;
   display: flex;
   align-items: center;
   box-shadow: $shadowMeduim;
-
-  a {
-    display: block;    
-    text-shadow: $textShadowMedium;
-  }
-
-  h2 {
-    margin: 0;
-    color: $white;
-  }
 
   p {
     color: $gray5;

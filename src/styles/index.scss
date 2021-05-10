@@ -89,12 +89,19 @@ b, strong, dt, th {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-  text-decoration: none;
+  // text-decoration: none;
 }
 
 a:active,
 a:hover {
   outline-width: 0;
+}
+
+a.blog-link {
+  margin: 0;
+  color: var.$white;
+  text-shadow: var.$textShadowMedium;
+  text-decoration: none;
 }
 
 blockquote *:last-child {
