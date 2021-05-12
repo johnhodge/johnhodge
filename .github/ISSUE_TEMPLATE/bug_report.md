@@ -1,9 +1,10 @@
 ---
-name: fix
+name: Bug Report
 about: Create a bug report of a specific issue that needs to be fixed.
-title: 'Bug Report'
+title: 'fix: [Describe bug here]'
 labels: 'fix'
-assignees: '@johnhodge'
+assignees: 'johnhodge'
+project: 'John Hodge'
 
 ---
 
