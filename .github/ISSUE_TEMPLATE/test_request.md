@@ -1,8 +1,8 @@
 ---
 name: Test Request
 about: Create a feat request of a specific test that needs to be added.
-title: 'feat: [Describe test here]'
-labels: 'feat'
+title: 'test: [Describe test here]'
+labels: 'test'
 assignees: ''
 
 ---
