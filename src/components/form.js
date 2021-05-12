@@ -60,14 +60,13 @@ const BasicForm = () => (
           {errors.message && touched.message ? (
             <div className={styles.errors}>{errors.message}</div>
           ) : null}
-          <button type="submit" disabled={isSubmitting || !isValid}>
+
+          {!status ? (
+            <button type="submit" disabled={isSubmitting || !isValid}>
             Submit
           </button>
-
-          {status ? (
-            <div className={styles.messageSuccess}>{status.success}</div>
           ) : (
-            ""
+            <div className={styles.messageSuccess}>{status.success}</div>
           )}
         </Form>
       )}
