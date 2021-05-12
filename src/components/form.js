@@ -63,7 +63,7 @@ const BasicForm = () => (
 
           {!status ? (
             <button type="submit" disabled={isSubmitting || !isValid}>
-            Submit
+            Send
           </button>
           ) : (
             <div className={styles.messageSuccess}>{status.success}</div>
