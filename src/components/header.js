@@ -1,7 +1,7 @@
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
-import styles from './header.module.scss';
+import styles from "./header.module.scss";
 
 const Header = () => {
   const data = useStaticQuery(graphql`

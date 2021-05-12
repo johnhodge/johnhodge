@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 // import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
-import Head from '../components/head';
+import Layout from "../components/layout";
+import Head from "../components/head";
 
 const About = () => {
   return (
@@ -22,7 +22,9 @@ const About = () => {
       <h3>Frequency Modulator and Synthsician</h3>
       <p>NYC based noise maker with a synth and a drum machine.</p>
       <h3>Amateur Cook</h3>
-      <p>Open fire and cast iron flavor enthusiast. Heavy emphasis on “amateur”.</p>
+      <p>
+        Open fire and cast iron flavor enthusiast. Heavy emphasis on “amateur”.
+      </p>
     </Layout>
   );
 };

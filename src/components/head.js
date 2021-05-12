@@ -1,6 +1,6 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 const Head = ({ title }) => {
   const data = useStaticQuery(graphql`
@@ -16,10 +16,10 @@ const Head = ({ title }) => {
 
   return (
     <Helmet
-      htmlAttributes={{ lang: 'en' }}
+      htmlAttributes={{ lang: "en" }}
       title={`${title} | ${data.site.siteMetadata.title}`}
       meta={[
-        { name: 'description', content: data.site.siteMetadata.description },
+        { name: "description", content: data.site.siteMetadata.description },
       ]}
     />
   );

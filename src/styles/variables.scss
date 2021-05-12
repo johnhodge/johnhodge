@@ -8,17 +8,17 @@ External Modules
 Variables
 */
 
-$headingFont: 'Hero New Super';
-$displayFont: 'Hero New Super Italic';
-$regularFont: 'Hero New Light';
-$boldFont: 'Hero New Bold';
-$codeFont: 'Cartograph Mono CF Regular';
+$headingFont: "Hero New Super";
+$displayFont: "Hero New Super Italic";
+$regularFont: "Hero New Light";
+$boldFont: "Hero New Bold";
+$codeFont: "Cartograph Mono CF Regular";
 $rootFontSize: 16px;
 $standardLineHeight: 1.3;
 $extraLineHeight: 1.65;
 $green: rgb(0, 100, 0);
 $lightGreen: rgb(144, 238, 144);
-$red:  rgb(255, 0, 0);
+$red: rgb(255, 0, 0);
 $yellow: rgb(255, 211, 65);
 $orange: rgb(255, 127, 0);
 $pink: rgb(255, 128, 163);
@@ -32,11 +32,11 @@ $gray4: rgb(155, 155, 155);
 $gray5: rgb(125, 125, 125);
 $gray6: rgb(95, 95, 95);
 $unitsMedium: 1.5rem;
-$unitsSmall: .85rem;
-$unitsTiny: .5rem;
-$textShadowMedium: 0.1rem 0.1rem 0.5rem rgb(0, 0, 0, .4);
-$shadowMeduim: 0.15rem 0.15rem 1rem rgba(0, 0, 0, .4);
-$shadowLarge: 0.25rem 0.25rem 2rem rgba(0, 0, 0, .2);
+$unitsSmall: 0.85rem;
+$unitsTiny: 0.5rem;
+$textShadowMedium: 0.1rem 0.1rem 0.5rem rgb(0, 0, 0, 0.4);
+$shadowMeduim: 0.15rem 0.15rem 1rem rgba(0, 0, 0, 0.4);
+$shadowLarge: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.2);
 $smallBorderRadius: 5px;
 $fieldPadding: 1rem 5rem;
 $containerPadding: 1rem;
