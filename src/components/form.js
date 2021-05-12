@@ -43,7 +43,7 @@ const BasicForm = () => (
       }}
     >
       {({ errors, touched, isSubmitting, isValid, status }) => (
-        <Form className={styles.form} method="POST" noValidate>
+        <Form name="basic-form" className={styles.form} method="POST" noValidate netlify>
           <Field name="firstName" type="text" placeholder="First Name" />
           {errors.firstName && touched.firstName ? (
             <div className={styles.errors}>{errors.firstName}</div>
