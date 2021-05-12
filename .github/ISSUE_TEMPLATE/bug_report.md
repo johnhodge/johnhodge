@@ -4,14 +4,8 @@ about: Create a bug report of a specific issue that needs to be fixed.
 title: 'fix: [Describe bug here]'
 labels: 'fix'
 assignees: 'johnhodge'
-project: 'John Hodge'
 
 ---
-
----
-name: fix
-
-about: Create a bug report of a specific issue that needs to be fixed
 
 # Bug report
 
