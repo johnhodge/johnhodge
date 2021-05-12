@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-# Bug report
+# Feature Request
 
 **What is the current behavior?**
 
