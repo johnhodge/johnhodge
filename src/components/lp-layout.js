@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Header from './header';
-import LpFooter from './lp-footer';
-import '../styles/index.scss';
-import styles from './layout.module.scss';
+import Header from "./header";
+import LpFooter from "./lp-footer";
+import "../styles/index.scss";
+import styles from "./layout.module.scss";
 
 const LpLayout = ({ children }) => {
   return (

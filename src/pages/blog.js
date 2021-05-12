@@ -1,9 +1,9 @@
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
-import Layout from '../components/layout';
-import Head from '../components/head';
-import styles from './blog.module.scss';
+import Layout from "../components/layout";
+import Head from "../components/head";
+import styles from "./blog.module.scss";
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
@@ -32,14 +32,17 @@ const Blog = () => {
         {data.allContentfulBlogPost.edges.map((edge, i) => {
           return (
             <Link className={styles.blogLink} to={`/blog/${edge.node.slug}`}>
-              <li className={styles.post} key={i} 
-                style = {{
+              <li
+                className={styles.post}
+                key={i}
+                style={{
                   backgroundImage: `url(https:${edge.node.heroImage.file.url})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: '50%',
-                  padding: '1.5rem',
-                }}>
-                  <h2 className={styles.blogHeader}>{edge.node.title}</h2>
+                  backgroundSize: "cover",
+                  backgroundPosition: "50%",
+                  padding: "1.5rem",
+                }}
+              >
+                <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
             </Link>
           );

@@ -1,10 +1,9 @@
 ---
 name: Doc Request
 about: Create a doc request of a specific document that needs to be created or updated.
-title: 'docs: [Describe document here]'
-labels: 'docs'
-assignees: 'johnhodge'
-
+title: "docs: [Describe document here]"
+labels: "docs"
+assignees: "johnhodge"
 ---
 
 # Doc Request

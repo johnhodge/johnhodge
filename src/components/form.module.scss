@@ -25,7 +25,9 @@ External Modules
   padding: $fieldPadding;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
   border-top-right-radius: $smallBorderRadius;
   border-bottom-left-radius: $smallBorderRadius;
   display: block;
@@ -39,7 +41,7 @@ button {
   background: $yellow;
   border: 1px solid $orange;
   box-shadow: $shadowMeduim;
-  transition: ease-in-out .12s  box-shadow;
+  transition: ease-in-out 0.12s box-shadow;
 }
 
 button:hover {
@@ -53,7 +55,9 @@ button:disabled {
   cursor: not-allowed;
 }
 
-input, textarea, button:disabled {
+input,
+textarea,
+button:disabled {
   background: $gray1;
   border: 1px solid $gray3;
 }
