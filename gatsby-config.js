@@ -60,18 +60,18 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
-        RewriteBase: true,
+        RewriteBase: '/',
         https: true,
         www: true,
         SymLinksIfOwnerMatch: true,
-        host: 'www.mydomain.com', // if 'www' is set to 'false', be sure to also remove it here!
-        ErrorDocument: `
-          ErrorDocument 401 /error_pages/401.html
-          ErrorDocument 404 /error_pages/404.html
-          ErrorDocument 500 /error_pages/500.html
-        `,
+        host: 'www.johnhodge.com', // if 'www' is set to 'false', be sure to also remove it here!
+        // ErrorDocument: `
+        //   ErrorDocument 401 /error_pages/401.html
+        //   ErrorDocument 404 /error_pages/404.html
+        //   ErrorDocument 500 /error_pages/500.html
+        // `,
         redirect: [
-          'rewriteRule ^(([a-z0-9\-]+/)*[a-z0-9\-]+)$ $1/ [NC,R=301,L]',
+          // 'rewriteRule ^(([a-z0-9\-]+/)*[a-z0-9\-]+)$ $1/ [NC,R=301,L]',
           {
         //     from: 'my-domain.com',
         //     to: 'mydomain.com',
