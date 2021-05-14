@@ -2,17 +2,33 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 
 import styles from "./blog-post.module.scss";
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
+      slug
       title
-      publishDate(formatString: "MMMM Do, YYYY")
+      category
+      tags
+      author {
+        name
+      }
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, hh:mm:ssa")
+      isoPublishDate: publishDate
+      updatedAt
       heroImage {
+        description
         file {
+          contentType
+          details {
+            image {
+              width
+              height
+            }
+          }
           url
         }
         title
@@ -22,6 +38,10 @@ export const query = graphql`
           html
         }
       }
+      description {
+        description
+      }
+      keywords
     }
   }
 `;
@@ -38,10 +58,35 @@ const BlogPost = ({ data }) => {
     },
   };
 
+  const imageData = data.contentfulBlogPost.heroImage
+  const metaImage = {
+    src: `https:${imageData.file.url}`,
+    width: imageData.file.details.image.width,
+    height: imageData.file.details.image.height,
+    altDescription: imageData.description,
+    contentType: imageData.file.contentType,
+  }
+  const metaArticle = {
+    article_published_time: data.contentfulBlogPost.isoPublishDate,
+    article_modified_time: data.contentfulBlogPost.updatedAt,
+    article_author: data.contentfulBlogPost.author.name,
+    article_section: data.contentfulBlogPost.category,
+    article_tag: data.contentfulBlogPost.tags,
+  }
+
   return (
     <Layout>
-      <Head title={data.contentfulBlogPost.title} />
-      <div className={styles.blogFeaturedImgContainer}>
+      <SEO 
+        title={data.contentfulBlogPost.title} 
+        metaImage={metaImage}
+        metaArticle={metaArticle}
+        metaAuthor={data.contentfulBlogPost.author.name}
+        description={data.contentfulBlogPost.description.description}
+        metaKeywords={data.contentfulBlogPost.keywords}
+        pathname={`/blog/${data.contentfulBlogPost.slug}`}
+      />      
+
+      <div itemprop="text" itemscope itemtype="https://schema.org/CreativeWork" className={styles.blogFeaturedImgContainer}>
         <img
           className={styles.blogFeaturedImg}
           src={`https:${data.contentfulBlogPost.heroImage.file.url}`}
@@ -49,8 +94,8 @@ const BlogPost = ({ data }) => {
           title={data.contentfulBlogPost.heroImage.title}
         ></img>
       </div>
-      <h1>{data.contentfulBlogPost.title}</h1>
-      <p>{data.contentfulBlogPost.publishDate}</p>
+      <h1><span itemprop="headline" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.title}</span></h1>
+      <p><span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span><span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
@@ -60,5 +105,4 @@ const BlogPost = ({ data }) => {
     </Layout>
   );
 };
-
 export default BlogPost;

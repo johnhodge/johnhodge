@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 import styles from "./blog.module.scss";
 
 const Index = () => {
@@ -26,7 +26,10 @@ const Index = () => {
   `);
   return (
     <Layout>
-      <Head title="Home" />
+      <SEO 
+        title="Home"
+        pathname="/"
+      />
       <h1>Hello!</h1>
       <p>I'm John, I work in solutions and I play around with FM synthesis.</p>
       <h2>Recent posts.</h2>
