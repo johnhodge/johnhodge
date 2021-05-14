@@ -13,7 +13,7 @@ module.exports = {
     description:
       `I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.`,
     siteUrl: `https://johnhodge.com`,
-    keywords: [`adtech`,` advertising`,` tech`,` marketing`,` google`,` freewheel`,` spotx`,` madhive`,` buy side`,` sell side`,` dsp`,` dmp`,` ad server`,` real-time bidding`,` rtb`,` iab`,` vast`,` vmap`],
+    keywords: [`adtech`,`advertising`,`tech`,`marketing`,`google`,`freewheel`,`spotx`,`madhive`,`buy side`,`sell side`,`dsp`,`dmp`,`ad server`,`real-time bidding`,`rtb`,`iab`,`vast`,`vmap`],
     image: {
       src: `https://johnhodge.com/img.png`,
       width: `1920px`,
