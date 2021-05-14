@@ -71,7 +71,7 @@ module.exports = {
         //   ErrorDocument 500 /error_pages/500.html
         // `,
         redirect: [
-          // 'rewriteRule ^(([a-z0-9\-]+/)*[a-z0-9\-]+)$ $1/ [NC,R=301,L]',
+          'RewriteRule ^(.*)([^/])$ http://%{HTTP_HOST}/$1$2/ [L,R=301]',
           {
         //     from: 'my-domain.com',
         //     to: 'mydomain.com',
