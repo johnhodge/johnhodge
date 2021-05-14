@@ -11,7 +11,8 @@ const Contact = () => {
     <LpLayout>
       <SEO 
         title="Contact" 
-        description="TEST"
+        description="Don't hesitate to reach out, just please be patient with me while I thinkof the perfect response!"
+        pathname="/contact"
       />
       <h1>Contact.</h1>
       <BasicForm />

@@ -9,6 +9,7 @@ import styles from "./blog-post.module.scss";
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
+      slug
       title
       category
       tags
@@ -19,7 +20,9 @@ export const query = graphql`
       isoPublishDate: publishDate
       updatedAt
       heroImage {
+        description
         file {
+          contentType
           details {
             image {
               width
@@ -55,11 +58,13 @@ const BlogPost = ({ data }) => {
     },
   };
 
-  const imageData = data.contentfulBlogPost.heroImage.file
+  const imageData = data.contentfulBlogPost.heroImage
   const metaImage = {
-    src: `https:${imageData.url}`,
-    width: imageData.details.image.width,
-    height: imageData.details.image.height,
+    src: `https:${imageData.file.url}`,
+    width: imageData.file.details.image.width,
+    height: imageData.file.details.image.height,
+    altDescription: imageData.description,
+    contentType: imageData.file.contentType,
   }
   const metaArticle = {
     article_published_time: data.contentfulBlogPost.isoPublishDate,
@@ -78,6 +83,7 @@ const BlogPost = ({ data }) => {
         metaAuthor={data.contentfulBlogPost.author.name}
         description={data.contentfulBlogPost.description.description}
         metaKeywords={data.contentfulBlogPost.keywords}
+        pathname={`/blog/${data.contentfulBlogPost.slug}`}
       />      
 
       <div className={styles.blogFeaturedImgContainer}>

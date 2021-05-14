@@ -9,7 +9,8 @@ const About = () => {
     <Layout>
       <SEO 
         title="About" 
-        description="TEST"
+        description="I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system."
+        pathname="/about"
       />
       <h1>About.</h1>
       <p>I'm John, I work in solutions and I play around with FM synthesis.</p>

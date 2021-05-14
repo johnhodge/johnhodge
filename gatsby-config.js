@@ -3,6 +3,12 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     author: "John Hodge",
+    social: {
+      twitter: "hijohnhodge",
+      twitterId: "376312987",
+      instagram: "hijohnhodge",
+      github: "hijohnhodge",
+    },
     title: "John Hodge",
     description:
       "I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.",
@@ -11,7 +17,9 @@ module.exports = {
     image: {
       src: "/img.png",
       width: "1920px",
-      height: "1920px"
+      height: "1920px",
+      altDescription: "I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.",
+      contentType: "image/png",
     }
   },
   plugins: [

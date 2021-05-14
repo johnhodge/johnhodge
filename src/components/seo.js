@@ -19,6 +19,11 @@ const SEO = ({
       site {
         siteMetadata {
           author,
+          social {
+            twitter
+            instagram
+            github
+          }
           title,
           description
           siteUrl,
@@ -26,7 +31,9 @@ const SEO = ({
           image {
             src,
             width,
-            height
+            height,
+            altDescription,
+            contentType
           }
         }
       }
@@ -38,10 +45,9 @@ const SEO = ({
   const keywords = metaKeywords || site.siteMetadata.keywords
   const author = metaAuthor || site.siteMetadata.author
   const image = metaImage || site.siteMetadata.image
+  const social = site.siteMetadata.social
   const article = metaArticle ? metaArticle : null
-
-  console.log(article)
-
+console.log(canonical)
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
@@ -50,19 +56,24 @@ const SEO = ({
         canonical
           ? [
               {
-                rel: "canonical",
+                rel: `canonical`,
+                href: canonical,
+              },
+              {
+                rel: `og:url`,
                 href: canonical,
               },
             ]
           : []
       }
+      
       meta={[
         { 
-          name: "description", 
+          name: `description`, 
           content: metaDescription,
         },
         { 
-          name: "keywords", 
+          name: `keywords`, 
           content: keywords.join(","), 
         },
         {
@@ -78,79 +89,90 @@ const SEO = ({
           content: `website`,
         },
         {
-          name: `twitter:creator`,
-          content: author,
+          property: `og:site_name`,
+          content: site.siteMetadata.title,
         },
         {
-          name: `twitter:title`,
-          content: title,
+          property: `og:image`,
+          content: image.src,
+        },
+        {
+          property: `og:image:width`,
+          content: image.width,
+        },
+        {
+          property: `og:image:height`,
+          content: image.height,
+        },
+        {
+          property: `og:image:alt`,
+          content: image.altDescription,
+        },
+        {
+          property: `og:image:type`,
+          content: image.contentType,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:site`,
+          content: `@${social.twitter}`,
+        },
+        {
+          name: `twitter:site:id`,
+          content: social.twitterId,
+        },
+        {
+          name: `twitter:creator`,
+          content: `@${social.twitter}`,
+        },
+        {
+          name: `twitter:creator:id`,
+          content: social.twitterId,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
         {
-          property: "og:image",
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:image`,
           content: image.src,
         },
+        {
+          name: `twitter:image:alt`,
+          content: image.altDescription,
+        },
       ]
-      .concat(
-        image
-          ? [
-              {
-                property: "og:image",
-                content: image.src,
-              },
-              {
-                property: "og:image:width",
-                content: image.width,
-              },
-              {
-                property: "og:image:height",
-                content: image.height,
-              },
-              {
-                name: "twitter:card",
-                content: "summary_large_image",
-              },
-            ]
-          : [
-              {
-                name: "twitter:card",
-                content: "summary",
-              },
-            ]
-          )
       .concat(
           article
             ? [
                 {
-                  name: "article:published_time",
+                  name: `article:published_time`,
                   content: article.article_published_time,
                 },
                 {
-                  name: "article:modified_time",
+                  name: `article:modified_time`,
                   content: article.article_modified_time,
                 },
                 {
-                  name: "article:author",
+                  name: `article:author`,
                   content: article.article_author,
                 },
                 {
-                  name: "article:section",
+                  name: `article:section`,
                   content: article.article_section,
                 },
                 {
-                  name: "article:tag",
+                  name: `article:tag`,
                   content: article.article_tag,
                 },
-              // article:published_time - datetime - When the article was first published.
-              // article:modified_time - datetime - When the article was last changed.
-              // article:expiration_time - datetime - When the article is out of date after.
-              // article:author - profile array - Writers of the article.
-              // article:section - string - A high-level section name. E.g. Technology
-              // article:tag - string array - Tag words associated with this article.
-            ]
+              ]
             : []
           )
           .concat(meta)}

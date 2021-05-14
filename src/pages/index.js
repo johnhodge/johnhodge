@@ -28,6 +28,7 @@ const Index = () => {
     <Layout>
       <SEO 
         title="Home"
+        pathname="/"
       />
       <h1>Hello!</h1>
       <p>I'm John, I work in solutions and I play around with FM synthesis.</p>

@@ -28,7 +28,8 @@ const Blog = () => {
     <Layout>
       <SEO 
         title="Blog" 
-        description="TEST"
+        description="This blog is a space for me to log what I learn in my professional travels as a tech-wise client-facing solutions engineer."
+        pathname="/blog"
       />
       <h1>Blog.</h1>
       <ol className={styles.posts}>
