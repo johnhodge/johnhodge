@@ -8,7 +8,7 @@ const SEO = ({
   lang, 
   meta, 
   metaImage, 
-  title, 
+  metaTitle, 
   pathname, 
   metaKeywords, 
   metaAuthor,
@@ -46,10 +46,11 @@ const SEO = ({
   const image = metaImage || site.siteMetadata.image
   const social = site.siteMetadata.social
   const article = metaArticle ? metaArticle : null
+  const title =`${metaTitle} | ${site.siteMetadata.title}`
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
-      title={`${title} | ${site.siteMetadata.title}`}
+      title={title}
       link={
         canonical
           ? [

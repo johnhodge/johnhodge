@@ -27,7 +27,7 @@ const Index = () => {
   return (
     <Layout>
       <SEO 
-        title="Home"
+        metaTitle="Home"
         pathname="/"
       />
       <h1>Hello!</h1>
