@@ -16,7 +16,7 @@ export const query = graphql`
       author {
         name
       }
-      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, hh:mm:ssa zz")
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
       updatedAt
       heroImage {
@@ -95,7 +95,7 @@ const BlogPost = ({ data }) => {
         ></img>
       </div>
       <h1><span itemprop="headline" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.title}</span></h1>
-      <p><span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span> <span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
+      <p>Published by <span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span> on <span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
