@@ -23,9 +23,9 @@ const LpFooter = () => {
           Created by{" "}
           <a href={data.site.siteMetadata.siteUrl}>
             {" "}
-            {data.site.siteMetadata.author}
+            <span itemprop="creator" itemscope itemtype="https://schema.org/WebSite">{data.site.siteMetadata.author}</span>
           </a>{" "}
-          © {new Date().getFullYear()}
+          <span itemprop="copyrightYear" itemscope itemtype="https://schema.org/WebSite">© {new Date().getFullYear()}</span>
         </p>
       </div>
     </footer>

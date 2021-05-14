@@ -18,7 +18,7 @@ const Header = () => {
     <header className={styles.header}>
       <h1>
         <Link className={styles.title} to="/">
-          {data.site.siteMetadata.title}
+          <span itemprop="creator" itemscope itemtype="https://schema.org/Person">{data.site.siteMetadata.title}</span>
         </Link>
       </h1>
       <nav>

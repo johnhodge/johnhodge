@@ -86,7 +86,7 @@ const BlogPost = ({ data }) => {
         pathname={`/blog/${data.contentfulBlogPost.slug}`}
       />      
 
-      <div className={styles.blogFeaturedImgContainer}>
+      <div itemprop="text" itemscope itemtype="https://schema.org/CreativeWork" className={styles.blogFeaturedImgContainer}>
         <img
           className={styles.blogFeaturedImg}
           src={`https:${data.contentfulBlogPost.heroImage.file.url}`}
@@ -94,8 +94,8 @@ const BlogPost = ({ data }) => {
           title={data.contentfulBlogPost.heroImage.title}
         ></img>
       </div>
-      <h1>{data.contentfulBlogPost.title}</h1>
-      <p>{data.contentfulBlogPost.formattedPublishDate}</p>
+      <h1><span itemprop="headline" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.title}</span></h1>
+      <p><span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span><span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,

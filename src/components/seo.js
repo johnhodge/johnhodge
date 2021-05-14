@@ -43,7 +43,6 @@ const SEO = ({
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
   const metaDescription = description || site.siteMetadata.description
   const keywords = metaKeywords || site.siteMetadata.keywords
-  const author = metaAuthor || site.siteMetadata.author
   const image = metaImage || site.siteMetadata.image
   const social = site.siteMetadata.social
   const article = metaArticle ? metaArticle : null

@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <div className={styles.container}>
       <Header />
-      <main className={styles.main}>{children}</main>
+      <main itemprop="mainEntity" itemscope itemtype="https://schema.org/WebSite" className={styles.main}>{children}</main>
       <Footer />
     </div>
   );
