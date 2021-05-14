@@ -27,7 +27,7 @@ const Blog = () => {
   return (
     <Layout>
       <SEO 
-        title="Blog" 
+        metaTitle="Blog" 
         description="This blog is a space for me to log what I learn in my professional travels as a tech-wise client-facing solutions engineer."
         pathname="/blog"
       />

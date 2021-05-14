@@ -8,7 +8,7 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About" 
+        metaTitle="About" 
         description="I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system."
         pathname="/about"
       />

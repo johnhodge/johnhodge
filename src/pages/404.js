@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <Layout>
       <SEO 
-        title="404"
+        metaTitle="404"
        />
       <h1>Page not found</h1>
       <p>Oops! The page you are looking for has been removed or relocated.</p>
