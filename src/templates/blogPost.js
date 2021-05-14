@@ -16,7 +16,7 @@ export const query = graphql`
       author {
         name
       }
-      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, hh:mm:ssa")
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, hh:mm:ssa zz")
       isoPublishDate: publishDate
       updatedAt
       heroImage {
@@ -77,14 +77,14 @@ const BlogPost = ({ data }) => {
   return (
     <Layout>
       <SEO 
-        title={data.contentfulBlogPost.title} 
+        metaTitle={data.contentfulBlogPost.title} 
         metaImage={metaImage}
         metaArticle={metaArticle}
         metaAuthor={data.contentfulBlogPost.author.name}
         description={data.contentfulBlogPost.description.description}
         metaKeywords={data.contentfulBlogPost.keywords}
         pathname={`/blog/${data.contentfulBlogPost.slug}`}
-      />      
+      />    
 
       <div itemprop="text" itemscope itemtype="https://schema.org/CreativeWork" className={styles.blogFeaturedImgContainer}>
         <img
@@ -95,7 +95,7 @@ const BlogPost = ({ data }) => {
         ></img>
       </div>
       <h1><span itemprop="headline" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.title}</span></h1>
-      <p><span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span><span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
+      <p><span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span> <span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
