@@ -5,7 +5,7 @@ module.exports = {
     author: `John Hodge`,
     social: {
       twitter: `hijohnhodge`,
-      twitterId: `376312987`,
+      twitterId: 376312987,
       instagram: `hijohnhodge`,
       github: `hijohnhodge`,
     },

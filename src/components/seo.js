@@ -21,6 +21,7 @@ const SEO = ({
           author,
           social {
             twitter
+            twitterId
             instagram
             github
           }
@@ -47,6 +48,7 @@ const SEO = ({
   const social = site.siteMetadata.social
   const article = metaArticle ? metaArticle : null
   const title =`${metaTitle} | ${site.siteMetadata.title}`
+
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
