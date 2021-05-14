@@ -46,7 +46,6 @@ const SEO = ({
   const image = metaImage || site.siteMetadata.image
   const social = site.siteMetadata.social
   const article = metaArticle ? metaArticle : null
-console.log(canonical)
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
