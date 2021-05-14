@@ -2,12 +2,15 @@ import React from "react";
 // import { Link } from 'gatsby';
 
 import Layout from "../components/layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 
 const About = () => {
   return (
     <Layout>
-      <Head title="About" />
+      <SEO 
+        title="About" 
+        description="TEST"
+      />
       <h1>About.</h1>
       <p>I'm John, I work in solutions and I play around with FM synthesis.</p>
       <h2>Profesh</h2>

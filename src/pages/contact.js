@@ -1,7 +1,7 @@
 import React from "react";
 
 import LpLayout from "../components/lp-layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 import BasicForm from "../components/form";
 
 // import styles from "./contact.module.scss";
@@ -9,7 +9,10 @@ import BasicForm from "../components/form";
 const Contact = () => {
   return (
     <LpLayout>
-      <Head title="Contact" />
+      <SEO 
+        title="Contact" 
+        description="TEST"
+      />
       <h1>Contact.</h1>
       <BasicForm />
     </LpLayout>

@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 import styles from "./blog.module.scss";
 
 const Blog = () => {
@@ -26,7 +26,10 @@ const Blog = () => {
   `);
   return (
     <Layout>
-      <Head title="Blog" />
+      <SEO 
+        title="Blog" 
+        description="TEST"
+      />
       <h1>Blog.</h1>
       <ol className={styles.posts}>
         {data.allContentfulBlogPost.edges.map((edge, i) => {

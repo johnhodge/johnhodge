@@ -9,7 +9,7 @@ const LpFooter = () => {
       site {
         siteMetadata {
           author
-          homepage
+          siteUrl
         }
       }
     }
@@ -21,7 +21,7 @@ const LpFooter = () => {
         <h2>\\\\\</h2>
         <p className={styles.footerParagraph}>
           Created by{" "}
-          <a href={data.site.siteMetadata.homepage}>
+          <a href={data.site.siteMetadata.siteUrl}>
             {" "}
             {data.site.siteMetadata.author}
           </a>{" "}

@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import Head from "../components/head";
+import SEO from "../components/seo";
 
 import styles from "./blog-post.module.scss";
 
@@ -10,9 +10,18 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      author {
+        name
+      }
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
         file {
+          details {
+            image {
+              width
+              height
+            }
+          }
           url
         }
         title
@@ -38,9 +47,26 @@ const BlogPost = ({ data }) => {
     },
   };
 
+  const imageData = data.contentfulBlogPost.heroImage.file
+  const metaImage = {
+    src: `https:${imageData.url}`,
+    width: imageData.details.image.width,
+    height: imageData.details.image.height,
+  }
+
   return (
     <Layout>
-      <Head title={data.contentfulBlogPost.title} />
+      <SEO 
+        title={data.contentfulBlogPost.title} 
+        metaImage={metaImage}
+        metaAuthor={data.contentfulBlogPost.author.name}
+
+        //TODO: Add description and keywords to Contentful
+        // description={data.contentfulBlogPost.description}
+        // metaKeywords={data.contentfulBlogPost.keywords}
+      />
+      
+
       <div className={styles.blogFeaturedImgContainer}>
         <img
           className={styles.blogFeaturedImg}
@@ -60,5 +86,4 @@ const BlogPost = ({ data }) => {
     </Layout>
   );
 };
-
 export default BlogPost;
