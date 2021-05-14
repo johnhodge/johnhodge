@@ -2,16 +2,16 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    author: "Jack Hodge",
+    author: "John Hodge",
     title: "John Hodge",
     description:
       "I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.",
     siteUrl: "https://johnhodge.com",
-    keywords: "adtech, advertising, tech, marketing, google, freewheel, spotx, madhive, buy side, sell side, dsp, dmp, ad server, real-time bidding, rtb, iab, vast, vmap",
+    keywords: ["adtech"," advertising"," tech"," marketing"," google"," freewheel"," spotx"," madhive"," buy side"," sell side"," dsp"," dmp"," ad server"," real-time bidding"," rtb"," iab"," vast"," vmap"],
     image: {
       src: "/img.png",
-      width: "100px",
-      height: "100px"
+      width: "1920px",
+      height: "1920px"
     }
   },
   plugins: [

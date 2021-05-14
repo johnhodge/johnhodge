@@ -3,7 +3,17 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, metaImage, title, pathname, metaKeywords, metaAuthor }) => {
+const SEO = ({ 
+  description, 
+  lang, 
+  meta, 
+  metaImage, 
+  title, 
+  pathname, 
+  metaKeywords, 
+  metaAuthor,
+  metaArticle
+}) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -28,7 +38,9 @@ const SEO = ({ description, lang, meta, metaImage, title, pathname, metaKeywords
   const keywords = metaKeywords || site.siteMetadata.keywords
   const author = metaAuthor || site.siteMetadata.author
   const image = metaImage || site.siteMetadata.image
-  console.log(metaAuthor)
+  const article = metaArticle ? metaArticle : null
+
+  console.log(article)
 
   return (
     <Helmet
@@ -51,7 +63,7 @@ const SEO = ({ description, lang, meta, metaImage, title, pathname, metaKeywords
         },
         { 
           name: "keywords", 
-          content: keywords, 
+          content: keywords.join(","), 
         },
         {
           property: `og:title`,
@@ -108,6 +120,38 @@ const SEO = ({ description, lang, meta, metaImage, title, pathname, metaKeywords
                 content: "summary",
               },
             ]
+          )
+      .concat(
+          article
+            ? [
+                {
+                  name: "article:published_time",
+                  content: article.article_published_time,
+                },
+                {
+                  name: "article:modified_time",
+                  content: article.article_modified_time,
+                },
+                {
+                  name: "article:author",
+                  content: article.article_author,
+                },
+                {
+                  name: "article:section",
+                  content: article.article_section,
+                },
+                {
+                  name: "article:tag",
+                  content: article.article_tag,
+                },
+              // article:published_time - datetime - When the article was first published.
+              // article:modified_time - datetime - When the article was last changed.
+              // article:expiration_time - datetime - When the article is out of date after.
+              // article:author - profile array - Writers of the article.
+              // article:section - string - A high-level section name. E.g. Technology
+              // article:tag - string array - Tag words associated with this article.
+            ]
+            : []
           )
           .concat(meta)}
       />

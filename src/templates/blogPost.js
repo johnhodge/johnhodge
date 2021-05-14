@@ -10,10 +10,14 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      category
+      tags
       author {
         name
       }
-      publishDate(formatString: "MMMM Do, YYYY")
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, hh:mm:ssa")
+      isoPublishDate: publishDate
+      updatedAt
       heroImage {
         file {
           details {
@@ -31,6 +35,10 @@ export const query = graphql`
           html
         }
       }
+      description {
+        description
+      }
+      keywords
     }
   }
 `;
@@ -53,19 +61,24 @@ const BlogPost = ({ data }) => {
     width: imageData.details.image.width,
     height: imageData.details.image.height,
   }
+  const metaArticle = {
+    article_published_time: data.contentfulBlogPost.isoPublishDate,
+    article_modified_time: data.contentfulBlogPost.updatedAt,
+    article_author: data.contentfulBlogPost.author.name,
+    article_section: data.contentfulBlogPost.category,
+    article_tag: data.contentfulBlogPost.tags,
+  }
 
   return (
     <Layout>
       <SEO 
         title={data.contentfulBlogPost.title} 
         metaImage={metaImage}
+        metaArticle={metaArticle}
         metaAuthor={data.contentfulBlogPost.author.name}
-
-        //TODO: Add description and keywords to Contentful
-        // description={data.contentfulBlogPost.description}
-        // metaKeywords={data.contentfulBlogPost.keywords}
-      />
-      
+        description={data.contentfulBlogPost.description.description}
+        metaKeywords={data.contentfulBlogPost.keywords}
+      />      
 
       <div className={styles.blogFeaturedImgContainer}>
         <img
@@ -76,7 +89,7 @@ const BlogPost = ({ data }) => {
         ></img>
       </div>
       <h1>{data.contentfulBlogPost.title}</h1>
-      <p>{data.contentfulBlogPost.publishDate}</p>
+      <p>{data.contentfulBlogPost.formattedPublishDate}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
