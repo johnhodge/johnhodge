@@ -40,14 +40,16 @@ const BasicForm = () => (
           message: "",
         });
         actions.setStatus({ success: "Message received 🎉" });
-      }}>
+      }}
+    >
       {({ errors, touched, isSubmitting, isValid, status }) => (
         <Form
           name="basic-form"
           className={styles.form}
           method="POST"
           noValidate
-          netlify>
+          netlify
+        >
           <Field name="firstName" type="text" placeholder="First Name" />
           {errors.firstName && touched.firstName ? (
             <div className={styles.errors}>{errors.firstName}</div>

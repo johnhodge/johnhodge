@@ -42,7 +42,8 @@ const Index = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "50%",
                   padding: "1.5rem",
-                }}>
+                }}
+              >
                 <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
             </Link>

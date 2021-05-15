@@ -90,18 +90,21 @@ const BlogPost = ({ data }) => {
         itemprop="text"
         itemscope
         itemtype="https://schema.org/CreativeWork"
-        className={styles.blogFeaturedImgContainer}>
+        className={styles.blogFeaturedImgContainer}
+      >
         <img
           className={styles.blogFeaturedImg}
           src={`https:${data.contentfulBlogPost.heroImage.file.url}`}
           alt={data.contentfulBlogPost.heroImage.title}
-          title={data.contentfulBlogPost.heroImage.title}></img>
+          title={data.contentfulBlogPost.heroImage.title}
+        ></img>
       </div>
       <h1>
         <span
           itemprop="headline"
           itemscope
-          itemtype="https://schema.org/CreativeWork">
+          itemtype="https://schema.org/CreativeWork"
+        >
           {data.contentfulBlogPost.title}
         </span>
       </h1>
@@ -114,7 +117,8 @@ const BlogPost = ({ data }) => {
         <span
           itemprop="datePublished"
           itemscope
-          itemtype="https://schema.org/CreativeWork">
+          itemtype="https://schema.org/CreativeWork"
+        >
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>

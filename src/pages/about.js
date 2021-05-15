@@ -18,7 +18,8 @@ const About = () => {
         <span
           itemprop="giveName"
           itemscope
-          itemtype="https://schema.org/Person">
+          itemtype="https://schema.org/Person"
+        >
           John
         </span>
         , I work in solutions and I play around with FM synthesis.
@@ -28,14 +29,16 @@ const About = () => {
         <span
           itemprop="jobTitle"
           itemscope
-          itemtype="https://schema.org/Person">
+          itemtype="https://schema.org/Person"
+        >
           Solutions
         </span>
         :{" "}
         <span
           itemprop="employee"
           itemscope
-          itemtype="https://schema.org/Person">
+          itemtype="https://schema.org/Person"
+        >
           TransUnion
         </span>
       </h3>
@@ -44,14 +47,16 @@ const About = () => {
         <span
           itemprop="jobTitle"
           itemscope
-          itemtype="https://schema.org/Person">
+          itemtype="https://schema.org/Person"
+        >
           Solutions
         </span>
         :{" "}
         <span
           itemprop="employee"
           itemscope
-          itemtype="https://schema.org/Person">
+          itemtype="https://schema.org/Person"
+        >
           FreeWheel
         </span>
       </h3>
