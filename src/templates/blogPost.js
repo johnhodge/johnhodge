@@ -1,10 +1,10 @@
-import React from "react";
-import { graphql } from "gatsby";
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-import styles from "./blog-post.module.scss";
+import styles from './blog-post.module.scss';
 
 export const query = graphql`
   query ($slug: String!) {
@@ -49,10 +49,10 @@ export const query = graphql`
 const BlogPost = ({ data }) => {
   const options = {
     renderNode: {
-      "embedded-asset-block": (node) => {
-        const src = node.data.target.fields.file["en-US"].url;
-        const alt = node.data.target.fields.title["en-US"];
-        const imgClass = "inline-post-img";
+      'embedded-asset-block': (node) => {
+        const src = node.data.target.fields.file['en-US'].url;
+        const alt = node.data.target.fields.title['en-US'];
+        const imgClass = 'inline-post-img';
         return <img class={imgClass} src={src} alt={alt} />;
       },
     },
@@ -87,38 +87,34 @@ const BlogPost = ({ data }) => {
       />
 
       <div
-        itemprop="text"
-        itemscope
-        itemtype="https://schema.org/CreativeWork"
-        className={styles.blogFeaturedImgContainer}
-      >
+        itemProp='text'
+        itemScope
+        itemType='https://schema.org/CreativeWork'
+        className={styles.blogFeaturedImgContainer}>
         <img
           className={styles.blogFeaturedImg}
           src={`https:${data.contentfulBlogPost.heroImage.file.url}`}
           alt={data.contentfulBlogPost.heroImage.title}
-          title={data.contentfulBlogPost.heroImage.title}
-        ></img>
+          title={data.contentfulBlogPost.heroImage.title}></img>
       </div>
       <h1>
         <span
-          itemprop="headline"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
+          itemProp='headline'
+          itemScope
+          itemType='https://schema.org/CreativeWork'>
           {data.contentfulBlogPost.title}
         </span>
       </h1>
       <p>
-        Published by{" "}
-        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        Published by{' '}
+        <span itemProp='author' itemScope itemType='https://schema.org/Person'>
           {data.contentfulBlogPost.author.name}
-        </span>{" "}
-        on{" "}
+        </span>{' '}
+        on{' '}
         <span
-          itemprop="datePublished"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
+          itemProp='datePublished'
+          itemScope
+          itemType='https://schema.org/CreativeWork'>
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>
