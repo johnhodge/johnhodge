@@ -1,5 +1,6 @@
 {
   "name": "john-hodge-blog",
+  "prettier": "@john/prettier-config",
   "private": true,
   "description": "I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.",
   "version": "1.0.0",
