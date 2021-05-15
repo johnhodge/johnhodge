@@ -46,8 +46,7 @@ const BasicForm = () => (
           name='basic-form'
           className={styles.form}
           method='POST'
-          data-netlify='true'
-          data-lpignore='true'>
+          data-netlify='true'>
           <Field name='firstName' type='text' placeholder='First Name' />
           {errors.firstName && touched.firstName ? (
             <div className={styles.errors}>{errors.firstName}</div>
