@@ -58,44 +58,66 @@ const BlogPost = ({ data }) => {
     },
   };
 
-  const imageData = data.contentfulBlogPost.heroImage
+  const imageData = data.contentfulBlogPost.heroImage;
   const metaImage = {
     src: `https:${imageData.file.url}`,
     width: imageData.file.details.image.width,
     height: imageData.file.details.image.height,
     altDescription: imageData.description,
     contentType: imageData.file.contentType,
-  }
+  };
   const metaArticle = {
     article_published_time: data.contentfulBlogPost.isoPublishDate,
     article_modified_time: data.contentfulBlogPost.updatedAt,
     article_author: data.contentfulBlogPost.author.name,
     article_section: data.contentfulBlogPost.category,
     article_tag: data.contentfulBlogPost.tags,
-  }
+  };
 
   return (
     <Layout>
-      <SEO 
-        metaTitle={data.contentfulBlogPost.title} 
+      <SEO
+        metaTitle={data.contentfulBlogPost.title}
         metaImage={metaImage}
         metaArticle={metaArticle}
         metaAuthor={data.contentfulBlogPost.author.name}
         description={data.contentfulBlogPost.description.description}
         metaKeywords={data.contentfulBlogPost.keywords}
         pathname={`/blog/${data.contentfulBlogPost.slug}`}
-      />    
+      />
 
-      <div itemprop="text" itemscope itemtype="https://schema.org/CreativeWork" className={styles.blogFeaturedImgContainer}>
+      <div
+        itemprop="text"
+        itemscope
+        itemtype="https://schema.org/CreativeWork"
+        className={styles.blogFeaturedImgContainer}>
         <img
           className={styles.blogFeaturedImg}
           src={`https:${data.contentfulBlogPost.heroImage.file.url}`}
           alt={data.contentfulBlogPost.heroImage.title}
-          title={data.contentfulBlogPost.heroImage.title}
-        ></img>
+          title={data.contentfulBlogPost.heroImage.title}></img>
       </div>
-      <h1><span itemprop="headline" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.title}</span></h1>
-      <p>Published by <span itemprop="author" itemscope itemtype="https://schema.org/Person">{data.contentfulBlogPost.author.name}</span> on <span itemprop="datePublished" itemscope itemtype="https://schema.org/CreativeWork">{data.contentfulBlogPost.formattedPublishDate}</span></p>
+      <h1>
+        <span
+          itemprop="headline"
+          itemscope
+          itemtype="https://schema.org/CreativeWork">
+          {data.contentfulBlogPost.title}
+        </span>
+      </h1>
+      <p>
+        Published by{" "}
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          {data.contentfulBlogPost.author.name}
+        </span>{" "}
+        on{" "}
+        <span
+          itemprop="datePublished"
+          itemscope
+          itemtype="https://schema.org/CreativeWork">
+          {data.contentfulBlogPost.formattedPublishDate}
+        </span>
+      </p>
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,

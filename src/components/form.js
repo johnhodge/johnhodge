@@ -40,10 +40,14 @@ const BasicForm = () => (
           message: "",
         });
         actions.setStatus({ success: "Message received 🎉" });
-      }}
-    >
+      }}>
       {({ errors, touched, isSubmitting, isValid, status }) => (
-        <Form name="basic-form" className={styles.form} method="POST" noValidate netlify>
+        <Form
+          name="basic-form"
+          className={styles.form}
+          method="POST"
+          noValidate
+          netlify>
           <Field name="firstName" type="text" placeholder="First Name" />
           {errors.firstName && touched.firstName ? (
             <div className={styles.errors}>{errors.firstName}</div>
@@ -63,8 +67,8 @@ const BasicForm = () => (
 
           {!status ? (
             <button type="submit" disabled={isSubmitting || !isValid}>
-            Send
-          </button>
+              Send
+            </button>
           ) : (
             <div className={styles.messageSuccess}>{status.success}</div>
           )}

@@ -1,39 +1,39 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ 
-  description, 
-  lang, 
-  meta, 
-  metaImage, 
-  metaTitle, 
-  pathname, 
-  metaKeywords, 
+const SEO = ({
+  description,
+  lang,
+  meta,
+  metaImage,
+  metaTitle,
+  pathname,
+  metaKeywords,
   metaAuthor,
-  metaArticle
+  metaArticle,
 }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
-          author,
+          author
           social {
             twitter
             twitterId
             instagram
             github
           }
-          title,
+          title
           description
-          siteUrl,
-          keywords,
+          siteUrl
+          keywords
           image {
-            src,
-            width,
-            height,
-            altDescription,
+            src
+            width
+            height
+            altDescription
             contentType
           }
         }
@@ -41,13 +41,13 @@ const SEO = ({
     }
   `);
 
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
-  const metaDescription = description || site.siteMetadata.description
-  const keywords = metaKeywords || site.siteMetadata.keywords
-  const image = metaImage || site.siteMetadata.image
-  const social = site.siteMetadata.social
-  const article = metaArticle ? metaArticle : null
-  const title =`${metaTitle} | ${site.siteMetadata.title}`
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
+  const metaDescription = description || site.siteMetadata.description;
+  const keywords = metaKeywords || site.siteMetadata.keywords;
+  const image = metaImage || site.siteMetadata.image;
+  const social = site.siteMetadata.social;
+  const article = metaArticle ? metaArticle : null;
+  const title = `${metaTitle} | ${site.siteMetadata.title}`;
 
   return (
     <Helmet
@@ -67,15 +67,14 @@ const SEO = ({
             ]
           : []
       }
-      
       meta={[
-        { 
-          name: `description`, 
+        {
+          name: `description`,
           content: metaDescription,
         },
-        { 
-          name: `keywords`, 
-          content: keywords.join(","), 
+        {
+          name: `keywords`,
+          content: keywords.join(","),
         },
         {
           property: `og:title`,
@@ -150,7 +149,7 @@ const SEO = ({
           content: image.altDescription,
         },
       ]
-      .concat(
+        .concat(
           article
             ? [
                 {
@@ -175,17 +174,17 @@ const SEO = ({
                 },
               ]
             : []
-          )
-          .concat(meta)}
-      />
-    )
-}
+        )
+        .concat(meta)}
+    />
+  );
+};
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -198,6 +197,6 @@ SEO.propTypes = {
     width: PropTypes.number.isRequired,
   }),
   pathname: PropTypes.string,
-}
+};
 
 export default SEO;

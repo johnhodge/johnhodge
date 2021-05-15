@@ -18,7 +18,12 @@ const Header = () => {
     <header className={styles.header}>
       <h1>
         <Link className={styles.title} to="/">
-          <span itemprop="creator" itemscope itemtype="https://schema.org/Person">{data.site.siteMetadata.title}</span>
+          <span
+            itemprop="creator"
+            itemscope
+            itemtype="https://schema.org/Person">
+            {data.site.siteMetadata.title}
+          </span>
         </Link>
       </h1>
       <nav>
@@ -27,8 +32,7 @@ const Header = () => {
             <Link
               className={styles.navItem}
               activeClassName={styles.activeNavItem}
-              to="/"
-            >
+              to="/">
               Home
             </Link>
           </li>
@@ -36,8 +40,7 @@ const Header = () => {
             <Link
               className={styles.navItem}
               activeClassName={styles.activeNavItem}
-              to="/about"
-            >
+              to="/about">
               About
             </Link>
           </li>
@@ -45,8 +48,7 @@ const Header = () => {
             <Link
               className={styles.navItem}
               activeClassName={styles.activeNavItem}
-              to="/blog"
-            >
+              to="/blog">
               Blog
             </Link>
           </li>
@@ -54,8 +56,7 @@ const Header = () => {
             <Link
               className={styles.navItem}
               activeClassName={styles.activeNavItem}
-              to="/contact"
-            >
+              to="/contact">
               Contact
             </Link>
           </li>

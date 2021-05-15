@@ -7,9 +7,7 @@ import SEO from "../components/seo";
 const NotFound = () => {
   return (
     <Layout>
-      <SEO 
-        metaTitle="404"
-       />
+      <SEO metaTitle="404" />
       <h1>Page not found</h1>
       <p>Oops! The page you are looking for has been removed or relocated.</p>
       <p>

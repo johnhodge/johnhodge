@@ -26,10 +26,7 @@ const Index = () => {
   `);
   return (
     <Layout>
-      <SEO 
-        metaTitle="Home"
-        pathname="/"
-      />
+      <SEO metaTitle="Home" pathname="/" />
       <h1>Hello!</h1>
       <p>I'm John, I work in solutions and I play around with FM synthesis.</p>
       <h2>Recent posts.</h2>
@@ -45,8 +42,7 @@ const Index = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "50%",
                   padding: "1.5rem",
-                }}
-              >
+                }}>
                 <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
             </Link>

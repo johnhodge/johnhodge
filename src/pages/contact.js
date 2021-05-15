@@ -9,8 +9,8 @@ import BasicForm from "../components/form";
 const Contact = () => {
   return (
     <LpLayout>
-      <SEO 
-        metaTitle="Contact" 
+      <SEO
+        metaTitle="Contact"
         description="Don't hesitate to reach out, just please be patient with me while I thinkof the perfect response!"
         pathname="/contact"
       />

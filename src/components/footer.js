@@ -27,9 +27,19 @@ const Footer = () => {
           Created by{" "}
           <a href={data.site.siteMetadata.siteUrl}>
             {" "}
-            <span itemprop="creator" itemscope itemtype="https://schema.org/WebSite">{data.site.siteMetadata.author}</span>
+            <span
+              itemprop="creator"
+              itemscope
+              itemtype="https://schema.org/WebSite">
+              {data.site.siteMetadata.author}
+            </span>
           </a>{" "}
-          <span itemprop="copyrightYear" itemscope itemtype="https://schema.org/WebSite">© {new Date().getFullYear()}</span>
+          <span
+            itemprop="copyrightYear"
+            itemscope
+            itemtype="https://schema.org/WebSite">
+            © {new Date().getFullYear()}
+          </span>
         </p>
       </div>
     </footer>

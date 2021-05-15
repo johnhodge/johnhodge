@@ -10,17 +10,35 @@ module.exports = {
       github: `johnhodge`,
     },
     title: `John Hodge`,
-    description:
-      `I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.`,
+    description: `I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.`,
     siteUrl: `https://johnhodge.com`,
-    keywords: [`adtech`,`advertising`,`tech`,`marketing`,`google`,`freewheel`,`spotx`,`madhive`,`buy side`,`sell side`,`dsp`,`dmp`,`ad server`,`real-time bidding`,`rtb`,`iab`,`vast`,`vmap`],
+    keywords: [
+      `adtech`,
+      `advertising`,
+      `tech`,
+      `marketing`,
+      `google`,
+      `freewheel`,
+      `spotx`,
+      `madhive`,
+      `buy side`,
+      `sell side`,
+      `dsp`,
+      `dmp`,
+      `ad server`,
+      `real-time bidding`,
+      `rtb`,
+      `iab`,
+      `vast`,
+      `vmap`,
+    ],
     image: {
       src: `https://johnhodge.com/img.png`,
       width: `1920px`,
       height: `1920px`,
       altDescription: `I'm a NYC based Solution's Engineer and I work in Adtech with some of the smartest people in the solar system.`,
       contentType: `image/png`,
-    }
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -87,12 +105,12 @@ module.exports = {
         redirect: [
           `RewriteRule ^(.*)([^/])$ http://%{HTTP_HOST}/$1$2/ [L,R=301]`,
           {
-        //     from: 'my-domain.com',
-        //     to: 'mydomain.com',
-        //   },
-        //   {
-        //     from: 'my-other-domain.com',
-        //     to: 'mydomain.com',
+            //     from: 'my-domain.com',
+            //     to: 'mydomain.com',
+            //   },
+            //   {
+            //     from: 'my-other-domain.com',
+            //     to: 'mydomain.com',
           },
         ],
         // custom: `
@@ -102,10 +120,10 @@ module.exports = {
       },
     },
     {
-      resolve:`gatsby-plugin-sitemap`,
+      resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: `/sitemap`
-      }
-    }
+        output: `/sitemap`,
+      },
+    },
   ],
 };

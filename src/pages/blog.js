@@ -26,8 +26,8 @@ const Blog = () => {
   `);
   return (
     <Layout>
-      <SEO 
-        metaTitle="Blog" 
+      <SEO
+        metaTitle="Blog"
         description="This blog is a space for me to log what I learn in my professional travels as a tech-wise client-facing solutions engineer."
         pathname="/blog"
       />
@@ -44,8 +44,7 @@ const Blog = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "50%",
                   padding: "1.5rem",
-                }}
-              >
+                }}>
                 <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
             </Link>
