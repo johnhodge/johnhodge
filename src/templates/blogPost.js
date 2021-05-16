@@ -3,22 +3,25 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import VideoPlayer from '../components/video-player';
 
 import styles from './blog-post.module.scss';
 
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
-      slug
-      title
-      category
-      tags
       author {
         name
       }
-      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
-      isoPublishDate: publishDate
-      updatedAt
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      category
+      description {
+        description
+      }
       heroImage {
         description
         file {
@@ -33,15 +36,16 @@ export const query = graphql`
         }
         title
       }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      description {
-        description
-      }
       keywords
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
+      isoPublishDate: publishDate
+      slug
+      tags
+      title
+      updatedAt
+      videoSrcURL
+      videoTitle
+      videoAutoplay
     }
   }
 `;
@@ -118,6 +122,15 @@ const BlogPost = ({ data }) => {
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>
+      {data.contentfulBlogPost.category === 'Video' ? (
+        <VideoPlayer
+          videoSrcURL={data.contentfulBlogPost.videoSrcURL}
+          videoTitle={data.contentfulBlogPost.videoTitle}
+          videoAutoplay={data.contentfulBlogPost.videoAutoplay}
+        />
+      ) : (
+        ''
+      )}
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
