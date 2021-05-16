@@ -5,6 +5,9 @@ import styles from './video-plyer.module.scss';
 const VideoPlayer = ({ videoSrcURL, videoTitle, videoAutoplay }) => (
   <div className={styles.videoPlayerContainer}>
     <iframe
+      itemProp='video'
+      itemScope
+      itemType='https://schema.org/VideoObject'
       className={styles.normalizeVideoPlayer}
       src={videoAutoplay === true ? `${videoSrcURL}?&autoplay=1` : videoSrcURL}
       title={videoTitle}
