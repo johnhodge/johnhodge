@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { DiscussionEmbed } from 'disqus-react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -36,6 +37,7 @@ export const query = graphql`
         }
         title
       }
+      id
       keywords
       formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
@@ -62,6 +64,11 @@ const BlogPost = ({ data }) => {
     },
   };
 
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: data.contentfulBlogPost.id },
+  };
+
   const imageData = data.contentfulBlogPost.heroImage;
   const metaImage = {
     src: `https:${imageData.file.url}`,
@@ -70,6 +77,7 @@ const BlogPost = ({ data }) => {
     altDescription: imageData.description,
     contentType: imageData.file.contentType,
   };
+
   const metaArticle = {
     article_published_time: data.contentfulBlogPost.isoPublishDate,
     article_modified_time: data.contentfulBlogPost.updatedAt,
@@ -136,6 +144,13 @@ const BlogPost = ({ data }) => {
           options,
         }}
       />
+      <div
+        className={styles.comments}
+        itemProp='comment'
+        itemScope
+        itemType='https://schema.org/CreativeWork'>
+        <DiscussionEmbed {...disqusConfig} />
+      </div>
     </Layout>
   );
 };
