@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import VideoPlayer from '../components/video-player';
 
 import styles from './blog-post.module.scss';
 
@@ -13,6 +14,8 @@ export const query = graphql`
       title
       category
       tags
+      videoSrcURL
+      videoTitle
       author {
         name
       }
@@ -118,6 +121,14 @@ const BlogPost = ({ data }) => {
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>
+      {data.contentfulBlogPost.category === 'General' ? (
+        <VideoPlayer
+          videoSrcURL={data.contentfulBlogPost.videoSrcURL}
+          videoTitle={data.contentfulBlogPost.videoTitle}
+        />
+      ) : (
+        ''
+      )}
       <div
         dangerouslySetInnerHTML={{
           __html: data.contentfulBlogPost.body.childMarkdownRemark.html,
