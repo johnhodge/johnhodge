@@ -1,10 +1,12 @@
 import React from 'react';
-const VideoPlayer = ({ videoSrcURL, videoTitle }) => (
-  <div className='video'>
+
+import styles from './video-plyer.module.scss';
+
+const VideoPlayer = ({ videoSrcURL, videoTitle, videoAutoplay }) => (
+  <div className={styles.videoPlayerContainer}>
     <iframe
-      width='100%'
-      height='auto'
-      src={videoSrcURL}
+      className={styles.normalizeVideoPlayer}
+      src={videoAutoplay === true ? `${videoSrcURL}?&autoplay=1` : videoSrcURL}
       title={videoTitle}
       allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
       frameBorder='0'
@@ -12,14 +14,6 @@ const VideoPlayer = ({ videoSrcURL, videoTitle }) => (
       mozallowfullscreen='true'
       allowFullScreen
     />
-    {/* <iframe
-      width='560'
-      height='315'
-      src='https://www.youtube.com/embed/rdcmopKdJLg'
-      title='YouTube video player'
-      frameborder='0'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-      allowfullscreen></iframe> */}
   </div>
 );
 export default VideoPlayer;

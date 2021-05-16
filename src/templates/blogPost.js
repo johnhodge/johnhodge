@@ -10,18 +10,18 @@ import styles from './blog-post.module.scss';
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
-      slug
-      title
-      category
-      tags
-      videoSrcURL
-      videoTitle
       author {
         name
       }
-      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
-      isoPublishDate: publishDate
-      updatedAt
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      category
+      description {
+        description
+      }
       heroImage {
         description
         file {
@@ -36,15 +36,16 @@ export const query = graphql`
         }
         title
       }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      description {
-        description
-      }
       keywords
+      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
+      isoPublishDate: publishDate
+      slug
+      tags
+      title
+      updatedAt
+      videoSrcURL
+      videoTitle
+      videoAutoplay
     }
   }
 `;
@@ -121,10 +122,11 @@ const BlogPost = ({ data }) => {
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>
-      {data.contentfulBlogPost.category === 'General' ? (
+      {data.contentfulBlogPost.category === 'Video' ? (
         <VideoPlayer
           videoSrcURL={data.contentfulBlogPost.videoSrcURL}
           videoTitle={data.contentfulBlogPost.videoTitle}
+          videoAutoplay={data.contentfulBlogPost.videoAutoplay}
         />
       ) : (
         ''
