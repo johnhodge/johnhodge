@@ -2,13 +2,17 @@ import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styles from './blog-roll.module.scss';
 
-const BlogRoll = () => (
+const BlogRoll = ({ slug, category }) => (
   <StaticQuery
     query={graphql`
-      {
-        allContentfulBlogPost(sort: { fields: publishDate, order: DESC }) {
+      query blogRoll($category: String, $slug: String) {
+        allContentfulBlogPost(
+          sort: { fields: publishDate, order: DESC }
+          filter: { category: { eq: $category }, slug: { ne: $slug } }
+        ) {
           edges {
             node {
+              category
               slug
               title
               publishDate(formatString: "MMMM Do, YYYY")
@@ -25,7 +29,8 @@ const BlogRoll = () => (
     render={(data) => (
       <ol className={styles.posts}>
         {data.allContentfulBlogPost.edges.map((edge, i) => {
-          return (
+          return category === undefined ||
+            (category === edge.node.category && slug !== edge.node.slug) ? (
             <Link className={styles.blogLink} to={`/blog/${edge.node.slug}`}>
               <li
                 className={styles.post}
@@ -38,7 +43,10 @@ const BlogRoll = () => (
                 }}>
                 <h2 className={styles.blogHeader}>{edge.node.title}</h2>
               </li>
+              {console.log(edge.node.heroImage.file.url)}
             </Link>
+          ) : (
+            ''
           );
         })}
       </ol>
