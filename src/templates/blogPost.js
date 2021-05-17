@@ -5,7 +5,7 @@ import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import VideoPlayer from '../components/video-player';
-// import BlogRoll from '../components/blog-roll';
+import BlogRoll from '../components/blog-roll';
 
 import styles from './blog-post.module.scss';
 
@@ -146,13 +146,11 @@ const BlogPost = ({ data }) => {
         }}
       />
 
-      {/* <div>
-        <h3>Related posts.</h3>
-        <BlogRoll
-          category={data.contentfulBlogPost.category}
-          slug={data.contentfulBlogPost.slug}
-        />
-      </div> */}
+      <BlogRoll
+        category={data.contentfulBlogPost.category}
+        slug={data.contentfulBlogPost.slug}
+      />
+
       <div
         className={styles.comments}
         itemProp='comment'
