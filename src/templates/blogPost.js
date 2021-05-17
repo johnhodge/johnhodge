@@ -5,11 +5,12 @@ import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import VideoPlayer from '../components/video-player';
+// import BlogRoll from '../components/blog-roll';
 
 import styles from './blog-post.module.scss';
 
 export const query = graphql`
-  query ($slug: String!) {
+  query ($slug: String) {
     contentfulBlogPost(slug: { eq: $slug }) {
       author {
         name
@@ -144,6 +145,14 @@ const BlogPost = ({ data }) => {
           options,
         }}
       />
+
+      {/* <div>
+        <h3>Related posts.</h3>
+        <BlogRoll
+          category={data.contentfulBlogPost.category}
+          slug={data.contentfulBlogPost.slug}
+        />
+      </div> */}
       <div
         className={styles.comments}
         itemProp='comment'
