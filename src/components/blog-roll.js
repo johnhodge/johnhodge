@@ -17,9 +17,11 @@ const BlogRoll = ({ slug, category }) => (
               title
               publishDate(formatString: "MMMM Do, YYYY")
               heroImage {
+                description
                 file {
                   url
                 }
+                title
               }
             }
           }
@@ -27,29 +29,31 @@ const BlogRoll = ({ slug, category }) => (
       }
     `}
     render={(data) => (
-      <div className={styles.relatedBlogRoll}>
-        <ol className={styles.posts}>
+      <div className={styles.blogRoll}>
+        <div className={styles.blogRollPosts}>
           {data.allContentfulBlogPost.edges.map((edge, i) => {
             return !category ||
               (category === edge.node.category && slug !== edge.node.slug) ? (
-              <Link className={styles.blogLink} to={`/blog/${edge.node.slug}`}>
-                <li
-                  className={styles.post}
-                  key={i}
-                  style={{
-                    backgroundImage: `url(https:${edge.node.heroImage.file.url})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: '50%',
-                    padding: '1.5rem',
-                  }}>
-                  <h2 className={styles.blogHeader}>{edge.node.title}</h2>
-                </li>
+              <Link
+                className={styles.blogRollPostsLink}
+                to={`/blog/${edge.node.slug}`}
+                key={i}>
+                <div className={styles.blogRollPostsLinkContainer}>
+                  <img
+                    src={edge.node.heroImage.file.url}
+                    alt={edge.node.heroImage.description}
+                    title={edge.node.heroImage.title}
+                  />
+                  <h2 className={styles.blogRollPostsLinkContainerHeader}>
+                    {edge.node.title}
+                  </h2>
+                </div>
               </Link>
             ) : (
               ''
             );
           })}
-        </ol>
+        </div>
       </div>
     )}></StaticQuery>
 );
