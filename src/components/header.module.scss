@@ -118,6 +118,7 @@ p.hp-section-p {
   border: 1px solid $black;
   margin-right: 1rem;
   box-shadow: none;
+  font-weight: bold;
 }
 .header-button-light {
   @include header-button;
