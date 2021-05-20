@@ -46,7 +46,10 @@ const BasicForm = () => (
           name='basic-form'
           className={styles.form}
           method='POST'
+          netlify-honeypot='bot-field'
           data-netlify='true'>
+          <input type='hidden' name='bot-field' />
+          <input type='hidden' name='form-name' value='contact' />
           <Field name='firstName' type='text' placeholder='First Name' />
           {errors.firstName && touched.firstName ? (
             <div className={styles.errors}>{errors.firstName}</div>
