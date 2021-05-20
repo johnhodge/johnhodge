@@ -19,7 +19,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <h2>Get in touch.</h2>
       <p>
-        Have something to say? <Link to='/contact'>Hit me up</Link>.
+        Have something to say? <a href='/contact'>Hit me up</a>.
       </p>
       <div className={styles.iconBucket}>
         <h2>\\\\\</h2>

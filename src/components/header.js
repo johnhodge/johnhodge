@@ -45,12 +45,12 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link
+            <a
               className={styles.navItem}
               activeClassName={styles.activeNavItem}
-              to='/contact'>
+              href='/contact'>
               Contact
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
