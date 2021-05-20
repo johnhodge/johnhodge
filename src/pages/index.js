@@ -24,9 +24,9 @@ const Index = () => {
           <Link className={styles.headerButtonLink} to='/blog'>
             <button className={styles.headerButtonLight}>Blog</button>
           </Link>
-          <Link className={styles.headerButtonLink} to='/contact'>
+          <a className={styles.headerButtonLink} href='/contact'>
             <button className={styles.headerButtonDark}>Contact</button>
-          </Link>
+          </a>
         </div>
       </div>
 
