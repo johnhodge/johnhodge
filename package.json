@@ -16,7 +16,6 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "contentful": "^8.3.5",
-    "disqus-react": "^1.0.11",
     "formik": "^2.2.6",
     "gatsby": "^2.29.2",
     "gatsby-plugin-google-tagmanager": "^3.4.0",

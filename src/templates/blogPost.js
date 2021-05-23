@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { DiscussionEmbed } from 'disqus-react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -63,11 +62,6 @@ const BlogPost = ({ data }) => {
         return <img class={imgClass} src={src} alt={alt} />;
       },
     },
-  };
-
-  const disqusConfig = {
-    shortname: process.env.GATSBY_DISQUS_NAME,
-    config: { identifier: data.contentfulBlogPost.id },
   };
 
   const imageData = data.contentfulBlogPost.heroImage;
@@ -150,14 +144,6 @@ const BlogPost = ({ data }) => {
         category={data.contentfulBlogPost.category}
         slug={data.contentfulBlogPost.slug}
       />
-
-      <div
-        className={styles.comments}
-        itemProp='comment'
-        itemScope
-        itemType='https://schema.org/CreativeWork'>
-        <DiscussionEmbed {...disqusConfig} />
-      </div>
     </Layout>
   );
 };
