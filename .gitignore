@@ -51,7 +51,7 @@ __diff_output__/
 # misc
 .serverless/
 .eslintcache
-scripts/.env
+.env
 
 # lock files
 yarn.lock
