@@ -19,6 +19,6 @@ External Modules
   margin: 0 -#{$containerPadding} 2rem;
 }
 
-.comments {
-  margin: 4rem 0 2rem;
+li:target {
+  background: $lightYellow;
 }

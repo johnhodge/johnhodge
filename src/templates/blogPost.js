@@ -39,6 +39,14 @@ export const query = graphql`
       }
       id
       keywords
+      footnote {
+        footnoteText {
+          childMarkdownRemark {
+            html
+          }
+        }
+        resourceName
+      }
       formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
       slug
@@ -139,6 +147,27 @@ const BlogPost = ({ data }) => {
           options,
         }}
       />
+
+      {data.contentfulBlogPost.footnote ? (
+        <div>
+          <h3>Resources</h3>
+          <ol>
+            {console.log(data.contentfulBlogPost.footnote)}
+            {data.contentfulBlogPost.footnote.map((footnote, i) => {
+              return (
+                <li
+                  key={i}
+                  id={i + 1}
+                  dangerouslySetInnerHTML={{
+                    __html: footnote.footnoteText.childMarkdownRemark.html,
+                  }}></li>
+              );
+            })}
+          </ol>
+        </div>
+      ) : (
+        ''
+      )}
 
       <BlogRoll
         category={data.contentfulBlogPost.category}
