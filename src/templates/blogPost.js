@@ -39,6 +39,10 @@ export const query = graphql`
       }
       id
       keywords
+      footnote {
+        footnoteText
+        resourceName
+      }
       formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
       slug
@@ -139,6 +143,23 @@ const BlogPost = ({ data }) => {
           options,
         }}
       />
+
+      {data.contentfulBlogPost.footnote ? (
+        <div>
+          <h3>Resources</h3>
+          <ol>
+            {data.contentfulBlogPost.footnote.map((footnote, i) => {
+              return (
+                <li key={i} id={i + 1}>
+                  {footnote.footnoteText}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ) : (
+        ''
+      )}
 
       <BlogRoll
         category={data.contentfulBlogPost.category}
