@@ -40,7 +40,11 @@ export const query = graphql`
       id
       keywords
       footnote {
-        footnoteText
+        footnoteText {
+          childMarkdownRemark {
+            html
+          }
+        }
         resourceName
       }
       formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
@@ -148,11 +152,15 @@ const BlogPost = ({ data }) => {
         <div>
           <h3>Resources</h3>
           <ol>
+            {console.log(data.contentfulBlogPost.footnote)}
             {data.contentfulBlogPost.footnote.map((footnote, i) => {
               return (
-                <li key={i} id={i + 1}>
-                  {footnote.footnoteText}
-                </li>
+                <li
+                  key={i}
+                  id={i + 1}
+                  dangerouslySetInnerHTML={{
+                    __html: footnote.footnoteText.childMarkdownRemark.html,
+                  }}></li>
               );
             })}
           </ol>
