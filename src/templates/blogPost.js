@@ -19,7 +19,9 @@ export const query = graphql`
           html
         }
       }
-      category
+      category_ref {
+        name
+      }
       description {
         description
       }
@@ -50,7 +52,6 @@ export const query = graphql`
       formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
       slug
-      tags
       title
       updatedAt
       videoSrcURL
@@ -85,8 +86,8 @@ const BlogPost = ({ data }) => {
     article_published_time: data.contentfulBlogPost.isoPublishDate,
     article_modified_time: data.contentfulBlogPost.updatedAt,
     article_author: data.contentfulBlogPost.author.name,
-    article_section: data.contentfulBlogPost.category,
-    article_tag: data.contentfulBlogPost.tags,
+    article_section: data.contentfulBlogPost.category_ref.name,
+    // article_tag: data.contentfulBlogPost.tags,
   };
 
   return (
@@ -129,7 +130,7 @@ const BlogPost = ({ data }) => {
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
       </p>
-      {data.contentfulBlogPost.category === 'Video' ? (
+      {data.contentfulBlogPost.category_ref.name === 'Video' ? (
         <VideoPlayer
           videoSrcURL={data.contentfulBlogPost.videoSrcURL}
           videoTitle={data.contentfulBlogPost.videoTitle}
@@ -152,7 +153,6 @@ const BlogPost = ({ data }) => {
         <div>
           <h3>Resources</h3>
           <ol>
-            {console.log(data.contentfulBlogPost.footnote)}
             {data.contentfulBlogPost.footnote.map((footnote, i) => {
               return (
                 <li
@@ -170,7 +170,7 @@ const BlogPost = ({ data }) => {
       )}
 
       <BlogRoll
-        category={data.contentfulBlogPost.category}
+        category={data.contentfulBlogPost.category_ref.name}
         slug={data.contentfulBlogPost.slug}
       />
     </Layout>

@@ -5,14 +5,16 @@ import styles from './blog-roll.module.scss';
 const BlogRoll = ({ slug, category }) => (
   <StaticQuery
     query={graphql`
-      query blogRoll($category: String, $slug: String) {
+      query blogRoll($slug: String) {
         allContentfulBlogPost(
           sort: { fields: publishDate, order: DESC }
-          filter: { category: { eq: $category }, slug: { ne: $slug } }
+          filter: { slug: { ne: $slug } }
         ) {
           edges {
             node {
-              category
+              category_ref {
+                name
+              }
               slug
               title
               publishDate(formatString: "MMMM Do, YYYY")
