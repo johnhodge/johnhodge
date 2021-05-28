@@ -19,6 +19,7 @@ External Modules
   font-family: $displayFont;
   text-decoration: none;
   letter-spacing: -2px;
+  border: none;
 }
 
 .nav-list {
@@ -36,6 +37,7 @@ ul.nav-list > li {
   font-size: 0.9rem;
   margin-right: 1.3rem;
   text-decoration: none;
+  border: none;
 }
 
 .nav-item:hover {
