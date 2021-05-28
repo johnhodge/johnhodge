@@ -94,8 +94,8 @@ th {
   font-family: var.$boldFont;
 }
 
-p > a,
-sup > a {
+p a,
+main li a {
   background-color: transparent;
   color: var.$blue;
   text-decoration: none;
