@@ -21,7 +21,7 @@ a.blog-roll-posts-link {
   display: flex;
   align-items: center;
   overflow: hidden;
-  height: 10rem;
+  min-height: 8rem;
   margin: $unitsMedium 0;
   border: 1px solid $gray3;
   border-radius: $smallBorderRadius;
@@ -35,6 +35,7 @@ a.blog-roll-posts-link {
 }
 
 div.blog-roll-posts-link-container > img {
+  position: absolute;
   margin-bottom: 0;
   border: none;
   border-radius: 0;
@@ -43,5 +44,5 @@ div.blog-roll-posts-link-container > img {
 h2.blog-roll-posts-link-container-header {
   margin: 0;
   padding: $unitsMedium;
-  position: absolute;
+  z-index: 1;
 }

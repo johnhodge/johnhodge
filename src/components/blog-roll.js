@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styles from './blog-roll.module.scss';
 
+var match = '';
 const BlogRoll = ({ slug, category }) => (
   <StaticQuery
     query={graphql`
@@ -33,9 +34,11 @@ const BlogRoll = ({ slug, category }) => (
     render={(data) => (
       <div className={styles.blogRoll}>
         <div className={styles.blogRollPosts}>
+          {console.log(typeof data.allContentfulBlogPost.edges)}
           {data.allContentfulBlogPost.edges.map((edge, i) => {
             return !category ||
-              (category === edge.node.category && slug !== edge.node.slug) ? (
+              (category === edge.node.category_ref.name &&
+                slug !== edge.node.slug) ? (
               <Link
                 className={styles.blogRollPostsLink}
                 to={`/blog/${edge.node.slug}`}
