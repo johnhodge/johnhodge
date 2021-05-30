@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
-import BlogRoll from '../components/blog-roll';
+import BlogRollSmall from '../components/blog-roll-small';
 import SEO from '../components/seo';
 import styles from '../components/header.module.scss';
 
@@ -70,8 +70,7 @@ const Index = () => {
           and elegant solutions quickly.
         </p>
       </div>
-      <h3>Recent posts</h3>
-      <BlogRoll />
+      <BlogRollSmall header='Recent Posts' />
     </Layout>
   );
 };

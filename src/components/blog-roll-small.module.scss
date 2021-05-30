@@ -1,0 +1,66 @@
+/*
+External Modules
+*/
+
+@use '../styles/variables.scss' as *;
+
+.blog-roll {
+  margin: $unitsMedium 0;
+}
+
+.blog-roll-posts {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+a.blog-roll-posts-link {
+  margin: 0;
+  color: $white;
+  text-shadow: $textShadowMedium;
+  text-decoration: none;
+  min-width: 33%;
+}
+
+.blog-roll-posts-link-container {
+  position: relative;
+  // max-height: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: 8rem;
+  border: 1px solid $gray3;
+  border-radius: $smallBorderRadius;
+  box-shadow: $shadowMeduim;
+  transition: ease-in-out 0.15s transform, box-shadow;
+}
+
+.blog-roll-posts-link-container:hover {
+  transform: scale(1.025);
+  box-shadow: $shadowLarge;
+}
+
+div.blog-roll-posts-link-container > img {
+  position: absolute;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+  min-height: -webkit-fill-available;
+  filter: brightness(0.9);
+}
+
+h2.blog-roll-posts-link-container-header {
+  margin: 0;
+  padding: $unitsMedium;
+  z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .blog-roll-posts {
+    flex-direction: column;
+  }
+}
