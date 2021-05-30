@@ -26,17 +26,18 @@ a.blog-roll-posts-link {
 }
 
 .blog-roll-posts-link-container {
-  position: relative;
-  // max-height: none;
-  height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: relative;
   overflow: hidden;
   min-height: 8rem;
-  border: 1px solid $gray3;
-  border-radius: $smallBorderRadius;
-  box-shadow: $shadowMeduim;
-  transition: ease-in-out 0.15s transform, box-shadow;
+  height: 100%;
+  border: 1px solid rgb(185 185 185);
+  border-radius: 5px;
+  box-shadow: 0.15rem 0.15rem 1rem rgb(0 0 0 / 40%);
+  transition: transform 0.15s ease-in-out, box-shadow;
 }
 
 .blog-roll-posts-link-container:hover {
@@ -46,10 +47,12 @@ a.blog-roll-posts-link {
 
 div.blog-roll-posts-link-container > img {
   position: absolute;
+  max-height: -webkit-fill-available;
+  height: auto;
+  width: auto;
   margin-bottom: 0;
   border: none;
   border-radius: 0;
-  min-height: -webkit-fill-available;
   filter: brightness(0.9);
 }
 
