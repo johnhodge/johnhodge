@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import VideoPlayer from '../components/video-player';
-import BlogRoll from '../components/blog-roll';
+import BlogRollSmall from '../components/blog-roll-small';
 
 import styles from './blog-post.module.scss';
 
@@ -169,9 +169,10 @@ const BlogPost = ({ data }) => {
         ''
       )}
 
-      <BlogRoll
+      <BlogRollSmall
         category={data.contentfulBlogPost.category_ref.name}
         slug={data.contentfulBlogPost.slug}
+        header='Related Posts'
       />
     </Layout>
   );

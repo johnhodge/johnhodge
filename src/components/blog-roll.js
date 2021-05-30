@@ -35,7 +35,8 @@ const BlogRoll = ({ slug, category }) => (
         <div className={styles.blogRollPosts}>
           {data.allContentfulBlogPost.edges.map((edge, i) => {
             return !category ||
-              (category === edge.node.category && slug !== edge.node.slug) ? (
+              (category === edge.node.category_ref.name &&
+                slug !== edge.node.slug) ? (
               <Link
                 className={styles.blogRollPostsLink}
                 to={`/blog/${edge.node.slug}`}
