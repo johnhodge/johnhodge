@@ -4,41 +4,98 @@ External Modules
 
 @use '../styles/variables.scss' as *;
 
-.blog-roll {
-  margin: $unitsMedium 0;
-}
-
-a.blog-roll-posts-link {
+@mixin blog-roll-posts-link {
   margin: 0;
   color: $white;
   text-shadow: $textShadowMedium;
   text-decoration: none;
 }
 
-.blog-roll-posts-link-container {
+@mixin blog-roll-posts-link-container {
   position: relative;
-  max-height: none;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
+  align-content: center;
+  max-height: none;
   min-height: 8rem;
-  margin: $unitsMedium 0;
+  height: 100%;
+  overflow: hidden;
+  margin: $unitsSmall 0;
   border: 1px solid $gray3;
   border-radius: $smallBorderRadius;
-  box-shadow: $shadowMeduim;
-  transition: ease-in-out 0.15s transform, box-shadow;
+  transition: ease-in-out 0.15s transform;
 }
 
-.blog-roll-posts-link-container:hover {
-  transform: scale(1.025);
-  box-shadow: $shadowLarge;
-}
-
-div.blog-roll-posts-link-container > img {
+@mixin blog-roll-posts-img {
   position: absolute;
   margin-bottom: 0;
   border: none;
   border-radius: 0;
+  filter: brightness(0.95);
+}
+
+.blog-roll {
+  margin: $unitsMedium 0;
+}
+
+#blog-roll-small .blog-roll-posts {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+}
+
+@media screen and (max-width: 767px) {
+  #blog-roll-small .blog-roll-posts {
+    display: block;
+  }
+}
+
+a.blog-roll-posts-link {
+  @include blog-roll-posts-link;
+}
+
+#blog-roll-small a.blog-roll-posts-link {
+  @include blog-roll-posts-link;
+  min-width: 33.333%;
+}
+
+.blog-roll-posts-link-container {
+  @include blog-roll-posts-link-container;
+}
+
+#blog-roll-small .blog-roll-posts-link:not(:first-child):not(:last-child) {
+  margin: 0 $unitsTiny;
+}
+
+@media screen and (max-width: 767px) {
+  #blog-roll-small .blog-roll-posts-link:not(:first-child):not(:last-child) {
+    margin: 0;
+  }
+}
+
+.blog-roll-posts-link-container:hover {
+  transform: translatey(-0.25rem);
+}
+
+div.blog-roll-posts-link-container > img {
+  @include blog-roll-posts-img;
+}
+
+#blog-roll-small div.blog-roll-posts-link-container > img {
+  @include blog-roll-posts-img;
+  height: inherit;
+  width: inherit;
+}
+
+@media screen and (max-width: 767px) {
+  #blog-roll-small div.blog-roll-posts-link-container > img {
+    @include blog-roll-posts-img;
+    width: 100%;
+    height: auto;
+  }
 }
 
 h2.blog-roll-posts-link-container-header {

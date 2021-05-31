@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import styles from './blog-roll-small.module.scss';
+import styles from './blog-roll.module.scss';
 
 const BlogRollSmall = ({ slug, category, header }) => (
   <StaticQuery
@@ -28,15 +28,15 @@ const BlogRollSmall = ({ slug, category, header }) => (
       }
     `}
     render={(data) => (
-      <div>
+      <div id={styles.blogRollSmall}>
         {data.allContentfulBlogPost.edges.filter(
           (edge) =>
             !category ||
             (category === edge.node.category_ref.name &&
               slug !== edge.node.slug)
-        ).length > 0 && header ? (
+        ).length > 0 ? (
           <div className={styles.blogRoll}>
-            <h3>{header}</h3>
+            {header ? <h3>{header}</h3> : ''}
             <div className={styles.blogRollPosts}>
               {data.allContentfulBlogPost.edges
                 .slice(0, 3)
@@ -47,6 +47,7 @@ const BlogRollSmall = ({ slug, category, header }) => (
                       slug !== edge.node.slug)
                 )
                 .map((edge, i) => {
+                  console.log(edge);
                   return (
                     <Link
                       className={styles.blogRollPostsLink}
