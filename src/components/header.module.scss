@@ -122,10 +122,9 @@ p.hp-section-p {
   box-shadow: none;
   font-weight: bold;
 }
+
 .header-button-light {
   @include header-button;
-  background: $white;
-  border: 1px solid $black;
 }
 .header-button-light:hover {
   background: $gray1;
@@ -141,4 +140,5 @@ p.hp-section-p {
 }
 .header-button-link {
   text-decoration: none;
+  border: none;
 }

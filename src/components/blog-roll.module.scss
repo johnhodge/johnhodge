@@ -15,7 +15,6 @@ External Modules
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   align-content: center;
   max-height: none;
   min-height: 8rem;
@@ -33,6 +32,12 @@ External Modules
   border: none;
   border-radius: 0;
   filter: brightness(0.95);
+}
+
+@mixin blog-roll-posts-link-container-header {
+  margin: 0;
+  padding: $unitsMedium;
+  z-index: 1;
 }
 
 .blog-roll {
@@ -60,6 +65,7 @@ a.blog-roll-posts-link {
 #blog-roll-small a.blog-roll-posts-link {
   @include blog-roll-posts-link;
   min-width: 33.333%;
+  width: -webkit-fill-available;
 }
 
 .blog-roll-posts-link-container {
@@ -86,8 +92,6 @@ div.blog-roll-posts-link-container > img {
 
 #blog-roll-small div.blog-roll-posts-link-container > img {
   @include blog-roll-posts-img;
-  height: inherit;
-  width: inherit;
 }
 
 @media screen and (max-width: 767px) {
@@ -99,7 +103,10 @@ div.blog-roll-posts-link-container > img {
 }
 
 h2.blog-roll-posts-link-container-header {
-  margin: 0;
-  padding: $unitsMedium;
-  z-index: 1;
+  @include blog-roll-posts-link-container-header;
+}
+
+#blog-roll-small h2.blog-roll-posts-link-container-header {
+  @include blog-roll-posts-link-container-header;
+  font-size: 1.2rem;
 }
