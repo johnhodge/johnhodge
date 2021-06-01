@@ -47,7 +47,6 @@ const BlogRollSmall = ({ slug, category, header }) => (
                       slug !== edge.node.slug)
                 )
                 .map((edge, i) => {
-                  console.log(edge);
                   return (
                     <Link
                       className={styles.blogRollPostsLink}
