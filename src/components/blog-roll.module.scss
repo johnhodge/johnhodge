@@ -72,12 +72,12 @@ a.blog-roll-posts-link {
   @include blog-roll-posts-link-container;
 }
 
-#blog-roll-small .blog-roll-posts-link:not(:first-child):not(:last-child) {
-  margin: 0 $unitsTiny;
+#blog-roll-small .blog-roll-posts-link:nth-last-child(n + 2) {
+  margin: 0 $unitsTiny 0 0;
 }
 
 @media screen and (max-width: 767px) {
-  #blog-roll-small .blog-roll-posts-link:not(:first-child):not(:last-child) {
+  #blog-roll-small .blog-roll-posts-link:nth-last-child(n + 2) {
     margin: 0;
   }
 }

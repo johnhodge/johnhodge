@@ -40,6 +40,7 @@ const BlogRoll = ({ slug, category }) => (
               <Link
                 className={styles.blogRollPostsLink}
                 to={`/blog/${edge.node.slug}`}
+                title={`Link to the article "${edge.node.title}"`}
                 key={i}>
                 <div className={styles.blogRollPostsLinkContainer}>
                   <img
