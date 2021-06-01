@@ -19,6 +19,10 @@ External Modules
   margin: 0 -#{$containerPadding} 2rem;
 }
 
+.publish-info {
+  font-style: italic;
+}
+
 li:target {
   background: $lightYellow;
 }

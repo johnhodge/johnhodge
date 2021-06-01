@@ -117,7 +117,7 @@ const BlogPost = ({ data }) => {
           {data.contentfulBlogPost.title}
         </span>
       </h1>
-      <p>
+      <small className={styles.publishInfo}>
         Published by{' '}
         <span itemProp='author' itemScope itemType='https://schema.org/Person'>
           {data.contentfulBlogPost.author.name}
@@ -129,7 +129,7 @@ const BlogPost = ({ data }) => {
           itemType='https://schema.org/CreativeWork'>
           {data.contentfulBlogPost.formattedPublishDate}
         </span>
-      </p>
+      </small>
       {data.contentfulBlogPost.category_ref.name === 'Video' ? (
         <VideoPlayer
           videoSrcURL={data.contentfulBlogPost.videoSrcURL}
