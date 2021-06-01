@@ -86,6 +86,10 @@ a.blog-roll-posts-link {
   filter: brightness(1.05);
 }
 
+.blog-roll-posts-link-container:active {
+  filter: brightness(1.2);
+}
+
 div.blog-roll-posts-link-container > img {
   @include blog-roll-posts-img;
 }

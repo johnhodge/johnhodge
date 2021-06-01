@@ -16,11 +16,12 @@ External Modules
   overflow: hidden;
   box-sizing: content-box;
   min-width: 100%;
-  margin: 0 -#{$containerPadding} 2rem;
+  margin: 0 -#{$unitsNormal} 2rem;
 }
 
 .publish-info {
   font-style: italic;
+  font-size: $unitsSmall;
 }
 
 li:target {

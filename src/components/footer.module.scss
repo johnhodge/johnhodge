@@ -1,10 +1,16 @@
+/*
+External Modules
+*/
+
+@use '../styles/variables.scss' as *;
+
 .footer {
-  margin-top: 1rem;
+  margin-top: $unitsNormal;
 }
 
 .footer-paragraph {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: $unitsSmall;
 }
 
 .icon-bucket {
@@ -12,6 +18,6 @@
 }
 
 .icon-bucket > h2 {
-  margin: 0 0 1rem;
+  margin: 0 0 $unitsNormal;
   font-size: 2.5rem;
 }
