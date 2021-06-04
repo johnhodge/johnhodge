@@ -49,7 +49,6 @@ export const query = graphql`
         }
         resourceName
       }
-      formattedPublishDate: publishDate(formatString: "MMMM Do, YYYY, h:mm a")
       isoPublishDate: publishDate
       slug
       title
@@ -72,6 +71,20 @@ const BlogPost = ({ data }) => {
       },
     },
   };
+
+  let datestampOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    timeZone: 'America/New_York',
+    timeZoneName: 'short',
+  };
+  const publishDateTz = new Date(
+    data.contentfulBlogPost.isoPublishDate
+  ).toLocaleString('en-US', datestampOptions);
 
   const imageData = data.contentfulBlogPost.heroImage;
   const metaImage = {
@@ -127,7 +140,7 @@ const BlogPost = ({ data }) => {
           itemProp='datePublished'
           itemScope
           itemType='https://schema.org/CreativeWork'>
-          {data.contentfulBlogPost.formattedPublishDate}
+          {publishDateTz}
         </span>
       </small>
       {data.contentfulBlogPost.category_ref.name === 'Video' ? (
