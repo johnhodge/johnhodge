@@ -41,9 +41,8 @@ const BlogRollSmall = ({ slug, category, header }) => (
               {data.allContentfulBlogPost.edges
                 .filter(
                   (edge) =>
-                    !category ||
-                    (category === edge.node.category_ref.name &&
-                      slug !== edge.node.slug)
+                    (!category || category === edge.node.category_ref.name) &&
+                    slug !== edge.node.slug
                 )
                 .slice(0, 3)
                 .map((edge, i) => {
