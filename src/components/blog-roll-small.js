@@ -39,13 +39,13 @@ const BlogRollSmall = ({ slug, category, header }) => (
             {header ? <h3>{header}</h3> : ''}
             <div className={styles.blogRollPosts}>
               {data.allContentfulBlogPost.edges
-                .slice(0, 3)
                 .filter(
                   (edge) =>
                     !category ||
                     (category === edge.node.category_ref.name &&
                       slug !== edge.node.slug)
                 )
+                .slice(0, 3)
                 .map((edge, i) => {
                   return (
                     <Link

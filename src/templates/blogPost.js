@@ -181,11 +181,10 @@ const BlogPost = ({ data }) => {
       ) : (
         ''
       )}
-
       <BlogRollSmall
-        category={data.contentfulBlogPost.category_ref.name}
+        // category={data.contentfulBlogPost.category_ref.name}
         slug={data.contentfulBlogPost.slug}
-        header='Related Posts'
+        header='Recent Posts'
       />
     </Layout>
   );
