@@ -35,7 +35,7 @@ ul.nav-list > li {
 .nav-item {
   color: $gray6;
   font-size: 0.9rem;
-  margin-right: 1.3rem;
+  margin-right: $unitsMedium;
   text-decoration: none;
   border: none;
 }
@@ -58,6 +58,7 @@ ul.nav-list > li {
 .hp-section {
   @include hp-section-normamize;
 }
+
 .hp-section-secondary {
   @include hp-section-normamize;
   min-height: 0;
@@ -79,6 +80,7 @@ ul.nav-list > li {
 .img-container {
   flex: 2 2;
 }
+
 .sub-headline {
   flex: 1 2;
 }
@@ -88,11 +90,11 @@ ul.nav-list > li {
   display: flex;
   flex-direction: column;
   flex-basis: 20rem;
-  font-size: 2.5rem;
+  font-size: $unitsLarge;
 }
 
 p.hp-section-p {
-  font-size: 1.5rem;
+  font-size: $unitsMedium;
   margin: 0;
   align-self: flex-start;
 }
@@ -100,17 +102,19 @@ p.hp-section-p {
 .main-headline {
   font-size: min(4.75rem, 14vw);
   font-family: $displayFont;
-  margin: 2rem 0;
+  margin: $unitsLarge 0;
 }
+
 .headline-hightlihgt {
-  color: rgb(91, 104, 245);
+  color: $blue;
   display: contents;
 }
+
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0 0;
+  margin: $unitsLarge 0 0;
 }
 
 @mixin header-button {
@@ -118,7 +122,7 @@ p.hp-section-p {
   min-width: 9rem;
   background: $white;
   border: 1px solid $black;
-  margin-right: 1rem;
+  margin-right: $unitsNormal;
   box-shadow: none;
   font-weight: bold;
 }
@@ -126,18 +130,22 @@ p.hp-section-p {
 .header-button-light {
   @include header-button;
 }
+
 .header-button-light:hover {
   background: $gray1;
 }
+
 .header-button-dark {
   @include header-button;
   background: rgb(255, 90, 111);
   border: 1px solid rgb(160, 44, 58);
   color: $white;
 }
+
 .header-button-dark:hover {
   background: rgb(255, 105, 125);
 }
+
 .header-button-link {
   text-decoration: none;
   border: none;
