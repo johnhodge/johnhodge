@@ -5,7 +5,7 @@ External Modules
 @use '../styles/variables.scss' as *;
 
 .header {
-  padding: 1rem 0;
+  padding: $unitsNormal 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -102,7 +102,7 @@ p.hp-section-p {
 .main-headline {
   font-size: min(4.75rem, 14vw);
   font-family: $displayFont;
-  margin: $unitsLarge 0;
+  margin: $unitsMedium 0;
 }
 
 .headline-hightlihgt {
