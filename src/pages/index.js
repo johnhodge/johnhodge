@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import BlogRollSmall from '../components/blog-roll-small';
@@ -7,19 +7,35 @@ import SEO from '../components/seo';
 import styles from '../components/header.module.scss';
 
 const Index = () => {
+  const data = useStaticQuery(graphql`
+    {
+      contentfulPerson {
+        homePageHeadline
+        homePageBio
+      }
+    }
+  `);
+
+  let headline = data.contentfulPerson.homePageHeadline;
+  let headlineWords = headline.split(' ');
+  let firstHeadlineEnd = Math.floor(headlineWords.length / 2 - 1);
+  let firstHeadline = headlineWords.slice(0, firstHeadlineEnd);
+  let secondHeadline = headlineWords
+    .slice(firstHeadlineEnd, firstHeadlineEnd + 2)
+    .join(' ');
+  let thirdHeadline = headlineWords.slice(firstHeadlineEnd + 2).join(' ');
+
   return (
     <Layout>
       <SEO metaTitle='Home' pathname='/' />
       <div className={styles.hpSection}>
         <h1 className={styles.mainHeadline}>
-          Tech-wise{' '}
-          <span className={styles.headlineHightlihgt}>solutions engineer</span>{' '}
-          in NYC.
+          {console.log(secondHeadline)}
+          {firstHeadline}{' '}
+          <span className={styles.headlineHightlihgt}>{secondHeadline}</span>{' '}
+          {thirdHeadline}
         </h1>
-        <p className={styles.hpSectionP}>
-          I'm John and I work in adtech, keep scrolling to learn more about my
-          methodology.
-        </p>
+        <p className={styles.hpSectionP}>{data.contentfulPerson.homePageBio}</p>
         <div className={styles.buttonContainer}>
           <Link className={styles.headerButtonLink} to='/blog'>
             <button className={styles.headerButtonLight}>Blog</button>
