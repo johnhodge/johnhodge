@@ -4,7 +4,7 @@
   command = "gatsby build"
 
 [context.branch-deploy.environment]
-  CONTENTFUL_ENVIRONMENT="issues-54"
+  CONTENTFUL_ENVIRONMENT="dev"
 
 [context.deploy-preview.environment]
   CONTENTFUL_ENVIRONMENT="staging"
