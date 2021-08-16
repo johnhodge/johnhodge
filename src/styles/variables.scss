@@ -6,16 +6,15 @@ $headlineFont: fonts.$headlineFont;
 $monoFont: fonts.$monoFont;
 $rootFontSize: max(16px, 1vw);
 
-$globalWidth: 80%;
+$veryWideContainer: 75rem;
+$globalWidth: min(90%, 2500px);
 
 $white: hsl(0, 0%, 100%);
-
 $lightShade1: hsl(225deg, 6%, 98%);
 $lightShade2: hsl(225deg, 6%, 90%);
 $lightShade3: hsl(225deg, 6%, 85%);
 $lightShade4: hsl(225deg, 6%, 80%);
 $lightShade5: hsl(225deg, 6%, 75%);
-
 $darkShade1: hsl(225deg, 6%, 30%);
 $darkShade2: hsl(225deg, 6%, 25%);
 $darkShade3: hsl(225deg, 6%, 20%);
