@@ -1,0 +1,92 @@
+@use "variables" as *;
+
+/*
+Base styles
+*/
+
+body {
+  font-family: $bodyFont;
+  font-size: $rootFontSize;
+  color: $darkShade1;
+}
+main {
+  width: $globalWidth;
+  margin: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headerFont;
+}
+a {
+  word-break: break-all;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: $monoFont;
+  font-size: 1rem;
+  line-height: 1.65;
+  border: 1px solid $lightShade4;
+  background: $lightShade1;
+}
+pre {
+  border-radius: 5px;
+  overflow: auto;
+  word-wrap: normal;
+  border-left: 5px solid $darkShade1;
+  padding: 1rem 0.5rem;
+}
+code {
+  border-radius: 3px;
+  padding: 0 0.2rem;
+}
+pre > code {
+  border: none;
+}
+
+/*s
+Headroom navigation styles
+*/
+
+.headroom {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.headroom--unfixed {
+  position: relative;
+  transform: $translateYZero;
+  -webkit-transform: $translateYZero;
+  -moz-transform: $translateYZero;
+  -o-transform: $translateYZero;
+  -ms-transform: $translateYZero;
+}
+.headroom--pinned {
+  position: fixed;
+  transform: $translateYZero;
+  -webkit-transform: $translateYZero;
+  -moz-transform: $translateYZero;
+  -o-transform: $translateYZero;
+  -ms-transform: $translateYZero;
+}
+.headroom--scrolled {
+  transition: transform $easeInOut200;
+  -webkit-transition: -webkit-transform $easeInOut200;
+  -moz-transition: -moz-transform $easeInOut200;
+  -o-transition: -o-transform $easeInOut200;
+  -ms-transition: -ms-transform $easeInOut200;
+}
+.headroom--unpinned {
+  position: fixed;
+  transform: $translateNeg100;
+  -webkit-transform: $translateNeg100;
+  -moz-transform: $translateNeg100;
+  -o-transform: $translateNeg100;
+  -ms-transform: $translateNeg100;
+}

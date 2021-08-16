@@ -1,0 +1,61 @@
+@use "../styles/variables" as *;
+
+.navigation {
+  background-color: $white;
+  padding: 1rem 0;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  nav {
+    max-width: $globalWidth;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div.branding {
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+      }
+      h1 {
+        font-family: $headlineFont;
+        margin: initial;
+        padding: inherit;
+        line-height: inherit;
+        white-space: nowrap;
+      }
+      img {
+        max-height: 2rem;
+        padding: 0 0.5rem;
+      }
+    }
+    ul {
+      display: flex;
+      align-content: center;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0;
+      padding: 0.5rem 0;
+      list-style: none;
+
+      li {
+        font-size: 0.9rem;
+      }
+      li:last-child {
+        padding-left: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation {
+    nav {
+      flex-direction: column;
+      align-items: baseline;
+    }
+  }
+}

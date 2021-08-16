@@ -1,0 +1,33 @@
+@use "fonts" as fonts;
+
+$bodyFont: fonts.$bodyFont;
+$headerFont: fonts.$headerFont;
+$headlineFont: fonts.$headlineFont;
+$monoFont: fonts.$monoFont;
+$rootFontSize: max(16px, 1vw);
+
+$globalWidth: 80%;
+
+$white: hsl(0, 0%, 100%);
+
+$lightShade1: hsl(225deg, 6%, 98%);
+$lightShade2: hsl(225deg, 6%, 90%);
+$lightShade3: hsl(225deg, 6%, 85%);
+$lightShade4: hsl(225deg, 6%, 80%);
+$lightShade5: hsl(225deg, 6%, 75%);
+
+$darkShade1: hsl(225deg, 6%, 30%);
+$darkShade2: hsl(225deg, 6%, 25%);
+$darkShade3: hsl(225deg, 6%, 20%);
+$darkShade4: hsl(225deg, 6%, 15%);
+$darkShade5: hsl(225deg, 6%, 13%);
+
+$lightBorderShade1: 1px solid $lightShade1;
+$lightBorderShade2: 1px solid $lightShade2;
+$lightBorderShade3: 1px solid $lightShade3;
+$lightBorderShade4: 1px solid $lightShade4;
+$lightBorderShade5: 1px solid $lightShade5;
+
+$translateNeg100: translateY(-100%);
+$translateYZero: translateY(0%);
+$easeInOut200: 0.2s ease-in-out;
