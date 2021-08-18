@@ -1,14 +1,19 @@
 import React from 'react';
 import Header from '../components/header';
+import * as styles from '../components/layout.module.scss';
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ pageTitle, children, featuredImage }) => {
   return (
     <div>
       <Header />
-      <main>
-        <h1>{pageTitle}</h1>
-        {children}
-      </main>
+      <div className={styles.featuredImage}>
+        <img
+          src={`https://${featuredImage}`}
+          alt={`${pageTitle}`}
+          title={`${pageTitle}`}
+        />
+      </div>
+      <main>{children}</main>
     </div>
   );
 };

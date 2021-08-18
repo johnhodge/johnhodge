@@ -1,13 +1,7 @@
-// React and Gatsby imports
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-
-// Plugin imports
 import Headroom from 'react-headroom';
-
-// Style imports
 import * as styles from '../components/header.module.scss';
-
 import logo from '../images/logo_blue.svg';
 
 const Header = () => (

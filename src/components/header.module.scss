@@ -19,9 +19,6 @@
         color: inherit;
         display: flex;
         align-items: center;
-        * {
-          min-width: fit-content;
-        }
       }
       h1 {
         font-family: $headlineFont;

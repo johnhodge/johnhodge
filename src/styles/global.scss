@@ -3,14 +3,15 @@
 /*
 Base styles
 */
-
-body {
+html {
+  line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
   color: $darkShade1;
 }
 main {
   width: $globalWidth;
+  max-width: $wideContainer;
   margin: auto;
 }
 h1,
@@ -20,9 +21,6 @@ h4,
 h5,
 h6 {
   font-family: $headerFont;
-}
-a {
-  word-break: break-all;
 }
 code,
 kbd,
@@ -48,16 +46,14 @@ code {
 pre > code {
   border: none;
 }
-
 img {
   max-width: 100%;
   height: auto;
 }
 
-/*s
+/*
 Headroom navigation styles
 */
-
 .headroom {
   top: 0;
   left: 0;

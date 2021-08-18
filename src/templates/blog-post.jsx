@@ -1,16 +1,16 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import DOMPurify from 'dompurify';
-
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
+import * as styles from '../templates/blog-post.module.scss';
 
 const BlogPost = ({ data }) => {
   const post = data.contentfulBlogPost;
   var cleanHTML = DOMPurify.sanitize(post.body.childMarkdownRemark.html);
 
   return (
-    <Layout pageTitle={post.title}>
+    <Layout featuredImage={post.heroImage.file.url} pageTitle={post.title}>
       <JsonLd>
         {{
           '@context': 'https://schema.org',
@@ -24,26 +24,19 @@ const BlogPost = ({ data }) => {
           },
         }}
       </JsonLd>
-      <div>
-        <Link
-          to={`/category/${post.category.name
-            .toLowerCase()
-            .replace(/\W/gm, '-')}`}>
-          {post.category.name}
-        </Link>
-      </div>
-      <div>
-        {post.metadata.tags.map((tag, i) => {
-          return (
-            <span key={i}>
-              <Link to={`/tag/${tag.name.toLowerCase().replace(/\W/gm, '-')}`}>
-                {tag.name}
-              </Link>
-              {post.metadata.tags.length - (i + 1) > 0 ? `, ` : ``}
-            </span>
-          );
-        })}
-      </div>
+
+      <article>
+        <h1 className={styles.headerText}>{post.title}</h1>
+        <div>
+          <Link
+            to={`/category/${post.category.name
+              .toLowerCase()
+              .replace(/\W/gm, '-')}`}
+            link={`Link to ${post.category.name} listing page`}>
+            {post.category.name}
+          </Link>
+        </div>
+      </article>
       <section
         dangerouslySetInnerHTML={{ __html: cleanHTML }}
         itemProp='articleBody'
@@ -71,6 +64,11 @@ export const query = graphql`
       }
       slug
       title
+      heroImage {
+        file {
+          url
+        }
+      }
     }
   }
 `;

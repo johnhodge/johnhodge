@@ -1,0 +1,15 @@
+.featured-image {
+  height: 20rem;
+  overflow: hidden;
+  border-bottom: 1px solid #707070;
+  img {
+    min-width: 120%;
+    margin-top: -50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .featured-image {
+    height: 10rem;
+  }
+}
