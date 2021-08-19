@@ -10,23 +10,36 @@ $globalWidth: 90%;
 $wideContainer: 55rem;
 $veryWideContainer: 75rem;
 
-$white: hsl(0, 0%, 100%);
-$lightShade1: hsl(225deg, 6%, 98%);
-$lightShade2: hsl(225deg, 6%, 90%);
-$lightShade3: hsl(225deg, 6%, 85%);
-$lightShade4: hsl(225deg, 6%, 80%);
-$lightShade5: hsl(225deg, 6%, 75%);
-$darkShade1: hsl(225deg, 6%, 30%);
-$darkShade2: hsl(225deg, 6%, 25%);
-$darkShade3: hsl(225deg, 6%, 20%);
-$darkShade4: hsl(225deg, 6%, 15%);
-$darkShade5: hsl(225deg, 6%, 13%);
+$white100: hsl(0, 0%, 100%);
+$white98: hsl(225deg, 6%, 98%);
+$white90: hsl(225deg, 6%, 90%);
+$white85: hsl(225deg, 6%, 85%);
+$white80: hsl(225deg, 6%, 80%);
+$white75: hsl(225deg, 6%, 75%);
+$gray60: hsl(255deg, 6%, 60%);
+$gray55: hsl(255deg, 6%, 55%);
+$gray50: hsl(255deg, 6%, 50%);
+$gray45: hsl(255deg, 6%, 45%);
+$gray40: hsl(255deg, 6%, 40%);
+$black30: hsl(225deg, 6%, 30%);
+$black25: hsl(225deg, 6%, 25%);
+$black20: hsl(225deg, 6%, 20%);
+$black15: hsl(225deg, 6%, 15%);
+$black13: hsl(225deg, 6%, 13%);
 
-$lightBorderShade1: 1px solid $lightShade1;
-$lightBorderShade2: 1px solid $lightShade2;
-$lightBorderShade3: 1px solid $lightShade3;
-$lightBorderShade4: 1px solid $lightShade4;
-$lightBorderShade5: 1px solid $lightShade5;
+$colorLightness60: 60%;
+$colorLightness70: 70%;
+
+$blue60: hsl(210, 86%, $colorLightness60);
+$purple70: hsl(305deg, 40%, $colorLightness70);
+
+$lightBorderShade1: 1px solid $white98;
+$lightBorderShade2: 1px solid $white90;
+$lightBorderShade3: 1px solid $white85;
+$lightBorderShade4: 1px solid $white80;
+$lightBorderShade5: 1px solid $white75;
+
+$smallBoxShadow: 0px 0px 10px rgb(0, 0, 0, 20%);
 
 $translateNeg100: translateY(-100%);
 $translateYZero: translateY(0%);

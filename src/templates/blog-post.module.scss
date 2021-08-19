@@ -12,8 +12,33 @@ article {
     margin: 0;
     padding: 0;
   }
-  h1.header-text {
+  h1.header-text,
+  p.publish-date {
     margin-bottom: 1rem;
+  }
+  div.article-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    * {
+      display: flex;
+      align-items: center;
+      color: $gray60;
+      text-decoration: none;
+      svg {
+        height: 1rem;
+        width: auto;
+        path.path7,
+        ellipse.ellipse2,
+        circle.ellipse7,
+        path.path20,
+        path.path21,
+        path.path22 {
+          stroke: $purple70;
+          stroke-width: 3px;
+        }
+      }
+    }
   }
 }
 

@@ -7,7 +7,7 @@ html {
   line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
-  color: $darkShade1;
+  color: $black30;
 }
 main {
   width: $globalWidth;
@@ -27,16 +27,16 @@ kbd,
 pre,
 samp {
   font-family: $monoFont;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.65;
-  border: 1px solid $lightShade4;
-  background: $lightShade1;
+  border: 1px solid $white80;
+  background: $white98;
 }
 pre {
   border-radius: 5px;
   overflow: auto;
   word-wrap: normal;
-  border-left: 5px solid $darkShade1;
+  border-left: 5px solid $black30;
   padding: 1rem 0.5rem;
 }
 code {
