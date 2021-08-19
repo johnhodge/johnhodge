@@ -7,17 +7,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allContentfulBlogPost {
           edges {
             node {
-              title
-              slug
               category {
-                id
                 name
+                id
               }
               metadata {
                 tags {
                   id
                   name
                 }
+              }
+              slug
+              title
+              updatedAt
+              author {
+                name
+                id
               }
             }
           }
@@ -72,6 +77,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         name: node.category.name,
         type: `category`,
         category: true,
+      },
+    });
+  });
+
+  // Create pages for author listing
+  const authorTemplate = path.resolve(`src/templates/posts.jsx`);
+  result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+    const authorSlug = node.author.name.toLowerCase().replace(/\W/gm, `-`);
+    createPage({
+      path: `author/${authorSlug}`,
+      component: authorTemplate,
+      context: {
+        slug: authorSlug,
+        id: node.author.id,
+        name: node.author.name,
+        type: `author`,
+        author: true,
       },
     });
   });
