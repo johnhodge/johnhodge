@@ -7,8 +7,8 @@ import logo from '../images/logo_blue.svg';
 const Header = () => (
   <StaticQuery
     query={graphql`
-      query site {
-        site {
+      {
+        header: site {
           siteMetadata {
             description
             title
@@ -22,7 +22,7 @@ const Header = () => (
       }
     `}
     render={(data) => {
-      const siteData = data.site.siteMetadata;
+      const siteData = data.header.siteMetadata;
       return (
         <Headroom disableInlineStyles>
           <div className={styles.navigation}>

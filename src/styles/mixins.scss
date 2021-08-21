@@ -1,0 +1,6 @@
+@use 'variables' as *;
+
+@mixin dark-scheme() {
+  background: $black13;
+  color: $white98;
+}

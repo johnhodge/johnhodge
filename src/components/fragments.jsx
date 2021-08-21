@@ -48,7 +48,7 @@ export const postEntryData = graphql`
     }
     slug
     title
-    updatedAt
+    updatedAt(formatString: "M/D/yyyy")
     author {
       name
     }

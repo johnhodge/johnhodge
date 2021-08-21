@@ -1,15 +1,15 @@
 @use "fonts" as fonts;
 
-$bodyFont: fonts.$bodyFont;
-$headerFont: fonts.$headerFont;
-$headlineFont: fonts.$headlineFont;
-$monoFont: fonts.$monoFont;
-$rootFontSize: max(16px, 1vw);
+/*
+Color utilities
+*/
+$colorLightness60: 60%;
+$colorLightness70: 70%;
+$colorLightness80: 80%;
 
-$globalWidth: 90%;
-$wideContainer: 55rem;
-$veryWideContainer: 75rem;
-
+/*
+White, grays, and blacks
+*/
 $white100: hsl(0, 0%, 100%);
 $white98: hsl(225deg, 6%, 98%);
 $white90: hsl(225deg, 6%, 90%);
@@ -26,21 +26,48 @@ $black25: hsl(225deg, 6%, 25%);
 $black20: hsl(225deg, 6%, 20%);
 $black15: hsl(225deg, 6%, 15%);
 $black13: hsl(225deg, 6%, 13%);
+$black10: hsl(225deg, 6%, 10%);
+$black5: hsl(225deg, 6%, 5%);
+$black0: hsl(225deg, 6%, 0%);
 
-$colorLightness60: 60%;
-$colorLightness70: 70%;
-
+/*
+Brand colors
+*/
 $blue60: hsl(210, 86%, $colorLightness60);
 $purple70: hsl(305deg, 40%, $colorLightness70);
+$magenta80: hsl(305deg, 100%, $colorLightness80);
 
-$lightBorderShade1: 1px solid $white98;
-$lightBorderShade2: 1px solid $white90;
-$lightBorderShade3: 1px solid $white85;
-$lightBorderShade4: 1px solid $white80;
-$lightBorderShade5: 1px solid $white75;
+/*
+Font elements
+*/
+$bodyFont: fonts.$bodyFont;
+$boldFont: fonts.$boldFont;
+$headerFont: fonts.$headerFont;
+$headlineFont: fonts.$headlineFont;
+$monoFont: fonts.$monoFont;
+$rootFontSize: max(16px, 1vw);
 
-$smallBoxShadow: 0px 0px 10px rgb(0, 0, 0, 20%);
+/*
+Structural elements
+*/
+$globalWidth: 95%;
+$wideContainer: 50rem;
+$veryWideContainer: 75rem;
 
+/*
+Border and shadow elements
+*/
+$borderWhite80: 0.0625rem solid $white80;
+$borderGray40: 0.0625rem solid $gray40;
+$smallBoxShadow: 0px 0px 0.625rem hsla(0, 0%, 0%, 0.2);
+
+/*
+Transforma elements
+*/
 $translateNeg100: translateY(-100%);
 $translateYZero: translateY(0%);
+
+/*
+Transition elements
+*/
 $easeInOut200: 0.2s ease-in-out;

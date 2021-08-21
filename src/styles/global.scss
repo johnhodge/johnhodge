@@ -1,4 +1,5 @@
-@use "variables" as *;
+@use 'variables' as *;
+@use 'mixins';
 
 /*
 Base styles
@@ -13,6 +14,15 @@ main {
   width: $globalWidth;
   max-width: $wideContainer;
   margin: auto;
+}
+a {
+  color: $blue60;
+  text-decoration: none;
+}
+strong,
+b {
+  font-family: $boldFont;
+  font-weight: normal;
 }
 h1,
 h2,
@@ -29,18 +39,18 @@ samp {
   font-family: $monoFont;
   font-size: 0.8rem;
   line-height: 1.65;
-  border: 1px solid $white80;
+  border: $borderWhite80;
   background: $white98;
 }
 pre {
-  border-radius: 5px;
+  border-radius: 0.25rem;
   overflow: auto;
   word-wrap: normal;
-  border-left: 5px solid $black30;
+  border-left: 0.25rem solid $magenta80;
   padding: 1rem 0.5rem;
 }
 code {
-  border-radius: 3px;
+  border-radius: 0.2rem;
   padding: 0 0.2rem;
 }
 pre > code {
@@ -70,6 +80,7 @@ Headroom navigation styles
 }
 .headroom--pinned {
   position: fixed;
+  border-bottom: $borderGray40;
   transform: $translateYZero;
   -webkit-transform: $translateYZero;
   -moz-transform: $translateYZero;
@@ -77,7 +88,7 @@ Headroom navigation styles
   -ms-transform: $translateYZero;
 }
 .headroom--scrolled {
-  transition: transform $easeInOut200;
+  transition: transform, border-bottom $easeInOut200;
   -webkit-transition: -webkit-transform $easeInOut200;
   -moz-transition: -moz-transform $easeInOut200;
   -o-transition: -o-transform $easeInOut200;
@@ -90,4 +101,29 @@ Headroom navigation styles
   -moz-transform: $translateNeg100;
   -o-transform: $translateNeg100;
   -ms-transform: $translateNeg100;
+}
+
+/*
+Media queries
+*/
+@media screen and (max-width: 767px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.1rem;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    @include mixins.dark-scheme;
+  }
+  code,
+  kbd,
+  pre,
+  samp {
+    background: $black10;
+  }
 }

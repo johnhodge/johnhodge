@@ -1,4 +1,5 @@
-@use "../styles/variables" as *;
+@use '../styles/variables' as *;
+@use '../styles/mixins';
 
 .navigation {
   background-color: $white100;
@@ -39,10 +40,6 @@
       margin: 0;
       padding: 0.5rem 0;
       list-style: none;
-
-      li {
-        font-size: 0.9rem;
-      }
       li:last-child {
         padding-left: 1rem;
       }
@@ -56,5 +53,11 @@
       flex-direction: column;
       align-items: baseline;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navigation {
+    @include mixins.dark-scheme;
   }
 }

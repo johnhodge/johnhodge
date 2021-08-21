@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
 import * as styles from '../components/layout.module.scss';
+import Footer from '../components/footer';
 
 const Layout = ({ pageTitle, children, featuredImage }) => {
   return (
@@ -18,7 +19,9 @@ const Layout = ({ pageTitle, children, featuredImage }) => {
         ''
       )}
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };
+
 export default Layout;
