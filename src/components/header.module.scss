@@ -9,10 +9,8 @@
     color: inherit;
   }
   nav {
-    max-width: $globalWidth;
-    margin: auto;
-    display: flex;
-    align-items: center;
+    @include mixins.global-container;
+    @include mixins.flex-align-items;
     justify-content: space-between;
     div.branding {
       a {
@@ -33,10 +31,9 @@
       }
     }
     ul {
-      display: flex;
+      @include mixins.flex-align-items;
       align-content: center;
       justify-content: flex-end;
-      align-items: center;
       margin: 0;
       padding: 0.5rem 0;
       list-style: none;

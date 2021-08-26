@@ -11,9 +11,7 @@ html {
   color: $black30;
 }
 main {
-  width: $globalWidth;
-  max-width: $wideContainer;
-  margin: auto;
+  @include mixins.global-container;
 }
 a {
   color: $blue60;
