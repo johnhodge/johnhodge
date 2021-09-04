@@ -1,9 +1,9 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
-import DOMPurify from 'dompurify';
+import { graphql } from 'gatsby';
+import DOMPurify from 'isomorphic-dompurify';
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
-import * as styles from '../templates/blog-post.module.scss';
+import Article from '../components/article';
 
 const BlogPost = ({ data }) => {
   const post = data.contentfulBlogPost;
@@ -24,19 +24,7 @@ const BlogPost = ({ data }) => {
           },
         }}
       </JsonLd>
-
-      <article>
-        <h1 className={styles.headerText}>{post.title}</h1>
-        <div>
-          <Link
-            to={`/category/${post.category.name
-              .toLowerCase()
-              .replace(/\W/gm, '-')}`}
-            link={`Link to ${post.category.name} listing page`}>
-            {post.category.name}
-          </Link>
-        </div>
-      </article>
+      <Article post={post} />
       <section
         dangerouslySetInnerHTML={{ __html: cleanHTML }}
         itemProp='articleBody'
@@ -47,28 +35,7 @@ const BlogPost = ({ data }) => {
 export const query = graphql`
   query Blog($slug: String = "") {
     contentfulBlogPost(slug: { eq: $slug }) {
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-      category {
-        name
-        id
-      }
-      metadata {
-        tags {
-          id
-          name
-        }
-      }
-      slug
-      title
-      heroImage {
-        file {
-          url
-        }
-      }
+      ...postEntryData
     }
   }
 `;

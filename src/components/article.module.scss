@@ -1,0 +1,57 @@
+@use '../styles/variables.scss' as *;
+@use '../styles/mixins.scss';
+
+article {
+  position: relative;
+  margin: 0;
+  padding: 2rem 0;
+  border-radius: 0;
+  border: none;
+  background-color: hsl(0deg 0% 100%);
+  box-shadow: none;
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  h1.header-text,
+  p.publish-date {
+    margin-bottom: 2rem;
+  }
+  div.article-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    * {
+      display: flex;
+      align-items: center;
+      color: $gray60;
+      text-decoration: none;
+      svg {
+        height: 1.25rem;
+        width: auto;
+        margin-right: 0.5rem;
+        .styled-svg-element {
+          stroke: $magenta80;
+          stroke-width: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  article {
+    margin: -5rem auto 3rem;
+    padding: 4rem;
+    border-radius: 0.25rem;
+    border: $borderGray40;
+    box-shadow: $smallBoxShadow;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  article {
+    @include mixins.dark-scheme;
+  }
+}

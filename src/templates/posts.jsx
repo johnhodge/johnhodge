@@ -12,8 +12,8 @@ const Posts = ({ pageContext, data }) => (
             </Link>
           </div>
         ))
-      : pageContext.type === `tag`
-      ? data.tag.edges.map(({ node, i }) => (
+      : pageContext.type === `author`
+      ? data.author.edges.map(({ node, i }) => (
           <div key={i}>
             <Link to={`/insights/${node.slug}`}>
               <h2>{node.title}</h2>
@@ -36,19 +36,24 @@ export const query = graphql`
   query posts($id: String = "") {
     category: allContentfulBlogPost(filter: { category: { id: { eq: $id } } }) {
       edges {
-        ...postData
+        ...postListingData
+      }
+    }
+    author: allContentfulBlogPost(filter: { author: { id: { eq: $id } } }) {
+      edges {
+        ...postListingData
       }
     }
     tag: allContentfulBlogPost(
       filter: { metadata: { tags: { elemMatch: { id: { eq: $id } } } } }
     ) {
       edges {
-        ...postData
+        ...postListingData
       }
     }
     blog: allContentfulBlogPost {
       edges {
-        ...postData
+        ...postListingData
       }
     }
   }

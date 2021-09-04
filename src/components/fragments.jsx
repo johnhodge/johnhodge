@@ -1,19 +1,60 @@
 import { graphql } from 'gatsby';
 
-export const postData = graphql`
-  fragment postData on ContentfulBlogPostEdge {
+export const postListingData = graphql`
+  fragment postListingData on ContentfulBlogPostEdge {
     node {
-      title
-      slug
       category {
-        id
         name
+        id
       }
       metadata {
         tags {
           id
           name
         }
+      }
+      slug
+      title
+      updatedAt
+      author {
+        name
+        id
+      }
+      heroImage {
+        file {
+          url
+        }
+      }
+    }
+  }
+`;
+
+export const postEntryData = graphql`
+  fragment postEntryData on ContentfulBlogPost {
+    body {
+      childMarkdownRemark {
+        html
+      }
+    }
+    category {
+      name
+      id
+    }
+    metadata {
+      tags {
+        id
+        name
+      }
+    }
+    slug
+    title
+    updatedAt(formatString: "M/D/yyyy")
+    author {
+      name
+    }
+    heroImage {
+      file {
+        url
       }
     }
   }

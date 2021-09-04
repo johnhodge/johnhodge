@@ -1,0 +1,17 @@
+@use 'variables' as *;
+
+@mixin dark-scheme() {
+  background: $black13;
+  color: $white98;
+}
+
+@mixin flex-align-items($align-items: center) {
+  display: flex;
+  align-items: $align-items;
+}
+
+@mixin global-container() {
+  width: $globalWidth;
+  max-width: $wideContainer;
+  margin: auto;
+}
