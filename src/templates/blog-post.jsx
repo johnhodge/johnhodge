@@ -7,7 +7,7 @@ import Article from '../components/article';
 
 const BlogPost = ({ data }) => {
   const post = data.contentfulBlogPost;
-  var cleanHTML = DOMPurify.sanitize(post.body.childMarkdownRemark.html);
+  var cleanHTML = post.body.childMarkdownRemark.html;
 
   return (
     <Layout featuredImage={post.heroImage.file.url} pageTitle={post.title}>
