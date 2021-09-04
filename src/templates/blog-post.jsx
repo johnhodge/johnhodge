@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import DOMPurify from 'isomorphic-dompurify';
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
 import Article from '../components/article';
