@@ -1,13 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import DOMPurify from 'isomorphic-dompurify';
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
 import Article from '../components/article';
 
 const BlogPost = ({ data }) => {
   const post = data.contentfulBlogPost;
-  var cleanHTML = DOMPurify.sanitize(post.body.childMarkdownRemark.html);
+  var cleanHTML = post.body.childMarkdownRemark.html;
 
   return (
     <Layout featuredImage={post.heroImage.file.url} pageTitle={post.title}>
