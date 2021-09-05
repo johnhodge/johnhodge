@@ -5,24 +5,24 @@ import Layout from '../components/layout';
 const Posts = ({ pageContext, data, location }) => (
   <Layout location={location} pageTitle={pageContext.name}>
     {pageContext.type === `category`
-      ? data.category.edges.map(({ node, i }) => (
-          <div key={i}>
+      ? data.category.edges.map(({ node }) => (
+          <div key={node.id}>
             <Link to={`/insights/${node.slug}`}>
               <h2>{node.title}</h2>
             </Link>
           </div>
         ))
       : pageContext.type === `author`
-      ? data.author.edges.map(({ node, i }) => (
-          <div key={i}>
+      ? data.author.edges.map(({ node }) => (
+          <div key={node.id}>
             <Link to={`/insights/${node.slug}`}>
               <h2>{node.title}</h2>
             </Link>
           </div>
         ))
       : pageContext.type === `blog`
-      ? data.blog.edges.map(({ node, i }) => (
-          <div key={i}>
+      ? data.blog.edges.map(({ node }) => (
+          <div key={node.id}>
             <Link to={`/insights/${node.slug}`}>
               <h2>{node.title}</h2>
             </Link>
