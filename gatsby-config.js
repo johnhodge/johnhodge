@@ -27,6 +27,18 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `BrightShell`,
+        short_name: `BrightShell`,
+        start_url: `/`,
+        background_color: `#1F2023`,
+        theme_color: `#32D2FA`,
+        display: `standalone`,
+        icon: `src/images/logo_blue.svg`,
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
