@@ -2,8 +2,8 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 
-const Posts = ({ data }) => (
-  <Layout pageTitle='John Hodge'>
+const Posts = ({ data, location }) => (
+  <Layout location={location} pageTitle='John Hodge'>
     <div>
       <p>Old man winter.</p>
     </div>

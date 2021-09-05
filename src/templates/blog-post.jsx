@@ -3,12 +3,13 @@ import { graphql } from 'gatsby';
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
   var cleanHTML = post.body.childMarkdownRemark.html;
 
   return (
     <Layout
+      location={location}
       featuredImage={post.heroImage.file.url}
       pageTitle={post.title}
       post={post}>

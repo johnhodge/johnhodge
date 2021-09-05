@@ -6,7 +6,7 @@ import Article from '../components/article';
 import defaultFeaturedImage from '../images/logo_red.svg';
 import * as styles from '../components/layout.module.scss';
 
-const Layout = ({ pageTitle, children, featuredImage, post }) => (
+const Layout = ({ pageTitle, children, featuredImage, post, location }) => (
   <StaticQuery
     query={graphql`
       {
@@ -27,8 +27,8 @@ const Layout = ({ pageTitle, children, featuredImage, post }) => (
       return (
         <div>
           <Header data={data} />
-
-          {window.location.pathname === '/' ? (
+          {console.log(location)}
+          {location.pathname === '/' ? (
             ''
           ) : (
             <div className={styles.featuredImage}>
@@ -40,7 +40,7 @@ const Layout = ({ pageTitle, children, featuredImage, post }) => (
             </div>
           )}
           <main>
-            {window.location.pathname === '/' ? (
+            {location.pathname === '/' ? (
               ''
             ) : (
               <Article pageTitle={pageTitle} post={post} />
