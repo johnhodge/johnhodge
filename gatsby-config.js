@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://johnghodge.com`,
     title: `BrightShell`,
     logo: `/logo_blue.svg`,
+    featuredImage: `/logo_red.svg`,
     description: `This website is a basic theme with some cool functionality for tagging and basic UI interactions.`,
     metaLinks: [
       {

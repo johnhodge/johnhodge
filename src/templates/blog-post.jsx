@@ -2,14 +2,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import JsonLd from '../components/json-ld';
 import Layout from '../components/layout';
-import Article from '../components/article';
 
 const BlogPost = ({ data }) => {
   const post = data.contentfulBlogPost;
   var cleanHTML = post.body.childMarkdownRemark.html;
 
   return (
-    <Layout featuredImage={post.heroImage.file.url} pageTitle={post.title}>
+    <Layout
+      featuredImage={post.heroImage.file.url}
+      pageTitle={post.title}
+      post={post}>
       <JsonLd>
         {{
           '@context': 'https://schema.org',
@@ -23,7 +25,6 @@ const BlogPost = ({ data }) => {
           },
         }}
       </JsonLd>
-      <Article post={post} />
       <section
         dangerouslySetInnerHTML={{ __html: cleanHTML }}
         itemProp='articleBody'
