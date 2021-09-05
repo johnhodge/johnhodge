@@ -2,9 +2,11 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import Article from '../components/article';
+import defaultFeaturedImage from '../images/logo_red.svg';
 import * as styles from '../components/layout.module.scss';
 
-const Layout = ({ pageTitle, children, featuredImage }) => (
+const Layout = ({ pageTitle, children, featuredImage, post, location }) => (
   <StaticQuery
     query={graphql`
       {
@@ -25,18 +27,26 @@ const Layout = ({ pageTitle, children, featuredImage }) => (
       return (
         <div>
           <Header data={data} />
-          {featuredImage ? (
+          {console.log(location)}
+          {location.pathname === '/' ? (
+            ''
+          ) : (
             <div className={styles.featuredImage}>
               <img
-                src={`https://${featuredImage}`}
+                src={featuredImage || defaultFeaturedImage}
                 alt={`${pageTitle}`}
                 title={`${pageTitle}`}
               />
             </div>
-          ) : (
-            ''
           )}
-          <main>{children}</main>
+          <main>
+            {location.pathname === '/' ? (
+              ''
+            ) : (
+              <Article pageTitle={pageTitle} post={post} />
+            )}
+            {children}
+          </main>
           <Footer data={data} />
         </div>
       );

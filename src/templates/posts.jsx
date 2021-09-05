@@ -2,8 +2,8 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
-const Posts = ({ pageContext, data }) => (
-  <Layout pageTitle={pageContext.name}>
+const Posts = ({ pageContext, data, location }) => (
+  <Layout location={location} pageTitle={pageContext.name}>
     {pageContext.type === `category`
       ? data.category.edges.map(({ node, i }) => (
           <div key={i}>

@@ -13,7 +13,6 @@ article {
     margin: 0;
     padding: 0;
   }
-  h1.header-text,
   p.publish-date {
     margin-bottom: 2rem;
   }
@@ -22,6 +21,7 @@ article {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem 2rem;
+    margin-top: 2rem;
     * {
       display: flex;
       align-items: center;
