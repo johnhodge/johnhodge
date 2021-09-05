@@ -9,7 +9,7 @@
     color: inherit;
   }
   nav {
-    @include mixins.global-container;
+    @include mixins.global-container(none);
     @include mixins.flex-align-items;
     justify-content: space-between;
     div.branding {

@@ -10,8 +10,8 @@
   align-items: $align-items;
 }
 
-@mixin global-container() {
+@mixin global-container($max-width: $wideContainer) {
   width: $globalWidth;
-  max-width: $wideContainer;
+  max-width: $max-width;
   margin: auto;
 }

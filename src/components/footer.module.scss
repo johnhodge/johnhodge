@@ -2,8 +2,8 @@
 @use '../styles/mixins';
 
 footer {
+  @include mixins.global-container(none);
   @include mixins.flex-align-items;
-  @include mixins.global-container;
   margin: 2rem auto 1rem;
   border-top: $borderGray40;
 }
