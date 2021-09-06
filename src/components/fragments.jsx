@@ -60,6 +60,7 @@ export const postEntryData = graphql`
       description
     }
     title
+    createdAt
     updatedAt
     slug
   }

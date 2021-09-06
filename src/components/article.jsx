@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'gatsby';
 import * as styles from '../components/article.module.scss';
 
-const Article = ({ post, pageTitle }) => {
+const Article = ({ post, pageTitle, createdAt }) => {
   return (
     <article>
       <h1 className={styles.headerText}>{pageTitle}</h1>
       {post ? (
         <div className={styles.articleInfo}>
-          <span title='Updated date in UTC'>
+          <span title='Published at'>
             <svg
               id='Group_2'
               data-name='Group 2'
@@ -86,7 +86,7 @@ const Article = ({ post, pageTitle }) => {
                 stroke-width='1.5'
               />
             </svg>
-            {post.updatedAt}
+            {createdAt}
           </span>
           <Link
             to={`/category/${post.category.name
