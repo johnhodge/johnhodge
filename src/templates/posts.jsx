@@ -49,24 +49,31 @@ const Posts = ({ pageContext, data, location }) => (
 
 export const query = graphql`
   query posts($id: String = "") {
-    category: allContentfulBlogPost(filter: { category: { id: { eq: $id } } }) {
+    category: allContentfulBlogPost(
+      filter: { category: { id: { eq: $id } } }
+      sort: { fields: createdAt, order: DESC }
+    ) {
       edges {
         ...postListingData
       }
     }
-    author: allContentfulBlogPost(filter: { author: { id: { eq: $id } } }) {
+    author: allContentfulBlogPost(
+      filter: { author: { id: { eq: $id } } }
+      sort: { fields: createdAt, order: DESC }
+    ) {
       edges {
         ...postListingData
       }
     }
     tag: allContentfulBlogPost(
       filter: { metadata: { tags: { elemMatch: { id: { eq: $id } } } } }
+      sort: { fields: createdAt, order: DESC }
     ) {
       edges {
         ...postListingData
       }
     }
-    blog: allContentfulBlogPost {
+    blog: allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
       edges {
         ...postListingData
       }
