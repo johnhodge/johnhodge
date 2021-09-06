@@ -1,9 +1,24 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
+import JsonLd from '../components/json-ld';
+import Seo from '../components/seo';
 
 const Posts = ({ pageContext, data, location }) => (
   <Layout location={location} pageTitle={pageContext.name}>
+    <Seo
+      metaTitle={pageContext.name}
+      description={pageContext.description}
+      metaKeywords={pageContext.keywords}
+    />
+    <JsonLd>
+      {{
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        url: location.origin,
+        name: 'BrightShell, LLC',
+      }}
+    </JsonLd>
     {pageContext.type === `category`
       ? data.category.edges.map(({ node }) => (
           <div key={node.id}>
