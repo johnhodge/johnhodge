@@ -27,7 +27,6 @@ const Layout = ({ pageTitle, children, featuredImage, post, location }) => (
       return (
         <div>
           <Header data={data} />
-          {console.log(location)}
           {location.pathname === '/' ? (
             ''
           ) : (
