@@ -9,16 +9,20 @@ const BlogPost = ({ data, location }) => {
   var cleanHTML = post.body.childMarkdownRemark.html;
 
   let datestampOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
+    // Leaving this code here in case we want to change the timestamp formatting.
+    // weekday: 'short',
+    // year: 'numeric',
+    // month: 'short',
+    // day: 'numeric',
+    // hour: 'numeric',
+    // minute: 'numeric',
     timeZone: 'America/New_York',
     timeZoneName: 'short',
   };
-  const publishDateTz = new Date(
+  const createdAtTz = new Date(
+    data.contentfulBlogPost.createdAt
+  ).toLocaleString('en-US', datestampOptions);
+  const updatedAtTz = new Date(
     data.contentfulBlogPost.updatedAt
   ).toLocaleString('en-US', datestampOptions);
 
@@ -32,7 +36,7 @@ const BlogPost = ({ data, location }) => {
   };
 
   const metaArticle = {
-    article_published_time: data.contentfulBlogPost.isoPublishDate,
+    article_published_time: data.contentfulBlogPost.createdAt,
     article_modified_time: data.contentfulBlogPost.updatedAt,
     article_author: data.contentfulBlogPost.author.name,
     article_section: data.contentfulBlogPost.category.name,
@@ -43,6 +47,7 @@ const BlogPost = ({ data, location }) => {
       location={location}
       featuredImage={post.heroImage.file.url}
       pageTitle={post.title}
+      createdAt={createdAtTz}
       post={post}>
       <Seo
         metaTitle={data.contentfulBlogPost.title}
@@ -61,10 +66,19 @@ const BlogPost = ({ data, location }) => {
           name: 'BrightShell, LLC',
         }}
       </JsonLd>
-      <section
-        dangerouslySetInnerHTML={{ __html: cleanHTML }}
-        itemProp='articleBody'
-      />
+      <section>
+        {updatedAtTz === createdAtTz ? (
+          ''
+        ) : (
+          <p>
+            <em>Updated at {updatedAtTz}</em>
+          </p>
+        )}
+        <div
+          dangerouslySetInnerHTML={{ __html: cleanHTML }}
+          itemProp='articleBody'
+        />
+      </section>
     </Layout>
   );
 };

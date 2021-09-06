@@ -6,7 +6,15 @@ import Article from '../components/article';
 import defaultFeaturedImage from '../images/logo_red.svg';
 import * as styles from '../components/layout.module.scss';
 
-const Layout = ({ pageTitle, children, featuredImage, post, location }) => (
+const Layout = ({
+  pageTitle,
+  children,
+  featuredImage,
+  post,
+  location,
+  createdAt,
+  updatedAt,
+}) => (
   <StaticQuery
     query={graphql`
       {
@@ -42,7 +50,11 @@ const Layout = ({ pageTitle, children, featuredImage, post, location }) => (
             {location.pathname === '/' ? (
               ''
             ) : (
-              <Article pageTitle={pageTitle} post={post} />
+              <Article
+                pageTitle={pageTitle}
+                post={post}
+                createdAt={createdAt}
+              />
             )}
             {children}
           </main>
