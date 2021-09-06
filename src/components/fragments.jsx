@@ -15,6 +15,7 @@ export const postListingData = graphql`
       }
       slug
       title
+      createdAt
       updatedAt
       author {
         name
