@@ -13,7 +13,6 @@ const Layout = ({
   post,
   location,
   createdAt,
-  updatedAt,
 }) => (
   <StaticQuery
     query={graphql`
@@ -27,6 +26,62 @@ const Layout = ({
               link
               name
             }
+          }
+        }
+        contentfulCompany {
+          githubUrl
+          linkedInUrl
+          instagramUrl
+          name
+          homepageHeadline
+          homepageCtaText
+          footerCtaButtonText
+          footerCtaDescription
+          footerCtaHeadline
+          footerCtaImage {
+            title
+            description
+            file {
+              url
+              details {
+                image {
+                  height
+                  width
+                }
+              }
+            }
+          }
+          solutions {
+            solutionsName
+            solutionsDescription
+            solutionsAlternateDescription
+            solutionsGraphic {
+              file {
+                fileName
+                url
+                details {
+                  image {
+                    height
+                    width
+                  }
+                }
+                contentType
+              }
+            }
+          }
+          headshot {
+            file {
+              url
+              details {
+                image {
+                  height
+                  width
+                }
+              }
+              fileName
+              contentType
+            }
+            title
           }
         }
       }

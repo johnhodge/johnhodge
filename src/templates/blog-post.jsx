@@ -71,7 +71,7 @@ const BlogPost = ({ data, location }) => {
           ''
         ) : (
           <p>
-            <em>Updated at {updatedAtTz}</em>
+            <em>Updated: {updatedAtTz}</em>
           </p>
         )}
         <div
