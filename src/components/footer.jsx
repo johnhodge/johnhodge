@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
-import * as styles from './footer.module.scss';
+import * as React from "react";
+import { Link } from "gatsby";
+import * as styles from "./footer.module.scss";
 
 const Footer = ({ data }) => {
   var today = new Date();
@@ -10,8 +10,8 @@ const Footer = ({ data }) => {
     <footer>
       <p className={styles.copyrightInfo}>
         © {year}
-        {'  '}
-        <Link to='/' title={`Link to the ${siteData.title} homepage`}>
+        {"  "}
+        <Link to="/" title={`Link to the ${siteData.title} homepage`}>
           {siteData.title}, LLC
         </Link>
       </p>

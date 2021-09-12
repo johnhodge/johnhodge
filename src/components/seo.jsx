@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Seo = ({
   description,
@@ -32,7 +32,7 @@ const Seo = ({
 
   return (
     <Helmet
-      htmlAttributes={{ lang: 'en' }}
+      htmlAttributes={{ lang: "en" }}
       title={title}
       link={
         canonical
@@ -55,7 +55,7 @@ const Seo = ({
         },
         {
           name: `keywords`,
-          content: keywords.join(','),
+          content: keywords.join(","),
         },
         {
           property: `og:title`,

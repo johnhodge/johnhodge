@@ -1,10 +1,10 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import Article from '../components/article';
-import defaultFeaturedImage from '../images/logo_red.svg';
-import * as styles from '../components/layout.module.scss';
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Article from "../components/article";
+import defaultFeaturedImage from "../images/logo_red.svg";
+import * as styles from "../components/layout.module.scss";
 
 const Layout = ({
   pageTitle,
@@ -90,8 +90,8 @@ const Layout = ({
       return (
         <div>
           <Header data={data} />
-          {location.pathname === '/' ? (
-            ''
+          {location.pathname === "/" ? (
+            ""
           ) : (
             <div className={styles.featuredImage}>
               <img
@@ -102,8 +102,8 @@ const Layout = ({
             </div>
           )}
           <main>
-            {location.pathname === '/' ? (
-              ''
+            {location.pathname === "/" ? (
+              ""
             ) : (
               <Article
                 pageTitle={pageTitle}

@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql } from "gatsby";
 
 export const postListingData = graphql`
   fragment postListingData on ContentfulBlogPostEdge {
@@ -47,6 +47,7 @@ export const postEntryData = graphql`
     }
     description
     heroImage {
+      gatsbyImageData(formats: AUTO)
       file {
         contentType
         details {

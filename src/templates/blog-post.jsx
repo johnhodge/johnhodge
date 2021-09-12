@@ -1,8 +1,8 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import JsonLd from '../components/json-ld';
-import Seo from '../components/seo';
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import JsonLd from "../components/json-ld";
+import Seo from "../components/seo";
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
@@ -16,15 +16,15 @@ const BlogPost = ({ data, location }) => {
     // day: 'numeric',
     // hour: 'numeric',
     // minute: 'numeric',
-    timeZone: 'America/New_York',
-    timeZoneName: 'short',
+    timeZone: "America/New_York",
+    timeZoneName: "short",
   };
   const createdAtTz = new Date(
     data.contentfulBlogPost.createdAt
-  ).toLocaleString('en-US', datestampOptions);
+  ).toLocaleString("en-US", datestampOptions);
   const updatedAtTz = new Date(
     data.contentfulBlogPost.updatedAt
-  ).toLocaleString('en-US', datestampOptions);
+  ).toLocaleString("en-US", datestampOptions);
 
   const imageData = data.contentfulBlogPost.heroImage;
   const metaImage = {
@@ -48,7 +48,8 @@ const BlogPost = ({ data, location }) => {
       featuredImage={post.heroImage.file.url}
       pageTitle={post.title}
       createdAt={createdAtTz}
-      post={post}>
+      post={post}
+    >
       <Seo
         metaTitle={data.contentfulBlogPost.title}
         metaImage={metaImage}
@@ -60,15 +61,15 @@ const BlogPost = ({ data, location }) => {
       />
       <JsonLd>
         {{
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
+          "@context": "https://schema.org",
+          "@type": "Organization",
           url: location.origin,
-          name: 'BrightShell, LLC',
+          name: "BrightShell, LLC",
         }}
       </JsonLd>
       <section>
         {updatedAtTz === createdAtTz ? (
-          ''
+          ""
         ) : (
           <p>
             <em>Updated: {updatedAtTz}</em>
@@ -76,7 +77,7 @@ const BlogPost = ({ data, location }) => {
         )}
         <div
           dangerouslySetInnerHTML={{ __html: cleanHTML }}
-          itemProp='articleBody'
+          itemProp="articleBody"
         />
       </section>
     </Layout>

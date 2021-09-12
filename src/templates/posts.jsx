@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import JsonLd from '../components/json-ld';
-import Seo from '../components/seo';
+import * as React from "react";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/layout";
+import JsonLd from "../components/json-ld";
+import Seo from "../components/seo";
 
 const Posts = ({ pageContext, data, location }) => (
   <Layout location={location} pageTitle={pageContext.name}>
@@ -13,10 +13,10 @@ const Posts = ({ pageContext, data, location }) => (
     />
     <JsonLd>
       {{
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
+        "@context": "https://schema.org",
+        "@type": "Organization",
         url: location.origin,
-        name: 'BrightShell, LLC',
+        name: "BrightShell, LLC",
       }}
     </JsonLd>
     {pageContext.type === `category`
@@ -43,7 +43,7 @@ const Posts = ({ pageContext, data, location }) => (
             </Link>
           </div>
         ))
-      : ''}
+      : ""}
   </Layout>
 );
 
