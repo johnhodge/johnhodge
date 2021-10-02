@@ -1,10 +1,10 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import Article from "../components/article";
+import Header from "./header";
+import Footer from "./footer";
+import Article from "./article";
 import defaultFeaturedImage from "../images/logo_red.svg";
-import * as styles from "../components/layout.module.scss";
+import * as styles from "./layout.module.scss";
 
 const Layout = ({
   pageTitle,
@@ -29,9 +29,6 @@ const Layout = ({
           }
         }
         contentfulCompany {
-          githubUrl
-          linkedInUrl
-          instagramUrl
           name
           homepageHeadline
           homepageCtaText
@@ -83,40 +80,39 @@ const Layout = ({
             }
             title
           }
+          socialMedia {
+            accountHandle
+            accountId
+            accountUrl
+          }
         }
       }
     `}
-    render={(data) => {
-      return (
-        <div>
-          <Header data={data} />
+    render={(data) => (
+      <div>
+        <Header data={data} />
+        {location.pathname === "/" ? (
+          ""
+        ) : (
+          <div className={styles.featuredImage}>
+            <img
+              src={featuredImage || defaultFeaturedImage}
+              alt={`${pageTitle}`}
+              title={`${pageTitle}`}
+            />
+          </div>
+        )}
+        <main>
           {location.pathname === "/" ? (
             ""
           ) : (
-            <div className={styles.featuredImage}>
-              <img
-                src={featuredImage || defaultFeaturedImage}
-                alt={`${pageTitle}`}
-                title={`${pageTitle}`}
-              />
-            </div>
+            <Article pageTitle={pageTitle} post={post} createdAt={createdAt} />
           )}
-          <main>
-            {location.pathname === "/" ? (
-              ""
-            ) : (
-              <Article
-                pageTitle={pageTitle}
-                post={post}
-                createdAt={createdAt}
-              />
-            )}
-            {children}
-          </main>
-          <Footer data={data} />
-        </div>
-      );
-    }}
+          {children}
+        </main>
+        <Footer data={data} />
+      </div>
+    )}
   />
 );
 

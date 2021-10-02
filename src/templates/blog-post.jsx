@@ -6,9 +6,9 @@ import Seo from "../components/seo";
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
-  var cleanHTML = post.body.childMarkdownRemark.html;
+  const cleanHTML = post.body.childMarkdownRemark.html;
 
-  let datestampOptions = {
+  const datestampOptions = {
     // Leaving this code here in case we want to change the timestamp formatting.
     // weekday: 'short',
     // year: 'numeric',
@@ -58,6 +58,7 @@ const BlogPost = ({ data, location }) => {
         description={data.contentfulBlogPost.description.description}
         metaKeywords={data.contentfulBlogPost.keywords}
         pathname={`/insights/${data.contentfulBlogPost.slug}`}
+        metaLang={data.contentfulBlogPost.node_locale}
       />
       <JsonLd>
         {{

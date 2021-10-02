@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import Headroom from "react-headroom";
 import logo from "../images/logo_blue.svg";
-import * as styles from "../components/header.module.scss";
+import * as styles from "./header.module.scss";
 
 const Header = ({ data }) => {
   const siteData = data.site.siteMetadata;
@@ -21,15 +21,13 @@ const Header = ({ data }) => {
             </Link>
           </div>
           <ul>
-            {siteData.metaLinks.map((item, i) => {
-              return (
-                <li key={i}>
-                  <Link to={`${item.link}`} title={`Link to ${item.name}`}>
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
+            {siteData.metaLinks.map((item) => (
+              <li key={item.link}>
+                <Link to={`${item.link}`} title={`Link to ${item.name}`}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

@@ -5,13 +5,12 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const Seo = ({
   description,
-  lang,
   meta,
+  pathname,
+  metaLang,
   metaImage,
   metaTitle,
-  pathname,
   metaKeywords,
-  metaAuthor,
   metaArticle,
 }) => {
   const { site } = useStaticQuery(graphql`
@@ -26,13 +25,14 @@ const Seo = ({
   const metaDescription = description || site.siteMetadata.description;
   const keywords = metaKeywords || site.siteMetadata.keywords;
   const image = metaImage || site.siteMetadata.image;
-  const social = site.siteMetadata.social;
-  const article = metaArticle ? metaArticle : null;
+  const { social } = site.siteMetadata;
+  const article = metaArticle || null;
   const title = `${metaTitle} | ${site.siteMetadata.title}`;
+  const lang = metaLang || "en";
 
   return (
     <Helmet
-      htmlAttributes={{ lang: "en" }}
+      htmlAttributes={{ lang }}
       title={title}
       link={
         canonical
@@ -162,14 +162,16 @@ const Seo = ({
 };
 
 Seo.defaultProps = {
-  lang: `en`,
+  metaLang: `en`,
   meta: [],
   description: ``,
+  pathname: ``,
+  image: ``,
 };
 
 Seo.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
+  metaLang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   metaTitle: PropTypes.string.isRequired,
   image: PropTypes.shape({

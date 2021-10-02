@@ -32,6 +32,7 @@ export const postListingData = graphql`
 
 export const postEntryData = graphql`
   fragment postEntryData on ContentfulBlogPost {
+    node_locale
     author {
       name
       id

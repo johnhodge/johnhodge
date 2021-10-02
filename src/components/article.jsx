@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import * as styles from "../components/article.module.scss";
+import * as styles from "./article.module.scss";
 
-const Article = ({ post, pageTitle, createdAt }) => {
-  return (
+const Article = ({ post, pageTitle, createdAt }) => (
     <article>
       <h1 className={styles.headerText}>{pageTitle}</h1>
       {post ? (
@@ -33,9 +32,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(7.276 8.535)"
                 fill="none"
                 stroke="#3692f0"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
               <line
                 id="Line_1"
@@ -45,9 +44,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(27.424 4.757)"
                 fill="none"
                 stroke="#3692f0"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
               <line
                 id="Line_2"
@@ -57,9 +56,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(13.572 4.757)"
                 fill="none"
                 stroke="#3692f0"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
               <line
                 id="Line_3"
@@ -69,9 +68,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(7.276 18.609)"
                 fill="none"
                 stroke="#3692f0"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
               <rect
                 id="Rectangle_4"
@@ -82,9 +81,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(13.572 26.165)"
                 fill="none"
                 stroke="#3692f0"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
             </svg>
             {createdAt}
@@ -117,9 +116,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(2.16 2.16)"
                 fill="none"
                 stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
               <ellipse
                 id="Ellipse_2"
@@ -132,9 +131,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(11.773 11.276)"
                 fill="none"
                 stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
               />
             </svg>
             {post.category.name}
@@ -169,9 +168,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(8 5)"
                 fill="none"
                 stroke="#2c76bf"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
               <path
                 id="Path_20"
@@ -181,9 +180,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(2.16 10.798)"
                 fill="none"
                 stroke="#2c76bf"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
               <path
                 id="Path_21"
@@ -193,9 +192,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(11.517 2.253)"
                 fill="none"
                 stroke="#2c76bf"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
               <path
                 id="Path_22"
@@ -205,9 +204,9 @@ const Article = ({ post, pageTitle, createdAt }) => {
                 transform="translate(12.957 10.906)"
                 fill="none"
                 stroke="#2c76bf"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
             {post.author.name}
@@ -218,6 +217,5 @@ const Article = ({ post, pageTitle, createdAt }) => {
       )}
     </article>
   );
-};
 
 export default Article;

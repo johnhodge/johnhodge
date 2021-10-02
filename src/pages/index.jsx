@@ -1,10 +1,9 @@
 import * as React from "react";
-import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
 
-const Posts = ({ data, location }) => (
+const Posts = ({ location }) => (
   <Layout location={location} pageTitle="John Hodge">
     <Seo metaTitle="Home" />
     <JsonLd>

@@ -3,8 +3,8 @@ import { Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 
 const Footer = ({ data }) => {
-  var today = new Date();
-  var year = today.getFullYear();
+  const today = new Date();
+  const year = today.getFullYear();
   const siteData = data.site.siteMetadata;
   return (
     <footer>

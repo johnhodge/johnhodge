@@ -1,5 +1,5 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
-const os = require('os');
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+
 module.exports = {
   siteMetadata: {
     author: `John Hodge`,
