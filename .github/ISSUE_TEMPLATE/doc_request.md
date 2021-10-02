@@ -18,7 +18,6 @@ assignees: "johnhodge"
 **What feature or concept needs to be addressed in document requested?**
 
 **Are you willing to create a first draft of these docs?**
-
 Yes.
 
 **Other relevant information:**

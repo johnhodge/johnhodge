@@ -3,7 +3,7 @@ name: Test Request
 about: Create a feat request of a specific test that needs to be added.
 title: "test: [Describe test here]"
 labels: "test"
-assignees: ""
+assignees: "johnhodge"
 ---
 
 # Test Request
@@ -17,5 +17,4 @@ assignees: ""
 **What is the definition of success for this test?**
 
 **Are you willing to work on this yourself?**
-
 Yes
