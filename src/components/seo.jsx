@@ -28,7 +28,7 @@ const Seo = ({
   const { social } = site.siteMetadata;
   const article = metaArticle || null;
   const title = `${metaTitle} | ${site.siteMetadata.title}`;
-  const lang = metaLang || "en";
+  const lang = metaLang;
 
   return (
     <Helmet
@@ -162,7 +162,7 @@ const Seo = ({
 };
 
 Seo.defaultProps = {
-  metaLang: `en`,
+  metaLang: `US-en`,
   meta: [],
   description: ``,
   pathname: ``,
