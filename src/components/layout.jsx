@@ -47,24 +47,6 @@ const Layout = ({
               }
             }
           }
-          solutions {
-            solutionsName
-            solutionsDescription
-            solutionsAlternateDescription
-            solutionsGraphic {
-              file {
-                fileName
-                url
-                details {
-                  image {
-                    height
-                    width
-                  }
-                }
-                contentType
-              }
-            }
-          }
           socialMedia {
             accountHandle
             accountId

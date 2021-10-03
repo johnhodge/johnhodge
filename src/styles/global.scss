@@ -104,6 +104,7 @@ Headroom navigation styles
   -ms-transform: $translateYZero;
 }
 .headroom--pinned {
+  @include mixins.light-scheme;
   position: fixed;
   border-bottom: $borderGray40;
   transform: $translateYZero;
@@ -111,6 +112,7 @@ Headroom navigation styles
   -moz-transform: $translateYZero;
   -o-transform: $translateYZero;
   -ms-transform: $translateYZero;
+  z-index: 10;
 }
 .headroom--scrolled {
   transition: transform, border-bottom $easeInOut200;
