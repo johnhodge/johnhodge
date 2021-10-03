@@ -52,22 +52,17 @@ const Solutions = () => (
               </div>
             </div>
           ) : (
-            <div
-              className={[styles.solutionsContainerSwitch]}
-              key={solution.id}
-            >
+            <div className={styles.solutionsContainerSwitch} key={solution.id}>
               <div className={styles.descriptionContainer}>
                 <p>{solution.solutionsDescription}</p>
               </div>
-              <div className={styles.imageContainer}>
-                <h2 className={styles.solutionsName}>
-                  {solution.solutionsName}
-                </h2>
+              <div className="graphic-headline-container">
+                <h2 className="graphic-headline">{solution.solutionsName}</h2>
                 <img
                   src={solution.solutionsGraphic.file.url}
                   title={solution.solutionsGraphic.title}
                   alt={solution.solutionsGraphic.description}
-                  className={styles.solutionsGraphic}
+                  className="graphic-creative"
                 />
               </div>
             </div>
