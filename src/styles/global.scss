@@ -2,13 +2,21 @@
 @use "mixins";
 
 /*
+Global styles
+*/
+*:focus-visible {
+  outline-offset: 0.25rem;
+  outline: 0.5rem auto $cyan60;
+}
+
+/*
 Base styles
 */
 html {
   line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
-  color: $black30;
+  color: $black13;
 }
 main {
   @include mixins.global-container;
@@ -57,6 +65,25 @@ pre > code {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/*
+Buttons
+*/
+.btn-primary {
+  font-family: $headerFont;
+  font-size: 1.2rem;
+  color: $black13;
+  text-align: center;
+  background: linear-gradient(90deg, $white80, $white100);
+  border: 2px $blue60 solid;
+  border-radius: 3px;
+  padding: 1rem 4rem;
+}
+
+.btn-primary:hover {
+  background: $white100;
+  border-color: $purple70;
 }
 
 /*
@@ -115,7 +142,8 @@ Media queries
   }
 }
 @media (prefers-color-scheme: dark) {
-  html {
+  html,
+  .headroom--pinned {
     @include mixins.dark-scheme;
   }
   code,

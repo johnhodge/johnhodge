@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import Header from "./header";
 import Footer from "./footer";
 import Article from "./article";
+import HomepageHero from "./hero";
 import defaultFeaturedImage from "../images/logo_red.svg";
 import * as styles from "./layout.module.scss";
 
@@ -30,8 +31,6 @@ const Layout = ({
         }
         contentfulCompany {
           name
-          homepageHeadline
-          homepageCtaText
           footerCtaButtonText
           footerCtaDescription
           footerCtaHeadline
@@ -66,20 +65,6 @@ const Layout = ({
               }
             }
           }
-          headshot {
-            file {
-              url
-              details {
-                image {
-                  height
-                  width
-                }
-              }
-              fileName
-              contentType
-            }
-            title
-          }
           socialMedia {
             accountHandle
             accountId
@@ -92,7 +77,7 @@ const Layout = ({
       <div>
         <Header data={data} />
         {location.pathname === "/" ? (
-          ""
+          <HomepageHero />
         ) : (
           <div className={styles.featuredImage}>
             <img

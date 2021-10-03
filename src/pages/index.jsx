@@ -4,19 +4,18 @@ import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
 
 const Posts = ({ location }) => (
-  <Layout location={location} pageTitle="John Hodge">
-    <Seo metaTitle="Home" />
-    <JsonLd>
-      {{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        url: location.origin,
-        name: "BrightShell, LLC",
-      }}
-    </JsonLd>
-    <div>
-      <p>Old man winter.</p>
-    </div>
-  </Layout>
+  <div>
+    <Layout location={location} pageTitle="John Hodge">
+      <Seo metaTitle="Home" />
+      <JsonLd>
+        {{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          url: location.origin,
+          name: "BrightShell, LLC",
+        }}
+      </JsonLd>
+    </Layout>
+  </div>
 );
 export default Posts;
