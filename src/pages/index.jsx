@@ -3,6 +3,7 @@ import Layout from "../components/layout";
 import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
 import Solutions from "../components/solutions";
+import Testimonials from "../components/testimonials";
 
 const Posts = ({ location }) => (
   <div>
@@ -17,6 +18,7 @@ const Posts = ({ location }) => (
         }}
       </JsonLd>
       <Solutions />
+      <Testimonials />
     </Layout>
   </div>
 );

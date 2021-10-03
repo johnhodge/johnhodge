@@ -34,6 +34,7 @@ const Solutions = () => (
     `}
     render={(data) => (
       <div className={home.hpSection}>
+        <h2 className={home.hpSectionHeader}>Solutions</h2>
         {data.contentfulCompany.solutions.map((solution, i) =>
           i % 2 === 0 ? (
             <div className={styles.solutionsContainer} key={solution.id}>
