@@ -2,14 +2,6 @@
 @use "mixins";
 
 /*
-Global styles
-*/
-*:focus-visible {
-  outline-offset: 0.25rem;
-  outline: 0.5rem auto $cyan60;
-}
-
-/*
 Base styles
 */
 html {
@@ -68,6 +60,30 @@ img {
 }
 
 /*
+Global styles
+*/
+*:focus-visible {
+  outline-offset: 0.25rem;
+  outline: 0.5rem auto $cyan60;
+}
+
+.graphic-headline-container {
+  position: relative;
+}
+
+.graphic-headline {
+  position: absolute;
+  top: 10%;
+  font-size: max(4vw, 2rem);
+  z-index: 1;
+}
+
+.graphic-creative {
+  width: 100%;
+  filter: opacity(0.75);
+}
+
+/*
 Buttons
 */
 .btn-primary {
@@ -79,6 +95,7 @@ Buttons
   border: 2px $blue60 solid;
   border-radius: 3px;
   padding: 1rem 4rem;
+  display: inline-block;
 }
 
 .btn-primary:hover {

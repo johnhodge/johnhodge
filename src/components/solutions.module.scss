@@ -15,22 +15,6 @@
   flex-flow: column-reverse;
 }
 
-.image-container {
-  position: relative;
-}
-
-.solutions-name {
-  position: absolute;
-  top: 10%;
-  font-size: max(4vw, 2rem);
-  z-index: 1;
-}
-
-.solutions-graphic {
-  width: 100%;
-  filter: opacity(0.75);
-}
-
 @media screen and (min-width: 768px) {
   .solutions-container,
   .solutions-container-switch {
