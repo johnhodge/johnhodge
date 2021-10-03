@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import * as styles from "./hero.module.scss";
+import * as home from "../pages/index.module.scss";
 
 const HomepageHero = () => (
   <StaticQuery
@@ -20,7 +21,7 @@ const HomepageHero = () => (
       }
     `}
     render={(data) => (
-      <div>
+      <div className={home.hpSection}>
         <div className={styles.heroTextContainer}>
           <h1 className={styles.heroText}>
             {data.contentfulCompany.homepageHeadline}

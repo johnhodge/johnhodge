@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./solutions.module.scss";
+import * as home from "../pages/index.module.scss";
 
 const Solutions = () => (
   <StaticQuery
@@ -32,7 +33,7 @@ const Solutions = () => (
       }
     `}
     render={(data) => (
-      <div>
+      <div className={home.hpSection}>
         {data.contentfulCompany.solutions.map((solution, i) =>
           i % 2 === 0 ? (
             <div className={styles.solutionsContainer} key={solution.id}>
