@@ -166,7 +166,11 @@ Seo.defaultProps = {
   meta: [],
   description: ``,
   pathname: ``,
-  image: ``,
+  image: {
+    src: ``,
+    height: 0,
+    width: 0,
+  },
 };
 
 Seo.propTypes = {

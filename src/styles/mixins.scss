@@ -5,6 +5,11 @@
   color: $white98;
 }
 
+@mixin light-scheme() {
+  background: $white98;
+  color: $black13;
+}
+
 @mixin flex-align-items($align-items: center) {
   display: flex;
   align-items: $align-items;

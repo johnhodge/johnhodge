@@ -2,7 +2,7 @@
 @use "../styles/mixins";
 
 .navigation {
-  background-color: $white100;
+  background-color: transparent;
   padding: 1rem 0;
   a {
     text-decoration: none;
@@ -55,6 +55,6 @@
 
 @media (prefers-color-scheme: dark) {
   .navigation {
-    @include mixins.dark-scheme;
+    color: $white98;
   }
 }

@@ -8,7 +8,7 @@ html {
   line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
-  color: $black30;
+  color: $black13;
 }
 main {
   @include mixins.global-container;
@@ -60,6 +60,50 @@ img {
 }
 
 /*
+Global styles
+*/
+*:focus-visible {
+  outline-offset: 0.25rem;
+  outline: 0.5rem auto $cyan60;
+}
+
+.graphic-headline-container {
+  position: relative;
+}
+
+.graphic-headline {
+  position: absolute;
+  top: 10%;
+  font-size: max(4vw, 2rem);
+  z-index: 1;
+}
+
+.graphic-creative {
+  width: 100%;
+  filter: opacity(0.75);
+}
+
+/*
+Buttons
+*/
+.btn-primary {
+  font-family: $headerFont;
+  font-size: 1.2rem;
+  color: $black13;
+  text-align: center;
+  background: linear-gradient(90deg, $white80, $white100);
+  border: 2px $blue60 solid;
+  border-radius: 3px;
+  padding: 1rem 4rem;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: $white100;
+  border-color: $purple70;
+}
+
+/*
 Headroom navigation styles
 */
 .headroom {
@@ -77,6 +121,7 @@ Headroom navigation styles
   -ms-transform: $translateYZero;
 }
 .headroom--pinned {
+  @include mixins.light-scheme;
   position: fixed;
   border-bottom: $borderGray40;
   transform: $translateYZero;
@@ -84,6 +129,7 @@ Headroom navigation styles
   -moz-transform: $translateYZero;
   -o-transform: $translateYZero;
   -ms-transform: $translateYZero;
+  z-index: 10;
 }
 .headroom--scrolled {
   transition: transform, border-bottom $easeInOut200;
@@ -115,7 +161,8 @@ Media queries
   }
 }
 @media (prefers-color-scheme: dark) {
-  html {
+  html,
+  .headroom--pinned {
     @include mixins.dark-scheme;
   }
   code,

@@ -1,0 +1,21 @@
+@use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss";
+
+.hero-text-container {
+  @include mixins.global-container();
+  @include mixins.flex-align-items();
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+}
+
+.hero-text {
+  font-size: max(2.5rem, 7vw);
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-text-container {
+    height: 80vh;
+  }
+}

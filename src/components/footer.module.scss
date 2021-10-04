@@ -3,7 +3,25 @@
 
 footer {
   @include mixins.global-container(none);
-  @include mixins.flex-align-items;
   margin: 2rem auto 1rem;
+}
+
+.cta-container {
+  display: flex;
+  flex-flow: column-reverse;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.copyright-container {
   border-top: $borderGray40;
+}
+
+@media screen and (min-width: 768px) {
+  .cta-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 10rem;
+  }
 }
