@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "../components/layout";
 import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
-import Solutions from "../components/solutions";
+import SolutionsIndex from "../components/solutions-index";
 import Testimonials from "../components/testimonials";
 
 const Posts = ({ location }) => (
@@ -17,7 +17,7 @@ const Posts = ({ location }) => (
           name: "BrightShell, LLC",
         }}
       </JsonLd>
-      <Solutions />
+      <SolutionsIndex />
       <Testimonials />
     </Layout>
   </div>
