@@ -38,7 +38,7 @@ samp {
   font-size: 0.8rem;
   line-height: 1.65;
   border: $borderWhite80;
-  background: $white98;
+  background-color: $white98;
 }
 pre {
   border-radius: 0.25rem;
@@ -94,12 +94,12 @@ Buttons
   background: linear-gradient(90deg, $white80, $white100);
   border: 2px $blue60 solid;
   border-radius: 3px;
-  padding: 1rem 4rem;
+  padding: $tinySpacing $mediumSpacing;
   display: inline-block;
 }
 
 .btn-primary:hover {
-  background: $white100;
+  background-color: $white100;
   border-color: $purple70;
 }
 
@@ -137,6 +137,7 @@ Headroom navigation styles
   -moz-transition: -moz-transform $easeInOut200;
   -o-transition: -o-transform $easeInOut200;
   -ms-transition: -ms-transform $easeInOut200;
+  z-index: 2;
 }
 .headroom--unpinned {
   position: fixed;
@@ -162,13 +163,13 @@ Media queries
 }
 @media (prefers-color-scheme: dark) {
   html,
-  .headroom--pinned {
+  .headroom--scrolled {
     @include mixins.dark-scheme;
   }
   code,
   kbd,
   pre,
   samp {
-    background: $black10;
+    background-color: $black10;
   }
 }

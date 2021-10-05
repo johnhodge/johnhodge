@@ -52,8 +52,16 @@ $rootFontSize: max(16px, 1vw);
 Structural elements
 */
 $globalWidth: 95%;
+
 $wideContainer: 50rem;
 $veryWideContainer: 75rem;
+
+$tinySpacing: 1rem;
+$smallSpacing: 3rem;
+$mediumSpacing: 5rem;
+$largeSpacing: 10rem;
+$xlSpacing: 15rem;
+$xxlSpacing: 20rem;
 
 /*
 Border and shadow elements
@@ -63,7 +71,7 @@ $borderGray40: 0.0625rem solid $gray40;
 $smallBoxShadow: 0px 0px 0.625rem hsla(0, 0%, 0%, 0.2);
 
 /*
-Transforma elements
+Transform elements
 */
 $translateNeg100: translateY(-100%);
 $translateYZero: translateY(0%);
@@ -72,3 +80,9 @@ $translateYZero: translateY(0%);
 Transition elements
 */
 $easeInOut200: 0.2s ease-in-out;
+
+/*
+Breakpoints
+*/
+
+$desktopWidth: 768px;

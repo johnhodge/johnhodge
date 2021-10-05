@@ -27,19 +27,16 @@
       }
       img {
         max-height: 2rem;
-        padding: 0 0.5rem;
       }
     }
     ul {
       @include mixins.flex-align-items;
       align-content: center;
       justify-content: flex-end;
+      gap: $tinySpacing;
       margin: 0;
       padding: 0.5rem 0;
       list-style: none;
-      li:last-child {
-        padding-left: 1rem;
-      }
     }
   }
 }

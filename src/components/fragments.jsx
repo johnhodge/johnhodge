@@ -93,3 +93,23 @@ export const siteData = graphql`
     }
   }
 `;
+
+export const solutionsData = graphql`
+  fragment Solutions on ContentfulCompanyEdge {
+    node {
+      solutions {
+        solutionsName
+        solutionsDescription
+        solutionsAlternateDescription
+        solutionsBenefits
+        solutionsGraphic {
+          title
+          description
+          file {
+            url
+          }
+        }
+      }
+    }
+  }
+`;

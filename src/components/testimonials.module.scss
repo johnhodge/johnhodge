@@ -14,7 +14,7 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 5fr;
-  gap: 1rem;
+  gap: $tinySpacing;
 }
 
 .testimonial-image {
@@ -33,7 +33,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $desktopWidth) {
   .mobile-testimonial-image-container {
     display: none;
   }

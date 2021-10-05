@@ -4,24 +4,24 @@
 article {
   position: relative;
   margin: 0;
-  padding: 2rem 0;
+  padding: $smallSpacing 0;
   border-radius: 0;
   border: none;
-  background-color: hsl(0deg 0% 100%);
+  background-color: $white100;
   box-shadow: none;
   * {
     margin: 0;
     padding: 0;
   }
   p.publish-date {
-    margin-bottom: 2rem;
+    margin-bottom: $smallSpacing;
   }
   div.article-info {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem 2rem;
-    margin-top: 2rem;
+    gap: $tinySpacing $smallSpacing;
+    margin-top: $smallSpacing;
     * {
       display: flex;
       align-items: center;
@@ -40,10 +40,10 @@ article {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $desktopWidth) {
   article {
-    margin: -5rem auto 3rem;
-    padding: 4rem;
+    margin: calc(-1 * $mediumSpacing) auto $smallSpacing;
+    padding: $mediumSpacing;
     border-radius: 0.25rem;
     border: $borderGray40;
     box-shadow: $smallBoxShadow;
