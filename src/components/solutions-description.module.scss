@@ -1,0 +1,6 @@
+@use "../styles/mixins.scss";
+
+.description-container {
+  @include mixins.flex-align-items;
+  flex-direction: row;
+}
