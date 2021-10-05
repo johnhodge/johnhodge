@@ -19,7 +19,6 @@ const SolutionsIndex = () => (
     render={(data) => (
       <div className={home.hpSection}>
         <h2 className={home.hpSectionHeader}>Solutions</h2>
-        {console.log(data)}
         {data.allContentfulCompany.edges.map(({ node }) =>
           node.solutions.map((solution, i) => (
             <div>
