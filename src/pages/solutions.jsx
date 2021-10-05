@@ -35,6 +35,7 @@ const Solutions = ({ data, location }) => (
               />
               <SolutionsDescription
                 description={solution.solutionsAlternateDescription}
+                benefits={solution.solutionsBenefits}
               />
             </div>
           ))
