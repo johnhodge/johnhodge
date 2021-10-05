@@ -43,12 +43,16 @@ module.exports = {
     },
     metaLinks: [
       {
-        name: `Home`,
-        link: `/`,
+        name: `Solutions`,
+        link: `/solutions`,
       },
       {
         name: `Insights`,
         link: `/insights`,
+      },
+      {
+        name: `Contact`,
+        link: `/contact`,
       },
     ],
   },
