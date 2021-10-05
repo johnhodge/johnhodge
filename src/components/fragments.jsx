@@ -101,6 +101,7 @@ export const solutionsData = graphql`
         solutionsName
         solutionsDescription
         solutionsAlternateDescription
+        solutionsBenefits
         solutionsGraphic {
           title
           description
