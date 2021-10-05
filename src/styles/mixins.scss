@@ -15,6 +15,36 @@
   align-items: $align-items;
 }
 
+@mixin flex-default(
+  $flex-direction: row,
+  $flex-wrap: nowrap,
+  $align-content: normal,
+  $justify-content: normal,
+  $align-items: normal
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  align-content: $align-content;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flex-justify-column(
+  $flex-direction: column,
+  $flex-wrap: nowrap,
+  $align-content: normal,
+  $justify-content: center,
+  $align-items: normal
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  align-content: $align-content;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
 @mixin global-container($max-width: $wideContainer) {
   width: $globalWidth;
   max-width: $max-width;
