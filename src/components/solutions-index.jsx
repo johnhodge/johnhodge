@@ -29,14 +29,14 @@ const SolutionsIndex = () => (
                   className={styles.solutionsContainer}
                   key={solution.id}
                 >
-                  <SolutionsDescription
-                    description={solution.solutionsDescription}
-                  />
                   <SolutionsGraphic
                     src={solution.solutionsGraphic.file.url}
                     title={solution.solutionsGraphic.title}
                     alt={solution.solutionsGraphic.description}
                     header={solution.solutionsName}
+                  />
+                  <SolutionsDescription
+                    description={solution.solutionsDescription}
                   />
                 </div>
               ) : (
@@ -45,14 +45,14 @@ const SolutionsIndex = () => (
                   className={styles.solutionsContainerSwitch}
                   key={solution.id}
                 >
+                  <SolutionsDescription
+                    description={solution.solutionsDescription}
+                  />
                   <SolutionsGraphic
                     src={solution.solutionsGraphic.file.url}
                     title={solution.solutionsGraphic.title}
                     alt={solution.solutionsGraphic.description}
                     header={solution.solutionsName}
-                  />
-                  <SolutionsDescription
-                    description={solution.solutionsDescription}
                   />
                 </div>
               )}
