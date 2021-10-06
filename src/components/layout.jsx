@@ -40,7 +40,7 @@ export default function Layout({
         )}
         {children}
       </main>
-      {location.pathname === "/contact" ? "" : <FooterCta />}
+      {location.pathname.includes("contact") ? "" : <FooterCta />}
       <Footer year={year} />
     </div>
   );
