@@ -33,7 +33,6 @@ export default function Layout({
         </div>
       )}
       <main>
-        {console.log(location)}
         {location.pathname === "/" ? (
           ""
         ) : (
