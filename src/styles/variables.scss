@@ -3,6 +3,8 @@
 /*
 Color utilities
 */
+$colorLightness20: 20%;
+$colorLightness30: 30%;
 $colorLightness60: 60%;
 $colorLightness70: 70%;
 $colorLightness80: 80%;
@@ -10,7 +12,7 @@ $colorLightness80: 80%;
 /*
 White, grays, and blacks
 */
-$white100: hsl(0, 0%, 100%);
+$white100: hsl(0deg, 0%, 100%);
 $white98: hsl(225deg, 6%, 98%);
 $white90: hsl(225deg, 6%, 90%);
 $white85: hsl(225deg, 6%, 85%);
@@ -33,10 +35,19 @@ $black0: hsl(225deg, 6%, 0%);
 /*
 Brand colors
 */
-$blue60: hsl(210, 86%, $colorLightness60);
+$blue60: hsl(210deg, 86%, $colorLightness60);
 $purple70: hsl(305deg, 40%, $colorLightness70);
 $magenta80: hsl(305deg, 100%, $colorLightness80);
-$cyan60: hsl(166, 95%, $colorLightness60);
+$cyan60: hsl(166deg, 95%, $colorLightness60);
+
+$red30: hsl(0deg, 100%, $colorLightness30);
+$red60: hsl(0deg, 100%, $colorLightness60);
+$yellow30: hsl(60deg, 100%, $colorLightness30);
+$yellow60: hsl(60deg, 100%, $colorLightness60);
+$orange30: hsl(39deg, 100%, $colorLightness30);
+$orange60: hsl(39deg, 100%, $colorLightness60);
+$green30: hsl(120deg, 100%, $colorLightness30);
+$green60: hsl(120deg, 100%, $colorLightness60);
 
 /*
 Font elements
@@ -68,7 +79,12 @@ Border and shadow elements
 */
 $borderWhite80: 0.0625rem solid $white80;
 $borderGray40: 0.0625rem solid $gray40;
+$borderGreen30: 0.0625rem solid $green30;
+$borderOrange30: 0.0625rem solid $orange30;
+
 $smallBoxShadow: 0px 0px 0.625rem hsla(0, 0%, 0%, 0.2);
+
+$smallBorderRadius: 0.2rem;
 
 /*
 Transform elements
