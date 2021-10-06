@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
+    "formik": "^2.2.9",
     "gatsby": "^3.11.0",
+    "gatsby-plugin-google-tagmanager": "^3.14.0",
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.13.0",
     "gatsby-plugin-prettier-eslint": "^1.0.6",
@@ -33,7 +35,8 @@
     "react-dom": "^17.0.1",
     "react-headroom": "^3.1.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.37.5"
+    "sass": "^1.37.5",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

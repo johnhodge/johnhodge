@@ -21,12 +21,11 @@ const SolutionsIndex = () => (
         <h2 className={home.hpSectionHeader}>Solutions</h2>
         {data.allContentfulCompany.edges.map(({ node }) =>
           node.solutions.map((solution, i) => (
-            <div>
+            <div key={solution.id}>
               {i % 2 === 0 ? (
                 <div
                   id={solution.solutionsName.toLowerCase().replace(/\W/gm, `-`)}
                   className={styles.solutionsContainer}
-                  key={solution.id}
                 >
                   <SolutionsGraphic
                     src={solution.solutionsGraphic.file.url}

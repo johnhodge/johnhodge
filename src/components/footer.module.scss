@@ -7,10 +7,11 @@ footer {
 }
 
 .cta-container {
+  @include mixins.global-container(none);
   display: flex;
   flex-flow: column-reverse;
   gap: $tinySpacing;
-  margin-bottom: $mediumSpacing;
+  margin: $smallSpacing auto;
 }
 
 .copyright-container {
@@ -22,6 +23,5 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-bottom: $xlSpacing;
   }
 }
