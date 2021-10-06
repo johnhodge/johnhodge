@@ -26,9 +26,9 @@ const HomepageHero = () => (
           <h1 className={styles.heroText}>
             {data.contentfulCompany.homepageHeadline}
           </h1>
-          <Link to="/contact" class="btn-primary">
+          <a to="/contact" className="btn-primary">
             {data.contentfulCompany.homepageCtaText}
-          </Link>
+          </a>
         </div>
       </div>
     )}

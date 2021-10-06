@@ -30,9 +30,9 @@ const FooterCta = () => (
       <div className={styles.ctaContainer}>
         <div className={styles.ctaTextContainer}>
           <p>{data.contentfulCompany.footerCtaDescription}</p>
-          <Link to="/contact" class="btn-primary">
+          <a to="/contact" className="btn-primary">
             {data.contentfulCompany.footerCtaButtonText}
-          </Link>
+          </a>
         </div>
         <div className="graphic-headline-container">
           <h2 className="graphic-headline">
