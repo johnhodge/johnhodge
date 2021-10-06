@@ -46,10 +46,10 @@ module.exports = {
         name: `Solutions`,
         link: `/solutions`,
       },
-      {
-        name: `Insights`,
-        link: `/insights`,
-      },
+      // {
+      //   name: `Insights`,
+      //   link: `/insights`,
+      // },
       {
         name: `Contact`,
         link: `/contact`,
