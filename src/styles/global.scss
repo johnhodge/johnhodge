@@ -91,7 +91,7 @@ Buttons
   font-size: 1.2rem;
   color: $black13;
   text-align: center;
-  background: linear-gradient(90deg, $white80, $white100);
+  background: linear-gradient(90deg, $white90, $white100);
   border: 2px $blue60 solid;
   border-radius: 3px;
   padding: $tinySpacing $mediumSpacing;
@@ -99,7 +99,7 @@ Buttons
 }
 
 .btn-primary:hover {
-  background-color: $white100;
+  background: $white100;
   border-color: $purple70;
 }
 
@@ -171,5 +171,8 @@ Media queries
   pre,
   samp {
     background-color: $black10;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, $white80, $white100);
   }
 }
