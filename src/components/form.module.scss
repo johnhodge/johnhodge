@@ -1,0 +1,83 @@
+@use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss";
+
+@mixin field-structure {
+  display: block;
+  line-height: normal;
+  width: -webkit-fill-available;
+  margin: $tinySpacing 0;
+  padding: $tinySpacing;
+  border-top-right-radius: $smallBorderRadius;
+  border-bottom-left-radius: $smallBorderRadius;
+}
+
+.errors {
+  color: $red60;
+}
+
+.message-success {
+  @include field-structure;
+  border: $borderGreen30;
+  background-color: $green60;
+  color: $green30;
+  text-align: center;
+}
+
+.form {
+  max-width: 100%;
+  padding: $tinySpacing;
+  border-radius: $smallBorderRadius;
+  border: $borderGray40;
+}
+
+button,
+input,
+textarea {
+  @include field-structure;
+  color: inherit;
+}
+
+button {
+  border: $borderOrange30;
+  background-color: $orange60;
+  color: $black13;
+  box-shadow: $smallBoxShadow;
+  transition: $easeInOut200 box-shadow;
+}
+
+button:hover {
+  box-shadow: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  color: $gray40;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+input,
+textarea,
+button:disabled {
+  border: $borderGray40;
+  background-color: $white98;
+}
+
+textarea {
+  min-height: 8rem;
+}
+
+/*
+Media Queries
+*/
+
+@media (prefers-color-scheme: dark) {
+  .form {
+    @include mixins.dark-scheme;
+  }
+  input,
+  textarea,
+  button:disabled {
+    background-color: $black15;
+  }
+}
