@@ -39,9 +39,9 @@ const Header = () => (
             <ul>
               {data.site.siteMetadata.metaLinks.map((item) => (
                 <li key={item.link}>
-                  <Link to={`${item.link}`} title={`Link to ${item.name}`}>
+                  <a href={`${item.link}`} title={`Link to ${item.name}`}>
                     {item.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
