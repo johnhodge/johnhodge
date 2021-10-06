@@ -2,7 +2,7 @@ import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 
-const FooterCta = ({ year }) => (
+const FooterCta = () => (
   <StaticQuery
     query={graphql`
       {
