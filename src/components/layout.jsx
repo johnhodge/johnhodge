@@ -3,6 +3,7 @@ import Header from "./header";
 import Footer from "./footer";
 import Article from "./article";
 import HomepageHero from "./hero";
+import FooterCta from "./footer-cta";
 import defaultFeaturedImage from "../images/logo_red.svg";
 import * as styles from "./layout.module.scss";
 
@@ -32,6 +33,7 @@ export default function Layout({
         </div>
       )}
       <main>
+        {console.log(location)}
         {location.pathname === "/" ? (
           ""
         ) : (
@@ -39,6 +41,7 @@ export default function Layout({
         )}
         {children}
       </main>
+      {location.pathname === "/contact" ? "" : <FooterCta />}
       <Footer year={year} />
     </div>
   );
