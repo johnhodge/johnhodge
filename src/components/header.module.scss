@@ -10,8 +10,7 @@
   }
   nav {
     @include mixins.global-container(none);
-    @include mixins.flex-align-items;
-    justify-content: space-between;
+    @include mixins.flex-justify-column($align-items: baseline);
     div.branding {
       a {
         text-decoration: none;
@@ -41,11 +40,10 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: $desktopWidth) {
   .navigation {
     nav {
-      flex-direction: column;
-      align-items: baseline;
+      @include mixins.flex-default($justify-content: space-between);
     }
   }
 }
