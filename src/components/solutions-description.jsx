@@ -7,7 +7,7 @@ const SolutionsDescription = ({ description, benefits }) => (
     {benefits ? (
       <ul className={styles.solutionItems}>
         {benefits.map((i) => (
-          <li>{i}</li>
+          <li key={i}>{i}</li>
         ))}
       </ul>
     ) : (
