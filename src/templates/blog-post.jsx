@@ -26,14 +26,15 @@ const BlogPost = ({ data, location }) => {
     data.contentfulBlogPost.updatedAt
   ).toLocaleString("en-US", datestampOptions);
 
-  const imageData = data.contentfulBlogPost.heroImage;
+  const imageData = data.contentfulBlogPost.seoHeroImage;
   const metaImage = {
-    src: `https:${imageData.file.url}`,
+    url: `https:${imageData.file.url}`,
     width: imageData.file.details.image.width,
     height: imageData.file.details.image.height,
-    altDescription: imageData.description,
+    description: imageData.description,
     contentType: imageData.file.contentType,
   };
+  console.log(metaImage.description);
 
   const metaArticle = {
     article_published_time: data.contentfulBlogPost.createdAt,
