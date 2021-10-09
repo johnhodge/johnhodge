@@ -22,10 +22,13 @@
   .person-image-container {
     width: 5rem;
     overflow: hidden;
-    border: $borderGray40;
+    * {
+      animation: fade-left 0.2s ease-in-out;
+    }
   }
   .person-text-container {
     h3 {
+      animation: fade 0.5s ease-in-out;
       margin: 0;
     }
   }
@@ -55,6 +58,22 @@
   grid-template-columns: 1fr auto;
   gap: 1rem;
   padding: 2rem 1rem;
+  .testimonial-body {
+    p {
+      animation: fade-left 0.2s ease-in-out;
+    }
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

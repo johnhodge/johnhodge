@@ -66,6 +66,7 @@ const Testimonials = () => (
             </div>
             <div className={styles.testimonialText}>
               <div
+                className={styles.testimonialBody}
                 dangerouslySetInnerHTML={{
                   __html: current.testimonial.childrenMarkdownRemark[0].html,
                 }}
