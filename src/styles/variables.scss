@@ -38,6 +38,7 @@ Brand colors
 $blue60: hsl(210deg, 86%, $colorLightness60);
 $purple70: hsl(305deg, 40%, $colorLightness70);
 $magenta80: hsl(305deg, 100%, $colorLightness80);
+$cyan30: hsl(166deg, 95%, $colorLightness30);
 $cyan60: hsl(166deg, 95%, $colorLightness60);
 
 $red30: hsl(0deg, 100%, $colorLightness30);
@@ -82,7 +83,8 @@ $borderGray40: 0.0625rem solid $gray40;
 $borderGreen30: 0.0625rem solid $green30;
 $borderOrange30: 0.0625rem solid $orange30;
 
-$smallBoxShadow: 0px 0px 0.625rem hsla(0, 0%, 0%, 0.2);
+$smallBoxShadow: 0px 0px 0.625rem hsla(0deg, 0%, 0%, 0.2);
+$largeBoxShadow: 0px 0px 2rem hsla(0deg, 0%, 0%, 0.65);
 
 $smallBorderRadius: 0.2rem;
 
