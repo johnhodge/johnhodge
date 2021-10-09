@@ -45,7 +45,7 @@
   }
   .active {
     background-color: $blue60;
-    box-shadow: 0 0 0 0.15rem $white100, 0 0 0 0.3rem $blue60;
+    box-shadow: $lightOutline;
     outline-offset: 0.15rem;
   }
   .inactive {
@@ -80,7 +80,7 @@
   .selectors {
     .active {
       background-color: $cyan60;
-      box-shadow: 0 0 0 0.15rem $black13, 0 0 0 0.3rem $cyan60;
+      box-shadow: $darkOutline;
     }
   }
   .testimonial-header {

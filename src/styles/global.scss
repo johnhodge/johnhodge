@@ -5,6 +5,7 @@
 Base styles
 */
 html {
+  background-color: $white98;
   line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
@@ -63,8 +64,8 @@ img {
 Global styles
 */
 *:focus-visible {
-  outline-offset: 0.25rem;
-  outline: 0.5rem auto $cyan60;
+  outline: none;
+  box-shadow: $lightOutline;
 }
 
 .graphic-headline-container {
@@ -91,7 +92,7 @@ Buttons
   font-size: 1.2rem;
   color: $black13;
   text-align: center;
-  background: linear-gradient(90deg, $white90, $white100);
+  background: linear-gradient(90deg, $white90, $white98);
   border: 2px $blue60 solid;
   border-radius: 3px;
   padding: $tinySpacing $mediumSpacing;
@@ -99,7 +100,7 @@ Buttons
 }
 
 .btn-primary:hover {
-  background: $white100;
+  background: $white98;
   border-color: $purple70;
 }
 
@@ -166,6 +167,9 @@ Media queries
   html {
     @include mixins.dark-scheme;
   }
+  *:focus-visible {
+    box-shadow: $darkOutline;
+  }
   .headroom--scrolled {
     @include mixins.dark-scheme($black13_50);
   }
@@ -176,6 +180,6 @@ Media queries
     background-color: $black10;
   }
   .btn-primary {
-    background: linear-gradient(90deg, $white80, $white100);
+    background: linear-gradient(90deg, $white80, $white98);
   }
 }

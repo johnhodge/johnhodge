@@ -93,6 +93,9 @@ $largeBoxShadow: 0px 0px 2rem hsla(0deg, 0%, 0%, 0.65);
 
 $smallBorderRadius: 0.2rem;
 
+$darkOutline: 0 0 0 0.15rem $black13, 0 0 0 0.3rem $cyan60;
+$lightOutline: 0 0 0 0.15rem $white98, 0 0 0 0.3rem $blue60;
+
 /*
 Transform elements
 */
