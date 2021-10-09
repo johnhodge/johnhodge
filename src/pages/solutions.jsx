@@ -49,7 +49,7 @@ export const query = graphql`
   {
     allContentfulCompany {
       edges {
-        ...Solutions
+        ...SolutionsData
       }
     }
   }
