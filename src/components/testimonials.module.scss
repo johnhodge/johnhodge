@@ -1,54 +1,90 @@
 @use "../styles/variables.scss" as *;
 @use "../styles/mixins.scss";
 
-.desktop-testimonial-image-container {
-  display: none;
-}
-
-.testimonial-container {
+.testimonial-card {
   border: $borderGray40;
   border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: $largeBoxShadow;
 }
 
-.testimonial-footer {
+.testimonial-header {
+  background: linear-gradient(90deg, $white85, $white98);
+  padding: 2rem 1rem;
+  border-bottom: $borderGray40;
+}
+
+.testimonial-person {
   display: grid;
+  grid-template-columns: auto 11fr;
   align-items: center;
-  grid-template-columns: 1fr 5fr;
-  gap: $tinySpacing;
+  gap: 1rem;
+  .person-image-container {
+    width: 5rem;
+    overflow: hidden;
+    * {
+      animation: fade-left 0.2s ease-in-out;
+    }
+  }
+  .person-text-container {
+    h3 {
+      animation: fade 0.5s ease-in-out;
+      margin: 0;
+    }
+  }
 }
 
-.testimonial-image {
-  height: 100%;
+.selectors {
+  div {
+    width: 1rem;
+    height: 1rem;
+    margin: 1rem 0;
+    border-radius: 25%;
+    -webkit-border-radius: 25%;
+    cursor: pointer;
+  }
+  .active {
+    background-color: $blue60;
+    box-shadow: 0 0 0 0.15rem $white100, 0 0 0 0.3rem $blue60;
+    outline-offset: 0.15rem;
+  }
+  .inactive {
+    background-color: $gray60;
+  }
 }
 
 .testimonial-text {
-  padding: 1rem;
-  z-index: 1;
-  p {
-    margin-top: 0;
-  }
-  h3 {
-    margin: 0;
-    font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  .testimonial-body {
+    p {
+      animation: fade-left 0.2s ease-in-out;
+    }
   }
 }
 
-@media screen and (min-width: $desktopWidth) {
-  .mobile-testimonial-image-container {
-    display: none;
+@keyframes fade-left {
+  0% {
+    transform: translateX(1rem);
+    opacity: 0;
   }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-  .testimonial-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    overflow: hidden;
+@media (prefers-color-scheme: dark) {
+  .selectors {
+    .active {
+      background-color: $cyan60;
+      box-shadow: 0 0 0 0.15rem $black13, 0 0 0 0.3rem $cyan60;
+    }
   }
-  .desktop-testimonial-image-container {
-    display: block;
-    height: 100%;
-  }
-
-  .testimonial-footer {
-    display: block;
+  .testimonial-header {
+    background: $black10;
+    color: $white98;
   }
 }
