@@ -86,7 +86,7 @@ const Testimonials = () => (
                     data-testimonial={i}
                     key={i}
                     tabIndex="0"
-                    aria-label={`Select ${quote[i].id}'s testimonial`}
+                    aria-label={`Select ${quote[i].firstName}'s testimonial`}
                   />
                 ))}
               </div>
