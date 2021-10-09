@@ -36,10 +36,10 @@ const Testimonials = () => (
     render={(data) => {
       const quote = data.allContentfulCompany.edges[0].node.testimonial;
       const [current, setCurrent] = useState(quote[0]);
-      const [active, setActive] = useState(0);
+      const [active, setActive] = useState(quote[0]);
       const handleSetClick = (event) => {
         setCurrent(quote[event.target.getAttribute("data-testimonial")]);
-        setActive([event.target.getAttribute("data-testimonial")]);
+        setActive(quote[event.target.getAttribute("data-testimonial")]);
       };
       return (
         <div className={home.hpSection}>
@@ -74,10 +74,19 @@ const Testimonials = () => (
               <div className={styles.selectors}>
                 {Object.keys(quote).map((i) => (
                   <div
-                    className={active == i ? styles.active : styles.inactive}
+                    className={
+                      active.id === quote[i].id
+                        ? styles.active
+                        : styles.inactive
+                    }
+                    aria-checked={active.id === quote[i].id ? "true" : "false"}
                     onClick={(event) => handleSetClick(event)}
+                    onKeyDown={(event) => handleSetClick(event)}
+                    role="checkbox"
                     data-testimonial={i}
                     key={i}
+                    tabIndex="0"
+                    aria-label={`Select ${quote[i].id}'s testimonial`}
                   />
                 ))}
               </div>
