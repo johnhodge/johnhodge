@@ -7,6 +7,9 @@
   flex-direction: column;
   justify-content: center;
   height: 50vh;
+  h1 {
+    font-family: $headlineFont;
+  }
 }
 
 .hero-text {
