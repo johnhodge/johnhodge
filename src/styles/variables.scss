@@ -12,6 +12,11 @@ $colorLightness80: 80%;
 /*
 White, grays, and blacks
 */
+
+//Transparent light and dark theme colors
+$white98_50: hsla(225deg, 6%, 98%, 50%);
+$black13_50: hsl(225deg, 6%, 13%, 50%);
+
 $white100: hsl(0deg, 0%, 100%);
 $white98: hsl(225deg, 6%, 98%);
 $white90: hsl(225deg, 6%, 90%);

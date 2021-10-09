@@ -131,7 +131,8 @@ Headroom navigation styles
   z-index: 10;
 }
 .headroom--scrolled {
-  @include mixins.light-scheme;
+  @include mixins.light-scheme($white98_50);
+  backdrop-filter: blur(1rem);
   transition: transform, border-bottom $easeInOut200;
   -webkit-transition: -webkit-transform $easeInOut200;
   -moz-transition: -moz-transform $easeInOut200;
@@ -162,9 +163,11 @@ Media queries
   }
 }
 @media (prefers-color-scheme: dark) {
-  html,
-  .headroom--scrolled {
+  html {
     @include mixins.dark-scheme;
+  }
+  .headroom--scrolled {
+    @include mixins.dark-scheme($black13_50);
   }
   code,
   kbd,
