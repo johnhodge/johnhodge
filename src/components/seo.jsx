@@ -13,23 +13,43 @@ const Seo = ({
   metaKeywords,
   metaArticle,
 }) => {
-  const { site } = useStaticQuery(graphql`
-    query {
+  const data = useStaticQuery(graphql`
+    {
       site {
-        ...siteData
+        ...gatsbySiteData
+      }
+      allContentfulCompany(
+        filter: { id: { eq: "b609af1b-49b4-5251-94fb-32a3da3ebf11" } }
+      ) {
+        edges {
+          ...contentfulSiteData
+        }
       }
     }
   `);
 
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
-  const metaDescription = description || site.siteMetadata.description;
-  const keywords = metaKeywords || site.siteMetadata.keywords;
-  const image = metaImage || site.siteMetadata.image;
-  const { social } = site.siteMetadata;
+  const canonical = pathname
+    ? `${data.site.siteMetadata.siteUrl}${pathname}`
+    : null;
+  const metaDescription = description || data.site.siteMetadata.description;
+  const keywords = metaKeywords || data.site.siteMetadata.keywords;
+
+  const image = metaImage || data.allContentfulCompany.edges[0].node.seoLogo;
+  const imageFile = `https:${image.url ? image.url : image.file.url}`;
+  const imageHeight = image.height
+    ? image.height
+    : image.file.details.image.height;
+  const imageWidth = image.width ? image.width : image.file.details.image.width;
+  const imageType = image.contentType
+    ? image.contentType
+    : image.file.contentType;
+
+  const { social } = data.site.siteMetadata;
   const article = metaArticle || null;
-  const title = `${metaTitle} | ${site.siteMetadata.title}`;
+  const title = `${metaTitle} | ${data.site.siteMetadata.title}`;
   const lang = metaLang;
 
+  console.log(image);
   return (
     <Helmet
       htmlAttributes={{ lang }}
@@ -71,27 +91,27 @@ const Seo = ({
         },
         {
           property: `og:site_name`,
-          content: site.siteMetadata.title,
+          content: data.site.siteMetadata.title,
         },
         {
           property: `og:image`,
-          content: image.src,
+          content: imageFile,
         },
         {
           property: `og:image:width`,
-          content: image.width,
+          content: imageWidth,
         },
         {
           property: `og:image:height`,
-          content: image.height,
+          content: imageHeight,
         },
         {
           property: `og:image:alt`,
-          content: image.altDescription,
+          content: image.description,
         },
         {
           property: `og:image:type`,
-          content: image.contentType,
+          content: imageType,
         },
         {
           name: `twitter:card`,
@@ -123,11 +143,11 @@ const Seo = ({
         },
         {
           name: `twitter:image`,
-          content: image.src,
+          content: imageFile,
         },
         {
           name: `twitter:image:alt`,
-          content: image.altDescription,
+          content: image.description,
         },
       ]
         .concat(

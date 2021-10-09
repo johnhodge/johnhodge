@@ -11,7 +11,7 @@ const SolutionsIndex = () => (
       {
         allContentfulCompany {
           edges {
-            ...Solutions
+            ...SolutionsData
           }
         }
       }
