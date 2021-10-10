@@ -8,10 +8,10 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop --verbose -H 192.168.0.19 --open",
+    "develop": "gatsby develop --host 192.168.0.19 --open --verbose",
     "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve --verbose -H 192.168.0.19 --open",
+    "build": "gatsby build --no-uglify",
+    "serve": "gatsby serve --host 192.168.0.19 --open --verbose",
     "clean": "gatsby clean"
   },
   "dependencies": {
