@@ -4,7 +4,7 @@
 article {
   position: relative;
   margin: 0;
-  padding: $smallSpacing 0;
+  padding: $xsSpacing 0;
   border-radius: 0;
   border: none;
   background-color: $white98;
@@ -14,14 +14,14 @@ article {
     padding: 0;
   }
   p.publish-date {
-    margin-bottom: $smallSpacing;
+    margin-bottom: $tinySpacing;
   }
   div.article-info {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: $tinySpacing $smallSpacing;
-    margin-top: $smallSpacing;
+    gap: $tinySpacing;
+    margin-top: $tinySpacing;
     * {
       display: flex;
       align-items: center;
