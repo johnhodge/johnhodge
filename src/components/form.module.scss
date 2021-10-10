@@ -11,6 +11,13 @@
   border-bottom-left-radius: $smallBorderRadius;
 }
 
+.invalid-field-entry {
+  border-color: $red60;
+}
+.valid-field-entry {
+  border-color: $green60;
+}
+
 .errors {
   color: $red60;
 }
