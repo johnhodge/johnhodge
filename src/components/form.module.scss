@@ -23,14 +23,6 @@
   border-color: $green30;
 }
 
-.message-success {
-  @include field-structure;
-  border: $borderGreen30;
-  background-color: $green60;
-  color: $green30;
-  text-align: center;
-}
-
 .form {
   max-width: 100%;
   padding: $tinySpacing;

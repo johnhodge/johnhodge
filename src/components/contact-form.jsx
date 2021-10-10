@@ -124,14 +124,9 @@ const ContactForm = () => (
               {errors.message && touched.message ? (
                 <div className={styles.errors}>{errors.message}</div>
               ) : null}
-
-              {!status ? (
-                <button type="submit" disabled={isSubmitting || !isValid}>
-                  Send
-                </button>
-              ) : (
-                <div className={styles.messageSuccess}>{status.success}</div>
-              )}
+              <button type="submit" disabled={isSubmitting || !isValid}>
+                Send
+              </button>
             </Form>
           )}
         </div>
