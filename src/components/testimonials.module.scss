@@ -46,7 +46,7 @@
   .active {
     background-color: $blue60;
     box-shadow: $lightOutline;
-    outline-offset: 0.15rem;
+    outline: none;
   }
   .inactive {
     background-color: $gray60;

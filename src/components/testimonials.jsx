@@ -55,9 +55,7 @@ const Testimonials = () => (
                   />
                 </div>
                 <div className={styles.personTextContainer}>
-                  <h3>
-                    {current.firstName} {current.lastName}
-                  </h3>
+                  <h3>{current.firstName}</h3>
                   <h3>{current.jobTitle}</h3>
                   <h3>{current.companyName}</h3>
                 </div>
