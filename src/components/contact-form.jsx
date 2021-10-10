@@ -14,8 +14,8 @@ const ContactSchema = Yup.object().shape({
     .max(50, "That's a little long.")
     .required("Last name required, you can also share your last initial."),
   email: Yup.string()
-    .email("Please enter a valid emaail.")
-    .required("Please enter a valid emaail."),
+    .email("Please enter a valid email.")
+    .required("Please enter a valid email."),
   message: Yup.string()
     .min(10, "This message is too short.")
     .required("Message field can't be blank."),
