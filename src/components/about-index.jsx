@@ -34,7 +34,6 @@ const AboutIndex = () => (
                 image={getImage(data.contentfulAuthor.headshot)}
                 title={data.contentfulAuthor.headshot.title}
                 alt={data.contentfulAuthor.headshot.description}
-                className={styles.aboutHeadshotImage}
               />
             </div>
             <div className={styles.aboutText}>
