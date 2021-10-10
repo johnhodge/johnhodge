@@ -28,7 +28,7 @@ const BlogPost = ({ data, location }) => {
 
   const imageData = data.contentfulBlogPost.seoHeroImage;
   const metaImage = {
-    url: `https:${imageData.file.url}`,
+    url: imageData.file.url,
     width: imageData.file.details.image.width,
     height: imageData.file.details.image.height,
     description: imageData.description,
