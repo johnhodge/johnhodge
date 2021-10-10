@@ -28,7 +28,6 @@
   }
   .person-text-container {
     h3 {
-      animation: fade-right 0.4s ease-in-out;
       margin: 0;
     }
   }
@@ -68,17 +67,6 @@
 @keyframes fade-left {
   0% {
     transform: translateX(1rem);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-right {
-  0% {
-    transform: translateX(-10rem);
     opacity: 0;
   }
   100% {
