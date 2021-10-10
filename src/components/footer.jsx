@@ -14,7 +14,7 @@ const Footer = ({ year }) => (
     render={(data) => (
       <footer>
         <div className={styles.copyrightContainer}>
-          <p className={styles.copyrightInfo}>
+          <p>
             © {year}
             {"  "}
             <Link

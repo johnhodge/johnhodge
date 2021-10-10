@@ -5,7 +5,7 @@ const SolutionsDescription = ({ description, benefits }) => (
   <div className={styles.descriptionContainer}>
     <p>{description}</p>
     {benefits ? (
-      <ul className={styles.solutionItems}>
+      <ul>
         {benefits.map((i) => (
           <li key={i}>{i}</li>
         ))}

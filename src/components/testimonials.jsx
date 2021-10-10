@@ -49,7 +49,6 @@ const Testimonials = () => (
               <div className={styles.testimonialPerson}>
                 <div className={styles.personImageContainer}>
                   <GatsbyImage
-                    className={styles.testimonialImage}
                     image={getImage(current.headshot)}
                     title={current.headshot.title}
                     alt={current.headshot.description}

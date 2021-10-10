@@ -1,5 +1,5 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./footer.module.scss";
 
 const FooterCta = () => (
@@ -28,7 +28,7 @@ const FooterCta = () => (
     `}
     render={(data) => (
       <div className={styles.ctaContainer}>
-        <div className={styles.ctaTextContainer}>
+        <div>
           <p>{data.contentfulCompany.footerCtaDescription}</p>
           <a href="/contact" className="btn-primary">
             {data.contentfulCompany.footerCtaButtonText}

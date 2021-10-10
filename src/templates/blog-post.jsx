@@ -34,7 +34,6 @@ const BlogPost = ({ data, location }) => {
     description: imageData.description,
     contentType: imageData.file.contentType,
   };
-  console.log(metaImage.description);
 
   const metaArticle = {
     article_published_time: data.contentfulBlogPost.createdAt,

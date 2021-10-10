@@ -19,7 +19,7 @@ const Solutions = ({ data, location }) => (
           name: "BrightShell, LLC",
         }}
       </JsonLd>
-      <div className={styles.solutionsBuckets}>
+      <div>
         {data.allContentfulCompany.edges.map(({ node }) =>
           node.solutions.map((solution) => (
             <div
