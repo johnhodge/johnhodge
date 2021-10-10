@@ -49,7 +49,6 @@ const Seo = ({
   const title = `${metaTitle} | ${data.site.siteMetadata.title}`;
   const lang = metaLang;
 
-  console.log(image);
   return (
     <Helmet
       htmlAttributes={{ lang }}
