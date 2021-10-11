@@ -89,10 +89,11 @@ $borderGray40: 0.0625rem solid $gray40;
 $borderGreen30: 0.0625rem solid $green30;
 $borderOrange30: 0.0625rem solid $orange30;
 
-$smallBoxShadow: 0px 0px 0.625rem hsla(0deg, 0%, 0%, 0.2);
-$largeBoxShadow: 0px 0px 2rem hsla(0deg, 0%, 0%, 0.65);
+$smallBoxShadow: 0 0 1rem hsla(0deg, 0%, 0%, 0.25);
+$largeBoxShadow: 0 1rem 4rem hsla(0deg, 0%, 0%, 0.25);
 
 $smallBorderRadius: 0.2rem;
+$mediumBorderRadius: 0.5rem;
 
 $darkOutline: 0 0 0 0.15rem $black13, 0 0 0 0.3rem $cyan60;
 $lightOutline: 0 0 0 0.15rem $white98, 0 0 0 0.3rem $blue60;
