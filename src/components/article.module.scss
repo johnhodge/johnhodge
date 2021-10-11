@@ -40,6 +40,12 @@ article {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  article {
+    @include mixins.dark-scheme;
+  }
+}
+
 @media screen and (min-width: $desktopWidth) {
   article {
     margin: calc(-1 * $mediumSpacing) auto $smallSpacing;
@@ -47,11 +53,9 @@ article {
     border-radius: $mediumBorderRadius;
     box-shadow: $smallBoxShadow;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  article {
-    @include mixins.dark-scheme;
-    border: $borderGray40;
+  @media (prefers-color-scheme: dark) {
+    article {
+      border: $borderGray40;
+    }
   }
 }
