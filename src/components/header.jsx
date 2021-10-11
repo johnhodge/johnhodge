@@ -1,7 +1,6 @@
 import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
 import Headroom from "react-headroom";
-import logo from "../images/logo_blue.svg";
 import * as styles from "./header.module.scss";
 
 const Header = () => (
@@ -9,12 +8,13 @@ const Header = () => (
     query={graphql`
       {
         site {
-          siteMetadata {
-            title
-            metaLinks {
-              link
-              name
-            }
+          ...gatsbySiteData
+        }
+        allContentfulCompany(
+          filter: { id: { eq: "b609af1b-49b4-5251-94fb-32a3da3ebf11" } }
+        ) {
+          edges {
+            ...contentfulSiteData
           }
         }
       }
@@ -30,7 +30,7 @@ const Header = () => (
               >
                 <h1>{data.site.siteMetadata.title}</h1>
                 <img
-                  src={logo}
+                  src={data.allContentfulCompany.edges[0].node.logo.file.url}
                   title={`${data.site.siteMetadata.title} logo`}
                   alt={`${data.site.siteMetadata.title} logo`}
                 />

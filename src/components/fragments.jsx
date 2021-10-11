@@ -105,6 +105,19 @@ export const contentfulSiteData = graphql`
   fragment contentfulSiteData on ContentfulCompanyEdge {
     node {
       name
+      logo {
+        title
+        description
+        file {
+          url
+          details {
+            image {
+              height
+              width
+            }
+          }
+        }
+      }
       seoLogo {
         title
         description

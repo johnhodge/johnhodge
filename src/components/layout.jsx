@@ -4,8 +4,7 @@ import Footer from "./footer";
 import Article from "./article";
 import HomepageHero from "./hero";
 import FooterCta from "./footer-cta";
-import defaultFeaturedImage from "../images/logo_red.svg";
-import * as styles from "./layout.module.scss";
+import SitepageHero from "./sitepage-hero";
 
 export default function Layout({
   pageTitle,
@@ -24,13 +23,7 @@ export default function Layout({
       {location.pathname === "/" ? (
         <HomepageHero />
       ) : (
-        <div className={styles.featuredImage}>
-          <img
-            src={featuredImage || defaultFeaturedImage}
-            alt={`${pageTitle}`}
-            title={`${pageTitle}`}
-          />
-        </div>
+        <SitepageHero featuredImage={featuredImage} pageTitle={pageTitle} />
       )}
       <main>
         {location.pathname === "/" ? (
