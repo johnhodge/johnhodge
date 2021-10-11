@@ -2,10 +2,9 @@
 @use "../styles/mixins.scss";
 
 .testimonial-card {
-  border: $borderGray40;
-  border-radius: 0.5rem;
-  overflow: hidden;
+  border-radius: $mediumBorderRadius;
   box-shadow: $largeBoxShadow;
+  overflow: hidden;
 }
 
 .testimonial-header {
@@ -76,6 +75,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  .testimonial-card {
+    border: $borderGray40;
+    box-shadow: $largeBoxShadow;
+  }
   .selectors {
     .active {
       background-color: $cyan60;

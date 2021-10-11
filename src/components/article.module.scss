@@ -44,8 +44,7 @@ article {
   article {
     margin: calc(-1 * $mediumSpacing) auto $smallSpacing;
     padding: $mediumSpacing;
-    border-radius: 0.25rem;
-    border: $borderGray40;
+    border-radius: $mediumBorderRadius;
     box-shadow: $smallBoxShadow;
   }
 }
@@ -53,5 +52,6 @@ article {
 @media (prefers-color-scheme: dark) {
   article {
     @include mixins.dark-scheme;
+    border: $borderGray40;
   }
 }
