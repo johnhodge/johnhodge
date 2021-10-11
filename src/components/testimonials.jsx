@@ -34,12 +34,12 @@ const Testimonials = () => (
       }
     `}
     render={(data) => {
-      const quote = data.allContentfulCompany.edges[0].node.testimonial;
-      const [current, setCurrent] = useState(quote[0]);
-      const [active, setActive] = useState(quote[0]);
+      const {testimonial} = data.allContentfulCompany.edges[0].node;
+      const [current, setCurrent] = useState(testimonial[0]);
+      const [active, setActive] = useState(testimonial[0]);
       const handleSetClick = (event) => {
-        setCurrent(quote[event.target.getAttribute("data-testimonial")]);
-        setActive(quote[event.target.getAttribute("data-testimonial")]);
+        setCurrent(testimonial[event.target.getAttribute("data-testimonial")]);
+        setActive(testimonial[event.target.getAttribute("data-testimonial")]);
       };
       return (
         <div className={home.hpSection}>
@@ -69,21 +69,23 @@ const Testimonials = () => (
                 }}
               />
               <div className={styles.selectors}>
-                {Object.keys(quote).map((i) => (
+                {Object.keys(testimonial).map((i) => (
                   <div
                     className={
-                      active.id === quote[i].id
+                      active.id === testimonial[i].id
                         ? styles.active
                         : styles.inactive
                     }
-                    aria-checked={active.id === quote[i].id ? "true" : "false"}
+                    aria-checked={
+                      active.id === testimonial[i].id ? "true" : "false"
+                    }
                     onClick={(event) => handleSetClick(event)}
                     onKeyDown={(event) => handleSetClick(event)}
                     role="checkbox"
                     data-testimonial={i}
                     key={i}
                     tabIndex="0"
-                    aria-label={`Select ${quote[i].firstName}'s testimonial`}
+                    aria-label={`Select ${testimonial[i].firstName}'s testimonial`}
                   />
                 ))}
               </div>
