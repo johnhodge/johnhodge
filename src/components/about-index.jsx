@@ -15,7 +15,7 @@ const AboutIndex = () => (
             }
           }
           headshot {
-            gatsbyImageData(aspectRatio: 1)
+            gatsbyImageData(aspectRatio: 1, width: 350)
             title
             description
           }

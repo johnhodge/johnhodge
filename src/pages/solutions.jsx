@@ -31,6 +31,8 @@ const Solutions = ({ data, location }) => (
                 src={solution.solutionsGraphic.file.url}
                 title={solution.solutionsGraphic.title}
                 alt={solution.solutionsGraphic.description}
+                width={solution.solutionsGraphic.file.details.image.width}
+                height={solution.solutionsGraphic.file.details.image.height}
                 header={solution.solutionsName}
               />
               <SolutionsDescription

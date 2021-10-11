@@ -42,6 +42,8 @@ const FooterCta = () => (
             src={data.contentfulCompany.footerCtaImage.file.url}
             title={data.contentfulCompany.footerCtaImage.title}
             alt={data.contentfulCompany.footerCtaImage.description}
+            width={`${data.contentfulCompany.footerCtaImage.file.details.image.width}px`}
+            height={`${data.contentfulCompany.footerCtaImage.file.details.image.height} px`}
             className="graphic-creative"
           />
         </div>

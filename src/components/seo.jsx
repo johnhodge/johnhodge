@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import heroNew from "../fonts/hero_new_regular-webfont.woff";
+import heroNewBold from "../fonts/hero_new_bold-webfont.woff2";
+import heroNewSuper from "../fonts/hero_new_super-webfont.woff2";
+import heroNewSuperItalic from "../fonts/hero_new_super_italic-webfont.woff2";
+import cartographMonoCfMedium from "../fonts/cartographmonocf_medium-webfont.woff2";
 
 const Seo = ({
   description,
@@ -53,7 +58,7 @@ const Seo = ({
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
-      link={
+      link={[
         canonical
           ? [
               {
@@ -65,8 +70,8 @@ const Seo = ({
                 href: canonical,
               },
             ]
-          : []
-      }
+          : [],
+      ]}
       meta={[
         {
           name: `description`,
@@ -176,7 +181,43 @@ const Seo = ({
             : []
         )
         .concat(meta)}
-    />
+    >
+      <link
+        rel="preload"
+        as="font"
+        href={heroNew}
+        type="font/woff2"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={heroNewBold}
+        type="font/woff2"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={heroNewSuper}
+        type="font/woff2"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={heroNewSuperItalic}
+        type="font/woff2"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={cartographMonoCfMedium}
+        type="font/woff2"
+        crossOrigin="true"
+      />
+    </Helmet>
   );
 };
 

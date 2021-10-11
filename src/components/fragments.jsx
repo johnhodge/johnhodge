@@ -136,6 +136,12 @@ export const solutionsData = graphql`
           description
           file {
             url
+            details {
+              image {
+                height
+                width
+              }
+            }
           }
         }
       }
