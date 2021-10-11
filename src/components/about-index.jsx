@@ -9,8 +9,6 @@ const AboutIndex = () => (
     query={graphql`
       {
         contentfulAuthor(id: { eq: "85a99f23-18ba-5b12-87e2-282595b55fba" }) {
-          firstName
-          lastName
           shortBio {
             childrenMarkdownRemark {
               html
