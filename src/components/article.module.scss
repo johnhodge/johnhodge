@@ -2,13 +2,9 @@
 @use "../styles/mixins.scss";
 
 article {
-  position: relative;
-  margin: 0;
   padding: $xsSpacing 0;
   border-radius: 0;
-  border: none;
   background-color: $white98;
-  box-shadow: none;
   * {
     margin: 0;
     padding: 0;
@@ -48,6 +44,7 @@ article {
 
 @media screen and (min-width: $desktopWidth) {
   article {
+    position: relative;
     margin: calc(-1 * $mediumSpacing) auto $smallSpacing;
     padding: $mediumSpacing;
     border-radius: $mediumBorderRadius;

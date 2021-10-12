@@ -25,7 +25,6 @@ const SitepageHero = ({ pageTitle, featuredImage }) => (
           alt={`${pageTitle}`}
           title={`${pageTitle}`}
         />
-        {console.log(data.allContentfulCompany.edges[0].node.logo.file.url)}
       </div>
     )}
   />
