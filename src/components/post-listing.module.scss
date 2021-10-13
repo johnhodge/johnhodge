@@ -1,0 +1,62 @@
+@use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss";
+
+.post-listing {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: $tinySpacing;
+
+  .post-item {
+    min-height: $largeSpacing;
+    overflow: hidden;
+    border: $borderGray40;
+
+    .post-link {
+      @include mixins.flex-default(
+        $align-items: center,
+        $justify-content: center,
+        $flex-direction: column,
+        $align-content: center
+      );
+      position: relative;
+      color: $white98;
+      height: 100%;
+      width: 100%;
+      transition: transform $easeInOut150;
+
+      .post-image {
+        position: absolute;
+      }
+      .post-title {
+        position: relative;
+        margin: $tinySpacing;
+        text-align: center;
+      }
+    }
+  }
+  .post-link:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (min-width: $desktopWidth) {
+  .post-listing {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .first-post {
+    grid-column: span 2;
+    font-size: 0.85rem;
+  }
+
+  .second-post {
+    grid-column: span 4;
+    font-size: 1.5rem;
+  }
+
+  .third-post {
+    grid-column: span 6;
+    font-size: 2rem;
+  }
+}

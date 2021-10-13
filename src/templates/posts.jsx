@@ -1,8 +1,9 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
+import PostListing from "../components/post-listing";
 
 const Posts = ({ pageContext, data, location }) => (
   <Layout location={location} pageTitle={pageContext.name}>
@@ -19,31 +20,15 @@ const Posts = ({ pageContext, data, location }) => (
         name: "BrightShell, LLC",
       }}
     </JsonLd>
-    {pageContext.type === `category`
-      ? data.category.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link to={`/insights/${node.slug}`}>
-              <h2>{node.title}</h2>
-            </Link>
-          </div>
-        ))
-      : pageContext.type === `author`
-      ? data.author.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link to={`/insights/${node.slug}`}>
-              <h2>{node.title}</h2>
-            </Link>
-          </div>
-        ))
-      : pageContext.type === `blog`
-      ? data.blog.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link to={`/insights/${node.slug}`}>
-              <h2>{node.title}</h2>
-            </Link>
-          </div>
-        ))
-      : ""}
+    {pageContext.type === `category` ? (
+      <PostListing data={data.category} />
+    ) : pageContext.type === `author` ? (
+      <PostListing data={data.author} />
+    ) : pageContext.type === `blog` ? (
+      <PostListing data={data.blog} />
+    ) : (
+      ""
+    )}
   </Layout>
 );
 
