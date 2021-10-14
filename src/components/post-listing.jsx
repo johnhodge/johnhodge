@@ -20,13 +20,15 @@ const PostListing = ({ data }) => (
           to={`/insights/${node.slug}`}
           title={`Link to ${node.title}`}
         >
-          <img
-            className={styles.postImage}
-            src={node.heroImage.file.url}
-            title={node.heroImage.title}
-            alt={node.heroImage.description}
-          />
-          <h2 className={styles.postTitle}>{node.title}</h2>
+          <div className={styles.postContainer}>
+            <img
+              className={styles.postImage}
+              src={node.heroImage.file.url}
+              title={node.heroImage.title}
+              alt={node.heroImage.description}
+            />
+            <h2 className={styles.postTitle}>{node.title}</h2>
+          </div>
         </Link>
       </div>
     ))}

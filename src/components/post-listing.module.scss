@@ -13,25 +13,30 @@
     border: $borderGray40;
 
     .post-link {
-      @include mixins.flex-default(
-        $align-items: center,
-        $justify-content: center,
-        $flex-direction: column,
-        $align-content: center
-      );
       position: relative;
       color: $white98;
       height: 100%;
       width: 100%;
       transition: transform $easeInOut150;
 
-      .post-image {
-        position: absolute;
-      }
-      .post-title {
+      .post-container {
+        @include mixins.flex-default(
+          $align-items: center,
+          $justify-content: center,
+          $flex-direction: column,
+          $align-content: center
+        );
         position: relative;
-        margin: $tinySpacing;
-        text-align: center;
+        height: 100%;
+
+        .post-image {
+          position: absolute;
+        }
+        .post-title {
+          position: relative;
+          margin: $tinySpacing;
+          text-align: center;
+        }
       }
     }
   }
