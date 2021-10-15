@@ -27,10 +27,12 @@
         );
         position: relative;
         min-height: $largeSpacing;
+        transition: transform 0.2s ease-in-out;
 
         .post-image {
           position: absolute;
         }
+
         .post-title {
           position: relative;
           margin: $tinySpacing;
@@ -39,7 +41,7 @@
       }
     }
   }
-  .post-link:hover {
+  .post-container:hover {
     transform: scale(1.1);
   }
 }
