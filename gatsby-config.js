@@ -7,7 +7,7 @@ module.exports = {
     title: `BrightShell`,
     logo: `/logo_blue.svg`,
     featuredImage: `/logo_red.svg`,
-    description: `BrightShell, LLC is a consulting firm in the adtech industry with a focus on bringing talent to market while solving problems with a nimble approach.`,
+    description: `BrightShell, LLC is a consulting firm in the adtech industry with a focus on bringing talent to market while simplifying ad system integrations and monetization strategies.`,
     social: {
       twitter: `BrightShellUSA`,
       twitterId: 1423463429583654913,
@@ -38,7 +38,7 @@ module.exports = {
       src: `${__dirname}/src/images/logo_blue.svg`,
       width: `1920px`,
       height: `1920px`,
-      altDescription: `BrightShell, LLC is a consulting firm in the adtech industry with a focus on bringing talent to market while solving problems with a nimble approach.`,
+      altDescription: `BrightShell, LLC is a consulting firm in the adtech industry with a focus on bringing talent to market while simplifying ad system integrations and monetization strategies.`,
       contentType: `image/svg+xml`,
     },
     metaLinks: [
