@@ -255,7 +255,7 @@ const Seo = ({
               givenName: `John`,
               email: `info@bright.sh`,
             },
-            foundingDate: `2021-10-01 00:00:00`,
+            foundingDate: `2022-01-01 00:00:00`,
             foundingLocation: `New York, New York`,
             sameAs: data.allContentfulCompany.edges[0].node.socialMedia.map(
               (account) => account.accountUrl
