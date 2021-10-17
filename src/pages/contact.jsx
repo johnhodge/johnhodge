@@ -7,15 +7,8 @@ import JsonLd from "../components/json-ld";
 const Contact = ({ location }) => (
   <div>
     <Layout location={location} pageTitle="Contact">
-      <Seo metaTitle="Contact" />
-      <JsonLd>
-        {{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          url: location.origin,
-          name: "BrightShell, LLC",
-        }}
-      </JsonLd>
+      <Seo metaTitle="Contact" location={location} />
+      <JsonLd schemaType="webpage" />
       <ContactForm />
     </Layout>
   </div>

@@ -11,15 +11,9 @@ const Posts = ({ pageContext, data, location }) => (
       metaTitle={pageContext.name}
       description={pageContext.description}
       metaKeywords={pageContext.keywords}
+      location={location}
     />
-    <JsonLd>
-      {{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        url: location.origin,
-        name: "BrightShell, LLC",
-      }}
-    </JsonLd>
+    <JsonLd schemaType="webpage" />
     {pageContext.type === `category` ? (
       <PostListing data={data.category} />
     ) : pageContext.type === `author` ? (

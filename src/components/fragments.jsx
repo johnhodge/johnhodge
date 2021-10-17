@@ -39,6 +39,7 @@ export const postEntryData = graphql`
     createdAt
     updatedAt
     node_locale
+    keywords
     seoHeroImage {
       title
       description
@@ -68,12 +69,18 @@ export const postEntryData = graphql`
       }
     }
     author {
-      name
       id
+      firstName
+      lastName
+      name
     }
     body {
+      body
       childMarkdownRemark {
         html
+        wordCount {
+          words
+        }
       }
     }
   }
@@ -109,8 +116,10 @@ export const contentfulSiteData = graphql`
         title
         description
         file {
+          contentType
           url
           details {
+            size
             image {
               height
               width

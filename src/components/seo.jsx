@@ -17,6 +17,7 @@ const Seo = ({
   metaTitle,
   metaKeywords,
   metaArticle,
+  location,
 }) => {
   const data = useStaticQuery(graphql`
     {
@@ -37,7 +38,7 @@ const Seo = ({
     ? `${data.site.siteMetadata.siteUrl}${pathname}`
     : null;
   const metaDescription = description || data.site.siteMetadata.description;
-  const keywords = metaKeywords || data.site.siteMetadata.keywords;
+  const keywords = metaKeywords || data.site.siteMetadata.keywords.join(", ");
 
   const image = metaImage || data.allContentfulCompany.edges[0].node.seoLogo;
   const imageFile = `https:${image.url ? image.url : image.file.url}`;
@@ -79,7 +80,7 @@ const Seo = ({
         },
         {
           name: `keywords`,
-          content: keywords.join(","),
+          content: keywords,
         },
         {
           property: `og:title`,
@@ -217,6 +218,50 @@ const Seo = ({
         type="font/woff2"
         crossOrigin="true"
       />
+
+      <script type="application/ld+json">
+        {JSON.stringify(
+          {
+            "@context": `https://schema.org`,
+            "@type": `Organization`,
+            name: data.allContentfulCompany.edges[0].node.name,
+            url: location.origin,
+            legalName: `${data.allContentfulCompany.edges[0].node.name}, LLC`,
+            logo: {
+              "@type": `ImageObject`,
+              name: data.allContentfulCompany.edges[0].node.logo.title,
+              caption: data.allContentfulCompany.edges[0].node.logo.title,
+              contentSize: `${
+                data.allContentfulCompany.edges[0].node.logo.file.details.size /
+                1000
+              }kb`,
+              contentUrl: `https:${data.allContentfulCompany.edges[0].node.logo.file.url}`,
+              encodingFormat:
+                data.allContentfulCompany.edges[0].node.logo.file.contentType,
+              height:
+                data.allContentfulCompany.edges[0].node.logo.file.details.image
+                  .height,
+              width:
+                data.allContentfulCompany.edges[0].node.logo.file.details.image
+                  .width,
+            },
+            contactPoint: {
+              "@type": `ContactPoint`,
+              contactType: `customer support`,
+              email: `info@bright.sh`,
+            },
+            founder: {
+              "@type": `Person`,
+              givenName: `John`,
+              email: `info@bright.sh`,
+            },
+            foundingDate: `2021-10-01 00:00:00`,
+            foundingLocation: `New York, New York`,
+          },
+          null,
+          ` `
+        )}
+      </script>
     </Helmet>
   );
 };

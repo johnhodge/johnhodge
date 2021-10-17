@@ -10,15 +10,8 @@ import SolutionsDescription from "../components/solutions-description";
 const Solutions = ({ data, location }) => (
   <div>
     <Layout location={location} pageTitle="Solutions">
-      <Seo metaTitle="Solutions" />
-      <JsonLd>
-        {{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          url: location.origin,
-          name: "BrightShell, LLC",
-        }}
-      </JsonLd>
+      <Seo metaTitle="Solutions" location={location} />
+      <JsonLd schemaType="webpage" />
       <div>
         {data.allContentfulCompany.edges.map(({ node }) =>
           node.solutions.map((solution) => (

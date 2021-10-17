@@ -6,15 +6,11 @@ import JsonLd from "../components/json-ld";
 const NotFoundPage = ({ location }) => (
   <div>
     <Layout location={location} pageTitle="404: Page not found">
-      <Seo metaTitle={`No page: ${location.pathname.replace("/", "")}`} />
-      <JsonLd>
-        {{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          url: location.origin,
-          name: "BrightShell, LLC",
-        }}
-      </JsonLd>
+      <Seo
+        metaTitle={`No page: ${location.pathname.replace("/", "")}`}
+        location={location}
+      />
+      <JsonLd schemaType="webpage" />
     </Layout>
   </div>
 );

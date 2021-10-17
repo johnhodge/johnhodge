@@ -9,15 +9,8 @@ import AboutIndex from "../components/about-index";
 const Posts = ({ location }) => (
   <div>
     <Layout location={location} pageTitle="John Hodge">
-      <Seo metaTitle="Home" />
-      <JsonLd>
-        {{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          url: location.origin,
-          name: "BrightShell, LLC",
-        }}
-      </JsonLd>
+      <Seo metaTitle="Home" location={location} />
+      <JsonLd schemaType="webpage" />
       <SolutionsIndex />
       <AboutIndex />
       <Testimonials />

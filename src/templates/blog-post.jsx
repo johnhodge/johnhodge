@@ -19,14 +19,16 @@ const BlogPost = ({ data, location }) => {
     timeZone: "America/New_York",
     timeZoneName: "short",
   };
-  const createdAtTz = new Date(
-    data.contentfulBlogPost.createdAt
-  ).toLocaleString("en-US", datestampOptions);
-  const updatedAtTz = new Date(
-    data.contentfulBlogPost.updatedAt
-  ).toLocaleString("en-US", datestampOptions);
+  const createdAtTz = new Date(post.createdAt).toLocaleString(
+    "en-US",
+    datestampOptions
+  );
+  const updatedAtTz = new Date(post.updatedAt).toLocaleString(
+    "en-US",
+    datestampOptions
+  );
 
-  const imageData = data.contentfulBlogPost.seoHeroImage;
+  const imageData = post.seoHeroImage;
   const metaImage = {
     url: imageData.file.url,
     width: imageData.file.details.image.width,
@@ -36,10 +38,10 @@ const BlogPost = ({ data, location }) => {
   };
 
   const metaArticle = {
-    article_published_time: data.contentfulBlogPost.createdAt,
-    article_modified_time: data.contentfulBlogPost.updatedAt,
-    article_author: data.contentfulBlogPost.author.name,
-    article_section: data.contentfulBlogPost.category.name,
+    article_published_time: post.createdAt,
+    article_modified_time: post.updatedAt,
+    article_author: post.author.name,
+    article_section: post.category.name,
   };
 
   return (
@@ -51,23 +53,50 @@ const BlogPost = ({ data, location }) => {
       post={post}
     >
       <Seo
-        metaTitle={data.contentfulBlogPost.title}
+        location={location}
+        metaTitle={post.title}
         metaImage={metaImage}
         metaArticle={metaArticle}
-        metaAuthor={data.contentfulBlogPost.author.name}
-        description={data.contentfulBlogPost.description.description}
-        metaKeywords={data.contentfulBlogPost.keywords}
-        pathname={`/insights/${data.contentfulBlogPost.slug}`}
-        metaLang={data.contentfulBlogPost.node_locale}
+        metaAuthor={post.author.name}
+        description={post.description.description}
+        metaKeywords={post.keywords ? post.keywords.join(", ") : null}
+        pathname={`/insights/${post.slug}`}
+        metaLang={post.node_locale}
       />
-      <JsonLd>
-        {{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          url: location.origin,
-          name: "BrightShell, LLC",
-        }}
-      </JsonLd>
+      <JsonLd
+        schemaType="article"
+        articleBody={post.body.body}
+        articleSection={post.category.name}
+        wordCount={post.body.childMarkdownRemark.wordCount.words}
+        abstract={post.description}
+        image={`https:${post.heroImage.file.url}`}
+        author={post.author.name}
+        givenName={post.author.firstName}
+        familyName={post.author.lastName}
+        dateCreated={post.createdAt}
+        dateModified={post.updatedAt}
+        headline={post.title}
+        inLanguage={post.node_locale}
+        keywords={post.keywords ? post.keywords.join(", ") : null}
+        name={data.allContentfulCompany.edges[0].node.name}
+        url={location.origin}
+        legalName={`${data.allContentfulCompany.edges[0].node.name}, LLC`}
+        logoName={data.allContentfulCompany.edges[0].node.logo.title}
+        caption={data.allContentfulCompany.edges[0].node.logo.title}
+        contentSize={`${
+          data.allContentfulCompany.edges[0].node.logo.file.details.size / 1000
+        }kb`}
+        contentUrl={`https:${data.allContentfulCompany.edges[0].node.logo.file.url}`}
+        encodingFormat={
+          data.allContentfulCompany.edges[0].node.logo.file.contentType
+        }
+        height={
+          data.allContentfulCompany.edges[0].node.logo.file.details.image.height
+        }
+        width={
+          data.allContentfulCompany.edges[0].node.logo.file.details.image.width
+        }
+      />
       <section>
         {updatedAtTz === createdAtTz ? (
           ""
@@ -88,6 +117,13 @@ export const query = graphql`
   query Blog($slug: String = "") {
     contentfulBlogPost(slug: { eq: $slug }) {
       ...postEntryData
+    }
+    allContentfulCompany(
+      filter: { id: { eq: "b609af1b-49b4-5251-94fb-32a3da3ebf11" } }
+    ) {
+      edges {
+        ...contentfulSiteData
+      }
     }
   }
 `;
