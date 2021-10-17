@@ -247,7 +247,7 @@ const Seo = ({
             },
             contactPoint: {
               "@type": `ContactPoint`,
-              contactType: `customer support`,
+              contactType: `Sales`,
               email: `info@bright.sh`,
             },
             founder: {
@@ -257,6 +257,9 @@ const Seo = ({
             },
             foundingDate: `2021-10-01 00:00:00`,
             foundingLocation: `New York, New York`,
+            sameAs: data.allContentfulCompany.edges[0].node.socialMedia.map(
+              (account) => account.accountUrl
+            ),
           },
           null,
           ` `
