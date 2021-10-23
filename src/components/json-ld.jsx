@@ -8,7 +8,6 @@ export const JsonLd = ({
   wordCount,
   abstract,
   givenName,
-  familyName,
   image,
   dateCreated,
   dateModified,
@@ -39,12 +38,10 @@ export const JsonLd = ({
             creator: {
               "@type": `Person`,
               givenName,
-              familyName,
             },
             author: {
               "@type": `Person`,
               givenName,
-              familyName,
             },
             publisher: {
               "@type": `Organization`,

@@ -248,12 +248,12 @@ const Seo = ({
             contactPoint: {
               "@type": `ContactPoint`,
               contactType: `Sales`,
-              email: `info@bright.sh`,
+              email: `sales@brightshell.com`,
             },
             founder: {
               "@type": `Person`,
               givenName: `John`,
-              email: `info@bright.sh`,
+              email: `info@brightshell.com`,
             },
             foundingDate: `2022-01-01 00:00:00`,
             foundingLocation: `New York, New York`,

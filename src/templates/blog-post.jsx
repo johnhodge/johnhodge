@@ -72,7 +72,6 @@ const BlogPost = ({ data, location }) => {
         image={`https:${post.heroImage.file.url}`}
         author={post.author.name}
         givenName={post.author.firstName}
-        familyName={post.author.lastName}
         dateCreated={post.createdAt}
         dateModified={post.updatedAt}
         headline={post.title}
