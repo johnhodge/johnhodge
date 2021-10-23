@@ -54,6 +54,7 @@ const Seo = ({
   const article = metaArticle || null;
   const title = `${metaTitle} | ${data.site.siteMetadata.title}`;
   const lang = metaLang;
+  console.log(title);
 
   return (
     <Helmet
@@ -96,7 +97,7 @@ const Seo = ({
         },
         {
           property: `og:site_name`,
-          content: data.site.siteMetadata.title,
+          content: title,
         },
         {
           property: `og:image`,
