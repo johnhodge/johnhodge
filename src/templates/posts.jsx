@@ -31,6 +31,7 @@ export const query = graphql`
     category: allContentfulBlogPost(
       filter: { category: { id: { eq: $id } } }
       sort: { fields: createdAt, order: DESC }
+      limit: 10
     ) {
       edges {
         ...postListingData
@@ -39,6 +40,7 @@ export const query = graphql`
     author: allContentfulBlogPost(
       filter: { author: { id: { eq: $id } } }
       sort: { fields: createdAt, order: DESC }
+      limit: 10
     ) {
       edges {
         ...postListingData
@@ -47,12 +49,16 @@ export const query = graphql`
     tag: allContentfulBlogPost(
       filter: { metadata: { tags: { elemMatch: { id: { eq: $id } } } } }
       sort: { fields: createdAt, order: DESC }
+      limit: 10
     ) {
       edges {
         ...postListingData
       }
     }
-    blog: allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
+    blog: allContentfulBlogPost(
+      sort: { fields: createdAt, order: DESC }
+      limit: 10
+    ) {
       edges {
         ...postListingData
       }
