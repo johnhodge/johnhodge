@@ -54,7 +54,6 @@ const Seo = ({
   const article = metaArticle || null;
   const title = `${metaTitle} | ${data.site.siteMetadata.title}`;
   const lang = metaLang;
-  console.log(title);
 
   return (
     <Helmet
