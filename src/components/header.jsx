@@ -2,6 +2,8 @@ import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
 import Headroom from "react-headroom";
 import * as styles from "./header.module.scss";
+import NavDesktop from "./nav-desktop";
+import NavMobile from "./nav-mobile";
 
 const Header = () => (
   <StaticQuery
@@ -36,15 +38,8 @@ const Header = () => (
                 />
               </Link>
             </div>
-            <ul>
-              {data.site.siteMetadata.metaLinks.map((item) => (
-                <li key={item.link}>
-                  <a href={`${item.link}`} title={`Link to ${item.name}`}>
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <NavDesktop data={data} />
+            <NavMobile data={data} />
           </nav>
         </div>
       </Headroom>

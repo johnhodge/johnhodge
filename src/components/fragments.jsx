@@ -83,6 +83,16 @@ export const postEntryData = graphql`
         }
       }
     }
+    footnotes {
+      articleTitle
+      articleUrl
+      authorFirstName
+      authorLastName
+      citationType
+      publicationDate(formatString: "MMMM d, yyyy")
+      publicationLocation
+      publicationName
+    }
   }
 `;
 

@@ -1,0 +1,18 @@
+@use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss";
+
+.desktop-nav-items {
+  display: none;
+}
+
+@media screen and (min-width: $desktopWidth) {
+  .desktop-nav-items {
+    @include mixins.flex-align-items;
+    align-content: center;
+    justify-content: flex-end;
+    gap: $tinySpacing;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+  }
+}

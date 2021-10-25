@@ -58,7 +58,7 @@
   padding: 2rem 1rem;
   .testimonial-body {
     p {
-      animation: fade-left 0.2s ease-in-out;
+      animation: fade-left $easeInOut200;
     }
   }
 }

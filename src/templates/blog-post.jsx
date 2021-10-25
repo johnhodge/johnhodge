@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import JsonLd from "../components/json-ld";
 import Seo from "../components/seo";
+import Footnotes from "../components/footnotes";
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
@@ -54,6 +55,7 @@ const BlogPost = ({ data, location }) => {
     >
       <Seo
         location={location}
+        baseUrl={`${location.origin}${location.pathname}`}
         metaTitle={post.title}
         metaImage={metaImage}
         metaArticle={metaArticle}
@@ -108,6 +110,7 @@ const BlogPost = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: cleanHTML }}
           itemProp="articleBody"
         />
+        {post.footnotes ? <Footnotes data={post.footnotes} /> : ""}
       </section>
     </Layout>
   );

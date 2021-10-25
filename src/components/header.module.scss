@@ -4,13 +4,16 @@
 .navigation {
   background-color: transparent;
   padding: 1rem 0;
+  position: relative;
   a {
     text-decoration: none;
     color: inherit;
   }
   nav {
     @include mixins.global-container(none);
-    @include mixins.flex-justify-column($align-items: baseline);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     div.branding {
       a {
         text-decoration: none;
@@ -27,23 +30,6 @@
       img {
         max-height: 2rem;
       }
-    }
-    ul {
-      @include mixins.flex-align-items;
-      align-content: center;
-      justify-content: flex-end;
-      gap: $tinySpacing;
-      margin: 0;
-      padding: 0.5rem 0;
-      list-style: none;
-    }
-  }
-}
-
-@media screen and (min-width: $desktopWidth) {
-  .navigation {
-    nav {
-      @include mixins.flex-default($justify-content: space-between);
     }
   }
 }

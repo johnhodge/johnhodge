@@ -10,6 +10,7 @@ html {
   font-family: $bodyFont;
   font-size: $rootFontSize;
   color: $black13;
+  scroll-behavior: smooth;
 }
 main {
   @include mixins.global-container;
@@ -76,7 +77,6 @@ Global styles
   position: absolute;
   top: 10%;
   font-size: max(4vw, 2rem);
-  z-index: 1;
 }
 
 .graphic-creative {
