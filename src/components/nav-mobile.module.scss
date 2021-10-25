@@ -14,7 +14,7 @@
   display: block;
   width: $xsSpacing;
   height: 0.125rem;
-  background: $white98;
+  background-color: $black13;
   border-radius: 0.125rem;
 }
 
@@ -26,7 +26,7 @@
   padding: $tinySpacing;
   height: 100vh;
   width: calc(100% - 2rem);
-  background: $black13;
+  background-color: $white98;
   margin: 0;
   overflow-y: scroll;
   animation: fade-down $easeInOut200;
@@ -55,5 +55,11 @@
 @media screen and (min-width: $desktopWidth) {
   .mobile-nav {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-nav-items {
+    background-color: $black13;
   }
 }
