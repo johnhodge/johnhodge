@@ -35,9 +35,6 @@ const FooterCta = () => (
           </a>
         </div>
         <div className="graphic-headline-container">
-          <h2 className="graphic-headline">
-            {data.contentfulCompany.footerCtaHeadline}
-          </h2>
           <img
             src={data.contentfulCompany.footerCtaImage.file.url}
             title={data.contentfulCompany.footerCtaImage.title}
@@ -46,6 +43,9 @@ const FooterCta = () => (
             height={`${data.contentfulCompany.footerCtaImage.file.details.image.height} px`}
             className="graphic-creative"
           />
+          <h2 className="graphic-headline">
+            {data.contentfulCompany.footerCtaHeadline}
+          </h2>
         </div>
       </div>
     )}
