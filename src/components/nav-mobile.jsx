@@ -10,11 +10,8 @@ const NavMobile = ({ data }) => {
       <Hamburger toggled={isOpen} toggle={setOpen} />
       <div />
       <ul
-        className={
-          isOpen
-            ? styles.mobileNavItems
-            : `${styles.mobileNavItems} ${styles.hiddenNavItems}`
-        }
+        key={isOpen}
+        className={isOpen ? styles.mobileNavItems : styles.hiddenNavItems}
       >
         {data.site.siteMetadata.metaLinks.map((item) => (
           <li key={item.link}>
