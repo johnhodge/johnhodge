@@ -34,7 +34,7 @@ const Testimonials = () => (
       }
     `}
     render={(data) => {
-      const {testimonial} = data.allContentfulCompany.edges[0].node;
+      const { testimonial } = data.allContentfulCompany.edges[0].node;
       const [current, setCurrent] = useState(testimonial[0]);
       const [active, setActive] = useState(testimonial[0]);
       const handleSetClick = (event) => {
@@ -49,12 +49,13 @@ const Testimonials = () => (
               <div className={styles.testimonialPerson}>
                 <div className={styles.personImageContainer}>
                   <GatsbyImage
+                    key={active.id}
                     image={getImage(current.headshot)}
                     title={current.headshot.title}
                     alt={current.headshot.description}
                   />
                 </div>
-                <div className={styles.personTextContainer}>
+                <div key={active.id} className={styles.personTextContainer}>
                   <h3>{current.firstName}</h3>
                   <h3>{current.jobTitle}</h3>
                   <h3>{current.companyName}</h3>
@@ -63,6 +64,7 @@ const Testimonials = () => (
             </div>
             <div className={styles.testimonialText}>
               <div
+                key={active.id}
                 className={styles.testimonialBody}
                 dangerouslySetInnerHTML={{
                   __html: current.testimonial.childrenMarkdownRemark[0].html,
