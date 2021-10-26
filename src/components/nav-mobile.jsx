@@ -7,7 +7,12 @@ const NavMobile = ({ data }) => {
 
   return (
     <div id="mobile-navbar" className={styles.mobileNav}>
-      <Hamburger toggled={isOpen} toggle={setOpen} />
+      <Hamburger
+        rounded
+        toggled={isOpen}
+        toggle={setOpen}
+        label="Show navigation menu"
+      />
       <div />
       <ul
         key={isOpen}
