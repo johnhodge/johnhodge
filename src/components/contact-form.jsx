@@ -33,7 +33,7 @@ const ContactForm = () => (
       validationSchema={ContactSchema}
       onSubmit={async (values, actions) => {
         await sleep(500);
-        actions.submitForm();
+        actions.submitForm(values);
         actions.setSubmitting(false);
         actions.resetForm({
           firstName: "",
