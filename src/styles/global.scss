@@ -105,6 +105,14 @@ Buttons
 }
 
 /*
+Form reset
+*/
+input[type],
+textarea {
+  -webkit-appearance: none;
+}
+
+/*
 Headroom navigation styles
 */
 .headroom {

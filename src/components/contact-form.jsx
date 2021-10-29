@@ -48,6 +48,7 @@ const ContactForm = () => (
         <div>
           {status ? (
             <div>
+              {dataLayer.push({ event: "formSubmitted", formName: "contact" })}
               <h2>Thanks for reaching out</h2>
               <p>
                 Your message has been delivered, someone will follow up with you
