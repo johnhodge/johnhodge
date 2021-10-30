@@ -38,10 +38,12 @@ const BlogPost = ({ data, location }) => {
     contentType: imageData.file.contentType,
   };
 
+  const authorName = post.author.firstName;
+
   const metaArticle = {
     article_published_time: post.createdAt,
     article_modified_time: post.updatedAt,
-    article_author: post.author.name,
+    article_author: authorName,
     article_section: post.category.name,
   };
 
@@ -52,6 +54,7 @@ const BlogPost = ({ data, location }) => {
       pageTitle={post.title}
       createdAt={createdAtTz}
       post={post}
+      authorName={authorName}
     >
       <Seo
         location={location}
@@ -59,7 +62,7 @@ const BlogPost = ({ data, location }) => {
         metaTitle={post.title}
         metaImage={metaImage}
         metaArticle={metaArticle}
-        metaAuthor={post.author.name}
+        metaAuthor={authorName}
         description={post.description.description}
         metaKeywords={post.keywords ? post.keywords.join(", ") : null}
         pathname={`/insights/${post.slug}`}
@@ -72,7 +75,7 @@ const BlogPost = ({ data, location }) => {
         wordCount={post.body.childMarkdownRemark.wordCount.words}
         abstract={post.description}
         image={`https:${post.heroImage.file.url}`}
-        author={post.author.name}
+        author={authorName}
         givenName={post.author.firstName}
         dateCreated={post.createdAt}
         dateModified={post.updatedAt}

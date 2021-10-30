@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -22,6 +22,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               title
               updatedAt
               author {
+                firstName
                 name
                 id
               }
@@ -87,15 +88,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create pages for author listing
   const authorTemplate = path.resolve(`src/templates/posts.jsx`);
   result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
-    const authorSlug = node.author.name.toLowerCase().replace(/\W/gm, `-`);
+    const authorName = node.author.firstName;
+    const authorSlug = authorName.toLowerCase().replace(/\W/gm, `-`);
     createPage({
       path: `author/${authorSlug}`,
       component: authorTemplate,
       context: {
         slug: authorSlug,
         id: node.author.id,
-        name: node.author.name,
-        description: `BrightShell Insights written by ${node.author.name}.`,
+        name: authorName,
+        description: `BrightShell Insights written by ${authorName}.`,
         type: `author`,
         author: true,
       },

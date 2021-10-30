@@ -8,7 +8,7 @@ import AboutIndex from "../components/about-index";
 
 const Posts = ({ location }) => (
   <div>
-    <Layout location={location} pageTitle="John Hodge">
+    <Layout location={location} pageTitle="BrightShell, LLC">
       <Seo metaTitle="Home" location={location} />
       <JsonLd schemaType="webpage" />
       <SolutionsIndex />

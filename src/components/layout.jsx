@@ -13,6 +13,7 @@ export default function Layout({
   post,
   location,
   createdAt,
+  authorName,
 }) {
   const today = new Date();
   const year = today.getFullYear();
@@ -29,7 +30,12 @@ export default function Layout({
         {location.pathname === "/" ? (
           ""
         ) : (
-          <Article pageTitle={pageTitle} post={post} createdAt={createdAt} />
+          <Article
+            pageTitle={pageTitle}
+            post={post}
+            createdAt={createdAt}
+            authorName={authorName}
+          />
         )}
         {children}
       </main>

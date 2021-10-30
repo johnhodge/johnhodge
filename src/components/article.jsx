@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import * as styles from "./article.module.scss";
 
-const Article = ({ post, pageTitle, createdAt }) => (
+const Article = ({ post, pageTitle, createdAt, authorName }) => (
   <article>
     <h1>{pageTitle}</h1>
     {post ? (
@@ -139,8 +139,8 @@ const Article = ({ post, pageTitle, createdAt }) => (
           {post.category.name}
         </Link>
         <Link
-          to={`/author/${post.author.name.toLowerCase().replace(/\W/gm, "-")}`}
-          title={`Link to ${post.author.name}'s listing page`}
+          to={`/author/${authorName.toLowerCase().replace(/\W/gm, "-")}`}
+          title={`Link to ${authorName}'s listing page`}
         >
           <svg
             id="Group_14"
@@ -207,7 +207,7 @@ const Article = ({ post, pageTitle, createdAt }) => (
               strokeWidth="2"
             />
           </svg>
-          {post.author.name}
+          {authorName}
         </Link>
       </div>
     ) : (

@@ -2,8 +2,8 @@ require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` });
 
 module.exports = {
   siteMetadata: {
-    author: `John Hodge`,
-    siteUrl: `https://bright.sh/`,
+    author: `BrightShell Dev Team`,
+    siteUrl: `https://brightshell.com/`,
     title: `BrightShell`,
     logo: `/logo_blue.svg`,
     featuredImage: `/logo_red.svg`,
