@@ -14,10 +14,6 @@ a.cta:hover {
   background-color: $red75;
 }
 
-.mobile-nav-cta {
-  margin: 0 calc($unitsNormal * -1);
-}
-
 @media screen and (min-width: $desktopWidth) {
   a.cta {
     width: auto;
