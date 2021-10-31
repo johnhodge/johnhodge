@@ -7,15 +7,15 @@
 
 .mobile-nav-toggle {
   @include mixins.flex-default($flex-direction: column);
-  gap: 0.5rem;
+  gap: $unitsSmall;
 }
 
 .icon-bar {
   display: block;
-  width: $xsSpacing;
-  height: 0.125rem;
+  width: $unitsMedium;
+  height: $unitsTiny;
   background-color: $black13;
-  border-radius: 0.125rem;
+  border-radius: $unitsTiny;
 }
 
 .mobile-nav-items {
@@ -23,16 +23,16 @@
   top: 78px;
   bottom: 0;
   left: 0;
-  padding: $tinySpacing;
+  padding: $unitsNormal;
   height: 100vh;
-  width: calc(100% - 2rem);
+  width: calc(100% - $unitsMedium);
   background-color: $white98;
   margin: 0;
   overflow-y: scroll;
   animation: fade-down $easeInOut200;
   li {
     list-style: none;
-    padding: $xsSpacing $tinySpacing;
+    padding: $unitsMedium $unitsNormal;
     border-bottom: $borderGray40;
   }
 }

@@ -5,8 +5,8 @@ a.cta {
   background-color: $red70;
   color: $white98;
   display: block;
-  padding: 1rem;
-  border-radius: 0.25rem;
+  padding: $unitsNormal;
+  border-radius: $unitsXSmall;
   text-align: center;
 }
 
@@ -22,6 +22,6 @@ a.cta:hover {
   a.cta {
     width: auto;
     display: inline;
-    padding: 0.5rem 1rem;
+    padding: $unitsSmall $unitsNormal;
   }
 }

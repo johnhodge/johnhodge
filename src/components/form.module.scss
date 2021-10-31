@@ -5,10 +5,9 @@
   display: block;
   line-height: normal;
   width: -webkit-fill-available;
-  margin: $tinySpacing 0;
-  padding: $tinySpacing;
-  border-top-right-radius: $smallBorderRadius;
-  border-bottom-left-radius: $smallBorderRadius;
+  margin: $unitsNormal 0;
+  padding: $unitsNormal;
+  border-radius: $unitsXSmall;
 }
 
 *::placeholder,
@@ -30,8 +29,8 @@ select option:disabled {
 
 .form {
   max-width: 100%;
-  padding: $tinySpacing;
-  border-radius: $smallBorderRadius;
+  padding: $unitsNormal;
+  border-radius: $unitsSmall;
   border: $borderGray40;
 }
 

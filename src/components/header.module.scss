@@ -3,7 +3,7 @@
 
 .navigation {
   background-color: transparent;
-  padding: 1rem 0;
+  padding: $unitsNormal 0;
   position: relative;
   a {
     text-decoration: none;
@@ -29,7 +29,7 @@
         line-height: inherit;
       }
       img {
-        max-height: 2rem;
+        max-height: $unitsMedium;
       }
     }
   }

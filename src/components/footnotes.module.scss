@@ -1,9 +1,9 @@
 @use "../styles/variables.scss" as *;
 
 .footnote-list {
-  padding-left: $xsSpacing;
+  padding-left: $unitsMedium;
   li {
-    margin: $tinySpacing 0;
+    margin: $unitsNormal 0;
     word-break: break-word;
   }
 }

@@ -1,7 +1,9 @@
+@use "../styles/variables.scss" as *;
+
 .about-container {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  gap: 1rem;
+  gap: $unitsNormal;
 }
 
 .about-image {

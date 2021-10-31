@@ -77,13 +77,16 @@ $globalWidth: 95%;
 $wideContainer: 55rem;
 $veryWideContainer: 75rem;
 
-$tinySpacing: 1rem;
-$xsSpacing: 2rem;
-$smallSpacing: 3rem;
-$mediumSpacing: 5rem;
-$largeSpacing: 10rem;
-$xlSpacing: 15rem;
-$xxlSpacing: 20rem;
+$unitsTiny: 0.125rem;
+$unitsXSmall: 0.25rem;
+$unitsSmall: 0.5rem;
+$unitsNormal: 1rem;
+$unitsMedium: 2rem;
+$unitsMedLarge: 3rem;
+$unitsLarge: 5rem;
+$unitsXLarge: 10rem;
+$unitsXXLarge: 15rem;
+$unitsHuge: 20rem;
 
 /*
 Border and shadow elements
@@ -93,11 +96,8 @@ $borderGray40: 0.0625rem solid $gray40;
 $borderGreen30: 0.0625rem solid $green30;
 $borderOrange30: 0.0625rem solid $orange30;
 
-$smallBoxShadow: 0 0 1rem hsla(0deg, 0%, 0%, 0.25);
-$largeBoxShadow: 0 1rem 4rem hsla(0deg, 0%, 0%, 0.25);
-
-$smallBorderRadius: 0.2rem;
-$mediumBorderRadius: 0.5rem;
+$smallBoxShadow: 0 0 $unitsNormal hsla(0deg, 0%, 0%, 0.25);
+$largeBoxShadow: 0 $unitsNormal 4rem hsla(0deg, 0%, 0%, 0.25);
 
 $darkOutline: 0 0 0 0.15rem $black13, 0 0 0 0.3rem $cyan60;
 $lightOutline: 0 0 0 0.15rem $white98, 0 0 0 0.3rem $blue60;

@@ -3,15 +3,15 @@
 
 footer {
   @include mixins.global-container(none);
-  margin: $smallSpacing auto $tinySpacing;
+  margin: $unitsMedLarge auto $unitsNormal;
 }
 
 .cta-container {
   @include mixins.global-container(none);
   display: flex;
   flex-flow: column-reverse;
-  gap: $tinySpacing;
-  margin: $smallSpacing auto;
+  gap: $unitsNormal;
+  margin: $unitsMedLarge auto;
 }
 
 .copyright-container {

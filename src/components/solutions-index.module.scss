@@ -2,7 +2,7 @@
 @use "../styles/mixins.scss";
 
 @mixin solutions-container {
-  margin: 5rem 0;
+  margin: $unitsLarge 0;
 }
 
 .solutions-container {
@@ -20,7 +20,7 @@
   .solutions-container-switch {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $tinySpacing;
+    gap: $unitsNormal;
   }
 
   .description-container {

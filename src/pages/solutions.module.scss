@@ -2,13 +2,13 @@
 @use "../styles/mixins.scss";
 
 .solutions-container {
-  margin-bottom: $mediumSpacing;
+  margin-bottom: $unitsLarge;
 }
 
 @media screen and (min-width: $desktopWidth) {
   .solutions-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $tinySpacing;
+    gap: $unitsNormal;
   }
 }
