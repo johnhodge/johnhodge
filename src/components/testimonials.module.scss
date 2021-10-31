@@ -64,7 +64,7 @@
 
 @keyframes fade-left {
   0% {
-    transform: translateX(1rem);
+    transform: translateX($unitsNormal);
     opacity: 0;
   }
   100% {
@@ -75,7 +75,7 @@
 
 @keyframes fade-right {
   0% {
-    transform: translateX(-1rem);
+    transform: translateX(calc(-1 * $unitsNormal));
     opacity: 0;
   }
   100% {

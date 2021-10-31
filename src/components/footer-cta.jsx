@@ -30,7 +30,7 @@ const FooterCta = () => (
       <div className={styles.ctaContainer}>
         <div>
           <p>{data.contentfulCompany.footerCtaDescription}</p>
-          <a href="/contact" className="btn-primary">
+          <a href="/lp/request-meeting/" className="btn-primary">
             {data.contentfulCompany.footerCtaButtonText}
           </a>
         </div>

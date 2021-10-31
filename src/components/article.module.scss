@@ -24,7 +24,7 @@ article {
       color: $gray60;
       text-decoration: none;
       svg {
-        height: 1.25rem;
+        height: calc($unitsNormal * 1.25);
         width: auto;
         margin-right: $unitsSmall;
         .styled-svg-element {

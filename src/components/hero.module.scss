@@ -13,7 +13,7 @@
 }
 
 .hero-text {
-  font-size: max(2.5rem, 7vw);
+  font-size: max(calc($unitsNormal * 2.5), 7vw);
   text-align: center;
 }
 

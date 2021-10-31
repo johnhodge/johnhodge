@@ -54,12 +54,12 @@
 
   .first-post {
     grid-column: span 2;
-    font-size: 0.85rem;
+    font-size: calc($unitsNormal * 85);
   }
 
   .second-post {
     grid-column: span 4;
-    font-size: 1.5rem;
+    font-size: calc($unitsNormal * 1.5);
   }
 
   .third-post {

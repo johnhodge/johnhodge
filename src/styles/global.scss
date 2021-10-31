@@ -37,7 +37,7 @@ kbd,
 pre,
 samp {
   font-family: $monoFont;
-  font-size: 0.8rem;
+  font-size: calc($unitsNormal * 0.85);
   line-height: 1.65;
   border: $borderWhite80;
   background-color: $white98;
@@ -89,7 +89,7 @@ Buttons
 */
 .btn-primary {
   font-family: $headerFont;
-  font-size: 1.2rem;
+  font-size: calc($unitsNormal * 1.2);
   color: $black13;
   text-align: center;
   background: linear-gradient(90deg, $white90, $white98);
@@ -142,7 +142,7 @@ Headroom navigation styles
 }
 .headroom--scrolled {
   @include mixins.light-scheme($white98_50);
-  backdrop-filter: blur(1rem);
+  backdrop-filter: blur($unitsNormal);
   transition: transform, border-bottom $easeInOut200;
   -webkit-transition: -webkit-transform $easeInOut200;
   -moz-transition: -moz-transform $easeInOut200;
@@ -169,7 +169,7 @@ Media queries
   h4,
   h5,
   h6 {
-    letter-spacing: -0.1rem;
+    letter-spacing: calc($unitsNormal * -0.1);
   }
 }
 @media (prefers-color-scheme: dark) {
