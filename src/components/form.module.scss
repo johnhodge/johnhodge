@@ -11,6 +11,11 @@
   border-bottom-left-radius: $smallBorderRadius;
 }
 
+*::placeholder,
+select option:disabled {
+  color: inherit;
+}
+
 .invalid-field-entry {
   border-color: $red60;
 }
@@ -32,9 +37,22 @@
 
 button,
 input,
-textarea {
+textarea,
+select {
   @include field-structure;
   color: inherit;
+}
+
+input,
+textarea,
+select,
+button:disabled {
+  border: $borderGray40;
+  background-color: $white98;
+}
+
+textarea {
+  min-height: 8rem;
 }
 
 button {
@@ -56,17 +74,6 @@ button:disabled {
   box-shadow: none;
 }
 
-input,
-textarea,
-button:disabled {
-  border: $borderGray40;
-  background-color: $white98;
-}
-
-textarea {
-  min-height: 8rem;
-}
-
 /*
 Media Queries
 */
@@ -77,6 +84,7 @@ Media Queries
   }
   input,
   textarea,
+  select,
   button:disabled {
     background-color: $black15;
   }
