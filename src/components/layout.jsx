@@ -39,7 +39,7 @@ export default function Layout({
         )}
         {children}
       </main>
-      {location.pathname.includes("lp") ? "" : <FooterCta />}
+      {location.pathname.includes("/lp/") ? "" : <FooterCta />}
       <Footer year={year} />
     </div>
   );
