@@ -1,16 +1,16 @@
 import React from "react";
 import * as styles from "./nav-desktop.module.scss";
+import NavList from "./nav-list";
 
 const NavDesktop = ({ data }) => (
-  <ul className={styles.desktopNavItems}>
-    {data.site.siteMetadata.metaLinks.map((item) => (
-      <li key={item.link}>
-        <a href={`${item.link}`} title={`Link to ${item.name}`}>
-          {item.name}
-        </a>
-      </li>
-    ))}
-  </ul>
+  <div className={styles.desktopNavLists}>
+    <ul className={styles.navItems}>
+      <NavList data={data} listType="page" />
+    </ul>
+    <ul className={styles.navItems}>
+      <NavList data={data} listType="cta" />
+    </ul>
+  </div>
 );
 
 export default NavDesktop;

@@ -1,0 +1,27 @@
+@use "../styles/variables.scss" as *;
+
+a.cta {
+  box-shadow: $smallBoxShadow;
+  background-color: $red70;
+  color: $white98;
+  display: block;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+a.cta:hover {
+  background-color: $red75;
+}
+
+.mobile-nav-cta {
+  margin: 0 -1rem;
+}
+
+@media screen and (min-width: $desktopWidth) {
+  a.cta {
+    width: auto;
+    display: inline;
+    padding: 0.5rem 1rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import * as styles from "./nav-mobile.module.scss";
+import NavList from "./nav-list";
 
 const NavMobile = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
@@ -18,13 +19,8 @@ const NavMobile = ({ data }) => {
         key={isOpen}
         className={isOpen ? styles.mobileNavItems : styles.hiddenNavItems}
       >
-        {data.site.siteMetadata.metaLinks.map((item) => (
-          <li key={item.link}>
-            <a href={`${item.link}`} title={`Link to ${item.name}`}>
-              {item.name}
-            </a>
-          </li>
-        ))}
+        <NavList data={data} mobileNavCta="true" listType="cta" />
+        <NavList data={data} listType="page" />
       </ul>
     </div>
   );

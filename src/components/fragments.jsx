@@ -113,6 +113,7 @@ export const gatsbySiteData = graphql`
       metaLinks {
         name
         link
+        type
       }
     }
   }

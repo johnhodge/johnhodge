@@ -44,19 +44,19 @@ module.exports = {
     metaLinks: [
       {
         name: `Request a Meeting`,
-        link: `/request-meeting`,
-        type: `button`,
+        link: `/lp/request-meeting`,
+        type: `cta`,
       },
       {
         name: `Solutions`,
         link: `/solutions`,
         type: `page`,
       },
-      // {
-      //   name: `Insights`,
-      //   link: `/insights`,
-      //   type: `page`,
-      // },
+      {
+        name: `Insights`,
+        link: `/insights`,
+        type: `page`,
+      },
     ],
   },
   plugins: [

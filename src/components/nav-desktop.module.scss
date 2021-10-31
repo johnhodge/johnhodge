@@ -1,18 +1,28 @@
 @use "../styles/variables.scss" as *;
 @use "../styles/mixins.scss";
 
-.desktop-nav-items {
+.desktop-nav-lists {
   display: none;
 }
 
 @media screen and (min-width: $desktopWidth) {
-  .desktop-nav-items {
-    @include mixins.flex-align-items;
-    align-content: center;
-    justify-content: flex-end;
-    gap: $tinySpacing;
-    margin: 0;
-    padding: 0.5rem 0;
-    list-style: none;
+  .desktop-nav-lists {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+    justify-content: end;
+    .nav-items {
+      margin: 0;
+      padding: 0.5rem 0;
+      list-style: none;
+      width: max-content;
+      div {
+        @include mixins.flex-default(
+          $align-content: center,
+          $justify-content: flex-end
+        );
+        gap: $tinySpacing;
+      }
+    }
   }
 }
