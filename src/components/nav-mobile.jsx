@@ -19,7 +19,7 @@ const NavMobile = ({ data }) => {
         key={isOpen}
         className={isOpen ? styles.mobileNavItems : styles.hiddenNavItems}
       >
-        <NavList data={data} mobileNavCta="true" listType="cta" />
+        <NavList data={data} listType="cta" navListClass="mobileNavCta" />
         <NavList data={data} listType="page" />
       </ul>
     </div>

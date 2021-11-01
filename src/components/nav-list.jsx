@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import Cta from "./cta";
 import * as styles from "./nav-list.module.scss";
 
-const NavList = ({ data, listType, mobileNavCta }) => (
+const NavList = ({ data, listType, navListClass }) => (
   <div>
     {data.site.siteMetadata.metaLinks.map((item) =>
       item.type === listType ? (
@@ -20,7 +20,7 @@ const NavList = ({ data, listType, mobileNavCta }) => (
               ctaUrl={item.link}
               ctaName={item.name}
               ctaText={item.name}
-              mobileNavCta={mobileNavCta}
+              navListClass={navListClass}
             />
           ) : (
             ""
