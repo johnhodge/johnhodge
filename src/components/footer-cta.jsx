@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./footer.module.scss";
+import Cta from "./cta";
 
 const FooterCta = () => (
   <StaticQuery
@@ -30,9 +31,12 @@ const FooterCta = () => (
       <div className={styles.ctaContainer}>
         <div>
           <p>{data.contentfulCompany.footerCtaDescription}</p>
-          <a href="/lp/request-meeting/" className="btn-primary">
-            {data.contentfulCompany.footerCtaButtonText}
-          </a>
+          <Cta
+            ctaUrl="/lp/request-meeting/"
+            ctaName={data.contentfulCompany.footerCtaButtonText}
+            ctaText={data.contentfulCompany.footerCtaButtonText}
+            ctaClass="accentCta"
+          />
         </div>
         <div className="graphic-headline-container">
           <img

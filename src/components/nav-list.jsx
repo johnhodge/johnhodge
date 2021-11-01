@@ -20,7 +20,7 @@ const NavList = ({ data, listType, navListClass }) => (
               ctaUrl={item.link}
               ctaName={item.name}
               ctaText={item.name}
-              navListClass={navListClass}
+              ctaClass={navListClass}
             />
           ) : (
             ""

@@ -2,6 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./hero.module.scss";
 import * as home from "../pages/index.module.scss";
+import Cta from "./cta";
 
 const HomepageHero = () => (
   <StaticQuery
@@ -26,9 +27,12 @@ const HomepageHero = () => (
           <h1 className={styles.heroText}>
             {data.contentfulCompany.homepageHeadline}
           </h1>
-          <a href="/lp/request-meeting/" className="btn-primary">
-            {data.contentfulCompany.homepageCtaText}
-          </a>
+          <Cta
+            ctaUrl="/lp/request-meeting/"
+            ctaName={data.contentfulCompany.homepageCtaText}
+            ctaText={data.contentfulCompany.homepageCtaText}
+            ctaClass="accentCta"
+          />
         </div>
       </div>
     )}

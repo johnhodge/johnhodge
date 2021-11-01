@@ -56,7 +56,7 @@ Primary Buttons
 */
 
 @mixin primary-btn(
-  $background-color: $blue50,
+  $background: $blue50,
   $color: $white98,
   $display: block,
   $verticalPadding: $unitsSmall,
@@ -64,7 +64,7 @@ Primary Buttons
   $border: none,
   $width: auto
 ) {
-  background-color: $background-color;
+  background: $background;
   color: $color;
   display: $display;
   text-align: center;
@@ -74,7 +74,8 @@ Primary Buttons
   border: $border;
   width: $width;
 }
-@mixin primary-btn-hover($background-color: $blue60) {
-  background-color: $background-color;
+@mixin primary-btn-hover($background: $blue60, $border-color: none) {
+  background: $background;
+  border-color: $border-color;
   cursor: pointer;
 }
