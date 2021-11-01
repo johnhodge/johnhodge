@@ -44,33 +44,13 @@ select {
 
 input,
 textarea,
-select,
-button:disabled {
+select {
   border: $borderGray40;
   background-color: $white98;
 }
 
 textarea {
   min-height: $unitsXLarge;
-}
-
-button {
-  border: $borderOrange30;
-  background-color: $orange60;
-  color: $black13;
-  box-shadow: $smallBoxShadow;
-  transition: $easeInOut200 box-shadow;
-}
-
-button:hover {
-  box-shadow: none;
-  cursor: pointer;
-}
-
-button:disabled {
-  color: $gray40;
-  cursor: not-allowed;
-  box-shadow: none;
 }
 
 /*
@@ -83,8 +63,7 @@ Media Queries
   }
   input,
   textarea,
-  select,
-  button:disabled {
+  select {
     background-color: $black15;
   }
   .valid-field-entry {

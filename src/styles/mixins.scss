@@ -50,3 +50,31 @@
   max-width: $max-width;
   margin: auto;
 }
+
+/*
+Primary Buttons
+*/
+
+@mixin primary-btn(
+  $background-color: $blue50,
+  $color: $white98,
+  $display: block,
+  $verticalPadding: $unitsSmall,
+  $horizontalPadding: $unitsNormal,
+  $border: none,
+  $width: auto
+) {
+  background-color: $background-color;
+  color: $color;
+  display: $display;
+  text-align: center;
+  padding: $verticalPadding $horizontalPadding;
+  border-radius: $unitsXSmall;
+  box-shadow: $smallBoxShadow;
+  border: $border;
+  width: $width;
+}
+@mixin primary-btn-hover($background-color: $blue60) {
+  background-color: $background-color;
+  cursor: pointer;
+}
