@@ -1,23 +1,19 @@
 @use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss";
 
 a.cta {
-  box-shadow: $smallBoxShadow;
-  background-color: $red70;
-  color: $white98;
-  display: block;
-  padding: $unitsNormal;
-  border-radius: $unitsXSmall;
-  text-align: center;
+  @include mixins.primary-btn(
+    $background-color: $red70,
+    $verticalPadding: $unitsNormal
+  );
 }
 
 a.cta:hover {
-  background-color: $red75;
+  @include mixins.primary-btn-hover($background-color: $red75);
 }
 
 @media screen and (min-width: $desktopWidth) {
   a.cta {
-    width: auto;
-    display: inline;
-    padding: $unitsSmall $unitsNormal;
+    @include mixins.primary-btn($background-color: $red70, $display: inline);
   }
 }

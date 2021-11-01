@@ -2,6 +2,7 @@ import * as React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as styles from "./form.module.scss";
+import Button from "./button";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -282,9 +283,11 @@ const MeetingRequestForm = () => (
               {errors.message && touched.message ? (
                 <div className={styles.errors}>{errors.message}</div>
               ) : null}
-              <button type="submit" disabled={isSubmitting || !isValid}>
-                Send
-              </button>
+              <Button
+                isSubmitting={isSubmitting}
+                isValid={isValid}
+                buttonText="Send Request"
+              />
             </Form>
           )}
         </div>
