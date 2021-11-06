@@ -162,7 +162,7 @@ const MeetingRequestForm = () => (
                 }
               >
                 <option value="" disabled selected>
-                  Which best describes your firm?
+                  Which best describes your company?
                 </option>
                 <option value="programmer">Programmer</option>
                 <option value="distributor">Distributor</option>
@@ -183,7 +183,7 @@ const MeetingRequestForm = () => (
                 }
               >
                 <option value="" disabled selected>
-                  Which describes you?
+                  Which best describes you?
                 </option>
                 <option value="persona_1">AdOps Manager/Director</option>
                 <option value="persona_2">Programmatic Sales Lead</option>
