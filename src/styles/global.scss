@@ -5,7 +5,7 @@
 Base styles
 */
 html {
-  background-color: $white98;
+  background: $white98;
   line-height: normal;
   font-family: $bodyFont;
   font-size: $rootFontSize;
@@ -40,7 +40,7 @@ samp {
   font-size: calc($unitsNormal * 0.85);
   line-height: 1.65;
   border: $borderWhite80;
-  background-color: $white98;
+  background: $white98;
 }
 pre {
   border-radius: $unitsXSmall;
@@ -67,6 +67,11 @@ Global styles
 *:focus-visible {
   outline: none;
   box-shadow: $lightOutline;
+}
+
+::selection {
+  background: $blue50;
+  color: $white98;
 }
 
 .graphic-headline-container {
@@ -186,7 +191,7 @@ Media queries
   kbd,
   pre,
   samp {
-    background-color: $black10;
+    background: $black10;
   }
   .btn-primary {
     background: linear-gradient(90deg, $white80, $white98);

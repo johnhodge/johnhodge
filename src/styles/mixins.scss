@@ -1,12 +1,12 @@
 @use "variables" as *;
 
-@mixin dark-scheme($background-color: $black13) {
-  background-color: $background-color;
+@mixin dark-scheme($background: $black13) {
+  background: $background;
   color: $white98;
 }
 
-@mixin light-scheme($background-color: $white98) {
-  background-color: $background-color;
+@mixin light-scheme($background: $white98) {
+  background: $background;
   color: $black13;
 }
 

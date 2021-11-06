@@ -46,7 +46,7 @@ input,
 textarea,
 select {
   border: $borderGray40;
-  background-color: $white98;
+  background: $white98;
 }
 
 textarea {
@@ -64,7 +64,7 @@ Media Queries
   input,
   textarea,
   select {
-    background-color: $black15;
+    background: $black15;
   }
   .valid-field-entry {
     border-color: $green60;

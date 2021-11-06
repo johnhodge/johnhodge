@@ -2,7 +2,7 @@
 @use "../styles/mixins";
 
 .navigation {
-  background-color: transparent;
+  background: transparent;
   padding: $unitsNormal 0;
   position: relative;
   a {

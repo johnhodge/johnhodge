@@ -43,12 +43,12 @@
     cursor: pointer;
   }
   .active {
-    background-color: $blue60;
+    background: $blue60;
     box-shadow: $lightOutline;
     outline: none;
   }
   .inactive {
-    background-color: $gray60;
+    background: $gray60;
   }
 }
 
@@ -91,7 +91,7 @@
   }
   .selectors {
     .active {
-      background-color: $cyan60;
+      background: $cyan60;
       box-shadow: $darkOutline;
     }
   }

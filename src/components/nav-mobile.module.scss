@@ -14,7 +14,7 @@
   display: block;
   width: $unitsMedium;
   height: $unitsTiny;
-  background-color: $black13;
+  background: $black13;
   border-radius: $unitsTiny;
 }
 
@@ -26,7 +26,7 @@
   padding: $unitsNormal;
   height: 100vh;
   width: calc(100% - $unitsMedium);
-  background-color: $white98;
+  background: $white98;
   margin: 0;
   overflow-y: scroll;
   animation: fade-down $easeInOut200;
@@ -60,6 +60,6 @@
 
 @media (prefers-color-scheme: dark) {
   .mobile-nav-items {
-    background-color: $black13;
+    background: $black13;
   }
 }
