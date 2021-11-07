@@ -7,7 +7,7 @@ const Footnotes = ({ data }) => (
     <ol className={styles.footnoteList}>
       {data.map((note, i) => (
         <li id={i + 1}>
-          {note.authorFirstName} {note.authorLastName},
+          {note.authorFirstName} {note.authorLastName},{" "}
           {`"${note.articleTitle}"`} <em>{note.publicationName}</em>.{" "}
           {note.publicationDate}.{" "}
           <a title={`Link to ${note.articleTitle}.`} href={note.articleUrl}>
