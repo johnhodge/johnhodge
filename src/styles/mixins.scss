@@ -79,3 +79,19 @@ Primary Buttons
   border-color: $border-color;
   cursor: pointer;
 }
+
+/*
+Code boxes, blockquotes, other text boxes
+*/
+
+@mixin text-box(
+  $border-left: $unitsXSmall solid,
+  $border-color: $magenta80,
+  $border-radius: $unitsXSmall,
+  $padding: $unitsNormal $unitsSmall
+) {
+  border-left: $border-left;
+  border-color: $border-color;
+  border-radius: $border-radius;
+  padding: $padding;
+}

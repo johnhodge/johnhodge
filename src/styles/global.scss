@@ -12,18 +12,22 @@ html {
   color: $black13;
   scroll-behavior: smooth;
 }
+
 main {
   @include mixins.global-container;
 }
+
 a {
   color: $blue60;
   text-decoration: none;
 }
+
 strong,
 b {
   font-family: $boldFont;
   font-weight: normal;
 }
+
 h1,
 h2,
 h3,
@@ -32,6 +36,7 @@ h5,
 h6 {
   font-family: $headerFont;
 }
+
 code,
 kbd,
 pre,
@@ -42,23 +47,39 @@ samp {
   border: $borderWhite80;
   background: $white98;
 }
+
 pre {
-  border-radius: $unitsXSmall;
+  @include mixins.text-box();
   overflow: auto;
   word-wrap: normal;
-  border-left: $unitsXSmall solid $magenta80;
-  padding: $unitsNormal $unitsSmall;
 }
+
 code {
   border-radius: $unitsXSmall;
   padding: 0 $unitsXSmall;
 }
+
 pre > code {
   border: none;
 }
+
+blockquote {
+  @include mixins.text-box();
+  margin-left: $unitsNormal;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+hr {
+  border: $borderGray40;
+  margin: $unitsMedium 0;
 }
 
 /*
