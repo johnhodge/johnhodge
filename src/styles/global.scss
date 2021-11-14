@@ -78,7 +78,8 @@ img {
 }
 
 hr {
-  border: $borderGray40;
+  border: none;
+  border-bottom: $borderGray40;
   margin: $unitsMedium 0;
 }
 
