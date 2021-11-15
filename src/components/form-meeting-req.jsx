@@ -271,7 +271,7 @@ const MeetingRequestForm = () => (
               <Field
                 name="message"
                 component="textarea"
-                placeholder="Please describe your consulting needs."
+                placeholder="Message"
                 className={
                   errors.message && touched.message
                     ? styles.invalidFieldEntry
