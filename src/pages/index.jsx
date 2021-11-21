@@ -12,8 +12,8 @@ const Posts = ({ location }) => (
       <Seo metaTitle="Home" location={location} />
       <JsonLd schemaType="webpage" />
       <SolutionsIndex />
-      <AboutIndex />
-      <Testimonials />
+      {/* <AboutIndex />
+      <Testimonials /> */}
     </Layout>
   </div>
 );
