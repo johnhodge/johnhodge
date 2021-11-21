@@ -1,8 +1,8 @@
 import * as React from "react";
 import Layout from "../../components/layout";
-import Seo from "../../components/seo";
-import JsonLd from "../../components/json-ld";
-import MeetingRequestForm from "../../components/form-meeting-req";
+import Seo from "../../components/seo/seo";
+import JsonLd from "../../components/seo/json-ld";
+import MeetingRequestForm from "../../components/forms/form-meeting-req";
 
 const Contact = ({ location }) => (
   <div>

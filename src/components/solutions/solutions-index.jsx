@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./solutions-index.module.scss";
-import * as home from "../pages/index.module.scss";
+import * as home from "../../pages/index.module.scss";
 import SolutionsGraphic from "./solutions-graphic";
 import SolutionsDescription from "./solutions-description";
 

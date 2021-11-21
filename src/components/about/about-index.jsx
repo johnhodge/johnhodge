@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import * as home from "../pages/index.module.scss";
+import * as home from "../../pages/index.module.scss";
 import * as styles from "./about-index.module.scss";
 
 const AboutIndex = () => (

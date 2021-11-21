@@ -2,7 +2,7 @@ import * as React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as styles from "./form.module.scss";
-import Button from "./button";
+import Button from "../button/button";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./header";
-import Footer from "./footer";
-import Article from "./article";
-import HomepageHero from "./hero";
-import FooterCta from "./footer-cta";
-import SitepageHero from "./sitepage-hero";
+import Header from "./header/header";
+import Footer from "./footer/footer";
+import Article from "./article/article";
+import HomepageHero from "./hero/hero";
+import FooterCta from "./footer/footer-cta";
+import SitepageHero from "./hero/sitepage-hero";
 
 export default function Layout({
   pageTitle,

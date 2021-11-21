@@ -1,8 +1,8 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./hero.module.scss";
-import * as home from "../pages/index.module.scss";
-import Cta from "./cta";
+import * as home from "../../pages/index.module.scss";
+import Cta from "../button/cta";
 
 const HomepageHero = () => (
   <StaticQuery

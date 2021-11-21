@@ -1,11 +1,11 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import Seo from "../components/seo";
-import JsonLd from "../components/json-ld";
+import Seo from "../components/seo/seo";
+import JsonLd from "../components/seo/json-ld";
 import * as styles from "./solutions.module.scss";
-import SolutionsGraphic from "../components/solutions-graphic";
-import SolutionsDescription from "../components/solutions-description";
+import SolutionsGraphic from "../components/solutions/solutions-graphic";
+import SolutionsDescription from "../components/solutions/solutions-description";
 
 const Solutions = ({ data, location }) => (
   <div>

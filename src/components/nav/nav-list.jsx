@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import Cta from "./cta";
+import Cta from "../button/cta";
 import * as styles from "./nav-list.module.scss";
 
 const NavList = ({ data, listType, navListClass }) => (

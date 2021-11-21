@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import JsonLd from "../components/json-ld";
-import Seo from "../components/seo";
-import Footnotes from "../components/footnotes";
+import JsonLd from "../components/seo/json-ld";
+import Seo from "../components/seo/seo";
+import Footnotes from "../components/footnotes/footnotes";
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;

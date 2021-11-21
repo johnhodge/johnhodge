@@ -1,10 +1,10 @@
 import * as React from "react";
 import Layout from "../components/layout";
-import JsonLd from "../components/json-ld";
-import Seo from "../components/seo";
-import SolutionsIndex from "../components/solutions-index";
-import Testimonials from "../components/testimonials";
-import AboutIndex from "../components/about-index";
+import JsonLd from "../components/seo/json-ld";
+import Seo from "../components/seo/seo";
+import SolutionsIndex from "../components/solutions/solutions-index";
+import Testimonials from "../components/testimonials/testimonials";
+import AboutIndex from "../components/about/about-index";
 
 const Posts = ({ location }) => (
   <div>
@@ -12,8 +12,8 @@ const Posts = ({ location }) => (
       <Seo metaTitle="Home" location={location} />
       <JsonLd schemaType="webpage" />
       <SolutionsIndex />
-      {/* <AboutIndex />
-      <Testimonials /> */}
+      <AboutIndex />
+      <Testimonials />
     </Layout>
   </div>
 );

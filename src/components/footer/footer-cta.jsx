@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./footer.module.scss";
-import Cta from "./cta";
+import Cta from "../button/cta";
 
 const FooterCta = () => (
   <StaticQuery

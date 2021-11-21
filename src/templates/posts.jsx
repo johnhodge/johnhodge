@@ -1,9 +1,9 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import JsonLd from "../components/json-ld";
-import Seo from "../components/seo";
-import PostListing from "../components/post-listing";
+import JsonLd from "../components/seo/json-ld";
+import Seo from "../components/seo/seo";
+import PostListing from "../components/post-listing/post-listing";
 
 const Posts = ({ pageContext, data, location }) => (
   <Layout location={location} pageTitle={pageContext.name}>

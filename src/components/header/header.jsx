@@ -2,8 +2,8 @@ import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
 import Headroom from "react-headroom";
 import * as styles from "./header.module.scss";
-import NavDesktop from "./nav-desktop";
-import NavMobile from "./nav-mobile";
+import NavDesktop from "../nav/nav-desktop";
+import NavMobile from "../nav/nav-mobile";
 
 const Header = () => (
   <StaticQuery

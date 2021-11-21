@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as styles from "./testimonials.module.scss";
-import * as home from "../pages/index.module.scss";
+import * as home from "../../pages/index.module.scss";
 
 const Testimonials = () => (
   <StaticQuery

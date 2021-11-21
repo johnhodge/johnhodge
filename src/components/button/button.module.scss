@@ -1,5 +1,5 @@
-@use "../styles/variables.scss" as *;
-@use "../styles/mixins.scss";
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss";
 
 button.primary-form-btn:disabled {
   border: $borderGray40;

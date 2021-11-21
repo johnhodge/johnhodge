@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import heroNew from "../fonts/hero_new_regular-webfont.woff";
-import heroNewBold from "../fonts/hero_new_bold-webfont.woff2";
-import heroNewSuper from "../fonts/hero_new_super-webfont.woff2";
-import heroNewSuperItalic from "../fonts/hero_new_super_italic-webfont.woff2";
-import cartographMonoCfMedium from "../fonts/cartographmonocf_medium-webfont.woff2";
+import heroNew from "../../fonts/hero_new_regular-webfont.woff";
+import heroNewBold from "../../fonts/hero_new_bold-webfont.woff2";
+import heroNewSuper from "../../fonts/hero_new_super-webfont.woff2";
+import heroNewSuperItalic from "../../fonts/hero_new_super_italic-webfont.woff2";
+import cartographMonoCfMedium from "../../fonts/cartographmonocf_medium-webfont.woff2";
 
 const Seo = ({
   description,

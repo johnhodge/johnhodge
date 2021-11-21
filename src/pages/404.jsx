@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../components/layout";
-import Seo from "../components/seo";
-import JsonLd from "../components/json-ld";
+import Seo from "../components/seo/seo";
+import JsonLd from "../components/seo/json-ld";
 
 const NotFoundPage = ({ location }) => (
   <div>
