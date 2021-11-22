@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import JsonLd from "../components/seo/json-ld";
 import Seo from "../components/seo/seo";
 import Footnotes from "../components/footnotes/footnotes";
+import * as styles from "./blog-post.module.scss"
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
@@ -105,7 +106,7 @@ const BlogPost = ({ data, location }) => {
         {updatedAtTz === createdAtTz ? (
           ""
         ) : (
-          <p>
+          <p className={styles.updated}>
             <em>Updated: {updatedAtTz}</em>
             <hr />
           </p>
