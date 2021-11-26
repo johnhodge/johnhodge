@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo/seo";
 import JsonLd from "../components/seo/json-ld";
 import * as styles from "./solutions.module.scss";
-import SolutionsGraphic from "../components/solutions/solutions-graphic";
+import HeadlineGraphic from "../components/headline-graphic/headline-graphic";
 import SolutionsDescription from "../components/solutions/solutions-description";
 
 const Solutions = ({ data, location }) => (
@@ -20,7 +20,7 @@ const Solutions = ({ data, location }) => (
               className={styles.solutionsContainer}
               key={node.id}
             >
-              <SolutionsGraphic
+              <HeadlineGraphic
                 src={solution.solutionsGraphic.file.url}
                 title={solution.solutionsGraphic.title}
                 alt={solution.solutionsGraphic.description}

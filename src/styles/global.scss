@@ -96,41 +96,6 @@ Global styles
   color: $white98;
 }
 
-.graphic-headline-container {
-  position: relative;
-}
-
-.graphic-headline {
-  position: absolute;
-  top: 10%;
-  font-size: max(4vw, $unitsMedium);
-}
-
-.graphic-creative {
-  width: 100%;
-  filter: opacity(0.75);
-}
-
-/*
-Buttons
-*/
-.btn-primary {
-  font-family: $headerFont;
-  font-size: calc($unitsNormal * 1.2);
-  color: $black13;
-  text-align: center;
-  background: linear-gradient(90deg, $white90, $white98);
-  border: 2px $blue60 solid;
-  border-radius: 3px;
-  padding: $unitsNormal $unitsLarge;
-  display: inline-block;
-}
-
-.btn-primary:hover {
-  background: $white98;
-  border-color: $purple70;
-}
-
 /*
 Form reset
 */
@@ -214,8 +179,5 @@ Media queries
   pre,
   samp {
     background: $black10;
-  }
-  .btn-primary {
-    background: linear-gradient(90deg, $white80, $white98);
   }
 }

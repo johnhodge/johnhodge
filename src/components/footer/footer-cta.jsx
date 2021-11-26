@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./footer.module.scss";
+import HeadlineGraphic from "../headline-graphic/headline-graphic";
 import Cta from "../button/cta";
 
 const FooterCta = () => (
@@ -38,19 +39,14 @@ const FooterCta = () => (
             ctaClass="accentCta"
           />
         </div>
-        <div className="graphic-headline-container">
-          <img
-            src={data.contentfulCompany.footerCtaImage.file.url}
-            title={data.contentfulCompany.footerCtaImage.title}
-            alt={data.contentfulCompany.footerCtaImage.description}
-            width={`${data.contentfulCompany.footerCtaImage.file.details.image.width}px`}
-            height={`${data.contentfulCompany.footerCtaImage.file.details.image.height} px`}
-            className="graphic-creative"
-          />
-          <h2 className="graphic-headline">
-            {data.contentfulCompany.footerCtaHeadline}
-          </h2>
-        </div>
+        <HeadlineGraphic
+          src={data.contentfulCompany.footerCtaImage.file.url}
+          title={data.contentfulCompany.footerCtaImage.title}
+          alt={data.contentfulCompany.footerCtaImage.description}
+          width={`${data.contentfulCompany.footerCtaImage.file.details.image.width}px`}
+          height={`${data.contentfulCompany.footerCtaImage.file.details.image.height} px`}
+          header={data.contentfulCompany.footerCtaHeadline}
+        />
       </div>
     )}
   />

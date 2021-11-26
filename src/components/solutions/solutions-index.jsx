@@ -2,7 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import * as styles from "./solutions-index.module.scss";
 import * as home from "../../pages/index.module.scss";
-import SolutionsGraphic from "./solutions-graphic";
+import HeadlineGraphic from "../headline-graphic/headline-graphic";
 import SolutionsDescription from "./solutions-description";
 
 const SolutionsIndex = () => (
@@ -27,7 +27,7 @@ const SolutionsIndex = () => (
                   id={solution.solutionsName.toLowerCase().replace(/\W/gm, `-`)}
                   className={styles.solutionsContainer}
                 >
-                  <SolutionsGraphic
+                  <HeadlineGraphic
                     src={solution.solutionsGraphic.file.url}
                     title={solution.solutionsGraphic.title}
                     alt={solution.solutionsGraphic.description}
@@ -48,7 +48,7 @@ const SolutionsIndex = () => (
                   <SolutionsDescription
                     description={solution.solutionsDescription}
                   />
-                  <SolutionsGraphic
+                  <HeadlineGraphic
                     src={solution.solutionsGraphic.file.url}
                     title={solution.solutionsGraphic.title}
                     alt={solution.solutionsGraphic.description}
