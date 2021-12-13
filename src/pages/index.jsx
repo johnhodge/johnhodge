@@ -3,8 +3,8 @@ import Layout from "../components/layout";
 import JsonLd from "../components/seo/json-ld";
 import Seo from "../components/seo/seo";
 import SolutionsIndex from "../components/solutions/solutions-index";
-import Testimonials from "../components/testimonials/testimonials";
-import AboutIndex from "../components/about/about-index";
+// import Testimonials from "../components/testimonials/testimonials";
+// import AboutIndex from "../components/about/about-index";
 
 const Posts = ({ location }) => (
   <div>

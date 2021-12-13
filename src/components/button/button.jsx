@@ -5,11 +5,7 @@ const Button = ({ isSubmitting, isValid, buttonClass, buttonText }) => (
   <button
     type="submit"
     disabled={isSubmitting || !isValid}
-    className={
-      buttonClass === "enterNewClassHere"
-        ? styles.enterNewClassHere
-        : styles.primaryFormBtn
-    }
+    className={buttonClass === "" ? "" : styles.primaryFormBtn}
   >
     {buttonText}
   </button>

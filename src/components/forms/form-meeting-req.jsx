@@ -10,7 +10,7 @@ const ContactSchema = Yup.object().shape({
   firstName: Yup.string()
     .max(50, "That's a little long.")
     .min(2, "Too short!")
-    .required("Please enter a first name."),
+    .required("First name required."),
   lastName: Yup.string()
     .max(50, "That's a little long.")
     .required("Last name required, you can also share your last initial."),
