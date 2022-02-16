@@ -1,5 +1,5 @@
 require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` });
-
+console.log(`Starting up the environment: ${process.env.NODE_ENV}`);
 module.exports = {
   siteMetadata: {
     author: `BrightShell Dev Team`,
