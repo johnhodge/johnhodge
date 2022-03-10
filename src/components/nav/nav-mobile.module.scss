@@ -1,0 +1,65 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss";
+
+.mobile-nav {
+  display: block;
+}
+
+.mobile-nav-toggle {
+  @include mixins.flex-default($flex-direction: column);
+  gap: $unitsSmall;
+}
+
+.icon-bar {
+  display: block;
+  width: $unitsMedium;
+  height: $unitsTiny;
+  background: $black13;
+  border-radius: $unitsTiny;
+}
+
+.mobile-nav-items {
+  position: absolute;
+  top: 78px;
+  bottom: 0;
+  left: 0;
+  padding: $unitsNormal;
+  height: 100vh;
+  width: calc(100% - $unitsMedium);
+  background: $white98;
+  margin: 0;
+  overflow-y: scroll;
+  animation: fade-down $easeInOut200;
+  li {
+    list-style: none;
+    padding: $unitsMedium $unitsNormal;
+    border-bottom: $borderGray40;
+  }
+}
+
+.hidden-nav-items {
+  display: none;
+}
+
+@keyframes fade-down {
+  0% {
+    transform: translateY(calc($unitsLarge * -1));
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: $desktopWidth) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-nav-items {
+    background: $black13;
+  }
+}

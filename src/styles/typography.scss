@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Hero New";
+  src: url("~/src/fonts/hero_new_regular-webfont.woff2") format("woff2"),
+    url("~/src/fonts/hero_new_regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hero New Bold";
+  src: url("~/src/fonts/hero_new_bold-webfont.woff2") format("woff2"),
+    url("~/src/fonts/hero_new_bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hero New Super";
+  src: url("~/src/fonts/hero_new_super-webfont.woff2") format("woff2"),
+    url("~/src/fonts/hero_new_super-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hero New Super Italic";
+  src: url("~/src/fonts/hero_new_super_italic-webfont.woff2") format("woff2"),
+    url("~/src/fonts/hero_new_super_italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cartograph Mono CF Medium";
+  src: url("~/src/fonts/cartographmonocf_medium-webfont.woff2") format("woff2"),
+    url("~/src/fonts/cartographmonocf_medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$bodyFont: "Hero New", sans-serif;
+$boldFont: "Hero New Bold", sans-serif;
+$headerFont: "Hero New Super", sans-serif;
+$headlineFont: "Hero New Super Italic", sans-serif;
+$monoFont: "Cartograph Mono CF Medium", monospace;

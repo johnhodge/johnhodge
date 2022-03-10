@@ -1,0 +1,24 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss";
+
+.hero-text-container {
+  @include mixins.global-container();
+  @include mixins.flex-align-items();
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+  h1 {
+    font-family: $headlineFont;
+  }
+}
+
+.hero-text {
+  font-size: max(calc($unitsNormal * 2.5), 7vw);
+  text-align: center;
+}
+
+@media screen and (min-width: $desktopWidth) {
+  .hero-text-container {
+    height: 80vh;
+  }
+}

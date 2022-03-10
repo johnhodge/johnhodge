@@ -1,0 +1,43 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins";
+
+.navigation {
+  background: transparent;
+  padding: $unitsNormal 0;
+  position: relative;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  nav {
+    @include mixins.global-container(none);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    div.branding {
+      width: auto;
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      h1 {
+        font-family: $headlineFont;
+        margin: initial;
+        padding: inherit;
+        line-height: inherit;
+      }
+      img {
+        max-height: $unitsMedium;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navigation {
+    color: $white98;
+  }
+}

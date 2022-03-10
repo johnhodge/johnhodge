@@ -1,0 +1,11 @@
+@use "../styles/variables.scss" as *;
+
+.hp-section {
+  margin-bottom: $unitsXXLarge;
+}
+
+.hp-section-header {
+  font-family: $headlineFont;
+  font-size: calc($unitsNormal * 2.5);
+  color: $gray45;
+}

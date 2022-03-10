@@ -1,0 +1,30 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss";
+
+@mixin solutions-container {
+  margin: $unitsLarge 0;
+}
+
+.solutions-container {
+  @include solutions-container;
+}
+
+.solutions-container-switch {
+  display: flex;
+  flex-flow: column-reverse;
+  @include solutions-container;
+}
+
+@media screen and (min-width: $desktopWidth) {
+  .solutions-container,
+  .solutions-container-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $unitsNormal;
+  }
+
+  .description-container {
+    @include mixins.flex-align-items;
+    flex-direction: row;
+  }
+}

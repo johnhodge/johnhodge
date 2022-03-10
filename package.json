@@ -1,0 +1,51 @@
+{
+  "name": "hodge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This is the John Hodge website theme",
+  "author": "john-hodge",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop --host 192.168.0.19 --open --verbose",
+    "start": "gatsby develop",
+    "build": "gatsby build --no-uglify",
+    "serve": "gatsby serve --host 192.168.0.19 --open --verbose",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "formik": "^2.2.9",
+    "gatsby": "^3.11.0",
+    "gatsby-plugin-google-tagmanager": "^3.14.0",
+    "gatsby-plugin-image": "^1.11.0",
+    "gatsby-plugin-manifest": "^3.13.0",
+    "gatsby-plugin-prettier-eslint": "^1.0.6",
+    "gatsby-plugin-react-helmet": "^4.11.0",
+    "gatsby-plugin-sass": "^4.11.0",
+    "gatsby-plugin-sharp": "^3.11.0",
+    "gatsby-plugin-sitemap": "^4.7.0",
+    "gatsby-source-contentful": "^5.11.0",
+    "gatsby-source-filesystem": "^3.11.0",
+    "gatsby-transformer-remark": "^4.8.0",
+    "gatsby-transformer-sharp": "^3.11.0",
+    "hamburger-react": "^2.4.1",
+    "prettier": "^2.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-headroom": "^3.1.1",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.37.5",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}

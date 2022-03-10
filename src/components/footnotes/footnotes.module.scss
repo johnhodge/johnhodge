@@ -1,0 +1,19 @@
+@use "../../styles/variables.scss" as *;
+
+.footnote-list {
+  padding-left: $unitsMedium;
+  li {
+    margin: $unitsNormal 0;
+    word-break: break-word;
+  }
+}
+
+li:target {
+  background: $yellow60;
+}
+
+@media (prefers-color-scheme: dark) {
+  li:target {
+    background: $gray40;
+  }
+}

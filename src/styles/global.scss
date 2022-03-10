@@ -1,0 +1,183 @@
+@use "variables" as *;
+@use "mixins";
+
+/*
+Base styles
+*/
+html {
+  background: $white98;
+  line-height: normal;
+  font-family: $bodyFont;
+  font-size: $rootFontSize;
+  color: $black13;
+  scroll-behavior: smooth;
+}
+
+main {
+  @include mixins.global-container;
+}
+
+a {
+  color: $blue60;
+  text-decoration: none;
+}
+
+strong,
+b {
+  font-family: $boldFont;
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headerFont;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: $monoFont;
+  font-size: calc($unitsNormal * 0.85);
+  line-height: 1.65;
+  border: $borderWhite80;
+  background: $white98;
+}
+
+pre {
+  @include mixins.text-box();
+  overflow: auto;
+  word-wrap: normal;
+}
+
+code {
+  border-radius: $unitsXSmall;
+  padding: 0 $unitsXSmall;
+}
+
+pre > code {
+  border: none;
+}
+
+blockquote {
+  @include mixins.text-box();
+  margin-left: $unitsNormal;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: none;
+  border-bottom: $borderGray40;
+  margin: $unitsMedium 0;
+}
+
+/*
+Global styles
+*/
+*:focus-visible {
+  outline: none;
+  box-shadow: $lightOutline;
+}
+
+::selection {
+  background: $blue50;
+  color: $white98;
+}
+
+/*
+Form reset
+*/
+input[type],
+textarea,
+select {
+  -webkit-appearance: none;
+}
+
+/*
+Headroom navigation styles
+*/
+.headroom {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.headroom--unfixed {
+  position: relative;
+  transform: $translateYZero;
+  -webkit-transform: $translateYZero;
+  -moz-transform: $translateYZero;
+  -o-transform: $translateYZero;
+  -ms-transform: $translateYZero;
+}
+.headroom--pinned {
+  position: fixed;
+  border-bottom: $borderGray40;
+  transform: $translateYZero;
+  -webkit-transform: $translateYZero;
+  -moz-transform: $translateYZero;
+  -o-transform: $translateYZero;
+  -ms-transform: $translateYZero;
+  z-index: 10;
+}
+.headroom--scrolled {
+  @include mixins.light-scheme($white98_50);
+  backdrop-filter: blur($unitsNormal);
+  transition: transform, border-bottom $easeInOut200;
+  -webkit-transition: -webkit-transform $easeInOut200;
+  -moz-transition: -moz-transform $easeInOut200;
+  -o-transition: -o-transform $easeInOut200;
+  -ms-transition: -ms-transform $easeInOut200;
+  z-index: 2;
+}
+.headroom--unpinned {
+  position: fixed;
+  transform: $translateNeg100;
+  -webkit-transform: $translateNeg100;
+  -moz-transform: $translateNeg100;
+  -o-transform: $translateNeg100;
+  -ms-transform: $translateNeg100;
+}
+
+/*
+Media queries
+*/
+@media screen and (max-width: 767px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: calc($unitsNormal * -0.1);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    @include mixins.dark-scheme;
+  }
+  *:focus-visible {
+    box-shadow: $darkOutline;
+  }
+  .headroom--scrolled {
+    @include mixins.dark-scheme($black13_50);
+  }
+  code,
+  kbd,
+  pre,
+  samp {
+    background: $black10;
+  }
+}
