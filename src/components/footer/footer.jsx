@@ -17,11 +17,8 @@ const Footer = ({ year }) => (
           <p>
             © {year}
             {"  "}
-            <Link
-              to="/"
-              title={`Link to the ${data.contentfulCompany.name} homepage`}
-            >
-              {data.contentfulCompany.name}, LLC
+            <Link to="/" title="Link to the John Hodge homepage">
+              John Hodge
             </Link>
           </p>
         </div>
