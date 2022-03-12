@@ -53,7 +53,7 @@ const Seo = ({
 
   const { social } = data.site.siteMetadata;
   const article = metaArticle || null;
-  const title = `${metaTitle} | ${data.site.siteMetadata.title}`;
+  const title = `${metaTitle} » ${data.site.siteMetadata.title}`;
   const lang = metaLang;
 
   return (
