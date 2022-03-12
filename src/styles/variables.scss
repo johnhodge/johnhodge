@@ -22,9 +22,11 @@ $black13_50: hsl(225deg, 6%, 13%, 50%);
 $white100: hsl(0deg, 0%, 100%);
 $white98: hsl(225deg, 6%, 98%);
 $white90: hsl(225deg, 6%, 90%);
+$white95: hsl(225deg, 6%, 95%);
 $white85: hsl(225deg, 6%, 85%);
 $white80: hsl(225deg, 6%, 80%);
 $white75: hsl(225deg, 6%, 75%);
+$white70: hsl(225deg, 6%, 75%);
 $gray60: hsl(255deg, 6%, 60%);
 $gray55: hsl(255deg, 6%, 55%);
 $gray50: hsl(255deg, 6%, 50%);
@@ -93,6 +95,7 @@ $unitsHuge: 20rem;
 /*
 Border and shadow elements
 */
+$borderWhite70: 0.0625rem solid $white70;
 $borderWhite80: 0.0625rem solid $white80;
 $borderGray40: 0.0625rem solid $gray40;
 $borderGreen30: 0.0625rem solid $green30;
