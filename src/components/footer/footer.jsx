@@ -6,19 +6,23 @@ const Footer = ({ year }) => (
   <StaticQuery
     query={graphql`
       {
-        contentfulCompany {
-          name
+        site {
+          ...gatsbySiteData
         }
       }
     `}
     render={(data) => (
       <footer>
+        {console.log(data)}
         <div className={styles.copyrightContainer}>
           <p>
             © {year}
             {"  "}
-            <Link to="/" title="Link to the John Hodge homepage">
-              John Hodge
+            <Link
+              to="/"
+              title={`Link to the ${data.site.siteMetadata.title} homepage`}
+            >
+              {data.site.siteMetadata.title}
             </Link>
           </p>
         </div>
