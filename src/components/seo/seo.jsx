@@ -238,6 +238,7 @@ const Seo = ({
                 1000
               }kb`,
               contentUrl: `https:${data.allContentfulCompany.edges[0].node.logo.file.url}`,
+              url: `https:${data.allContentfulCompany.edges[0].node.logo.file.url}`,
               encodingFormat:
                 data.allContentfulCompany.edges[0].node.logo.file.contentType,
               height:
