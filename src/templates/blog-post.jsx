@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import JsonLd from "../components/seo/json-ld";
 import Seo from "../components/seo/seo";
 import Footnotes from "../components/footnotes/footnotes";
-import * as styles from "./blog-post.module.scss"
+import * as styles from "./blog-post.module.scss";
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulBlogPost;
@@ -59,7 +59,6 @@ const BlogPost = ({ data, location }) => {
     >
       <Seo
         location={location}
-        baseUrl={`${location.origin}${location.pathname}`}
         metaTitle={post.title}
         metaImage={metaImage}
         metaArticle={metaArticle}

@@ -16,7 +16,6 @@ const Seo = ({
   metaKeywords,
   metaArticle,
   location,
-  baseUrl,
 }) => {
   const data = useStaticQuery(graphql`
     {
@@ -211,8 +210,6 @@ const Seo = ({
           : []
       )}
     >
-      {baseUrl ? <base href={baseUrl} /> : ""}
-
       <script type="application/ld+json">
         {JSON.stringify(
           {
