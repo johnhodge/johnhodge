@@ -10,8 +10,6 @@ import cartographMonoCfMedium from "../../fonts/cartographmonocf_medium-webfont.
 
 const Seo = ({
   description,
-  meta,
-  pathname,
   metaLang,
   metaImage,
   metaTitle,
@@ -35,9 +33,7 @@ const Seo = ({
     }
   `);
 
-  const canonical = pathname
-    ? `${data.site.siteMetadata.siteUrl}${pathname}`
-    : null;
+  const canonical = location.href;
   const metaDescription = description || data.site.siteMetadata.description;
   const keywords = metaKeywords || data.site.siteMetadata.keywords.join(", ");
 
@@ -61,18 +57,45 @@ const Seo = ({
       htmlAttributes={{ lang }}
       title={title}
       link={[
-        canonical
-          ? [
-              {
-                rel: `canonical`,
-                href: canonical,
-              },
-              {
-                rel: `og:url`,
-                href: canonical,
-              },
-            ]
-          : [],
+        {
+          rel: `canonical`,
+          href: canonical,
+        },
+        {
+          rel: `preload`,
+          href: heroNew,
+          as: `font`,
+          type: `font/woff2`,
+          crossOrigin: `true`,
+        },
+        {
+          rel: `preload`,
+          href: heroNewBold,
+          as: `font`,
+          type: `font/woff2`,
+          crossOrigin: `true`,
+        },
+        {
+          rel: `preload`,
+          href: heroNewSuper,
+          as: `font`,
+          type: `font/woff2`,
+          crossOrigin: `true`,
+        },
+        {
+          rel: `preload`,
+          href: heroNewSuperItalic,
+          as: `font`,
+          type: `font/woff2`,
+          crossOrigin: `true`,
+        },
+        {
+          rel: `preload`,
+          href: cartographMonoCfMedium,
+          as: `font`,
+          type: `font/woff2`,
+          crossOrigin: `true`,
+        },
       ]}
       meta={[
         {
@@ -82,6 +105,10 @@ const Seo = ({
         {
           name: `keywords`,
           content: keywords,
+        },
+        {
+          property: `og:url`,
+          content: canonical,
         },
         {
           property: `og:title`,
@@ -155,70 +182,35 @@ const Seo = ({
           name: `twitter:image:alt`,
           content: image.description,
         },
-      ]
-        .concat(
-          article
-            ? [
-                {
-                  name: `article:published_time`,
-                  content: article.article_published_time,
-                },
-                {
-                  name: `article:modified_time`,
-                  content: article.article_modified_time,
-                },
-                {
-                  name: `article:author`,
-                  content: article.article_author,
-                },
-                {
-                  name: `article:section`,
-                  content: article.article_section,
-                },
-                {
-                  name: `article:tag`,
-                  content: article.article_tag,
-                },
-              ]
-            : []
-        )
-        .concat(meta)}
+      ].concat(
+        article
+          ? [
+              {
+                name: `article:published_time`,
+                content: article.article_published_time,
+              },
+              {
+                name: `article:modified_time`,
+                content: article.article_modified_time,
+              },
+              {
+                name: `article:author`,
+                content: article.article_author,
+              },
+              {
+                name: `article:section`,
+                content: article.article_section,
+              },
+              {
+                name: `article:tag`,
+                content: article.article_tag
+                  ? article.article_tag
+                  : article.article_section,
+              },
+            ]
+          : []
+      )}
     >
-      <link
-        rel="preload"
-        as="font"
-        href={heroNew}
-        type="font/woff2"
-        crossOrigin="true"
-      />
-      <link
-        rel="preload"
-        as="font"
-        href={heroNewBold}
-        type="font/woff2"
-        crossOrigin="true"
-      />
-      <link
-        rel="preload"
-        as="font"
-        href={heroNewSuper}
-        type="font/woff2"
-        crossOrigin="true"
-      />
-      <link
-        rel="preload"
-        as="font"
-        href={heroNewSuperItalic}
-        type="font/woff2"
-        crossOrigin="true"
-      />
-      <link
-        rel="preload"
-        as="font"
-        href={cartographMonoCfMedium}
-        type="font/woff2"
-        crossOrigin="true"
-      />
       {baseUrl ? <base href={baseUrl} /> : ""}
 
       <script type="application/ld+json">
@@ -274,9 +266,8 @@ const Seo = ({
 
 Seo.defaultProps = {
   metaLang: `US-en`,
-  meta: [],
   description: ``,
-  pathname: ``,
+  location: ``,
   image: {
     src: ``,
     height: 0,
@@ -287,14 +278,13 @@ Seo.defaultProps = {
 Seo.propTypes = {
   description: PropTypes.string,
   metaLang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
   metaTitle: PropTypes.string.isRequired,
   image: PropTypes.shape({
     src: PropTypes.string.isRequired,
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
   }),
-  pathname: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default Seo;

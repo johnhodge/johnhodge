@@ -13,7 +13,6 @@ const Footer = ({ year }) => (
     `}
     render={(data) => (
       <footer>
-        {console.log(data)}
         <div className={styles.copyrightContainer}>
           <p>
             © {year}
