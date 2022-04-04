@@ -209,55 +209,7 @@ const Seo = ({
             ]
           : []
       )}
-    >
-      <script type="application/ld+json">
-        {JSON.stringify(
-          {
-            "@context": `https://schema.org`,
-            "@type": `Organization`,
-            name: data.allContentfulCompany.edges[0].node.name,
-            url: location.origin,
-            legalName: `${data.allContentfulCompany.edges[0].node.name}, LLC`,
-            logo: {
-              "@type": `ImageObject`,
-              name: data.allContentfulCompany.edges[0].node.logo.title,
-              caption: data.allContentfulCompany.edges[0].node.logo.title,
-              contentSize: `${
-                data.allContentfulCompany.edges[0].node.logo.file.details.size /
-                1000
-              }kb`,
-              contentUrl: `https:${data.allContentfulCompany.edges[0].node.logo.file.url}`,
-              url: `https:${data.allContentfulCompany.edges[0].node.logo.file.url}`,
-              encodingFormat:
-                data.allContentfulCompany.edges[0].node.logo.file.contentType,
-              height:
-                data.allContentfulCompany.edges[0].node.logo.file.details.image
-                  .height,
-              width:
-                data.allContentfulCompany.edges[0].node.logo.file.details.image
-                  .width,
-            },
-            contactPoint: {
-              "@type": `ContactPoint`,
-              contactType: `Sales`,
-              email: `sales@brightshell.com`,
-            },
-            founder: {
-              "@type": `Person`,
-              givenName: `John`,
-              email: `info@brightshell.com`,
-            },
-            foundingDate: `2022-01-01 00:00:00`,
-            foundingLocation: `New York, New York`,
-            sameAs: data.allContentfulCompany.edges[0].node.socialMedia.map(
-              (account) => account.accountUrl
-            ),
-          },
-          null,
-          ` `
-        )}
-      </script>
-    </Helmet>
+    />
   );
 };
 
