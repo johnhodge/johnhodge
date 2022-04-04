@@ -84,6 +84,7 @@ export const postEntryData = graphql`
       }
     }
     footnotes {
+      id
       articleTitle
       articleUrl
       authorFirstName
