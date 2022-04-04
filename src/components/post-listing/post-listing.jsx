@@ -7,14 +7,15 @@ const PostListing = ({ data }) => (
     {data.edges.map(({ node }, i) => (
       <div
         className={`${styles.postItem} ${
-          i % 3 === 0
+          (i + 1) % 3 === 0
             ? styles.thirdPost
-            : i % 2 === 0
+            : (i + 1) % 2 === 0
             ? styles.secondPost
             : styles.firstPost
         }`}
         key={node.id}
       >
+        {console.log(i)}
         <Link
           className={styles.postLink}
           to={`/insights/${node.slug}`}
