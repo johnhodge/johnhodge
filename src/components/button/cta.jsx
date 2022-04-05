@@ -8,9 +8,9 @@ const Cta = ({ ctaUrl, ctaName, ctaText, ctaClass }) => {
       <a
         href={ctaUrl}
         title={`Link to ${ctaName}`}
-        className={
+        className={`${styles.cta} ${
           ctaClass === "accentCta" ? styles.accentCta : styles.primaryCta
-        }
+        }`}
       >
         {ctaText}
       </a>
