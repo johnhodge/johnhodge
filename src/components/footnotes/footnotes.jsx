@@ -10,16 +10,22 @@ const Footnotes = ({ data }) => (
         const year = date.getFullYear();
         return (
           <li id={i + 1} key={note.id}>
-            {note.authorFirstName} {note.authorLastName},{" "}
-            {`"${note.articleTitle}"`} <em>{note.publicationName}</em>. {year}.{" "}
-            <a
-              title={`Link to ${note.articleTitle}.`}
-              href={note.articleUrl}
-              key={note.id}
-            >
-              {note.articleUrl}
-            </a>
-            .
+            {note.authorLastName && note.authorFirstName
+              ? `${note.authorLastName}, ${note.authorFirstName}`
+              : note.publicationName}
+            , {note.articleTitle ? `"${note.articleTitle}"` : ""}{" "}
+            <em>{note.publicationName}.</em> {year}.{" "}
+            {note.articleUrl ? (
+              <a
+                title={`Link to ${note.articleTitle}.`}
+                href={note.articleUrl}
+                key={note.id}
+              >
+                {note.articleUrl}
+              </a>
+            ) : (
+              ""
+            )}
           </li>
         );
       })}
