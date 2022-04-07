@@ -10,6 +10,7 @@
   .post-item {
     overflow: hidden;
     border-radius: $unitsXSmall;
+    border: $borderGray40;
 
     .post-link {
       text-decoration: none;
@@ -45,6 +46,12 @@
   }
   .post-container:hover {
     transform: scale(1.1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-title {
+    text-shadow: $normalTextShadow;
   }
 }
 
