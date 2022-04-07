@@ -34,6 +34,7 @@
 
         .post-image {
           position: absolute;
+          filter: opacity($opacityModerate);
         }
 
         .post-title {
