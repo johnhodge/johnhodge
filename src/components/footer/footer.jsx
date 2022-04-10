@@ -22,7 +22,7 @@ const Footer = ({ year, website }) => (
             <Link to="/" title={`Link to the ${data} homepage`}>
               {data.allContentfulCompany.edges
                 .filter((filtered) => filtered.node.website == website)
-                .map(({ node }, i) => node.name)}
+                .map(({ node }) => node.name)}
             </Link>
           </p>
         </div>
