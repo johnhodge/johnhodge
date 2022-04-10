@@ -22,9 +22,7 @@ const Seo = ({
       site {
         ...gatsbySiteData
       }
-      allContentfulCompany(
-        filter: { id: { eq: "b609af1b-49b4-5251-94fb-32a3da3ebf11" } }
-      ) {
+      allContentfulCompany {
         edges {
           ...contentfulSiteData
         }
@@ -32,9 +30,18 @@ const Seo = ({
     }
   `);
 
+  const website = location.origin;
   const canonical = location.href;
-  const metaDescription = description || data.site.siteMetadata.description;
-  const keywords = metaKeywords || data.site.siteMetadata.keywords.join(", ");
+  const metaDescription =
+    description ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.description);
+  const keywords =
+    metaKeywords ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.keywords.join(", "));
 
   const image = metaImage || data.allContentfulCompany.edges[0].node.seoLogo;
   const imageFile = `https:${image.url ? image.url : image.file.url}`;
@@ -48,7 +55,9 @@ const Seo = ({
 
   const { social } = data.site.siteMetadata;
   const article = metaArticle || null;
-  const title = `${metaTitle} » ${data.site.siteMetadata.title}`;
+  const title = `${metaTitle} » ${data.allContentfulCompany.edges
+    .filter((filtered) => filtered.node.website === website)
+    .map(({ node }) => node.name)}`;
   const lang = metaLang;
 
   return (
