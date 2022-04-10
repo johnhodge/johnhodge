@@ -86,13 +86,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `John Hodge`,
-        short_name: `John Hodge`,
+        name: process.env.PROJECT_NAME,
+        short_name: process.env.PROJECT_NAME,
         start_url: `/`,
-        background_color: `#1F2023`,
-        theme_color: `#32D2FA`,
+        background_color: process.env.BACKGROUND_COLOR,
+        theme_color: process.env.THEME_COLOR,
         display: `standalone`,
-        icon: `src/images/logo.png`,
+        icon: `src/images/${process.env.PROJECT_NAME.toLowerCase().replace(
+          " ",
+          "-"
+        )}-logo.png`,
+        legacy: false,
       },
     },
     {
