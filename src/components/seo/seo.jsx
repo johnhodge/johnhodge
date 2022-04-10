@@ -48,7 +48,6 @@ const Seo = ({
     data.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.logo);
-  console.log(image);
   const imageFile = `https:${image.url ? image.url : image[0].file.url}`;
   const imageHeight = image.height
     ? image.height
