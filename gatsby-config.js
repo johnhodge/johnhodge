@@ -9,10 +9,10 @@ module.exports = {
     featuredImage: `/logo.png`,
     description: `John Hodge is a tech saavy adtech professional with a firm understanding of publisher and advertiser motivations.`,
     social: {
-      twitter: `hodge_etc`,
-      twitterId: 376312987,
-      instagram: `cafehodge`,
-      github: `johnhodge`,
+      twitter: process.env.TWITTER,
+      twitterId: process.env.TWITTERID,
+      instagram: process.env.INSTAGRAM,
+      github: process.env.GITHUB,
     },
     keywords: [
       `adtech`,
