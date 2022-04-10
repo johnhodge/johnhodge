@@ -3,12 +3,14 @@
   publish = "public/"
   command = "gatsby build --verbose"
 
-[context.production.environment]
-  ENABLE_GATSBY_REFRESH_ENDPOINT="true"
-  PROJECT_NAME="John Hodge"
-  BACKGROUND_COLOR="#1F2023"
-  THEME_COLOR="#1F2023"
-  TWITTER="hodge_etc"
-  TWITTERID="376312987"
-  INSTAGRAM="cafehodge"
-  GITHUB="johnhodge"
+[context.production]
+  environment = {
+    ENABLE_GATSBY_REFRESH_ENDPOINT="true"
+    PROJECT_NAME="John Hodge"
+    BACKGROUND_COLOR="#1F2023"
+    THEME_COLOR="#1F2023"
+    TWITTER="hodge_etc"
+    TWITTERID="376312987"
+    INSTAGRAM="cafehodge"
+    GITHUB="johnhodge"
+  }
