@@ -5,7 +5,7 @@ import * as styles from "./footer.module.scss";
 const Footer = ({ year, website }) => (
   <StaticQuery
     query={graphql`
-      query company {
+      {
         allContentfulCompany {
           edges {
             ...contentfulSiteData
