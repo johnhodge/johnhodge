@@ -2,12 +2,14 @@ import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import * as styles from "./footer.module.scss";
 
-const Footer = ({ year }) => (
+const Footer = ({ year, website }) => (
   <StaticQuery
     query={graphql`
-      {
-        site {
-          ...gatsbySiteData
+      query company {
+        allContentfulCompany {
+          edges {
+            ...contentfulSiteData
+          }
         }
       }
     `}
@@ -17,11 +19,10 @@ const Footer = ({ year }) => (
           <p>
             © {year}
             {"  "}
-            <Link
-              to="/"
-              title={`Link to the ${data.site.siteMetadata.title} homepage`}
-            >
-              {data.site.siteMetadata.title}
+            <Link to="/" title={`Link to the ${data} homepage`}>
+              {data.allContentfulCompany.edges
+                .filter((filtered) => filtered.node.website == website)
+                .map(({ node }, i) => node.name)}
             </Link>
           </p>
         </div>
