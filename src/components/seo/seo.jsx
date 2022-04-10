@@ -43,15 +43,25 @@ const Seo = ({
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.keywords.join(", "));
 
-  const image = metaImage || data.allContentfulCompany.edges[0].node.seoLogo;
-  const imageFile = `https:${image.url ? image.url : image.file.url}`;
+  const image =
+    metaImage ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.logo);
+  console.log(image);
+  const imageFile = `https:${image.url ? image.url : image[0].file.url}`;
   const imageHeight = image.height
     ? image.height
-    : image.file.details.image.height;
-  const imageWidth = image.width ? image.width : image.file.details.image.width;
+    : image[0].file.details.image.height;
+  const imageWidth = image.width
+    ? image.width
+    : image[0].file.details.image.width;
+  const imageDescription = image.description
+    ? image.description
+    : image[0].description;
   const imageType = image.contentType
     ? image.contentType
-    : image.file.contentType;
+    : image[0].file.contentType;
 
   const { social } = data.site.siteMetadata;
   const article = metaArticle || null;
@@ -148,7 +158,7 @@ const Seo = ({
         },
         {
           property: `og:image:alt`,
-          content: image.description,
+          content: imageDescription,
         },
         {
           property: `og:image:type`,
@@ -218,7 +228,48 @@ const Seo = ({
             ]
           : []
       )}
-    />
+    >
+      {data.allContentfulCompany.edges
+        .filter((filtered) => filtered.node.website === website)
+        .map(({ node }) => (
+          <script type="application/ld+json">
+            {JSON.stringify(
+              {
+                "@context": `https://schema.org`,
+                "@type": `Organization`,
+                name: node.name,
+                url: website,
+                legalName: `${node.name}, LLC`,
+                logo: {
+                  "@type": `ImageObject`,
+                  name: node.logo.title,
+                  caption: node.logo.title,
+                  contentSize: `${node.logo.file.details.size / 1000}kb`,
+                  contentUrl: `https:${node.logo.file.url}`,
+                  encodingFormat: node.logo.file.contentType,
+                  height: node.logo.file.details.image.height,
+                  width: node.logo.file.details.image.width,
+                },
+                contactPoint: {
+                  "@type": `ContactPoint`,
+                  contactType: `Sales`,
+                  email: `sales@${location.host}`,
+                },
+                founder: {
+                  "@type": `ContactPoint`,
+                  contactType: `Inquiries`,
+                  email: `info@${location.host}`,
+                },
+                foundingDate: `2022-01-01 00:00:00`,
+                foundingLocation: `New York, New York`,
+                sameAs: node.socialMedia.map((account) => account.accountUrl),
+              },
+              null,
+              ` `
+            )}
+          </script>
+        ))}
+    </Helmet>
   );
 };
 
