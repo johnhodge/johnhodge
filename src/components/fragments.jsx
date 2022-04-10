@@ -125,8 +125,15 @@ export const contentfulSiteData = graphql`
   fragment contentfulSiteData on ContentfulCompanyEdge {
     node {
       name
+      keywords
+      description
+      website
       socialMedia {
         accountUrl
+        accountHandle
+        accountId
+        accountName
+        accountPlatform
       }
       logo {
         title
