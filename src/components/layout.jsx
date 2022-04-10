@@ -20,7 +20,7 @@ export default function Layout({
 
   return (
     <div>
-      <Header />
+      <Header website={location.origin} />
       {location.pathname === "/" ? (
         <HomepageHero />
       ) : (
