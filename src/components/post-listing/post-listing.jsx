@@ -15,7 +15,6 @@ const PostListing = ({ data }) => (
         }`}
         key={node.id}
       >
-        {console.log(i)}
         <Link
           className={styles.postLink}
           to={`/insights/${node.slug}`}
