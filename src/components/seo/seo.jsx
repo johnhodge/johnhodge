@@ -42,31 +42,42 @@ const Seo = ({
     data.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.keywords.join(", "));
-
   const image =
     metaImage ||
     data.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.logo);
-  const imageFile = `https:${image.url ? image.url : image[0].file.url}`;
-  const imageHeight = image.height
-    ? image.height
-    : image[0].file.details.image.height;
-  const imageWidth = image.width
-    ? image.width
-    : image[0].file.details.image.width;
-  const imageDescription = image.description
-    ? image.description
-    : image[0].description;
-  const imageType = image.contentType
-    ? image.contentType
-    : image[0].file.contentType;
-
-  const { social } = data.site.siteMetadata;
-  const article = metaArticle || null;
   const title = `${metaTitle} » ${data.allContentfulCompany.edges
     .filter((filtered) => filtered.node.website === website)
     .map(({ node }) => node.name)}`;
+  const imageFile = `https:${
+    image.url ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.seoLogo.file.url)
+  }`;
+  const imageHeight =
+    image.height ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.seoLogo.file.details.image.height);
+  const imageWidth =
+    image.width ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.seoLogo.file.details.image.width);
+  const imageDescription =
+    image.description ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.seoLogo.description);
+  const imageType =
+    image.contentType ||
+    data.allContentfulCompany.edges
+      .filter((filtered) => filtered.node.website === website)
+      .map(({ node }) => node.seoLogo.file.contentType);
+  const { social } = data.site.siteMetadata;
+  const article = metaArticle || null;
   const lang = metaLang;
 
   return (
@@ -197,7 +208,7 @@ const Seo = ({
         },
         {
           name: `twitter:image:alt`,
-          content: image.description,
+          content: imageDescription,
         },
       ].concat(
         article
