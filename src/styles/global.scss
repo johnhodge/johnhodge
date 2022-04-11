@@ -93,7 +93,7 @@ Global styles
 */
 *:focus-visible {
   outline: none;
-  box-shadow: $lightOutline !important;
+  box-shadow: $lightOutline;
 }
 
 ::selection {

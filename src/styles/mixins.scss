@@ -61,6 +61,7 @@ Primary Buttons
   $display: block,
   $verticalPadding: $unitsSmall,
   $horizontalPadding: $unitsNormal,
+  $boxShadow: $smallBoxShadow,
   $border: none,
   $width: auto
 ) {
@@ -70,7 +71,7 @@ Primary Buttons
   text-align: center;
   padding: $verticalPadding $horizontalPadding;
   border-radius: $unitsXSmall;
-  box-shadow: $smallBoxShadow;
+  box-shadow: $boxShadow;
   border: $border;
   width: $width;
 }

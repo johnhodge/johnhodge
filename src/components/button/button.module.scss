@@ -7,7 +7,7 @@ button.primary-form-btn:disabled {
 }
 
 button.primary-form-btn {
-  @include mixins.primary-btn($verticalPadding: $unitsNormal);
+  @include mixins.primary-btn($verticalPadding: $unitsNormal, $boxShadow: null);
 }
 
 button.primary-form-btn:hover {
