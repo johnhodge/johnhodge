@@ -171,6 +171,7 @@ export const contentfulSiteData = graphql`
 export const solutionsData = graphql`
   fragment SolutionsData on ContentfulCompanyEdge {
     node {
+      website
       solutions {
         solutionsName
         solutionsDescription
