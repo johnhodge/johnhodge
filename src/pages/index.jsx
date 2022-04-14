@@ -11,7 +11,7 @@ const Posts = ({ location }) => (
     <Layout location={location} pageTitle="BrightShell, LLC">
       <Seo metaTitle="Home" location={location} />
       <JsonLd schemaType="webpage" />
-      <SolutionsIndex />
+      <SolutionsIndex location={location} />
       <AboutIndex />
       <Testimonials />
     </Layout>

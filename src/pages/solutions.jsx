@@ -13,28 +13,30 @@ const Solutions = ({ data, location }) => (
       <Seo metaTitle="Solutions" location={location} />
       <JsonLd schemaType="webpage" />
       <div>
-        {data.allContentfulCompany.edges.map(({ node }) =>
-          node.solutions.map((solution) => (
-            <div
-              id={solution.solutionsName.toLowerCase().replace(/\W/gm, `-`)}
-              className={styles.solutionsContainer}
-              key={node.id}
-            >
-              <HeadlineGraphic
-                src={solution.solutionsGraphic.file.url}
-                title={solution.solutionsGraphic.title}
-                alt={solution.solutionsGraphic.description}
-                width={solution.solutionsGraphic.file.details.image.width}
-                height={solution.solutionsGraphic.file.details.image.height}
-                header={solution.solutionsName}
-              />
-              <SolutionsDescription
-                description={solution.solutionsAlternateDescription}
-                benefits={solution.solutionsBenefits}
-              />
-            </div>
-          ))
-        )}
+        {data.allContentfulCompany.edges
+          .filter((filtered) => filtered.node.website === location.origin)
+          .map(({ node }) =>
+            node.solutions.map((solution) => (
+              <div
+                id={solution.solutionsName.toLowerCase().replace(/\W/gm, `-`)}
+                className={styles.solutionsContainer}
+                key={node.id}
+              >
+                <HeadlineGraphic
+                  src={solution.solutionsGraphic.file.url}
+                  title={solution.solutionsGraphic.title}
+                  alt={solution.solutionsGraphic.description}
+                  width={solution.solutionsGraphic.file.details.image.width}
+                  height={solution.solutionsGraphic.file.details.image.height}
+                  header={solution.solutionsName}
+                />
+                <SolutionsDescription
+                  description={solution.solutionsAlternateDescription}
+                  benefits={solution.solutionsBenefits}
+                />
+              </div>
+            ))
+          )}
       </div>
     </Layout>
   </div>
