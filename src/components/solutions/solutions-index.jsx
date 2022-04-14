@@ -18,15 +18,12 @@ const SolutionsIndex = ({ location }) => (
     `}
     render={(data) => (
       <div className={home.hpSection}>
-        {console.log(data.allContentfulCompany.edges[2].node.website)}
-        {console.log(location)}
         <h2 className={home.hpSectionHeader}>Solutions</h2>
         {data.allContentfulCompany.edges
           .filter((filtered) => filtered.node.website === location.origin)
           .map(({ node }) =>
             node.solutions.map((solution, i) => (
               <div key={solution.id}>
-                {console.log(solution)}
                 {i % 2 === 0 ? (
                   <div
                     id={solution.solutionsName
