@@ -20,7 +20,10 @@ const Seo = ({
   const gatsbyData = useSiteData()[0];
   console.log(gatsbyData);
   const contentfulData = useSiteData()[1];
-  const website = location.origin;
+  const website =
+    process.env.NODE_ENV === "production"
+      ? location.origin
+      : "https://www.johnhodge.com";
   const canonical = location.href;
   const metaDescription =
     description ||

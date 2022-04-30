@@ -20,7 +20,11 @@ const SolutionsIndex = ({ location }) => (
       <div className={home.hpSection}>
         <h2 className={home.hpSectionHeader}>Solutions</h2>
         {data.allContentfulCompany.edges
-          .filter((filtered) => filtered.node.website === location.origin)
+          .filter((filtered) =>
+            filtered.node.website === (process.env.NODE_ENV === "production")
+              ? location.origin
+              : "https://www.johnhodge.com"
+          )
           .map(({ node }) =>
             node.solutions.map((solution, i) => (
               <div key={solution.id}>

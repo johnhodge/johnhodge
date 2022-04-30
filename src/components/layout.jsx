@@ -17,10 +17,14 @@ export default function Layout({
 }) {
   const today = new Date();
   const year = today.getFullYear();
+  const website =
+    process.env.NODE_ENV === "production"
+      ? location.origin
+      : "https://www.johnhodge.com";
 
   return (
     <div>
-      <Header website={location.origin} />
+      <Header website={website} />
       {location.pathname === "/" ? (
         <HomepageHero />
       ) : (
@@ -40,7 +44,7 @@ export default function Layout({
         {children}
       </main>
       {location.pathname.includes("/lp/") ? "" : <FooterCta />}
-      <Footer year={year} website={location.origin} />
+      <Footer year={year} website={website} />
     </div>
   );
 }
