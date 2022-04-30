@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
 import heroNew from "../../fonts/hero_new_regular-webfont.woff";
 import heroNewBold from "../../fonts/hero_new_bold-webfont.woff2";
 import heroNewSuper from "../../fonts/hero_new_super-webfont.woff2";
 import heroNewSuperItalic from "../../fonts/hero_new_super_italic-webfont.woff2";
 import cartographMonoCfMedium from "../../fonts/cartographmonocf_medium-webfont.woff2";
+import { useSiteData } from "../../hooks/use-site-data";
 
 const Seo = ({
   description,
@@ -17,66 +17,56 @@ const Seo = ({
   metaArticle,
   location,
 }) => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        ...gatsbySiteData
-      }
-      allContentfulCompany {
-        edges {
-          ...contentfulSiteData
-        }
-      }
-    }
-  `);
-
+  const gatsbyData = useSiteData()[0];
+  console.log(gatsbyData);
+  const contentfulData = useSiteData()[1];
   const website = location.origin;
   const canonical = location.href;
   const metaDescription =
     description ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.description);
   const keywords =
     metaKeywords ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.keywords.join(", "));
   const image =
     metaImage ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.logo);
-  const title = `${metaTitle} » ${data.allContentfulCompany.edges
+  const title = `${metaTitle} » ${contentfulData.allContentfulCompany.edges
     .filter((filtered) => filtered.node.website === website)
     .map(({ node }) => node.name)}`;
   const imageFile = `https:${
     image.url ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.seoLogo.file.url)
   }`;
   const imageHeight =
     image.height ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.seoLogo.file.details.image.height);
   const imageWidth =
     image.width ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.seoLogo.file.details.image.width);
   const imageDescription =
     image.description ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.seoLogo.description);
   const imageType =
     image.contentType ||
-    data.allContentfulCompany.edges
+    contentfulData.allContentfulCompany.edges
       .filter((filtered) => filtered.node.website === website)
       .map(({ node }) => node.seoLogo.file.contentType);
-  const { social } = data.site.siteMetadata;
+  const { social } = gatsbyData.siteMetadata;
   const article = metaArticle || null;
   const lang = metaLang;
 
@@ -239,7 +229,7 @@ const Seo = ({
           : []
       )}
     >
-      {data.allContentfulCompany.edges
+      {contentfulData.allContentfulCompany.edges
         .filter((filtered) => filtered.node.website === website)
         .map(({ node }) => (
           <script type="application/ld+json">
