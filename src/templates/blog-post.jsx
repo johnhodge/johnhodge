@@ -83,7 +83,7 @@ const BlogPost = ({ data, location }) => {
         inLanguage={post.node_locale}
         keywords={post.keywords ? post.keywords.join(", ") : null}
         name={data.allContentfulCompany.edges[0].node.name}
-        url={location.href}
+        url={location.origin}
         legalName={`${data.allContentfulCompany.edges[0].node.name}, LLC`}
         logoName={data.allContentfulCompany.edges[0].node.logo.title}
         caption={data.allContentfulCompany.edges[0].node.logo.title}
