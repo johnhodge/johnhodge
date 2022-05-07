@@ -21,7 +21,7 @@ const Seo = ({
   console.log(gatsbyData);
   const contentfulData = useSiteData()[1];
   const website =
-    process.env.NODE_ENV === "production"
+    process.env.NODE_ENV !== "development"
       ? location.origin
       : "https://www.johnhodge.com";
   const canonical = location.href;

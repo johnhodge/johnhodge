@@ -18,7 +18,7 @@ export default function Layout({
   const today = new Date();
   const year = today.getFullYear();
   const website =
-    process.env.NODE_ENV === "production"
+    process.env.NODE_ENV !== "development"
       ? location.origin
       : "https://www.johnhodge.com";
 
