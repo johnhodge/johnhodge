@@ -19,11 +19,14 @@ const Footer = ({ year, website }) => (
           <p>
             © {year}
             {"  "}
-            <Link to="/" title={`Link to the ${data} homepage`}>
-              {data.allContentfulCompany.edges
-                .filter((filtered) => filtered.node.website === website)
-                .map(({ node }) => node.name)}
-            </Link>
+            {console.log(data)}
+            {data.allContentfulCompany.edges
+              .filter((filtered) => filtered.node.website === website)
+              .map(({ node }) => (
+                <Link to="/" title={`Link to the ${node.name} homepage`}>
+                  {node.name}
+                </Link>
+              ))}
           </p>
         </div>
       </footer>
