@@ -18,7 +18,6 @@ const Seo = ({
   location,
 }) => {
   const gatsbyData = useSiteData()[0];
-  console.log(gatsbyData);
   const contentfulData = useSiteData()[1];
   const website =
     process.env.NODE_ENV !== "development"

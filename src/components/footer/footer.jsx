@@ -19,7 +19,6 @@ const Footer = ({ year, website }) => (
           <p>
             © {year}
             {"  "}
-            {console.log(data)}
             {data.allContentfulCompany.edges
               .filter((filtered) => filtered.node.website === website)
               .map(({ node }) => (

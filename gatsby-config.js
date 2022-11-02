@@ -52,11 +52,11 @@ module.exports = {
         link: `/solutions`,
         type: `page`,
       },
-      {
-        name: `Insights`,
-        link: `/insights`,
-        type: `page`,
-      },
+      // {
+      //   name: `Insights`,
+      //   link: `/insights`,
+      //   type: `page`,
+      // },
     ],
   },
   plugins: [
