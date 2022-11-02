@@ -10,8 +10,8 @@ const Contact = ({ location }) => (
       <Seo metaTitle="Request a Meeting" location={location} />
       <JsonLd schemaType="webpage" />
       <p>
-        Please tell me a little about your place in the industry and what you
-        need help with and I&apos;ll be in touch to discuss solutions.
+        Please share a little about your place in the industry and what you need
+        help with and let's discuss solutions.
       </p>
       <MeetingRequestForm />
     </Layout>
