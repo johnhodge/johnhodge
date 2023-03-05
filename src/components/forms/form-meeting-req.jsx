@@ -42,7 +42,6 @@ const MeetingRequestForm = () => (
         company: "",
         hs_persona: "",
         industry: "",
-        jobtitle: "",
         country: "",
         phone: "",
         project_timeline: "",
@@ -60,7 +59,6 @@ const MeetingRequestForm = () => (
           company: "",
           hs_persona: "",
           industry: "",
-          jobtitle: "",
           country: "",
           phone: "",
           project_timeline: "",
@@ -199,18 +197,6 @@ const MeetingRequestForm = () => (
               {errors.hs_persona && touched.hs_persona ? (
                 <div className={styles.errors}>{errors.hs_persona}</div>
               ) : null}
-              <Field
-                name="jobtitle"
-                type="text"
-                placeholder="Specific Job Title"
-                className={
-                  errors.jobtitle && touched.jobtitle
-                    ? styles.invalidFieldEntry
-                    : !errors.jobtitle && touched.jobtitle
-                    ? styles.validFieldEntry
-                    : ""
-                }
-              />
               {errors.jobtitle && touched.jobtitle ? (
                 <div className={styles.errors}>{errors.jobtitle}</div>
               ) : null}
