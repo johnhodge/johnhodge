@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop --host 192.168.0.19 --open --verbose",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider gatsby develop --host 192.168.0.19 --open --verbose",
     "start": "gatsby develop",
     "build": "gatsby build --no-uglify",
     "serve": "gatsby serve --host 192.168.0.19 --open --verbose",
