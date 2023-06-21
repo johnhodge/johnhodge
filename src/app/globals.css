@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 html {
-  font-size: max(16px, 1.46412884vw);
+  font-size: max(16px, 2.34260615vw);
   color: theme(colors.black.900);
 }
