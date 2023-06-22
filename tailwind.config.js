@@ -19,15 +19,13 @@ module.exports = {
       },
     },
     colors: {
-      white: {
+      gray: {
         0: '#ffffff',
         50: colors.slate['50'],
         100: colors.slate['100'],
         200: colors.slate['200'],
         300: colors.slate['300'],
         400: colors.slate['400'],
-      },
-      black: {
         500: colors.slate['500'],
         600: colors.slate['600'],
         700: colors.slate['700'],

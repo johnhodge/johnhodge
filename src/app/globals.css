@@ -4,5 +4,5 @@
 
 html {
   scroll-behavior: smooth;
-  color: theme(colors.black.900);
+  color: theme(colors.gray.900);
 }
