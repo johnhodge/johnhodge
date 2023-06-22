@@ -15,6 +15,7 @@ export function middleware(request: NextRequest) {
       'X-Learn-About-This-Website',
       `https:/www.johnhodge.com/what-the-website`
     );
+    response.headers.set('X-Brand-Standards', 'https://brand.johnhodge.com');
     response.headers.set('X-Powered-By', 'John Hodge');
     response.headers.set('X-Developed-By', 'John Hodge');
     return response;
