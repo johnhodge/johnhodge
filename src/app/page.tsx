@@ -2,6 +2,12 @@ import { Metadata } from 'next';
 import { GetSiteMeta, GetWebsiteData } from './graphql.query';
 import type { PersonMeta, Person } from './types';
 import Hero from './components/hero';
+import Clients from './components/clients';
+import Employment from './components/employment';
+import Testimonials from './components/testimonials';
+import Skills from './components/skills';
+import Technology from './components/technology';
+import Philosophy from './components/philosophy';
 
 export type Headers = {
   Authorication: string;
@@ -32,6 +38,12 @@ export default async function Home() {
   return (
     <main>
       <Hero {...data} />
+      <Clients {...data} />
+      <Employment {...data} />
+      <Testimonials {...data} />
+      <Skills {...data} />
+      <Technology {...data} />
+      <Philosophy {...data} />
     </main>
   );
 }
