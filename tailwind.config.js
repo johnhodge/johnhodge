@@ -14,6 +14,9 @@ module.exports = {
       minHeight: {
         dscreen: '100dvh',
       },
+      maxHeight: {
+        dscreen: '100dvh',
+      },
     },
     colors: {
       white: {

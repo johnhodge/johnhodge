@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 html {
-  font-size: max(16px, 2.34260615vw);
+  scroll-behavior: smooth;
   color: theme(colors.black.900);
 }
