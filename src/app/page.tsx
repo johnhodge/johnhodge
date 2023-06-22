@@ -3,11 +3,12 @@ import { GetSiteMeta, GetWebsiteData } from './graphql.query';
 import type { PersonMeta, Person } from './types';
 import Hero from './components/hero';
 import Clients from './components/clients';
-import Employment from './components/employment';
+import Employers from './components/employers';
 import Testimonials from './components/testimonials';
 import Skills from './components/skills';
-import Technology from './components/technology';
+import Tech from './components/tech';
 import Philosophy from './components/philosophy';
+import Contact from './components/contact';
 
 export type Headers = {
   Authorication: string;
@@ -39,11 +40,12 @@ export default async function Home() {
     <main>
       <Hero {...data} />
       <Clients {...data} />
-      <Employment {...data} />
+      <Employers {...data} />
       <Testimonials {...data} />
       <Skills {...data} />
-      <Technology {...data} />
+      <Tech {...data} />
       <Philosophy {...data} />
+      <Contact {...data} />
     </main>
   );
 }
