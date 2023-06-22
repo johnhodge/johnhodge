@@ -6,3 +6,8 @@ html {
   scroll-behavior: smooth;
   color: theme(colors.gray.900);
 }
+
+.highlight {
+  font-weight: theme(fontWeight.black);
+  color: theme(colors.primary.600);
+}

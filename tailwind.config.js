@@ -8,9 +8,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        display: ['var(--inter)', { fontVariationSettings: '"wght" 900' }],
-      },
       minHeight: {
         dscreen: '100dvh',
       },
