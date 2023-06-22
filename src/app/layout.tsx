@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { GetSiteMeta } from './graphql.query';
 import { Person } from './types';
 import { Metadata } from 'next';
+import Navigation from './components/navigation';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 
 export type Headers = {
@@ -53,7 +54,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }
