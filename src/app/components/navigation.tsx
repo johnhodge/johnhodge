@@ -1,13 +1,14 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import Button from './shared/button';
 
 const links = [
   'Clients',
-  'Employment',
+  'Employers',
   'Testimonials',
   'Skills',
-  'Technology',
+  'Tech',
   'Philosophy',
 ];
 
@@ -23,10 +24,12 @@ export default function Navigation() {
   }
   console.log(click);
   return (
-    <div className='relative'>
+    <div className='relative font-bold'>
       <div className='relative'>
-        <header className='fixed inset-x-0 flex justify-between p-4 bg-white-0'>
-          <Link href='/'>John Hodge</Link>
+        <header className='fixed inset-x-0 flex justify-between items-center p-4 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300'>
+          <Link className='text-xl font-extrabold' href='/'>
+            John Hodge
+          </Link>
           <div className='md:hidden'>
             <svg
               onClick={handleClick}
@@ -39,30 +42,39 @@ export default function Navigation() {
                 cx='10.2461'
                 cy='2.49236'
                 r='1.75384'
-                className='fill-black-950'
+                className='fill-gray-950'
               />
               <circle
                 cx='10.2461'
                 cy='12.0001'
                 r='1.75384'
-                className='fill-black-950'
+                className='fill-gray-950'
               />
               <circle
                 cx='10.2461'
                 cy='21.5077'
                 r='1.75384'
-                className='fill-black-950'
+                className='fill-gray-950'
               />
             </svg>
           </div>
           <div className='max-md:hidden'>
             <nav>
-              <ul className='flex gap-4'>
+              <ul className='flex items-center gap-4'>
                 {links.map((link) => (
-                  <a href={`/#${link.toLowerCase()}`}>
-                    <li>{link}</li>
-                  </a>
+                  <li>
+                    <a href={`/#${link.toLowerCase()}`}>{link}</a>
+                  </li>
                 ))}
+                <li>
+                  <Button
+                    size='small'
+                    width='fit'
+                    color='secondary'
+                    text='Get on my cal'
+                    link='/#contact'
+                  />
+                </li>
               </ul>
             </nav>
           </div>
@@ -70,7 +82,9 @@ export default function Navigation() {
       </div>
       <div className='relative'>
         <nav
-          className={`${!click ? 'hidden ' : ''}fixed inset-0 p-4  bg-white-0`}>
+          className={`${
+            !click ? 'hidden ' : ''
+          }fixed inset-0 p-4 w-full bg-gray-0`}>
           <svg
             className='absolute right-4'
             onClick={handleClick}
@@ -85,22 +99,45 @@ export default function Navigation() {
                 stroke-width='4'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                className='stroke-black-950'
+                className='stroke-gray-950'
               />
             </g>
             <defs>
               <clipPath id='clip0_64_6659'>
-                <rect width='30' height='30' fill='white' />
+                <rect width='30' height='30' className='fill-gray-0' />
               </clipPath>
             </defs>
           </svg>
 
-          <ul className='min-h-dscreen flex flex-col justify-evenly absolute'>
+          <ul className='min-h-dscreen flex flex-col justify-evenly'>
             {links.map((link) => (
-              <a href={`/#${link.toLowerCase()}`}>
-                <li onClick={handleClick}>{link}</li>
-              </a>
+              <li onClick={handleClick}>
+                <a
+                  className='text-4xl font-extrabold'
+                  href={`/#${link.toLowerCase()}`}>
+                  {link}
+                </a>
+              </li>
             ))}
+            <hr className='border-gray-950' />
+            <li onClick={handleClick}>
+              <Button
+                size='large'
+                width='full'
+                color='secondary'
+                text='Schedule a consultation'
+                link='/#contact'
+              />
+            </li>
+            <li onClick={handleClick}>
+              <Button
+                size='large'
+                width='full'
+                color='primary'
+                text='Book me as a speaker'
+                link='/#contact'
+              />
+            </li>
           </ul>
         </nav>
       </div>
