@@ -18,8 +18,8 @@ export default function Article(
         <section>
           <h2
             className='text-5xl font-black pb-6
-          lg:text-7xl
-          xl:text-8xl'
+            lg:text-7xl
+            xl:text-8xl'
             dangerouslySetInnerHTML={{ __html: props.headline }}
           />
           <h3
