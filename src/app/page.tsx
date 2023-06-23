@@ -35,39 +35,39 @@ export default async function Home() {
   );
   const json = await response.json();
   const data: Person = json.data.person;
-  const start = 65;
-  const end = 100;
+  const start = 'from-60%';
+  const end = 'to-100%';
   const lowSaturation = 0;
-  const highSaturation = 100;
+  const highSaturation = 50;
   return (
     <main>
       <Hero {...data} />
       <div
-        className={`bg-gradient-to-b from-gray-${lowSaturation} from-${start}% to-primary-${highSaturation} to-${end}%`}>
+        className={`bg-gradient-to-b from-gray-${lowSaturation} ${start} to-primary-${highSaturation} ${end}`}>
         <Clients {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-primary-${highSaturation} from-${start}% to-gray-${highSaturation} to-${end}%`}>
+        className={`bg-gradient-to-b from-primary-${highSaturation} ${start} to-gray-${highSaturation} ${end}`}>
         <Employers {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-${highSaturation} from-${start}% to-gray-${lowSaturation} to-${end}%`}>
+        className={`bg-gradient-to-b from-gray-${highSaturation} ${start} to-gray-${lowSaturation} ${end}`}>
         <Testimonials {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-${lowSaturation} from-${start}% to-secondary-${highSaturation} to-${end}%`}>
+        className={`bg-gradient-to-b from-gray-${lowSaturation} ${start} to-secondary-${highSaturation} ${end}`}>
         <Skills {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-secondary-${highSaturation} from-${start}% to-gray-${highSaturation} to-${end}%`}>
+        className={`bg-gradient-to-b from-secondary-${highSaturation} ${start} to-gray-${highSaturation} ${end}`}>
         <Tech {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-to-gray-100 from-${start}% to-gray-0 to-${end}%`}>
+        className={`bg-gradient-to-b from-to-gray-100 ${start} to-gray-0 ${end}`}>
         <Philosophy {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-0 from-${start}% to-primary-100 to-${end}%`}>
+        className={`bg-gradient-to-b from-gray-0 ${start} to-primary-100 ${end}`}>
         <Contact {...data} />
       </div>
     </main>

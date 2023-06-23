@@ -50,7 +50,7 @@ export default function Article(props: Hgroup) {
               alt={props.headshot.description}
               className='aspect-ratio-1/1'
             />
-            <figcaption className='text-primary-700 bg-primary-50 px-2'>
+            <figcaption className='text-gray-700 bg-gray-50 px-2'>
               {props.headshot.description}
             </figcaption>
           </figure>
