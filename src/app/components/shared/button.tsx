@@ -1,11 +1,11 @@
-export type ButtonSettings = {
+export type GlobalButtonSettings = {
   size: 'small' | 'large';
   width: 'full' | 'fit';
   color: 'primary' | 'secondary' | 'gray';
   link: string;
   text: string;
 };
-export default function Button(props: ButtonSettings) {
+export default function GlobalButton(props: GlobalButtonSettings) {
   return (
     <a
       className={`inline-block border border-solid bg-gradient-to-b text-center font-bold ${
