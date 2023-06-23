@@ -50,13 +50,9 @@ type BasicPerson = {
 };
 
 type Testimonials = {
-  items: [
-    {
-      excerpt: string;
-      body: string;
-      author: BasicPerson;
-    }
-  ];
+  excerpt: string;
+  body: string;
+  author: BasicPerson;
 };
 
 export type HeroData = {
@@ -69,10 +65,10 @@ export interface Person extends BasicPerson {
   sys: [Object];
   headline: string;
   subhead: string;
-  skills: [BasicPost];
-  technology: [BasicPost];
-  philosophy: [BasicPost];
-  employment: Employment;
-  clients: Clients;
-  testimonials: Testimonials;
+  skills: { items: [BasicPost] };
+  technology: { items: [BasicPost] };
+  philosophy: { items: [[BasicPost]] };
+  employment: { items: [Employment] };
+  clients: { items: [Clients] };
+  testimonials: { items: [Testimonials] };
 }
