@@ -1,33 +1,28 @@
 import type { Person } from '../types';
 import Article from '../templates/article';
 import GlobalCard from './shared/card';
-import type { ButtonSettings } from './shared/button';
 
 export default function Client(data: Person) {
-  const button: ButtonSettings = {
-    text: 'Read more',
-    size: 'small',
-    width: 'fit',
-    color: 'gray',
-    link: '/#contact',
-  };
   return (
     <Article
       headline='Clients'
       subhead="See who I've helped"
       button={false}
       data={data}>
-      <GlobalCard
-        logo={data.technology.items[0].icon}
-        icon={data.skills.items[0].icon}
-        header='Header'
-        subheader='Subheader'
-        shortDescription='Try to keep headline under 30 characters.'
-        longDescription='Try to keep headline under 60 characters.'
-        button={button}
-        verticalLine={true}
-        horizontalLine={true}
-      />
+      <div className='flex flex-wrap gap-4'>
+        {data.clients.items.map((client) => (
+          <div className='shrink grow md:basis-1/3 lg:basis-1/4'>
+            <GlobalCard
+              key={client.clientsCollection.items[0].name}
+              icon={client.clientsCollection.items[0].logo}
+              subheader={client.clientsCollection.items[0].name}
+              shortDescription={client.headline}
+              verticalLine={true}
+              horizontalLine={false}
+            />
+          </div>
+        ))}
+      </div>
     </Article>
   );
 }
