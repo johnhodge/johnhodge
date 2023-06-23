@@ -22,7 +22,6 @@ export default function Navigation() {
       setClick(false);
     }
   }
-  console.log(click);
   return (
     <div className='relative font-bold'>
       <div className='relative h-16'>
