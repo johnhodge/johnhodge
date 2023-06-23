@@ -70,7 +70,7 @@ export default function Navigation() {
                   <Button
                     size='small'
                     width='fit'
-                    color='secondary'
+                    color='primary'
                     text='Get on my cal'
                     link='/#contact'
                   />
