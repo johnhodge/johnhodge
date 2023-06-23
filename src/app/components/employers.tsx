@@ -1,14 +1,12 @@
 import type { Person } from '../types';
+import Article from '../templates/article';
 
-export default async function Employers(data: Person) {
+export default function Client(data: Person) {
   return (
-    <div id='employers'>
-      <section className='flex min-h-dscreen flex-col justify-center p-4'>
-        <h1 className='text-5xl font-black text-primary-600'>
-          Employers section
-        </h1>
-        <p>This area is coming soon, cmon.</p>
-      </section>
-    </div>
+    <Article
+      headline='Employers'
+      subhead='Let’s see where I’ve been'
+      button={false}
+      data={data}></Article>
   );
 }
