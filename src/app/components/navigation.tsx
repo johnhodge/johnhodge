@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import Button from './shared/button';
+import GlobalButton from './shared/button';
 
 const links = [
   'Clients',
@@ -25,7 +25,7 @@ export default function Navigation() {
   return (
     <div className='relative font-bold'>
       <div className='relative h-16'>
-        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300'>
+        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-20'>
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
@@ -61,12 +61,12 @@ export default function Navigation() {
             <nav>
               <ul className='flex items-center gap-4'>
                 {links.map((link) => (
-                  <li>
+                  <li key={link.toLowerCase()}>
                     <a href={`/#${link.toLowerCase()}`}>{link}</a>
                   </li>
                 ))}
                 <li>
-                  <Button
+                  <GlobalButton
                     size='small'
                     width='fit'
                     color='primary'
@@ -92,12 +92,12 @@ export default function Navigation() {
             viewBox='0 0 30 30'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'>
-            <g clip-path='url(#clip0_64_6659)'>
+            <g clipPath='url(#clip0_64_6659)'>
               <path
                 d='M3 3L27 27M3 27L27 3'
-                stroke-width='4'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='4'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='stroke-gray-950'
               />
             </g>
@@ -110,7 +110,7 @@ export default function Navigation() {
 
           <ul className='min-h-dscreen flex flex-col justify-evenly p-4'>
             {links.map((link) => (
-              <li onClick={handleClick}>
+              <li key={link.toLowerCase()} onClick={handleClick}>
                 <a
                   className='text-4xl font-extrabold'
                   href={`/#${link.toLowerCase()}`}>
@@ -120,7 +120,7 @@ export default function Navigation() {
             ))}
             <hr className='border-gray-950' />
             <li onClick={handleClick}>
-              <Button
+              <GlobalButton
                 size='large'
                 width='full'
                 color='secondary'
@@ -129,7 +129,7 @@ export default function Navigation() {
               />
             </li>
             <li onClick={handleClick}>
-              <Button
+              <GlobalButton
                 size='large'
                 width='full'
                 color='primary'
