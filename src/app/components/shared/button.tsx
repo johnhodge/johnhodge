@@ -20,7 +20,7 @@ export default function Button(props: Button) {
           : props.color == 'primary'
           ? 'border-primary-400 from-primary-100 to-primary-50 text-primary-700'
           : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
-      } hover:scale-110 ease-in-out duration-150`}
+      } hover:scale-105 ease-in-out duration-150`}
       href={props.link}>
       {props.text}
     </a>
