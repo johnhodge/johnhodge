@@ -11,8 +11,8 @@ type Hgroup = {
 };
 export default function Article(props: Hgroup) {
   return (
-    <article className='px-2 py-9'>
-      <div className='flex flex-col md:flex-row gap-9'>
+    <article className='mx-2 py-9 border-b border-gray-800'>
+      <div className='flex flex-col-reverse gap-9 md:flex-row'>
         <hgroup className='basis-2/3 grow flex flex-col items-start gap-9'>
           <section className='flex flex-col'>
             <h2
