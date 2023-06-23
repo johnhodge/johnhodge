@@ -5,13 +5,16 @@ import GlobalCard from './shared/card';
 export default function Client(data: Person) {
   return (
     <Article
+      id='clients'
       headline='Clients'
       subhead="See who I've helped"
       button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.clients.items.map((client) => (
-          <div className='shrink grow md:basis-1/3 lg:basis-1/4'>
+          <div
+            key={client.clientsCollection.items[0].name}
+            className='shrink grow md:basis-1/3 lg:basis-1/4'>
             <GlobalCard
               key={client.clientsCollection.items[0].name}
               icon={client.clientsCollection.items[0].logo}
