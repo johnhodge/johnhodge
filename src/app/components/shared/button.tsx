@@ -13,7 +13,7 @@ export default function Button(props: Button) {
       } ${
         props.size == 'small'
           ? 'text-sm p-2 rounded-lg'
-          : 'text-xl p-9 rounded-3xl'
+          : 'text-xl px-9 py-6 rounded-3xl'
       } ${
         props.color == 'secondary'
           ? 'border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700'
