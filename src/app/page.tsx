@@ -37,7 +37,7 @@ export default async function Home() {
   const data: Person = json.data.person;
 
   return (
-    <main className='pt-20'>
+    <main>
       <Hero {...data} />
       <Clients {...data} />
       <Employers {...data} />

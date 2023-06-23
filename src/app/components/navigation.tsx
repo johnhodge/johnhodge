@@ -25,8 +25,8 @@ export default function Navigation() {
   console.log(click);
   return (
     <div className='relative font-bold'>
-      <div className='relative'>
-        <header className='fixed inset-x-0 flex justify-between items-center p-4 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 xl:px-24'>
+      <div className='relative h-16'>
+        <header className='fixed inset-x-0 flex justify-between items-center p-4 max-h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300'>
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
