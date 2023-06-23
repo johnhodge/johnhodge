@@ -1,12 +1,12 @@
 import type { Person } from '../types';
+import Article from '../templates/article';
 
-export default async function Tech(data: Person) {
+export default function Client(data: Person) {
   return (
-    <div id='tech'>
-      <section className='flex min-h-dscreen flex-col justify-center p-4'>
-        <h1 className='text-5xl font-black text-primary-600'>Tech section</h1>
-        <p>This area is coming soon, cmon.</p>
-      </section>
-    </div>
+    <Article
+      headline='Tech'
+      subhead='Let’s see what I use'
+      button={false}
+      data={data}></Article>
   );
 }

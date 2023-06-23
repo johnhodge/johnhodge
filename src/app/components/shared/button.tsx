@@ -1,11 +1,11 @@
-type Button = {
+export type ButtonSettings = {
   size: 'small' | 'large';
   width: 'full' | 'fit';
   color: 'primary' | 'secondary' | 'gray';
   link: string;
   text: string;
 };
-export default function Button(props: Button) {
+export default function Button(props: ButtonSettings) {
   return (
     <a
       className={`inline-block border border-solid bg-gradient-to-b text-center font-bold ${
@@ -20,7 +20,7 @@ export default function Button(props: Button) {
           : props.color == 'primary'
           ? 'border-primary-400 from-primary-100 to-primary-50 text-primary-700'
           : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
-      }`}
+      } hover:scale-105 ease-in-out duration-150`}
       href={props.link}>
       {props.text}
     </a>

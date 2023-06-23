@@ -14,6 +14,7 @@ export default async function Hero(data: Person) {
       headline={data.headline}
       subhead={data.subhead}
       headshot={headshot}
+      button
     />
   );
 }
