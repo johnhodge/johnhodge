@@ -58,7 +58,7 @@ export default function Article(props: Hgroup) {
           ''
         )}
       </div>
-      {props.children}
+      <section className='py-9'>{props.children}</section>
     </article>
   );
 }

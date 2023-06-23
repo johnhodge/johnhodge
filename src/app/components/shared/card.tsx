@@ -45,9 +45,10 @@ export default function GlobalCard(props: GlobalCard) {
                 title={props.icon.title}
                 alt={props.icon.description}
               />
-              <figcaption className='hidden'>
-                {props.icon.description}
-              </figcaption>
+              <figcaption
+                className='hidden'
+                dangerouslySetInnerHTML={{ __html: props.icon.description }}
+              />
             </figure>
           ) : (
             ''
@@ -61,13 +62,19 @@ export default function GlobalCard(props: GlobalCard) {
                 <h3
                   className='text-2xl font-extrabold
               lg:text-4xl
-              xl:text-5xl'>
-                  {props.subheader}
-                </h3>
+              xl:text-5xl'
+                  dangerouslySetInnerHTML={{ __html: props.subheader }}
+                />
               ) : (
                 ''
               )}
-              {props.shortDescription ? <p>{props.shortDescription}</p> : ''}
+              {props.shortDescription ? (
+                <p
+                  dangerouslySetInnerHTML={{ __html: props.shortDescription }}
+                />
+              ) : (
+                ''
+              )}
             </div>
           ) : (
             ''
@@ -79,13 +86,17 @@ export default function GlobalCard(props: GlobalCard) {
           <h2
             className='text-5xl font-black 
         lg:text-7xl
-        xl:text-8xl'>
-            {props.header}
-          </h2>
+        xl:text-8xl'
+            dangerouslySetInnerHTML={{ __html: props.header }}
+          />
         ) : (
           ''
         )}
-        {props.longDescription ? <p>{props.longDescription}</p> : ''}
+        {props.longDescription ? (
+          <p dangerouslySetInnerHTML={{ __html: props.longDescription }} />
+        ) : (
+          ''
+        )}
         {props.button ? (
           <div className='self-auto'>
             <Button
