@@ -84,7 +84,7 @@ export default function Navigation() {
         <nav
           className={`${
             !click ? 'hidden ' : ''
-          }fixed inset-0 p-4 w-full bg-gray-0`}>
+          }fixed inset-0 w-full bg-gray-0 py-4`}>
           <svg
             className='absolute right-4'
             onClick={handleClick}
@@ -109,7 +109,7 @@ export default function Navigation() {
             </defs>
           </svg>
 
-          <ul className='min-h-dscreen flex flex-col justify-evenly'>
+          <ul className='min-h-dscreen flex flex-col justify-evenly p-4'>
             {links.map((link) => (
               <li onClick={handleClick}>
                 <a
