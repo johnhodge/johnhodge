@@ -4,7 +4,7 @@ export type PersonMeta = {
   headline: string;
 };
 
-type Image = {
+export type MediaImage = {
   url: string;
   title: string;
   description: string;
@@ -16,7 +16,7 @@ type BasicPost = {
   title: string;
   headline: string;
   body: string;
-  icon: Image;
+  icon: MediaImage;
 };
 
 type Employment = {
@@ -26,7 +26,7 @@ type Employment = {
   items: [
     {
       name: string;
-      logo: Image;
+      logo: MediaImage;
     }
   ];
 };
@@ -37,7 +37,7 @@ type Clients = {
     items: [
       {
         name: string;
-        logo: Image;
+        logo: MediaImage;
       }
     ];
   };
@@ -46,7 +46,7 @@ type Clients = {
 type BasicPerson = {
   firstName: string;
   lastName: string;
-  headshot: Image;
+  headshot: MediaImage;
 };
 
 type Testimonials = {
@@ -62,7 +62,7 @@ type Testimonials = {
 export type HeroData = {
   headline: string;
   subhead: string;
-  headshot: Image;
+  headshot: MediaImage;
 };
 
 export interface Person extends BasicPerson {
