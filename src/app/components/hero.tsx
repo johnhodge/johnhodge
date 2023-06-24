@@ -11,6 +11,7 @@ export default async function Hero(data: Person) {
   };
   return (
     <Article
+      id='hero'
       headline={data.headline}
       subhead={data.subhead}
       headshot={headshot}

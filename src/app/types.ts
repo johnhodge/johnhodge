@@ -19,10 +19,7 @@ type BasicPost = {
   icon: MediaImage;
 };
 
-type Employment = {
-  jobTitle: string;
-  headline: string;
-  body: string;
+type ClientsCollection = {
   items: [
     {
       name: string;
@@ -31,16 +28,16 @@ type Employment = {
   ];
 };
 
+type Employment = {
+  jobTitle: string;
+  headline: string;
+  body: string;
+  clientsCollection: ClientsCollection;
+};
+
 type Clients = {
   headline: string;
-  clientsCollection: {
-    items: [
-      {
-        name: string;
-        logo: MediaImage;
-      }
-    ];
-  };
+  clientsCollection: ClientsCollection;
 };
 
 type BasicPerson = {

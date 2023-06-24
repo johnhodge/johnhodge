@@ -36,7 +36,7 @@ export const GetWebsiteData = `query GetWebsiteData{
     }
     employment: projectsCollection(
       limit: 4
-      where: { type: "Employment - W2" }
+      where: { type: "Employment - W2" }, order: endDate_DESC
     ) {
       items {
         jobTitle
@@ -70,7 +70,7 @@ export const GetWebsiteData = `query GetWebsiteData{
             width
             height
           }
-          projectsCollection(limit: 1, where: { type: "Employment - W2" }) {
+          projectsCollection(limit: 1, where: { type: "Employment - W2" }, order: startDate_DESC) {
             items {
               jobTitle
             }

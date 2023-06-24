@@ -37,29 +37,27 @@ export default async function Home() {
   const data: Person = json.data.person;
   const start = 'from-60%';
   const end = 'to-100%';
-  const lowSaturation = 0;
-  const highSaturation = 50;
   return (
     <main>
       <Hero {...data} />
       <div
-        className={`bg-gradient-to-b from-gray-${lowSaturation} ${start} to-primary-${highSaturation} ${end}`}>
+        className={`bg-gradient-to-b from-gray-0 ${start} to-primary-50 ${end}`}>
         <Clients {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-primary-${highSaturation} ${start} to-gray-${highSaturation} ${end}`}>
+        className={`bg-gradient-to-b from-primary-50 from-60% to-gray-50 to-100%`}>
         <Employers {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-${highSaturation} ${start} to-gray-${lowSaturation} ${end}`}>
+        className={`bg-gradient-to-b from-gray-50 ${start} to-gray-0 ${end}`}>
         <Testimonials {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-${lowSaturation} ${start} to-secondary-${highSaturation} ${end}`}>
+        className={`bg-gradient-to-b from-gray-0 ${start} to-secondary-50 ${end}`}>
         <Skills {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-secondary-${highSaturation} ${start} to-gray-${highSaturation} ${end}`}>
+        className={`bg-gradient-to-b from-secondary-50 ${start} to-gray-50 ${end}`}>
         <Tech {...data} />
       </div>
       <div
