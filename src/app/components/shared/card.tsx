@@ -46,7 +46,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
         <hgroup className='flex gap-2'>
           {props.icon?.url ? (
             <figure
-              className={`flex flex-col w-12 justify-${
+              className={`flex flex-col w-icon min-w-icon justify-${
                 props.iconAlign ? props.iconAlign : 'center'
               }`}>
               <Image
