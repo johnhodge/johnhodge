@@ -9,7 +9,6 @@ type GlobalPopoverSettings = {
   body?: string;
 };
 export default function GlobalPopover(props: GlobalPopoverSettings) {
-  console.log(props.body);
   return (
     <Popover className='relative'>
       <Popover.Button className='relative z-0'>
@@ -24,7 +23,7 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
 
       <Popover.Overlay className='fixed inset-0 bg-black opacity-30' />
 
-      <Popover.Panel className='absolute z-10'>
+      <Popover.Panel className='absolute z-10 pt-2'>
         <GlobalCard
           logo={props.card?.logo}
           icon={props.card?.icon}
@@ -32,6 +31,7 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
           subheader={props.card?.subheader}
           verticalLine={props.card?.verticalLine || false}
           horizontalLine={props.card?.horizontalLine || false}
+          shortDescription={props.card?.shortDescription}
           longDescription={props.body}
           height='max-h-80'
         />
