@@ -65,7 +65,7 @@ export interface Person extends BasicPerson {
   subhead: string;
   skills: { items: [BasicPost] };
   technology: { items: [BasicPost] };
-  philosophy: { items: [[BasicPost]] };
+  philosophy: { items: [BasicPost] };
   clients: { items: [Clients] };
   testimonials: { items: [Testimonials] };
 }
