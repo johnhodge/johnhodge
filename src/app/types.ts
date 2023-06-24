@@ -44,6 +44,7 @@ type BasicPerson = {
   firstName: string;
   lastName: string;
   headshot: MediaImage;
+  employment: { items: [Employment] };
 };
 
 type Testimonials = {
@@ -65,7 +66,6 @@ export interface Person extends BasicPerson {
   skills: { items: [BasicPost] };
   technology: { items: [BasicPost] };
   philosophy: { items: [[BasicPost]] };
-  employment: { items: [Employment] };
   clients: { items: [Clients] };
   testimonials: { items: [Testimonials] };
 }
