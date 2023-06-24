@@ -22,7 +22,7 @@ export default function Client(data: Person) {
               subheader={skill.title}
               longDescription={skill.headline}
               verticalLine={false}
-              horizontalLine={true}
+              horizontalLine={false}
             />
           </div>
         ))}
