@@ -7,6 +7,7 @@ import MarkUp from '@/app/utils/markup';
 export type GlobalCardSettings = {
   logo?: MediaImage;
   icon?: MediaImage;
+  iconAlign?: 'start' | 'center' | 'end';
   header?: string;
   subheader?: string;
   shortDescription?: string;
@@ -32,6 +33,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
             width={props.logo.width}
             title={props.logo.title}
             alt={props.logo.description}
+            priority={true}
             className='h-6'
           />
           <figcaption className='hidden'>{props.logo.description}</figcaption>
@@ -43,7 +45,10 @@ export default function GlobalCard(props: GlobalCardSettings) {
       <div className='flex flex-col gap-4'>
         <hgroup className='flex gap-2'>
           {props.icon?.url ? (
-            <figure className='flex flex-col justify-center'>
+            <figure
+              className={`flex flex-col w-12 justify-${
+                props.iconAlign ? props.iconAlign : 'center'
+              }`}>
               <Image
                 src={props.icon.url}
                 height={props.icon.height}

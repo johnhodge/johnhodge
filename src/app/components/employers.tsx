@@ -8,7 +8,6 @@ export default async function Employers(data: Person) {
     text: 'Read more',
     color: 'primary',
     size: 'small',
-    link: '/#',
     width: 'fit',
   };
   return (

@@ -5,7 +5,7 @@ export default function MarkUp({ markdown }: markdown) {
   return (
     <>
       {markupList.map((p: string) => (
-        <p dangerouslySetInnerHTML={{ __html: p }} />
+        <p key={p.replace(' ', '')} dangerouslySetInnerHTML={{ __html: p }} />
       ))}
     </>
   );
