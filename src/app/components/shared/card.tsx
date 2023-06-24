@@ -15,11 +15,15 @@ export type GlobalCardSettings = {
   button?: GlobalButtonSettings;
   verticalLine: boolean;
   horizontalLine: boolean;
+  height?: string;
 };
 
 export default function GlobalCard(props: GlobalCardSettings) {
   return (
-    <section className='bg-gradient-to-t to-gray-0 from-gray-100 shadow-md p-8 rounded-3xl flex flex-col gap-4'>
+    <section
+      className={`bg-gradient-to-t to-gray-0 from-gray-100 shadow-md p-8 rounded-3xl flex flex-col gap-4${
+        props.height ? ` ${props.height} overflow-auto` : ''
+      }`}>
       {props.logo?.url ? (
         <figure>
           <Image
