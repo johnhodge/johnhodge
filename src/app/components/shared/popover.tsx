@@ -27,6 +27,7 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
         <GlobalCard
           logo={props.card?.logo}
           icon={props.card?.icon}
+          iconAlign={props.card?.iconAlign}
           header={props.card?.header}
           subheader={props.card?.subheader}
           verticalLine={props.card?.verticalLine || false}
