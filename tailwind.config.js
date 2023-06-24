@@ -8,11 +8,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        icon: '3rem',
+      },
       minHeight: {
         dscreen: '100dvh',
       },
       maxHeight: {
         dscreen: '100dvh',
+      },
+      minWidth: {
+        icon: '3rem',
+      },
+      maxWidth: {
+        icon: '3rem',
       },
     },
     colors: {
