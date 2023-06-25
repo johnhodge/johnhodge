@@ -4,6 +4,8 @@ import { GetSiteMeta } from './graphql.query';
 import { Person } from './types';
 import { Metadata } from 'next';
 import Navigation from './components/navigation';
+import GetAsset from './utils/asset';
+import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 
 export type Headers = {
@@ -57,6 +59,20 @@ export default function RootLayout({
       <body className={inter.variable}>
         <Navigation />
         {children}
+        <footer className='flex justify-between p-2 bg-gray-0'>
+          <div>
+            ©{new Date().getFullYear()}{' '}
+            <Link
+              href='/'
+              title="Go to John's website"
+              className='underline decoration-dotted'>
+              John Hodge
+            </Link>
+          </div>
+          <div className={'w-6'}>
+            <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' />
+          </div>
+        </footer>
       </body>
     </html>
   );
