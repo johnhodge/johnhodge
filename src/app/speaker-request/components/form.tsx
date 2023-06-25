@@ -21,7 +21,7 @@ const audience_type: OptionData[] = [
   { label: 'Product management', value: 'product_management' },
   { label: 'Adtech vendors', value: 'adtect_vendor' },
   { label: 'Major TV programmer executives', value: 'programmer_executive' },
-  { label: 'Tech saavy vMVPD executives', value: 'vmvpd_executive' },
+  { label: 'Tech savvy vMVPD executives', value: 'vmvpd_executive' },
   { label: 'Publisher AdOps/technical SMEs', value: 'publisher_technical_sme' },
   { label: 'Account managers/AEs', value: 'account_manager' },
   { label: 'Other', value: 'other' },
