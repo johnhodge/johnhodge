@@ -17,7 +17,7 @@ export default function Article(props: Hgroup) {
       <div className='flex flex-col-reverse gap-9 md:flex-row'>
         <div
           className={`flex flex-col items-start gap-9 ${
-            props.headshot ? 'basis-2/3 grow' : ''
+            props.headshot ? 'basis-2/3 grow' : 'min-w-full'
           }`}>
           <hgroup>
             <section className='flex flex-col'>
