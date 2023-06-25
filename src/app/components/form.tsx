@@ -161,7 +161,7 @@ export default function ContactForm() {
 
           <input
             type='submit'
-            className={`font-semibold block w-fit max-w-fit text-xl px-9 py-6 rounded-3xl bg-gradient-to-b border-2 border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700 cursor-pointer ${
+            className={`max-w-fit text-center font-bold text-xl px-9 py-6 rounded-3xl bg-gradient-to-b border-2 border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700 cursor-pointer hover:scale-105 ease-in-out duration-150 ${
               isLoading ? 'disabled:opacity-75' : ''
             }`}
           />
