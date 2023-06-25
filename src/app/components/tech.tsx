@@ -8,7 +8,6 @@ export default function Tech(data: Person) {
       id='tech'
       headline='Tech'
       subhead='Let’s see what I use'
-      button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.technology.items.map((tech) => (

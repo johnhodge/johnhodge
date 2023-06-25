@@ -15,7 +15,6 @@ export default async function Employers(data: Person) {
       id='employers'
       headline='Employers'
       subhead="Let's see where I've been"
-      button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.employment.items.map((employer) => (

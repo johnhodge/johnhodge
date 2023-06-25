@@ -15,7 +15,6 @@ export default function Client(data: Person) {
       id='testimonials'
       headline='Testimonials'
       subhead='Let’s see what they’re saying'
-      button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.testimonials.items.map((testimonial) => (

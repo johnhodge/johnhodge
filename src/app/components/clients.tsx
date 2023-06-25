@@ -8,7 +8,6 @@ export default function Client(data: Person) {
       id='clients'
       headline='Clients'
       subhead="See who I've helped"
-      button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.clients.items.map((client) => (

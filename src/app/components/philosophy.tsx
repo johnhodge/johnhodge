@@ -15,7 +15,6 @@ export default function Client(data: Person) {
       id='philosophy'
       headline='Philosophy'
       subhead='Let’s see what I prioritize'
-      button={false}
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.philosophy.items.map((philo) => (
