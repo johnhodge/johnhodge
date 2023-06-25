@@ -169,7 +169,7 @@ export default function ContactForm() {
               defaultValue={'hs_persona_0'}
               {...register('hs_persona')}>
               <option key={'hs_persona_0'} value='hs_persona_0' disabled>
-                Which option best describes you?
+                Which option describes you?
               </option>
               {options.map((option: OptionData) => (
                 <option key={option.value} value={option.value}>
