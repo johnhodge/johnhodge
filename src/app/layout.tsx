@@ -36,6 +36,7 @@ export async function generateMetadata() {
   const data: Person = json.data.person;
 
   const metadata: Metadata = {
+    metadataBase: new URL('https://johnhodge.com'),
     title: `${data.firstName} ${data.lastName}`,
     description: data.headline,
     openGraph: {
@@ -77,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <Navigation />
         {children}
-        <footer className='flex justify-between p-2 bg-gray-0'>
+        <footer className='flex justify-between items-center p-4 bg-gray-0 gap-2'>
           <div>
             ©{new Date().getFullYear()}{' '}
             <Link
@@ -87,8 +88,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               John Hodge
             </Link>
           </div>
-          <div className={'w-6'}>
-            <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' />
+          <div className={'w-4'}>
+            <Link href='/'>
+              <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' />
+            </Link>
           </div>
         </footer>
       </body>
