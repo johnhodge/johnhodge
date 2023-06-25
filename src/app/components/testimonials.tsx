@@ -4,7 +4,6 @@ import GlobalCard from './shared/card';
 import { GlobalButtonSettings } from './shared/button';
 
 export default function Client(data: Person) {
-  // console.log(JSON.stringify(data));
   const button: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',
