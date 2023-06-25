@@ -2,6 +2,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import errorMap from 'zod/lib/locales/en';
 
 type OptionData = {
   value: string;
@@ -48,7 +49,16 @@ const FormValues = z.object({
   firstName: z.string().min(1, { message: 'First name is a required field.' }),
   lastName: z.string().min(1, { message: 'Last name is a required field.' }),
   companyName: z.optional(z.string()),
-  hs_persona: z.string().min(1, { message: 'This is a required field.' }),
+  hs_persona: z.enum(
+    [
+      'hs_persona_1',
+      'hs_persona_2',
+      'hs_persona_3',
+      'hs_persona_4',
+      'hs_persona_5',
+    ],
+    { errorMap: (issues, ctx) => ({ message: 'This is a required field' }) }
+  ),
   email: z
     .string()
     .min(1, { message: 'Email is a required field.' })
@@ -88,11 +98,15 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='First name'
-              className='bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
+              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+                errors.firstName
+                  ? 'border-red-600 text-red-700'
+                  : 'border-primary-400 text-primary-700'
+              }`}
               type='text'
               {...register('firstName')}
             />
-            <p className='text-accent-500' role='alert'>
+            <p className='text-red-600' role='alert'>
               {errors.firstName?.message?.toString()}
             </p>
           </fieldset>
@@ -100,11 +114,15 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Last name'
-              className='bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
+              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+                errors.lastName
+                  ? 'border-red-600 text-red-700'
+                  : 'border-primary-400 text-primary-700'
+              }`}
               type='text'
               {...register('lastName')}
             />
-            <p className='text-accent-500' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.lastName?.message?.toString()}
             </p>
           </fieldset>
@@ -112,11 +130,15 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Company name'
-              className='bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
+              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+                errors.companyName
+                  ? 'border-red-600 text-red-700'
+                  : 'border-primary-400 text-primary-700'
+              }`}
               type='text'
               {...register('companyName')}
             />
-            <p className='text-accent-500' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.companyName?.message?.toString()}
             </p>
           </fieldset>
@@ -124,18 +146,26 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Email'
-              className='bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
+              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+                errors.email
+                  ? 'border-red-600 text-red-700'
+                  : 'border-primary-400 text-primary-700'
+              }`}
               type='email'
               {...register('email')}
             />
-            <p className='text-accent-500' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.email?.message?.toString()}
             </p>
           </fieldset>
 
           <fieldset className='flex flex-col'>
             <select
-              className='bg-white-50 form-input text-xl px-9 py-6 w-full rounded-3xl border-2 border-primary-400 text-primary-700'
+              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+                errors.hs_persona
+                  ? 'border-red-600 text-red-700'
+                  : 'border-primary-400 text-primary-700'
+              }`}
               defaultValue={'hs_persona_0'}
               {...register('hs_persona')}>
               <option key={'hs_persona_0'} value='hs_persona_0' disabled>
@@ -147,7 +177,7 @@ export default function ContactForm() {
                 </option>
               ))}
             </select>
-            <p className='text-accent-500' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.hs_persona?.message?.toString()}
             </p>
           </fieldset>
