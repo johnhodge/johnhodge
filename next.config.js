@@ -2,6 +2,9 @@
 const nextConfig = {
   poweredByHeader: false,
   images: {
+    loader: 'custom',
+    loaderFile: './loader.js',
+
     remotePatterns: [
       {
         protocol: 'https',
