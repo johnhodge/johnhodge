@@ -34,16 +34,18 @@ export async function generateMetadata() {
   );
   const json = await response.json();
   const data: Person = json.data.person;
+  const sanitizedHeadline = data.headline.replace(/<[^>]+>/g, '');
+  const title = `${data.firstName} ${data.lastName} | ${sanitizedHeadline}`;
 
   const metadata: Metadata = {
     metadataBase: new URL('https://johnhodge.com'),
-    title: `${data.firstName} ${data.lastName}`,
-    description: data.headline,
+    title: title,
+    description: sanitizedHeadline,
     openGraph: {
       type: 'website',
       url: 'https://www.johnhodge.com',
-      title: `${data.firstName} ${data.lastName}`,
-      description: data.headline,
+      title: title,
+      description: sanitizedHeadline,
       siteName: `${data.firstName} ${data.lastName}`,
     },
   };
