@@ -38,6 +38,7 @@ export default function Navigation() {
               link='/#contact'
             />
             <svg
+              className='ml-6 mr-2'
               onClick={handleClick}
               width='26'
               height='26'
@@ -138,9 +139,9 @@ export default function Navigation() {
               <GlobalButton
                 size='large'
                 width='full'
-                color='primary'
+                color='gray'
                 text='Book me as a speaker'
-                link='/#contact'
+                link='/speaker-request'
               />
             </li>
           </ul>
