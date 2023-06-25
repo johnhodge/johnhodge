@@ -11,6 +11,31 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'x-whatcha-looking-for',
+            value: 'i see you found the custom headers',
+          },
+          {
+            key: 'x-brand-standards',
+            value: 'https://brand.johnhodge.com',
+          },
+          {
+            key: 'x-about-this-website',
+            value: 'https://www.johnhodge.com/about-this-website',
+          },
+          {
+            key: 'x-powered-by',
+            value: 'John Hodge',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
