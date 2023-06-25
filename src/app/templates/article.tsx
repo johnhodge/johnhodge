@@ -5,7 +5,6 @@ type Hgroup = {
   id: string;
   headline: string;
   subhead: string;
-  button: boolean;
   data?: Person;
   headshot?: MediaImage;
   children?: React.ReactNode;
@@ -16,33 +15,28 @@ export default function Article(props: Hgroup) {
       id={props.id}
       className='scroll-mt-16 mx-2 py-9 border-b border-gray-950'>
       <div className='flex flex-col-reverse gap-9 md:flex-row'>
-        <hgroup className='basis-2/3 grow flex flex-col items-start gap-9'>
-          <section className='flex flex-col'>
-            <h2
-              className='text-5xl font-black pb-6
+        <div
+          className={`flex flex-col items-start gap-9 ${
+            props.headshot ? 'basis-2/3 grow' : ''
+          }`}>
+          <hgroup>
+            <section className='flex flex-col'>
+              <h2
+                className='text-5xl font-black pb-6
             lg:text-7xl
             xl:text-8xl'
-              dangerouslySetInnerHTML={{ __html: props.headline }}
-            />
-            <h3
-              className='text-2xl font-extrabold
+                dangerouslySetInnerHTML={{ __html: props.headline }}
+              />
+              <h3
+                className='text-2xl font-extrabold
             lg:text-4xl
             xl:text-5xl'
-              dangerouslySetInnerHTML={{ __html: props.subhead }}
-            />
-          </section>
-          {props.button ? (
-            <GlobalButton
-              size='large'
-              color='secondary'
-              link='/#contact'
-              width='fit'
-              text='Schedule a consultation'
-            />
-          ) : (
-            ''
-          )}
-        </hgroup>
+                dangerouslySetInnerHTML={{ __html: props.subhead }}
+              />
+            </section>
+          </hgroup>
+          <div className='py-9 w-full'>{props.children}</div>
+        </div>
         {props.headshot?.url ? (
           <figure className='basis-1/3'>
             <Image
@@ -61,7 +55,6 @@ export default function Article(props: Hgroup) {
           ''
         )}
       </div>
-      <section className='py-9'>{props.children}</section>
     </article>
   );
 }
