@@ -92,7 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div className={'w-4'}>
             <Link href='/'>
-              <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' />
+              <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' figcaption={false} />
             </Link>
           </div>
         </footer>
