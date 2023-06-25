@@ -29,7 +29,14 @@ export default function Navigation() {
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
-          <div className='md:hidden'>
+          <div className='md:hidden flex items-center'>
+            <GlobalButton
+              size='small'
+              width='fit'
+              color='primary'
+              text='Get on my cal'
+              link='/#contact'
+            />
             <svg
               onClick={handleClick}
               width='26'
@@ -57,7 +64,7 @@ export default function Navigation() {
               />
             </svg>
           </div>
-          <div className='max-md:hidden'>
+          <div className='max-md:hidden flex items-center'>
             <nav>
               <ul className='flex items-center gap-4'>
                 {links.map((link) => (
@@ -65,17 +72,16 @@ export default function Navigation() {
                     <a href={`/#${link.toLowerCase()}`}>{link}</a>
                   </li>
                 ))}
-                <li>
-                  <GlobalButton
-                    size='small'
-                    width='fit'
-                    color='primary'
-                    text='Get on my cal'
-                    link='/#contact'
-                  />
-                </li>
+                <li></li>
               </ul>
             </nav>
+            <GlobalButton
+              size='small'
+              width='fit'
+              color='primary'
+              text='Get on my cal'
+              link='/#contact'
+            />
           </div>
         </header>
       </div>
