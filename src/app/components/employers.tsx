@@ -31,6 +31,7 @@ export default async function Employers(data: Person) {
               verticalLine={false}
               horizontalLine={true}
               button={button}
+              cta='Schedule a consultation'
             />
           </div>
         ))}
