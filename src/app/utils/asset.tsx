@@ -62,6 +62,10 @@ export default async function GetAsset(props: asset) {
         title={imageData.fields.title}
         alt={imageData.fields.description}
         priority={true}
+        quality={80}
+        unoptimized={
+          imageData.fields.file.contentType == 'image/svg+xml' ? true : false
+        }
         className='w-full'
       />
       {props.figcaption ? (

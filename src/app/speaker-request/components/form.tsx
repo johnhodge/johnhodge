@@ -110,11 +110,11 @@ export default function ContactForm() {
   } = useForm<FormValueTypes>({
     resolver: zodResolver(FormValues),
   });
-  const onSubmit: SubmitHandler<FormValueTypes> = (data) => console.log(data);
-  // Custom submission handling here.
-  // We're currently not using this since these form subs go directly
-  // into HS, but if that was to change, custom logic would live here.
-  null;
+  const onSubmit: SubmitHandler<FormValueTypes> = (data) =>
+    // Custom submission handling here.
+    // We're currently not using this since these form subs go directly
+    // into HS, but if that was to change, custom logic would live here.
+    null;
 
   return (
     <div className={'col-span-8'}>

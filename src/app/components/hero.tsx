@@ -9,6 +9,7 @@ export default async function Hero(data: Person) {
     description: data.headshot.description,
     width: data.headshot.width,
     height: data.headshot.height,
+    contentType: data.headshot.contentType,
   };
   return (
     <Article

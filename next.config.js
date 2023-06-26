@@ -2,7 +2,6 @@
 const nextConfig = {
   poweredByHeader: false,
   images: {
-    unoptimized: true,
     loader: 'custom',
     loaderFile: './loader.js',
 

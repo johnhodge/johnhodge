@@ -8,11 +8,7 @@ export const GetWebsiteData = `query GetWebsiteData {
     headline
     subhead
     headshot {
-      url
-      title
-      description
-      width
-      height
+      ...assetData
     }
     clients: projectsCollection(
       limit: 6
@@ -24,11 +20,7 @@ export const GetWebsiteData = `query GetWebsiteData {
           items {
             name
             logo {
-              url
-              title
-              description
-              width
-              height
+              ...assetData
             }
           }
         }
@@ -47,11 +39,7 @@ export const GetWebsiteData = `query GetWebsiteData {
           items {
             name
             logo {
-              url
-              title
-              description
-              width
-              height
+              ...assetData
             }
           }
         }
@@ -65,11 +53,7 @@ export const GetWebsiteData = `query GetWebsiteData {
           firstName
           lastName
           headshot {
-            url
-            title
-            description
-            width
-            height
+            ...assetData
           }
           employment: projectsCollection(
             limit: 1
@@ -82,11 +66,7 @@ export const GetWebsiteData = `query GetWebsiteData {
                 items {
                   name
                   logo {
-                    url
-                    title
-                    description
-                    width
-                    height
+                    ...assetData
                   }
                 }
               }
@@ -101,11 +81,7 @@ export const GetWebsiteData = `query GetWebsiteData {
         headline
         body
         icon {
-          url
-          title
-          description
-          width
-          height
+          ...assetData
         }
       }
     }
@@ -115,11 +91,7 @@ export const GetWebsiteData = `query GetWebsiteData {
         headline
         body
         icon {
-          url
-          title
-          description
-          width
-          height
+          ...assetData
         }
       }
     }
@@ -129,16 +101,21 @@ export const GetWebsiteData = `query GetWebsiteData {
         headline
         body
         icon {
-          url
-          title
-          description
-          width
-          height
+          ...assetData
         }
       }
     }
   }
 }
+fragment assetData on Asset {
+  url
+  title
+  description
+  width
+  height
+  contentType
+}
+
 `;
 export const GetSiteMeta = `query GetSiteMeta {
   person(id: "2dHdqDmhdvsyfrhkYq7G8n") {

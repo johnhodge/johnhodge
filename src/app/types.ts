@@ -10,6 +10,7 @@ export type MediaImage = {
   description: string;
   width: number;
   height: number;
+  contentType: string;
 };
 
 type BasicPost = {

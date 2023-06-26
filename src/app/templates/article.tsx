@@ -45,6 +45,10 @@ export default function Article(props: Hgroup) {
               width={props.headshot.width}
               title={props.headshot.title}
               alt={props.headshot.description}
+              quality={80}
+              unoptimized={
+                props.headshot.contentType == 'image/svg+xml' ? true : false
+              }
               className='aspect-ratio-1/1'
             />
             <figcaption className='text-gray-700 bg-gray-50 px-2'>
