@@ -11,7 +11,10 @@ type GlobalPopoverSettings = {
 export default function GlobalPopover(props: GlobalPopoverSettings) {
   return (
     <Popover className='relative'>
-      <Popover.Button className='relative z-0'>
+      <Popover.Button
+        className={`relative z-0 ${
+          props.button.size == 'small' ? 'rounded-lg' : 'rounded-3xl'
+        }`}>
         <GlobalButton
           text={props.button.text}
           color={props.button.color}
