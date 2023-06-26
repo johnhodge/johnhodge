@@ -21,9 +21,9 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
         />
       </Popover.Button>
 
-      <Popover.Overlay className='fixed inset-0 bg-black opacity-30' />
+      <Popover.Overlay className='fixed inset-0 bg-black opacity-30 z-10' />
 
-      <Popover.Panel className='absolute z-10 pt-2'>
+      <Popover.Panel className='absolute pt-2 z-20'>
         <GlobalCard
           logo={props.card?.logo}
           icon={props.card?.icon}
