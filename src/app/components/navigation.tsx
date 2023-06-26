@@ -36,6 +36,7 @@ export default function Navigation() {
               color='primary'
               text='Get on my cal'
               link='/#contact'
+              route={true}
             />
             <svg
               className='ml-6 mr-2'
@@ -86,11 +87,11 @@ export default function Navigation() {
           </div>
         </header>
       </div>
-      <div className='relative z-40'>
+      <div className='relative z-40 overflow-hidden'>
         <nav
           className={`${
-            !click ? 'hidden ' : ''
-          }fixed inset-0 w-full bg-gray-0 py-4`}>
+            !click ? 'translate-x-full ' : 'translate-x-0 '
+          }fixed inset-0 w-full bg-gray-0 py-4 ease-in-out duration-300 delay-75`}>
           <svg
             className='absolute right-4'
             onClick={handleClick}
@@ -118,11 +119,11 @@ export default function Navigation() {
           <ul className='min-h-dscreen flex flex-col justify-evenly p-4'>
             {links.map((link) => (
               <li key={link.toLowerCase()} onClick={handleClick}>
-                <a
+                <Link
                   className='text-4xl font-extrabold'
                   href={`/#${link.toLowerCase()}`}>
                   {link}
-                </a>
+                </Link>
               </li>
             ))}
             <hr className='border-gray-950' />
@@ -133,6 +134,7 @@ export default function Navigation() {
                 color='secondary'
                 text='Schedule a consultation'
                 link='/#contact'
+                route={true}
               />
             </li>
             <li onClick={handleClick}>
