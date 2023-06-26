@@ -35,6 +35,7 @@ export default async function Home() {
   );
   const json = await response.json();
   const data: Person = json.data.person;
+  console.log(data);
   const start = 'from-60%';
   const end = 'to-100%';
   return (
