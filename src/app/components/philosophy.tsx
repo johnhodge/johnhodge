@@ -31,6 +31,7 @@ export default function Client(data: Person) {
               verticalLine={false}
               horizontalLine={true}
               button={button}
+              cta='Put my philosophy to work for you'
             />
           </div>
         ))}

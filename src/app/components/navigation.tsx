@@ -7,9 +7,9 @@ const links = [
   'Clients',
   'Employers',
   'Testimonials',
+  'Philosophy',
   'Skills',
   'Tech',
-  'Philosophy',
 ];
 
 export default function Navigation() {

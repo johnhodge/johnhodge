@@ -39,6 +39,25 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
           longDescription={props.body}
           height='max-h-80'
         />
+        <Popover.Button>
+          {props.card ? (
+            <div className='pt-2'>
+              {props.card.cta ? (
+                <GlobalButton
+                  text={props.card.cta}
+                  size='small'
+                  color='secondary'
+                  width='fit'
+                  link='/#contact'
+                />
+              ) : (
+                ''
+              )}
+            </div>
+          ) : (
+            ''
+          )}
+        </Popover.Button>
       </Popover.Panel>
     </Popover>
   );

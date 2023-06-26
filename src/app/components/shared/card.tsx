@@ -14,6 +14,7 @@ export type GlobalCardSettings = {
   longDescription?: string;
   body?: string;
   button?: GlobalButtonSettings;
+  cta?: string;
   verticalLine: boolean;
   horizontalLine: boolean;
   height?: string;
