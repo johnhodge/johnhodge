@@ -140,7 +140,7 @@ export default function ContactForm() {
               First name
             </label>
             <input
-              placeholder='John'
+              placeholder='Your first name'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.firstname
                   ? 'border-red-600 text-red-700'
@@ -165,7 +165,7 @@ export default function ContactForm() {
               Last name
             </label>
             <input
-              placeholder='Hodge'
+              placeholder='Your last name'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.lastname
                   ? 'border-red-600 text-red-700'
@@ -190,7 +190,7 @@ export default function ContactForm() {
               Company name
             </label>
             <input
-              placeholder='Acme Inc'
+              placeholder='Your company name'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.companyName
                   ? 'border-red-600 text-red-700'
@@ -215,7 +215,7 @@ export default function ContactForm() {
               Company email
             </label>
             <input
-              placeholder='john@johnhodge.com'
+              placeholder='Your company email'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.email
                   ? 'border-red-600 text-red-700'
@@ -272,7 +272,7 @@ export default function ContactForm() {
               Event name
             </label>
             <input
-              placeholder='Event name'
+              placeholder='The name of the event'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.event_name
                   ? 'border-red-600 text-red-700'
@@ -385,7 +385,7 @@ export default function ContactForm() {
               What is the expected speech duration (in minutes)?
             </label>
             <input
-              placeholder='90'
+              placeholder='Expected speech duration in minutes'
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.speech_duration
                   ? 'border-red-600 text-red-700'
@@ -410,7 +410,7 @@ export default function ContactForm() {
               What other important information would you like to share?
             </label>
             <textarea
-              placeholder='This event is huge with programmers and resellers.'
+              placeholder='Additional context'
               className={`bg-white-50 form-input text-xl px-9 py-6 h-40 rounded-3xl border-2 ${
                 errors.event_context
                   ? 'border-red-600 text-red-700'

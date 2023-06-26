@@ -6,7 +6,7 @@ export default async function Client() {
   return (
     <Article
       id='request'
-      headline='Speech request'
+      headline='Speaker request'
       subhead='Let’s talk about it'>
       <div className='grid grid-cols-6 gap-9 items-start'>
         <div className='col-span-6 md:col-span-4'>

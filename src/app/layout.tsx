@@ -9,12 +9,12 @@ import Link from 'next/link';
 import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 
-export type Headers = {
-  Authorication: string;
+export type HeaderData = {
+  Authorization: string;
   'Content-Type': string;
 };
 
-const headers = {
+const myHeaders: HeaderData = {
   Authorization: `Bearer ${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`,
   'Content-Type': 'application/json',
 };
@@ -29,7 +29,7 @@ export async function generateMetadata() {
     {
       method: 'POST',
       body: graphql,
-      headers: headers,
+      headers: myHeaders,
     }
   );
   const json = await response.json();
