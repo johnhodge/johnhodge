@@ -14,7 +14,7 @@ export default function Client(data: Person) {
     <Article
       id='philosophy'
       headline='Philosophy'
-      subhead='Let’s see what I prioritize'
+      subhead='See what I prioritize'
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.philosophy.items.map((philo) => (

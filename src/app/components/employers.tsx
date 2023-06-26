@@ -14,7 +14,7 @@ export default async function Employers(data: Person) {
     <Article
       id='employers'
       headline='Employers'
-      subhead="Let's see where I've been"
+      subhead="See where I've been"
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.employment.items.map((employer) => (

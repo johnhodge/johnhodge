@@ -4,11 +4,7 @@ import GlobalCard from './shared/card';
 
 export default function Tech(data: Person) {
   return (
-    <Article
-      id='tech'
-      headline='Tech'
-      subhead='Let’s see what I use'
-      data={data}>
+    <Article id='tech' headline='Tech' subhead='See what I use' data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.technology.items.map((tech) => (
           <div
