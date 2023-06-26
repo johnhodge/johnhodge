@@ -13,7 +13,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
     <>
       {props.route ? (
         <Link
-          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold ${
+          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 outline-blue-500 ${
             props.width == 'full' ? 'min-w-full' : 'min-width-fit'
           } ${
             props.size == 'small'
@@ -32,7 +32,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
         </Link>
       ) : (
         <a
-          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold ${
+          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 outline-blue-500 ${
             props.width == 'full' ? 'min-w-full' : 'min-width-fit'
           } ${
             props.size == 'small'

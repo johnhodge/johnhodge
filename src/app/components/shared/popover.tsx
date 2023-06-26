@@ -12,7 +12,7 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
   return (
     <Popover className='relative'>
       <Popover.Button
-        className={`relative z-0 ${
+        className={`relative z-0 group focus-visible:outline-none ${
           props.button.size == 'small' ? 'rounded-lg' : 'rounded-3xl'
         }`}>
         <GlobalButton
