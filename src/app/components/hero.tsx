@@ -31,6 +31,7 @@ export default async function Hero(data: Person) {
           size='large'
           color='gray'
           width='fit'
+          route={true}
         />
       </div>
     </Article>

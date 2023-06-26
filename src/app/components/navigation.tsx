@@ -142,6 +142,7 @@ export default function Navigation() {
                 color='gray'
                 text='Book me as a speaker'
                 link='/speaker-request'
+                route={true}
               />
             </li>
           </ul>
