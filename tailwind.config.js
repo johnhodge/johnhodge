@@ -16,6 +16,7 @@ module.exports = {
       },
       maxHeight: {
         dscreen: '100dvh',
+        '1/2-screen': '50vh',
       },
       minWidth: {
         icon: '3rem',

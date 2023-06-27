@@ -37,7 +37,7 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
           horizontalLine={props.card?.horizontalLine || false}
           shortDescription={props.card?.shortDescription}
           longDescription={props.body}
-          height='max-h-80'
+          height='max-h-1/2-screen'
         />
         <Popover.Button>
           {props.card ? (
