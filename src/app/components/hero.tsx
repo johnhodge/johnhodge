@@ -24,6 +24,7 @@ export default async function Hero(data: Person) {
           size='large'
           color='secondary'
           width='fit'
+          route={true}
         />
         <GlobalButton
           text='Book me as a speaker'

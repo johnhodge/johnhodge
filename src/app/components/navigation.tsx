@@ -71,7 +71,7 @@ export default function Navigation() {
               <ul className='flex items-center gap-4'>
                 {links.map((link) => (
                   <li key={link.toLowerCase()}>
-                    <a href={`/#${link.toLowerCase()}`}>{link}</a>
+                    <Link href={`/#${link.toLowerCase()}`}>{link}</Link>
                   </li>
                 ))}
                 <li></li>
@@ -83,6 +83,7 @@ export default function Navigation() {
               color='primary'
               text='Get on my cal'
               link='/#contact'
+              route={true}
             />
           </div>
         </header>
