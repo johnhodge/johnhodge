@@ -9,12 +9,12 @@ import Link from 'next/link';
 import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 
-export type Headers = {
-  Authorication: string;
+export type HeaderData = {
+  Authorization: string;
   'Content-Type': string;
 };
 
-const headers = {
+const myHeaders: HeaderData = {
   Authorization: `Bearer ${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`,
   'Content-Type': 'application/json',
 };
@@ -25,24 +25,27 @@ export async function generateMetadata() {
     variables: {},
   });
   const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/staging`,
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${process.env.VERCEL_ENV}`,
     {
       method: 'POST',
       body: graphql,
-      headers: headers,
+      headers: myHeaders,
     }
   );
   const json = await response.json();
   const data: Person = json.data.person;
+  const sanitizedHeadline = data.headline.replace(/<[^>]+>/g, '');
+  const title = `${data.firstName} ${data.lastName} | ${sanitizedHeadline}`;
 
   const metadata: Metadata = {
-    title: `${data.firstName} ${data.lastName}`,
-    description: data.headline,
+    metadataBase: new URL('https://johnhodge.com'),
+    title: title,
+    description: sanitizedHeadline,
     openGraph: {
       type: 'website',
       url: 'https://www.johnhodge.com',
-      title: `${data.firstName} ${data.lastName}`,
-      description: data.headline,
+      title: title,
+      description: sanitizedHeadline,
       siteName: `${data.firstName} ${data.lastName}`,
     },
   };
@@ -77,7 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <Navigation />
         {children}
-        <footer className='flex justify-between p-2 bg-gray-0'>
+        <footer className='flex justify-between items-center p-4 bg-gray-0 gap-2'>
           <div>
             ©{new Date().getFullYear()}{' '}
             <Link
@@ -87,8 +90,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               John Hodge
             </Link>
           </div>
-          <div className={'w-6'}>
-            <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' />
+          <div className={'w-4'}>
+            <Link href='/'>
+              <GetAsset assetId='6rZXb7onE0YWUMdADLDYfW' figcaption={false} />
+            </Link>
           </div>
         </footer>
       </body>

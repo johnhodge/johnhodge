@@ -11,7 +11,10 @@ type GlobalPopoverSettings = {
 export default function GlobalPopover(props: GlobalPopoverSettings) {
   return (
     <Popover className='relative'>
-      <Popover.Button className='relative z-0'>
+      <Popover.Button
+        className={`relative z-0 group focus-visible:outline-none ${
+          props.button.size == 'small' ? 'rounded-lg' : 'rounded-3xl'
+        }`}>
         <GlobalButton
           text={props.button.text}
           color={props.button.color}
@@ -21,9 +24,9 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
         />
       </Popover.Button>
 
-      <Popover.Overlay className='fixed inset-0 bg-black opacity-30' />
+      <Popover.Overlay className='fixed inset-0 bg-black opacity-30 z-10' />
 
-      <Popover.Panel className='absolute z-10 pt-2'>
+      <Popover.Panel className='absolute pt-2 z-20'>
         <GlobalCard
           logo={props.card?.logo}
           icon={props.card?.icon}
@@ -34,8 +37,27 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
           horizontalLine={props.card?.horizontalLine || false}
           shortDescription={props.card?.shortDescription}
           longDescription={props.body}
-          height='max-h-80'
+          height='max-h-1/2-screen'
         />
+        <Popover.Button>
+          {props.card ? (
+            <div className='pt-2'>
+              {props.card.cta ? (
+                <GlobalButton
+                  text={props.card.cta}
+                  size='small'
+                  color='secondary'
+                  width='fit'
+                  link='/#contact'
+                />
+              ) : (
+                ''
+              )}
+            </div>
+          ) : (
+            ''
+          )}
+        </Popover.Button>
       </Popover.Panel>
     </Popover>
   );

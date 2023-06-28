@@ -1,29 +1,55 @@
+import Link from 'next/link';
+
 export type GlobalButtonSettings = {
   size: 'small' | 'large';
   width: 'full' | 'fit';
   color: 'primary' | 'secondary' | 'gray';
   link?: string;
   text: string;
+  route?: boolean;
 };
 export default function GlobalButton(props: GlobalButtonSettings) {
   return (
-    <a
-      className={`inline-block border border-solid bg-gradient-to-b text-center font-bold ${
-        props.width == 'full' ? 'min-w-full' : 'min-width-fit'
-      } ${
-        props.size == 'small'
-          ? 'text-sm p-2 rounded-lg'
-          : 'text-xl px-9 py-6 rounded-3xl'
-      } ${
-        props.color == 'secondary'
-          ? 'border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700'
-          : props.color == 'primary'
-          ? 'border-primary-400 from-primary-100 to-primary-50 text-primary-700'
-          : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
-      } hover:scale-105 ease-in-out duration-150`}
-      role='button'
-      href={props.link}>
-      {props.text}
-    </a>
+    <>
+      {props.route ? (
+        <Link
+          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 outline-blue-600 ${
+            props.width == 'full' ? 'min-w-full' : 'min-width-fit'
+          } ${
+            props.size == 'small'
+              ? 'text-sm p-2 rounded-lg'
+              : 'text-xl px-9 py-6 rounded-3xl'
+          } ${
+            props.color == 'secondary'
+              ? 'border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700'
+              : props.color == 'primary'
+              ? 'border-primary-400 from-primary-100 to-primary-50 text-primary-700'
+              : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
+          } hover:scale-105 ease-in-out duration-150`}
+          role='button'
+          href={props.link ?? ''}>
+          {props.text}
+        </Link>
+      ) : (
+        <a
+          className={`inline-block border border-solid bg-gradient-to-b text-center font-bold group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 outline-blue-600 ${
+            props.width == 'full' ? 'min-w-full' : 'min-width-fit'
+          } ${
+            props.size == 'small'
+              ? 'text-sm p-2 rounded-lg'
+              : 'text-xl px-9 py-6 rounded-3xl'
+          } ${
+            props.color == 'secondary'
+              ? 'border-secondary-400 from-secondary-100 to-secondary-50 text-secondary-700'
+              : props.color == 'primary'
+              ? 'border-primary-400 from-primary-100 to-primary-50 text-primary-700'
+              : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
+          } hover:scale-105 ease-in-out duration-150`}
+          role='button'
+          href={props.link ?? ''}>
+          {props.text}
+        </a>
+      )}
+    </>
   );
 }

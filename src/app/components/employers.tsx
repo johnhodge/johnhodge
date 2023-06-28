@@ -14,8 +14,7 @@ export default async function Employers(data: Person) {
     <Article
       id='employers'
       headline='Employers'
-      subhead="Let's see where I've been"
-      button={false}
+      subhead="See where I've been"
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.employment.items.map((employer) => (
@@ -32,6 +31,7 @@ export default async function Employers(data: Person) {
               verticalLine={false}
               horizontalLine={true}
               button={button}
+              cta='Schedule a consultation'
             />
           </div>
         ))}

@@ -14,8 +14,7 @@ export default function Client(data: Person) {
     <Article
       id='testimonials'
       headline='Testimonials'
-      subhead='Let’s see what they’re saying'
-      button={false}
+      subhead='See what they’re saying'
       data={data}>
       <div className='flex flex-wrap gap-4'>
         {data.testimonials.items.map((testimonial) => (
@@ -33,6 +32,7 @@ export default function Client(data: Person) {
               verticalLine={false}
               horizontalLine={true}
               button={button}
+              cta='Schedule a consultation'
             />
           </div>
         ))}

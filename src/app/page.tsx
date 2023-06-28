@@ -26,7 +26,7 @@ export default async function Home() {
     variables: {},
   });
   const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/staging`,
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${process.env.VERCEL_ENV}`,
     {
       method: 'POST',
       body: graphql,
@@ -54,7 +54,7 @@ export default async function Home() {
       </div>
       <div
         className={`bg-gradient-to-b from-gray-0 ${start} to-secondary-50 ${end}`}>
-        <Skills {...data} />
+        <Philosophy {...data} />
       </div>
       <div
         className={`bg-gradient-to-b from-secondary-50 ${start} to-gray-50 ${end}`}>
@@ -62,7 +62,7 @@ export default async function Home() {
       </div>
       <div
         className={`bg-gradient-to-b from-to-gray-100 ${start} to-gray-0 ${end}`}>
-        <Philosophy {...data} />
+        <Skills {...data} />
       </div>
       <div
         className={`bg-gradient-to-b from-gray-0 ${start} to-primary-100 ${end}`}>

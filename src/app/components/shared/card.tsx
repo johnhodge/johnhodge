@@ -14,6 +14,7 @@ export type GlobalCardSettings = {
   longDescription?: string;
   body?: string;
   button?: GlobalButtonSettings;
+  cta?: string;
   verticalLine: boolean;
   horizontalLine: boolean;
   height?: string;
@@ -34,6 +35,10 @@ export default function GlobalCard(props: GlobalCardSettings) {
             title={props.logo.title}
             alt={props.logo.description}
             priority={true}
+            quality={80}
+            unoptimized={
+              props.logo.contentType == 'image/svg+xml' ? true : false
+            }
             className='h-6'
           />
           <figcaption className='hidden'>{props.logo.description}</figcaption>
@@ -55,6 +60,10 @@ export default function GlobalCard(props: GlobalCardSettings) {
                 width={props.icon.width}
                 title={props.icon.title}
                 alt={props.icon.description}
+                quality={80}
+                unoptimized={
+                  props.icon.contentType == 'image/svg+xml' ? true : false
+                }
               />
               <figcaption
                 className='hidden'

@@ -45,22 +45,35 @@ type ImageData = {
 };
 type asset = {
   assetId: string;
+  figcaption: boolean;
 };
-export default async function GetAsset({ assetId }: asset) {
-  const environment = 'staging';
-  const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${environment}/assets/${assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
+export default async function GetAsset(props: asset) {
+  const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${process.env.VERCEL_ENV}/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
   const res = await fetch(url);
   const imageData: ImageData = await res.json();
 
   return (
-    <Image
-      src={imageData.fields.file.url}
-      height={imageData.fields.file.details.image.height}
-      width={imageData.fields.file.details.image.width}
-      title={imageData.fields.title}
-      alt={imageData.fields.description}
-      priority={true}
-      className='w-full'
-    />
+    <figure className='w-full'>
+      <Image
+        src={`http:${imageData.fields.file.url}`}
+        height={imageData.fields.file.details.image.height}
+        width={imageData.fields.file.details.image.width}
+        title={imageData.fields.title}
+        alt={imageData.fields.description}
+        priority={true}
+        quality={80}
+        unoptimized={
+          imageData.fields.file.contentType == 'image/svg+xml' ? true : false
+        }
+        className='w-full'
+      />
+      {props.figcaption ? (
+        <figcaption className='text-gray-700 bg-gray-50 px-2'>
+          {imageData.fields.description}
+        </figcaption>
+      ) : (
+        ''
+      )}
+    </figure>
   );
 }

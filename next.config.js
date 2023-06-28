@@ -2,6 +2,9 @@
 const nextConfig = {
   poweredByHeader: false,
   images: {
+    loader: 'custom',
+    loaderFile: './loader.js',
+
     remotePatterns: [
       {
         protocol: 'https',
@@ -10,6 +13,23 @@ const nextConfig = {
         pathname: '/3vwma588lffy/**',
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'x-whatcha-looking-for',
+            value: 'i see you found the custom headers',
+          },
+          {
+            key: 'x-powered-by',
+            value: 'John Hodge',
+          },
+        ],
+      },
+    ];
   },
 };
 

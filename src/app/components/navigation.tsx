@@ -7,9 +7,9 @@ const links = [
   'Clients',
   'Employers',
   'Testimonials',
+  'Philosophy',
   'Skills',
   'Tech',
-  'Philosophy',
 ];
 
 export default function Navigation() {
@@ -25,12 +25,21 @@ export default function Navigation() {
   return (
     <div className='relative font-bold'>
       <div className='relative h-16'>
-        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-20'>
+        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-30'>
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
-          <div className='md:hidden'>
+          <div className='md:hidden flex items-center'>
+            <GlobalButton
+              size='small'
+              width='fit'
+              color='primary'
+              text='Get on my cal'
+              link='/#contact'
+              route={true}
+            />
             <svg
+              className='ml-6 mr-2'
               onClick={handleClick}
               width='26'
               height='26'
@@ -57,33 +66,33 @@ export default function Navigation() {
               />
             </svg>
           </div>
-          <div className='max-md:hidden'>
+          <div className='max-md:hidden flex items-center'>
             <nav>
               <ul className='flex items-center gap-4'>
                 {links.map((link) => (
                   <li key={link.toLowerCase()}>
-                    <a href={`/#${link.toLowerCase()}`}>{link}</a>
+                    <Link href={`/#${link.toLowerCase()}`}>{link}</Link>
                   </li>
                 ))}
-                <li>
-                  <GlobalButton
-                    size='small'
-                    width='fit'
-                    color='primary'
-                    text='Get on my cal'
-                    link='/#contact'
-                  />
-                </li>
+                <li></li>
               </ul>
             </nav>
+            <GlobalButton
+              size='small'
+              width='fit'
+              color='primary'
+              text='Get on my cal'
+              link='/#contact'
+              route={true}
+            />
           </div>
         </header>
       </div>
-      <div className='relative z-20'>
+      <div className='relative z-40 overflow-hidden'>
         <nav
           className={`${
-            !click ? 'hidden ' : ''
-          }fixed inset-0 w-full bg-gray-0 py-4`}>
+            !click ? 'translate-x-full ' : 'translate-x-0 '
+          }fixed inset-0 w-full bg-gray-0 py-4 ease-in-out duration-300 delay-75`}>
           <svg
             className='absolute right-4'
             onClick={handleClick}
@@ -111,11 +120,11 @@ export default function Navigation() {
           <ul className='min-h-dscreen flex flex-col justify-evenly p-4'>
             {links.map((link) => (
               <li key={link.toLowerCase()} onClick={handleClick}>
-                <a
+                <Link
                   className='text-4xl font-extrabold'
                   href={`/#${link.toLowerCase()}`}>
                   {link}
-                </a>
+                </Link>
               </li>
             ))}
             <hr className='border-gray-950' />
@@ -126,15 +135,17 @@ export default function Navigation() {
                 color='secondary'
                 text='Schedule a consultation'
                 link='/#contact'
+                route={true}
               />
             </li>
             <li onClick={handleClick}>
               <GlobalButton
                 size='large'
                 width='full'
-                color='primary'
+                color='gray'
                 text='Book me as a speaker'
-                link='/#contact'
+                link='/speaker-request'
+                route={true}
               />
             </li>
           </ul>
