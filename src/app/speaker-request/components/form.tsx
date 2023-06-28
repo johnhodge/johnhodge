@@ -97,7 +97,7 @@ const FormValues = z.object({
     })
     .min(30, { message: 'Please enter a value that is least 30 minutes' })
     .int({ message: 'Please enter a whole number of minutes' }),
-  event_context: z.optional(z.string()),
+  message: z.optional(z.string()),
 });
 
 type FormValueTypes = z.infer<typeof FormValues>;
@@ -127,6 +127,7 @@ export default function ContactForm() {
         </>
       ) : (
         <form
+          id='speaker-request'
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col justify-stretch gap-4 text-xl py-6'>
           <fieldset className='flex flex-col'>
@@ -401,9 +402,9 @@ export default function ContactForm() {
 
           <fieldset className='flex flex-col'>
             <label
-              htmlFor='event_context'
+              htmlFor='message'
               className={`text-xl pt-4 pb-2 ${
-                errors.event_context
+                errors.message
                   ? 'border-red-600 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
@@ -412,14 +413,14 @@ export default function ContactForm() {
             <textarea
               placeholder='Additional context'
               className={`bg-white-50 form-input text-xl px-9 py-6 h-40 rounded-3xl border-2 ${
-                errors.event_context
+                errors.message
                   ? 'border-red-600 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
-              {...register('event_context')}
+              {...register('message')}
             />
             <p className='text-red-700' role='alert'>
-              {errors.event_context?.message?.toString()}
+              {errors.message?.message?.toString()}
             </p>
           </fieldset>
 

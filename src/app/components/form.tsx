@@ -93,6 +93,7 @@ export default function ContactForm() {
         </>
       ) : (
         <form
+          id='contact'
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col justify-stretch gap-4 text-xl py-6'>
           <fieldset className='flex flex-col'>
