@@ -4,6 +4,8 @@
 
 - Owner at [Brightshell](https://bright.sh) 🚧 _Refresh underway_ 🚧
 
+Brooklyn based Product Manager, currently focused on adtech but always looking to explore new territory.
+
 ## 🎒 What I'm about
 
 ```typescript
