@@ -55,7 +55,7 @@ export default async function GetAsset(props: asset) {
   return (
     <figure className='w-full'>
       <Image
-        src={`http:${imageData.fields.file.url}`}
+        src={`https:${imageData.fields.file.url}`}
         height={imageData.fields.file.details.image.height}
         width={imageData.fields.file.details.image.width}
         title={imageData.fields.title}

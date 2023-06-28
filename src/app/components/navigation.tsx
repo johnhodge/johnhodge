@@ -45,7 +45,7 @@ export default function Navigation() {
               height='26'
               viewBox='0 0 20 24'
               fill='none'
-              xmlns='http://www.w3.org/2000/svg'>
+              xmlns='https://www.w3.org/2000/svg'>
               <circle
                 cx='10.2461'
                 cy='2.49236'
@@ -100,7 +100,7 @@ export default function Navigation() {
             height='30'
             viewBox='0 0 30 30'
             fill='none'
-            xmlns='http://www.w3.org/2000/svg'>
+            xmlns='https://www.w3.org/2000/svg'>
             <g clipPath='url(#clip0_64_6659)'>
               <path
                 d='M3 3L27 27M3 27L27 3'
