@@ -26,7 +26,7 @@ export default async function Home() {
     variables: {},
   });
   const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${process.env.VERCEL_ENV}`,
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production`,
     {
       method: 'POST',
       body: graphql,

@@ -48,7 +48,7 @@ type asset = {
   figcaption: boolean;
 };
 export default async function GetAsset(props: asset) {
-  const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/${process.env.VERCEL_ENV}/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
+  const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
   const res = await fetch(url);
   const imageData: ImageData = await res.json();
 
