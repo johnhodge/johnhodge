@@ -12,6 +12,7 @@ export const GetWebsiteData = `query GetWebsiteData {
     }
     clients: projectsCollection(
       limit: 6
+      order: title_ASC
       where: { type_not: "Employment - W2" }
     ) {
       items {
@@ -115,7 +116,6 @@ fragment assetData on Asset {
   height
   contentType
 }
-
 `;
 export const GetSiteMeta = `query GetSiteMeta {
   person(id: "2dHdqDmhdvsyfrhkYq7G8n") {

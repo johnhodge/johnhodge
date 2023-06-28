@@ -31,7 +31,7 @@ export default function Client(data: Person) {
               verticalLine={false}
               horizontalLine={true}
               button={button}
-              cta='Schudule a consultation'
+              cta='Schedule a consultation'
             />
           </div>
         ))}
