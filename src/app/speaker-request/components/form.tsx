@@ -354,7 +354,7 @@ export default function ContactForm() {
             </label>
             <select
               className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
-                errors.hs_persona
+                errors.speech_type
                   ? 'border-red-600 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
@@ -391,7 +391,7 @@ export default function ContactForm() {
                   ? 'border-red-600 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
-              type='number'
+              type='tel'
               {...register('speech_duration')}
             />
             <p className='text-red-700' role='alert'>
