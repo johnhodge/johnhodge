@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color: theme(colors.gray.900);
+}
+
+.highlight {
+  font-weight: theme(fontWeight.black);
+  color: theme(colors.primary.600);
+}
+
+@media screen and (min-width: 2560px) {
+  html {
+    font-size: 28px;
+  }
+}
+@media screen and (min-width: 3008px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 3360px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 3840px) {
+  html {
+    font-size: 40px;
+  }
+}
