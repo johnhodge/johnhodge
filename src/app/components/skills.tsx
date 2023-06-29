@@ -2,7 +2,7 @@ import type { Person } from '../types';
 import Article from '../templates/article';
 import GlobalCard from './shared/card';
 
-export default function Client(data: Person) {
+export default function Skills(data: Person) {
   return (
     <Article
       id='skills'

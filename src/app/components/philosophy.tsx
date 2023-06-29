@@ -3,7 +3,7 @@ import Article from '../templates/article';
 import GlobalCard from './shared/card';
 import { GlobalButtonSettings } from './shared/button';
 
-export default function Client(data: Person) {
+export default function Philosophy(data: Person) {
   const button: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',
