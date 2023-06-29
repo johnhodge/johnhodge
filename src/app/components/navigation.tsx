@@ -127,7 +127,9 @@ export default function Navigation() {
                 </Link>
               </li>
             ))}
-            <hr className='border-gray-950' />
+            <li>
+              <hr className='border-gray-950' />
+            </li>
             <li onClick={handleClick}>
               <GlobalButton
                 size='large'
