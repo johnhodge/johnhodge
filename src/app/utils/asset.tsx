@@ -46,6 +46,7 @@ type ImageData = {
 type asset = {
   assetId: string;
   figcaption: boolean;
+  priority: boolean;
 };
 export default async function GetAsset(props: asset) {
   const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
@@ -60,7 +61,7 @@ export default async function GetAsset(props: asset) {
         width={imageData.fields.file.details.image.width}
         title={imageData.fields.title}
         alt={imageData.fields.description}
-        priority={true}
+        priority={props.priority}
         quality={80}
         unoptimized={
           imageData.fields.file.contentType == 'image/svg+xml' ? true : false

@@ -46,6 +46,7 @@ export default function Article(props: Hgroup) {
               title={props.headshot.title}
               alt={props.headshot.description}
               quality={80}
+              priority={true}
               unoptimized={
                 props.headshot.contentType == 'image/svg+xml' ? true : false
               }

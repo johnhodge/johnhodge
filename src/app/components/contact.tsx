@@ -3,7 +3,7 @@ import Article from '../templates/article';
 import ContactForm from './form';
 import GetAsset from '../utils/asset';
 
-export default async function Client(data: Person) {
+export default async function Contact(data: Person) {
   return (
     <Article
       id='contact'
@@ -15,7 +15,11 @@ export default async function Client(data: Person) {
           <ContactForm />
         </div>
         <div className='max-md:hidden md:col-span-2'>
-          <GetAsset assetId='6wRH4f00UFPfaFHrWp8g2Z' figcaption={false} />
+          <GetAsset
+            assetId='6wRH4f00UFPfaFHrWp8g2Z'
+            figcaption={false}
+            priority={false}
+          />
         </div>
       </div>
     </Article>

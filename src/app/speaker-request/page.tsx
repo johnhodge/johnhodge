@@ -2,7 +2,7 @@ import Article from '../templates/article';
 import ContactForm from './components/form';
 import GetAsset from '../utils/asset';
 
-export default async function Client() {
+export default async function SpeakerRequest() {
   return (
     <Article
       id='request'
@@ -13,7 +13,11 @@ export default async function Client() {
           <ContactForm />
         </div>
         <div className='max-md:hidden md:col-span-2'>
-          <GetAsset assetId='27lFnY64G3wcXxrR1mv2dA' figcaption={true} />
+          <GetAsset
+            assetId='27lFnY64G3wcXxrR1mv2dA'
+            figcaption={true}
+            priority={true}
+          />
         </div>
       </div>
     </Article>
