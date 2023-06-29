@@ -20,6 +20,10 @@ const nextConfig = {
         source: '/',
         headers: [
           {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
             key: 'x-whatcha-looking-for',
             value: 'i see you found the custom headers',
           },
