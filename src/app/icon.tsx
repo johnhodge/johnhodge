@@ -18,7 +18,7 @@ export default function Icon() {
           backgroundColor: '#ffffff',
           padding: '24px',
           borderRadius: '28px',
-          border: '6px #94a3b8 solid',
+          border: '4px #020617 solid',
         }}
         xmlns='https://www.w3.org/2000/svg'>
         <path
