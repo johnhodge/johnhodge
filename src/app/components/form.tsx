@@ -3,6 +3,13 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import errorMap from 'zod/lib/locales/en';
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
+  debug: true,
+  persistence: 'localStorage',
+  track_pageview: true,
+});
 
 type OptionData = {
   value: string;
@@ -76,11 +83,25 @@ export default function ContactForm() {
   } = useForm<FormValueTypes>({
     resolver: zodResolver(FormValues),
   });
-  const onSubmit: SubmitHandler<FormValueTypes> = (data) =>
-    // Custom submission handling here.
-    // We're currently not using this since these form subs go directly
-    // into HS, but if that was to change, custom logic would live here.
-    null;
+  const onSubmit: SubmitHandler<FormValueTypes> = (data) => {
+    mixpanel.identify(data.email);
+    mixpanel.track('contact_form_submission', {
+      distinct_id: data.email,
+      $email: data.email,
+      $name: `${data.firstName} ${data.lastName}`,
+      $first_name: data.firstName,
+      $last_name: data.lastName,
+      message: data.message,
+    });
+    mixpanel.people.set({
+      $email: data.email,
+      $name: `${data.firstName} ${data.lastName}`,
+      $first_name: data.firstName,
+      $last_name: data.lastName,
+      $created: new Date().toISOString(),
+      hs_persona: data.hs_persona,
+    });
+  };
 
   return (
     <div className={'col-span-8'}>
