@@ -6,7 +6,6 @@ import errorMap from 'zod/lib/locales/en';
 import mixpanel from 'mixpanel-browser';
 
 mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
-  debug: true,
   persistence: 'localStorage',
   track_pageview: true,
 });
