@@ -1,6 +1,13 @@
+import { Metadata } from 'next';
 import Article from '../templates/article';
 import ContactForm from './components/form';
 import GetAsset from '../utils/asset';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/speaker-request',
+  },
+};
 
 export default async function SpeakerRequest() {
   return (

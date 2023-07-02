@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { GetSiteMeta, GetWebsiteData } from './graphql.query';
-import type { PersonMeta, Person } from './types';
+import { GetWebsiteData } from './graphql.query';
+import type { Person } from './types';
 import Hero from './components/hero';
 import Clients from './components/clients';
 import Employers from './components/employers';
@@ -13,6 +13,12 @@ import Contact from './components/contact';
 export type Headers = {
   Authorication: string;
   'Content-Type': string;
+};
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
 };
 
 const headers = {
