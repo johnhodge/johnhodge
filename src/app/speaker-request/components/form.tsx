@@ -3,6 +3,12 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import errorMap from 'zod/lib/locales/en';
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
+  persistence: 'localStorage',
+  track_pageview: true,
+});
 
 type OptionData = {
   value: string;
@@ -110,12 +116,30 @@ export default function ContactForm() {
   } = useForm<FormValueTypes>({
     resolver: zodResolver(FormValues),
   });
-  const onSubmit: SubmitHandler<FormValueTypes> = (data) =>
-    // Custom submission handling here.
-    // We're currently not using this since these form subs go directly
-    // into HS, but if that was to change, custom logic would live here.
-    null;
-
+  const onSubmit: SubmitHandler<FormValueTypes> = (data) => {
+    mixpanel.identify(data.email);
+    mixpanel.track('speaker_request_form_submission', {
+      distinct_id: data.email,
+      $email: data.email,
+      $name: `${data.firstname} ${data.lastname}`,
+      $first_name: data.firstname,
+      $last_name: data.lastname,
+      message: data.message,
+      event_name: data.event_name,
+      event_date: data.event_date.toISOString(),
+      event_audience: data.event_audience,
+      speech_type: data.speech_type,
+      speech_duration: data.speech_duration,
+    });
+    mixpanel.people.set({
+      $email: data.email,
+      $name: `${data.firstname} ${data.lastname}`,
+      $first_name: data.firstname,
+      $last_name: data.lastname,
+      $created: new Date().toISOString(),
+      hs_persona: data.hs_persona,
+    });
+  };
   return (
     <div className={'col-span-8'}>
       {isSubmitSuccessful ? (
