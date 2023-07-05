@@ -121,7 +121,7 @@ export default function Navigation() {
             {links.map((link) => (
               <li key={link.toLowerCase()} onClick={handleClick}>
                 <Link
-                  className='text-4xl font-extrabold'
+                  className='text-4xl font-extrabold block'
                   href={`/#${link.toLowerCase()}`}>
                   {link}
                 </Link>
