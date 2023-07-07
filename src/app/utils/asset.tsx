@@ -69,7 +69,7 @@ export default async function GetAsset(props: asset) {
         className='w-full'
       />
       {props.figcaption ? (
-        <figcaption className='text-gray-700 bg-gray-50 px-2'>
+        <figcaption className='text-xs text-gray-700 bg-gray-50 p-1'>
           {imageData.fields.description}
         </figcaption>
       ) : (
