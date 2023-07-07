@@ -19,11 +19,11 @@ const nextConfig = {
     report-uri https://hodge.report-uri.com/r/d/csp/reportOnly
     default-src 'none';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.hotjar.com *.hs-scripts.com *.hscollectedforms.net *.hscollectedforms.com *.hs-analytics.net *.hs-banner.com *.doubleclick.net analytics.google.com;
-    connect-src 'self' *.mixpanel.com analytics.google.com *.hscollectedforms.net;
+    connect-src 'self' *.mixpanel.com analytics.google.com *.doubleclick.net *.hscollectedforms.net *.hotjar.com *.hotjar.io *.cloudflareinsights.com;
     font-src 'self';
     style-src-elem 'self';
     style-src 'unsafe-inline';
-    img-src 'self' images.ctfassets.net *.hubspot.com *.google.com forms.hsforms.com data:;
+    img-src 'self' images.ctfassets.net *.hubspot.com *.google.com *.googletagmanager.com forms.hsforms.com data:;
     base-uri 'self';
     form-action 'self';
     `;
