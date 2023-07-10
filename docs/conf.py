@@ -1,10 +1,12 @@
+import datetime
+
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
 
-project = "Lumache"
-copyright = "2021, Graziella"
-author = "Graziella"
+project = "John Hodge"
+copyright = f"{datetime.date.today().year}, John Hodge"
+author = "John Hodge"
 
 release = "0.1"
 version = "0.1.0"
