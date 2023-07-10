@@ -57,7 +57,7 @@ snowballstemmer==2.2.0
 sortedcontainers==2.4.0
 soupsieve==2.4.1
 Sphinx==7.0.1
-sphinx-material
+sphinx-material @ git+https://github.com/bashtage/sphinx-material.git@ac7444216f4d2a568ff9d7cfe386929537f7344d
 sphinxcontrib-applehelp==1.0.4
 sphinxcontrib-devhelp==1.0.2
 sphinxcontrib-htmlhelp==2.0.1
