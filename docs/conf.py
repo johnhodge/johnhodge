@@ -26,7 +26,6 @@ extensions = [
     "sphinx.ext.intersphinx",
 ]
 templates_path = ["_templates"]
-primary_domain = "ts"
 numfig = True
 highlight_language = "ts"
 show_authors = True
@@ -38,20 +37,38 @@ html_theme = "sphinx_material"
 html_show_sphinx = False
 html_title = "John Hodge"
 html_favicon = "./favicon.ico"
+html_show_sourcelink = True
 html_sidebars = {
-    "**": ["globaltoc.html", "sourcelink.html", "searchbox.html"],
-    "using/windows": ["windowssidebar.html", "searchbox.html"],
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
 html_theme_options = {
-    "base_url": "http://bashtage.github.io/sphinx-material/",
-    "repo_url": "https://github.com/bashtage/sphinx-material/",
-    "repo_name": "Material for Sphinx",
-    "google_analytics_account": "UA-XXXXX",
-    "html_minify": True,
+    "base_url": "https://docs.johnhodge.com",
+    "repo_url": "https://github.com/johnhodge/johnhodge",
+    "repo_name": "John Hodge",
+    "google_analytics_account": "G-HC0Q5KHV3C",
+    "html_minify": False,
+    "html_prettify": True,
     "css_minify": True,
-    "nav_title": "Material Sphinx Demo",
-    "logo_icon": "&#xe869",
+    "repo_type": "github",
     "globaltoc_depth": 2,
+    "color_primary": "white",
+    "color_accent": "deep-orange",
+    "touch_icon": "./logo.png",
+    "theme_color": "2196f3",
+    "master_doc": False,
+    "nav_links": [
+        {"href": "index", "internal": True, "title": "Tech doc home"},
+        {
+            "href": "https://www.johnhodge.com",
+            "internal": False,
+            "title": "John's website",
+        },
+    ],
+    "heroes": {
+        "index": "Docs for the technology powering johnhodge.com.",
+        "images": "Dynamic image loading with Contentful.",
+    },
+    "version_dropdown": True,
 }
 # -- Options for EPUB output
 epub_show_urls = "footnote"
