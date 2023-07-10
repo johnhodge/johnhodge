@@ -7,9 +7,8 @@ import datetime
 project = "John Hodge"
 copyright = f"{datetime.date.today().year}, John Hodge"
 author = "John Hodge"
-
-release = "0.1"
 version = "0.1.0"
+release = "0.1"
 
 # -- General configuration
 
@@ -20,6 +19,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
 ]
+templates_path = ["_templates"]
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
@@ -27,7 +27,6 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ["std"]
 
-templates_path = ["_templates"]
 
 # -- Options for HTML output
 
