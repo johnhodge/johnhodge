@@ -8,3 +8,7 @@ Image loading
 ==============
 
 More info coming soon
+
+Section 1
+----------
+Here's a section where more info will go.
