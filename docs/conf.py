@@ -34,8 +34,11 @@ templates_path = ["_templates"]
 html_theme = "sphinx_rtd_theme"
 html_show_sphinx = False
 html_title = "John Hodge"
-html_logo = "./logo.png"
 html_favicon = "./favicon.ico"
+html_sidebars = {
+    "**": ["globaltoc.html", "sourcelink.html", "searchbox.html"],
+    "using/windows": ["windowssidebar.html", "searchbox.html"],
+}
 
 # -- Options for EPUB output
 epub_show_urls = "footnote"
