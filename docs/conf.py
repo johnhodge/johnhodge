@@ -39,9 +39,5 @@ html_sidebars = {
     "**": ["globaltoc.html", "sourcelink.html", "searchbox.html"],
     "using/windows": ["windowssidebar.html", "searchbox.html"],
 }
-html_additional_pages = {
-    "johnhodge.com": "https://www.johnhodge.com",
-}
-
 # -- Options for EPUB output
 epub_show_urls = "footnote"
