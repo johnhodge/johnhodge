@@ -2,6 +2,12 @@ import datetime
 
 # Configuration file for the Sphinx documentation builder.
 
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
+intersphinx_disabled_domains = ["std"]
+
 # -- Project information
 
 project = "John Hodge"
@@ -20,12 +26,10 @@ extensions = [
     "sphinx.ext.intersphinx",
 ]
 templates_path = ["_templates"]
-
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3/", None),
-    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
-}
-intersphinx_disabled_domains = ["std"]
+primary_domain = "ts"
+numfig = True
+highlight_language = "ts"
+show_authors = True
 
 
 # -- Options for HTML output
