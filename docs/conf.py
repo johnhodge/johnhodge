@@ -34,13 +34,24 @@ show_authors = True
 
 # -- Options for HTML output
 
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_material"
 html_show_sphinx = False
 html_title = "John Hodge"
 html_favicon = "./favicon.ico"
 html_sidebars = {
     "**": ["globaltoc.html", "sourcelink.html", "searchbox.html"],
     "using/windows": ["windowssidebar.html", "searchbox.html"],
+}
+html_theme_options = {
+    "base_url": "http://bashtage.github.io/sphinx-material/",
+    "repo_url": "https://github.com/bashtage/sphinx-material/",
+    "repo_name": "Material for Sphinx",
+    "google_analytics_account": "UA-XXXXX",
+    "html_minify": True,
+    "css_minify": True,
+    "nav_title": "Material Sphinx Demo",
+    "logo_icon": "&#xe869",
+    "globaltoc_depth": 2,
 }
 # -- Options for EPUB output
 epub_show_urls = "footnote"
