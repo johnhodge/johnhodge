@@ -3,6 +3,8 @@
 .. meta::
   :description lang=en:
     There's more information coming, stay tuned.
+  :robots:
+    noindex, nofollow
 
 Welcome 
 =======

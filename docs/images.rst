@@ -3,6 +3,8 @@
 .. meta::
   :description lang=en:
     This document explains how image loading is handled on the John Hodge website.
+  :robots:
+    noindex, nofollow
 
 Image loading
 ==============
