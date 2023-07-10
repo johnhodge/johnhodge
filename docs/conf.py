@@ -32,6 +32,10 @@ templates_path = ["_templates"]
 # -- Options for HTML output
 
 html_theme = "sphinx_rtd_theme"
+html_show_sphinx = False
+html_title = "John Hodge"
+html_logo = "./logo.png"
+html_favicon = "./favicon.ico"
 
 # -- Options for EPUB output
 epub_show_urls = "footnote"

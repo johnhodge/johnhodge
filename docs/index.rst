@@ -1,5 +1,5 @@
 .. title::
-  John Hodge
+  Home
 .. meta::
   :description lang=en:
     There's more information coming, stay tuned.
