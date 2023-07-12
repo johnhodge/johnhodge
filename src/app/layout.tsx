@@ -4,7 +4,7 @@ import { GetSiteMeta } from './graphql.query';
 import { Person } from './types';
 import { Metadata } from 'next';
 import Navigation from './components/navigation';
-import GetAsset from './utils/asset';
+import GetAsset from '../utils/asset';
 import Link from 'next/link';
 import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });

@@ -1,11 +1,11 @@
-export default function DashboardLayout({
+export default function DocLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
   return (
     <section className='bg-gradient-to-b from-gray-0 from-60% to-primary-100 to-100%'>
-      <article className='grid grid-cols-12 grid-rows-1 gap-4 py-16 mx-2 md:mx-3 border-b border-gray-950'>
+      <article className='grid grid-cols-12 grid-rows-1 gap-4 py-16 mx-2 border-b border-gray-950'>
         <aside className='hidden md:block col-span-3'>
           <div className='sticky top-32'>
             <p className='pb-4 text-xl font-black'>Concepts</p>

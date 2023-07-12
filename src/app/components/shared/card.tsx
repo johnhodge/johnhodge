@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { MediaImage } from '@/app/types';
 import GlobalPopover from './popover';
 import { GlobalButtonSettings } from './button';
-import MarkUp from '@/app/utils/markup';
+import MarkUp from '@/utils/markup';
 
 export type GlobalCardSettings = {
   logo?: MediaImage;
