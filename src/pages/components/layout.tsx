@@ -6,7 +6,7 @@ export default function DocLayout({
   return (
     <section className='bg-gradient-to-b from-gray-0 from-60% to-primary-100 to-100%'>
       <article className='grid grid-cols-12 grid-rows-1 gap-4 py-16 mx-2 border-b border-gray-950'>
-        <aside className='hidden md:block col-span-3'>
+        <aside className='hidden md:block col-span-4 lg:col-span-3'>
           <div className='sticky top-32'>
             <p className='pb-4 text-xl font-black'>Concepts</p>
             {/* TODO: Get list of mdx files in the docs file to list out here by concept*/}
@@ -39,10 +39,10 @@ export default function DocLayout({
             </ul>
           </div>
         </aside>
-        <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-7'>
+        <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-8 lg:col-span-7'>
           {children}
         </section>
-        <aside className='hidden md:block col-span-2'>
+        <aside className='hidden lg:block col-span-2'>
           <div className='sticky top-32'>
             {/* TODO: Get list of h2/h3 in thecurrent mdx file and list here as toc*/}
 
