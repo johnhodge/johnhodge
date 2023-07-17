@@ -2,24 +2,27 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type Props = {
+  base?: string;
   header?: ReactNode;
-  base: string;
+  children?: ReactNode;
 };
 
-export default function H2(props: Props) {
-  const headerAnchor = props.header
-    ?.toString()
-    .replaceAll(' ', '-')
-    .replaceAll('.', '')
-    .toLowerCase();
+type LinkedHeaderProps = {
+  children: ReactNode;
+  href: string;
+};
+
+export default function LinkedHeader(props: LinkedHeaderProps) {
   return (
-    <Link href={`${props.base}/#${headerAnchor}`}>
-      <h2 id={headerAnchor} className='scroll-mt-16 font-black'>
-        {props.header}
-      </h2>
+    <Link href={props.href} className='relative group'>
+      <span className='hidden absolute -left-4 font-black text-lg group-hover:md:block'>
+        ⌗
+      </span>
+      {props.children}
     </Link>
   );
 }
+
 export function H3(props: Props) {
   const headerAnchor = props.header
     ?.toString()
@@ -27,11 +30,26 @@ export function H3(props: Props) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <Link href={`${props.base}/#${headerAnchor}`}>
+    <LinkedHeader href={`${props.base}/#${headerAnchor}`}>
       <h3 id={headerAnchor} className='scroll-mt-16 font-black'>
         {props.header}
       </h3>
-    </Link>
+    </LinkedHeader>
+  );
+}
+
+export function H2(props: Props) {
+  const headerAnchor = props.header
+    ?.toString()
+    .replaceAll(' ', '-')
+    .replaceAll('.', '')
+    .toLowerCase();
+  return (
+    <LinkedHeader href={`${props.base}/#${headerAnchor}`}>
+      <h2 id={headerAnchor} className='scroll-mt-16 font-black'>
+        {props.header}
+      </h2>
+    </LinkedHeader>
   );
 }
 
@@ -42,7 +60,9 @@ export function TOC2(props: Props) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <Link href={`${props.base}/#${headerAnchor}`} className='no-underline'>
+    <Link
+      href={`${props.base}/#${headerAnchor}`}
+      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
       <li id={headerAnchor} className='scroll-mt-16 font-bold'>
         {props.header}
       </li>
@@ -57,7 +77,9 @@ export function TOC3(props: Props) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <Link href={`${props.base}/#${headerAnchor}`} className='no-underline'>
+    <Link
+      href={`${props.base}/#${headerAnchor}`}
+      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
       <li id={headerAnchor} className='scroll-mt-16 pl-2'>
         {props.header}
       </li>
