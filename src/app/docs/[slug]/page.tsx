@@ -6,9 +6,11 @@ import { cwd } from 'process';
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-
 import { H2, H3, TOC2, TOC3 } from '../components/body';
+import util from 'util';
+
 const postsDirectory = `${cwd()}/documentation`;
+const execFile = util.promisify(require('node:child_process').execFile);
 
 type Params = {
   params: {
@@ -27,11 +29,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default function Docs({ params }: Params) {
+export default async function Docs({ params }: Params) {
   const realSlug = params.slug.replace(/\.mdx$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
+
+  const { stdout } = await execFile('src/utils/git-branch.sh');
+  const branch = await stdout;
 
   return (
     <section className='mx-2 border-b border-b-slate-800'>
@@ -81,8 +86,9 @@ export default function Docs({ params }: Params) {
               <Link
                 className='py-2 flex items-center gap-1'
                 title='Edit on GitHub'
+                target='_blank'
                 href={`https://github.com/johnhodge/johnhodge/blob/${
-                  process.env.VERCEL_ENV != 'production' ? 'preview' : ''
+                  process.env.VERCEL_ENV == 'production' ? 'main' : branch
                 }/documentation/zello-world.mdx`}>
                 <svg
                   className='inline-block'
