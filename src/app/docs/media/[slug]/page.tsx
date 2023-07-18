@@ -6,10 +6,10 @@ import { cwd } from 'process';
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { H2, H3, TOC2, TOC3 } from '../components/body';
+import { H2, H3, TOC2, TOC3 } from '@/app/docs/components/body';
 import util from 'util';
 
-const postsDirectory = `${cwd()}/documentation`;
+const postsDirectory = `${cwd()}/documentation/media`;
 const execFile = util.promisify(require('node:child_process').execFile);
 
 type Params = {
@@ -17,7 +17,6 @@ type Params = {
     slug: string;
   };
 };
-
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const realSlug = params.slug.replace(/\.mdx$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
@@ -40,7 +39,7 @@ export default async function Docs({ params }: Params) {
 
   return (
     <section className='mx-2 border-b border-b-slate-800'>
-      <article className='grid grid-cols-12 grid-rows-1 py-16 gap-4'>
+      <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6'>
         <aside className='hidden md:block col-span-3'>
           <div className='sticky top-32'>
             <p className='pb-4 text-xl font-black'>Concepts</p>

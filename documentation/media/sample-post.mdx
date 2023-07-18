@@ -1,14 +1,13 @@
 ---
 section: Test
-title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
+title: 'This is a test index page'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/blog/hello-world/cover.jpg'
-date: '2020-03-16T05:35:07.322Z'
+coverImage: '/assets/blog/preview/cover.jpg'
+date: '2023-07-18T05:35:07.322Z'
 author:
-  name: Tim Neutkens
-  picture: '/assets/blog/authors/tim.jpeg'
+  name: John Hodge
 ogImage:
-  url: '/assets/blog/hello-world/cover.jpg'
+  url: '/no-image.jpeg'
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget.
@@ -19,26 +18,7 @@ Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel
 
 ### At imperdiet dui accumsan sit amet nulla facilities morbi tempus.
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt.
-
-```typescript
-export async function generateMetadata() {
-  const graphql = JSON.stringify({
-    query: GetSiteMeta,
-    variables: {},
-  });
-  const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production`,
-    {
-      method: 'POST',
-      body: graphql,
-      headers: myHeaders,
-    }
-  );
-}
-```
-
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ## Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus.
 
@@ -46,11 +26,7 @@ Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in an
 
 ### Velit euismod in pellentesque massa placerat.
 
-Mi bibendum neque egestas congue quisque egestas diam in arcu.
-
-- Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed.
-- Luctus accumsan tortor posuere ac ut consequat semper viverra.
-- Fringilla ut morbi tincidunt augue interdum velit euismod.
+Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
 
 Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper.
 
