@@ -6,30 +6,42 @@ import { ReactNode } from 'react';
 import util from 'util';
 import { headers } from 'next/headers';
 import { join } from 'path';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
+import { Metadata } from 'next';
 
-const execFile = util.promisify(require('node:child_process').execFile);
+export async function generateMetadata() {
+  const metadata: Metadata = {
+    metadataBase: new URL('https://johnhodge.com/docs'),
+  };
+
+  return metadata;
+}
+
 export default async function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { stdout } = await execFile('src/utils/git-branch.sh');
-  const branch = await stdout;
-
   const postsDirectory = 'documentation';
+  const postsDirectoryPath = join(cwd(), postsDirectory);
   const headersList = headers();
-  const realSlug = headersList
-    .get('referer')
-    ?.split('/')
-    .slice(4)
-    .join('/')
-    .replace(/\.mdx$/, '');
-  console.log(realSlug);
-  const fullPath = join(cwd(), postsDirectory, `${realSlug}.mdx`);
+  const referrerList = headersList.get('referer')?.split('/');
+
+  const realSlug =
+    referrerList && referrerList.length == 5
+      ? join(referrerList[4], 'index')
+      : referrerList
+          ?.slice(4)
+          .join('/')
+          .replace(/\.mdx$/, '') ||
+        headersList.get('referer')?.split('/').slice(4).join('/');
+
+  const fullPath = join(postsDirectoryPath, `${realSlug}.mdx`);
   const fileContents = readFileSync(fullPath, 'utf-8');
   const { data, content } = matter(fileContents);
+  const folders = readdirSync(postsDirectoryPath);
+
   {
     return (
       <section className='mx-2 border-b border-b-slate-800'>
@@ -38,41 +50,19 @@ export default async function DocsLayout({
             <div className='sticky top-32'>
               <p className='pb-4 text-xl font-black'>Concepts</p>
               <ul className='max-h-[calc(75dvh-110px)] overflow-y-auto prose'>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
-                <li>hey there</li>
+                {folders.map((i) => (
+                  <>
+                    {readdirSync(join(postsDirectoryPath, i)).map((file) => (
+                      <Link
+                        href={`/docs/${join(i, file)
+                          .replace('.mdx', '')
+                          .replace('index', '')}`}
+                        key={file}>
+                        <li>{file}</li>
+                      </Link>
+                    ))}
+                  </>
+                ))}
               </ul>
               <div className='pt-4 border-t bg-gray-0 border-t-gray-200 flex flex-col items-start justify-center'>
                 <p>Written by: {data.author.name}</p>
@@ -81,7 +71,7 @@ export default async function DocsLayout({
                   title='Edit on GitHub'
                   target='_blank'
                   href={`https://github.com/johnhodge/johnhodge/blob/${
-                    process.env.VERCEL_ENV == 'production' ? 'main' : branch
+                    process.env.VERCEL_ENV == 'production' ? 'main' : 'canary'
                   }/${fullPath.replace(/.*\/johnhodge\//, '')}`}>
                   <svg
                     className='inline-block'
@@ -110,22 +100,8 @@ export default async function DocsLayout({
             </div>
           </aside>
           <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-7'>
-            <div className='prose prose-zinc prose-headings:font-black'>
-              <h1>{data.title}</h1>
-              <MDXRemote
-                source={content}
-                components={{
-                  h2: ({ children }: { children?: ReactNode }) => (
-                    <H2 header={children} base={realSlug} />
-                  ),
-                  h3: ({ children }: { children?: ReactNode }) => (
-                    <H3 header={children} base={realSlug} />
-                  ),
-                }}
-              />
-            </div>
+            {children}
           </section>
-
           <aside className='hidden md:block col-span-2'>
             <div className='sticky top-32'>
               <p className='pb-4 text-xl font-black'>On this page</p>
