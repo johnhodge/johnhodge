@@ -44,17 +44,28 @@ export default function Page(props: PropParams) {
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>Concepts</p>
           <ul className='max-h-[calc(75dvh-110px)] overflow-y-auto prose'>
-            {folders.map((i) => (
+            {folders.map((folder) => (
               <>
-                {readdirSync(join(postsDirectoryPath, i)).map((file) => (
-                  <Link
-                    href={`/docs/${join(i, file)
-                      .replace('.mdx', '')
-                      .replace('index', '')}`}
-                    key={file}>
-                    <li>{file}</li>
-                  </Link>
-                ))}
+                {readdirSync(join(postsDirectoryPath, folder)).map((file) =>
+                  file === '_index.mdx' ? (
+                    <TOC2
+                      data={
+                        matter(
+                          readFileSync(join(postsDirectoryPath, folder, file))
+                        ).data
+                      }
+                    />
+                  ) : (
+                    <TOC3
+                      header={file}
+                      data={
+                        matter(
+                          readFileSync(join(postsDirectoryPath, folder, file))
+                        ).data
+                      }
+                    />
+                  )
+                )}
               </>
             ))}
           </ul>

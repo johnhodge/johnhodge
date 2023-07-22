@@ -18,7 +18,7 @@ type PropParams = {
 export async function generateMetadata(props: PropParams) {
   const realSlug = join(cwd(), 'documentation', props.params.category);
   const fileContents = readFileSync(
-    join(realSlug.replace('.mdx', ''), 'index.mdx')
+    join(realSlug.replace('.mdx', ''), '_index.mdx')
   );
   const { data } = matter(fileContents);
   const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default function Page(props: PropParams) {
   const postsDirectoryPath = join(cwd(), postsDirectory);
   const folders = readdirSync(postsDirectoryPath);
   const realSlug = join(cwd(), 'documentation', props.params.category);
-  const fileContents = readFileSync(join(realSlug, `index.mdx`));
+  const fileContents = readFileSync(join(realSlug, `_index.mdx`));
   const { data, content } = matter(fileContents);
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6'>
@@ -47,7 +47,7 @@ export default function Page(props: PropParams) {
                   <Link
                     href={`/docs/${join(i, file)
                       .replace('.mdx', '')
-                      .replace('index', '')}`}
+                      .replace('_index', '')}`}
                     key={file}>
                     <li>{file}</li>
                   </Link>

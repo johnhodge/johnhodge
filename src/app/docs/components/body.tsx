@@ -1,10 +1,21 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+type MdData = {
+  section?: string;
+  title?: string;
+  excerpt?: string;
+  coverImage?: string;
+  date?: string;
+  author?: { name: string };
+  ogImage?: { url: string };
+};
+
 type Props = {
   base?: string;
   header?: ReactNode;
   children?: ReactNode;
+  data?: MdData;
 };
 
 type LinkedHeaderProps = {
@@ -54,6 +65,7 @@ export function H2(props: Props) {
 }
 
 export function TOC2(props: Props) {
+  console.log(props.data);
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -61,10 +73,10 @@ export function TOC2(props: Props) {
     .toLowerCase();
   return (
     <Link
-      href={`${props.base}/#${headerAnchor}`}
+      href={`/${props.base}/#${headerAnchor}`}
       className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
       <li id={headerAnchor} className='scroll-mt-16 font-bold'>
-        {props.header}
+        {props.data ? props.data.title : props.header}
       </li>
     </Link>
   );
@@ -81,7 +93,7 @@ export function TOC3(props: Props) {
       href={`${props.base}/#${headerAnchor}`}
       className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
       <li id={headerAnchor} className='scroll-mt-16 pl-2'>
-        {props.header}
+        {props.data ? props.data.title : props.header}
       </li>
     </Link>
   );
