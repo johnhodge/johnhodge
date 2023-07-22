@@ -40,7 +40,7 @@ export default function Page(props: PropParams) {
   const { data, content } = matter(fileContents);
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6'>
-      <aside className='hidden md:block col-span-3'>
+      <aside className='hidden md:block col-span-2'>
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>Concepts</p>
           <ul className='max-h-[calc(75dvh-110px)] overflow-y-auto prose'>
@@ -49,6 +49,7 @@ export default function Page(props: PropParams) {
                 {readdirSync(join(postsDirectoryPath, folder)).map((file) =>
                   file === '_index.mdx' ? (
                     <TOC2
+                      base={`/docs/${folder}`}
                       data={
                         matter(
                           readFileSync(join(postsDirectoryPath, folder, file))
@@ -57,7 +58,8 @@ export default function Page(props: PropParams) {
                     />
                   ) : (
                     <TOC3
-                      header={file}
+                      base={`/docs/${folder}`}
+                      slug={file}
                       data={
                         matter(
                           readFileSync(join(postsDirectoryPath, folder, file))
@@ -105,28 +107,26 @@ export default function Page(props: PropParams) {
         </div>
       </aside>
       <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-7'>
-        <div className='prose prose-zinc prose-headings:font-black'>
-          <h1>{data.title}</h1>
-          <MDXRemote
-            source={content}
-            components={{
-              h2: ({ children }: { children?: ReactNode }) => (
-                <H2
-                  header={children}
-                  base={join('/docs', props.params.category, props.params.slug)}
-                />
-              ),
-              h3: ({ children }: { children?: ReactNode }) => (
-                <H3
-                  header={children}
-                  base={join('/docs', props.params.category, props.params.slug)}
-                />
-              ),
-            }}
-          />
-        </div>
+        <h1>{data.title}</h1>
+        <MDXRemote
+          source={content}
+          components={{
+            h2: ({ children }: { children?: ReactNode }) => (
+              <H2
+                header={children}
+                base={join('/docs', props.params.category, props.params.slug)}
+              />
+            ),
+            h3: ({ children }: { children?: ReactNode }) => (
+              <H3
+                header={children}
+                base={join('/docs', props.params.category, props.params.slug)}
+              />
+            ),
+          }}
+        />
       </section>
-      <aside className='hidden md:block col-span-2'>
+      <aside className='hidden md:block col-span-3'>
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>On this page</p>
           <ul className='max-h-[calc(75dvh-110px)] overflow-y-auto prose prose-headings:font-black'>
