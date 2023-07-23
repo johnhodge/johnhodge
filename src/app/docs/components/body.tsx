@@ -81,9 +81,9 @@ export function TOC2(props: Props) {
           : ''
       }`}
       className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
-      <li id={headerAnchor} className='scroll-mt-16 font-bold'>
+      <div id={headerAnchor} className='scroll-mt-16 font-bold py-2'>
         {props.data ? props.data.title : props.header}
-      </li>
+      </div>
     </Link>
   );
 }
@@ -104,9 +104,9 @@ export function TOC3(props: Props) {
           : ''
       }`}
       className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
-      <li id={headerAnchor} className='scroll-mt-16 pl-2'>
+      <div id={headerAnchor} className='scroll-mt-16 pl-2'>
         {props.data ? props.data.title : props.header}
-      </li>
+      </div>
     </Link>
   );
 }
