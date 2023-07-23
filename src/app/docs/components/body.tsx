@@ -66,7 +66,6 @@ export function H2(props: Props) {
 }
 
 export function TOC2(props: Props) {
-  console.log(props.data);
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
