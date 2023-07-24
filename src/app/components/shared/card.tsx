@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { MediaImage } from '@/app/types';
 import GlobalPopover from './popover';
-import { GlobalButtonSettings } from './button';
+import GlobalButton, { GlobalButtonSettings } from './button';
 import MarkUp from '@/utils/markup';
 
 export type GlobalCardSettings = {
@@ -14,6 +14,7 @@ export type GlobalCardSettings = {
   longDescription?: string;
   body?: string;
   button?: GlobalButtonSettings;
+  buttonType?: 'button' | 'popover';
   cta?: string;
   verticalLine: boolean;
   horizontalLine: boolean;
@@ -119,11 +120,15 @@ export default function GlobalCard(props: GlobalCardSettings) {
         )}
         {props.button ? (
           <div className='self-auto'>
-            <GlobalPopover
-              button={props.button}
-              card={props}
-              body={props.body}
-            />
+            {props.buttonType != 'popover' ? (
+              <GlobalButton {...props.button} />
+            ) : (
+              <GlobalPopover
+                button={props.button}
+                card={props}
+                body={props.body}
+              />
+            )}
           </div>
         ) : (
           ''
