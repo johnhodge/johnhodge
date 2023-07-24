@@ -16,6 +16,14 @@ type PropParams = {
   MDXFilePath: string;
   children?: ReactNode;
 };
+export type TOCPageData = {
+  fileName: string;
+  title: string;
+};
+export type TOCEnteries = {
+  root: TOCPageData;
+  subPages: TOCPageData[];
+};
 
 export async function generateMetadata(props: PropParams) {
   const fileContents = readFileSync(props.MDXFilePath);
@@ -28,45 +36,36 @@ export async function generateMetadata(props: PropParams) {
 }
 
 export default function Doc(props: PropParams) {
-  type PageData = {
-    fileName: string;
-    title: string;
-  };
-  type TOCEnteries = { root: PageData; subPages: PageData[] };
-
   const folders = readdirSync(props.docsDirectoryPath);
   function getTOC(folders: string[]): Record<string, TOCEnteries> {
-    const TOC: Record<string, TOCEnteries> = {};
+    const TOCItems: Record<string, TOCEnteries> = {};
     folders.forEach(
       (folder: string) =>
-        (TOC[folder] = {
+        (TOCItems[folder] = {
           root: {
             fileName: '_index.mdx',
             title: matter(
               readFileSync(join(props.docsDirectoryPath, folder, '_index.mdx'))
             ).data.title,
           },
-          subPages: readdirSync(join(props.docsDirectoryPath, folder)).map(
-            (page) =>
-              page != '_index.mdx'
-                ? {
-                    fileName: page,
-                    title: matter(
-                      readFileSync(join(props.docsDirectoryPath, folder, page))
-                    ).data.title,
-                  }
-                : undefined
-          ),
+          subPages: readdirSync(join(props.docsDirectoryPath, folder))
+            .filter((subPage) => subPage != '_index.mdx')
+            .map((page) => ({
+              fileName: page,
+              title: matter(
+                readFileSync(join(props.docsDirectoryPath, folder, page))
+              ).data.title,
+            })),
         })
     );
-    return TOC;
+    return TOCItems;
   }
   getTOC(folders);
 
   const fileContents = readFileSync(props.MDXFilePath);
   const { data, content } = matter(fileContents);
   return (
-    <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6'>
+    <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6 border-b border-b-slate-800'>
       <GlobalTOC
         folders={getTOC(folders)}
         docsDirectoryPath={props.docsDirectoryPath}
