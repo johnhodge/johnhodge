@@ -88,7 +88,7 @@ export default function Navigation() {
           </div>
         </header>
       </div>
-      <div className='relative z-40 overflow-hidden'>
+      <div className='relative z-40 overflow-hidden md:hidden'>
         <nav
           className={`${
             !click ? 'translate-x-full ' : 'translate-x-0 '

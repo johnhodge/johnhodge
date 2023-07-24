@@ -39,7 +39,10 @@ export async function generateMetadata() {
 
   const metadata: Metadata = {
     metadataBase: new URL('https://johnhodge.com'),
-    title: title,
+    title: {
+      template: `%s | ${data.firstName} ${data.lastName}`,
+      default: sanitizedHeadline, // a default is required when creating a template
+    },
     description: sanitizedHeadline,
     openGraph: {
       type: 'website',
