@@ -3,10 +3,12 @@ import type { MediaImage } from '@/app/types';
 import GlobalPopover from './popover';
 import GlobalButton, { GlobalButtonSettings } from './button';
 import MarkUp from '@/utils/markup';
+import GetAsset from '@/utils/asset';
 
 export type GlobalCardSettings = {
   logo?: MediaImage;
   icon?: MediaImage;
+  iconId?: string;
   iconAlign?: 'start' | 'center' | 'end';
   header?: string;
   subheader?: string;
@@ -50,7 +52,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
 
       <div className='flex flex-col gap-4'>
         <hgroup className='flex gap-2'>
-          {props.icon?.url ? (
+          {props.icon ? (
             <figure
               className={`flex flex-col w-icon min-w-icon justify-${
                 props.iconAlign ? props.iconAlign : 'center'
@@ -71,6 +73,13 @@ export default function GlobalCard(props: GlobalCardSettings) {
                 dangerouslySetInnerHTML={{ __html: props.icon.description }}
               />
             </figure>
+          ) : props.iconId ? (
+            <GetAsset
+              figcaption={false}
+              assetId={props.iconId}
+              priority={true}
+              size='fit'
+            />
           ) : (
             ''
           )}

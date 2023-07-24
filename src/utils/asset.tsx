@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-type ImageData = {
+export type ImageData = {
   metadata: {
     tags: Array<string>;
   };
@@ -47,6 +47,7 @@ type asset = {
   assetId: string;
   figcaption: boolean;
   priority: boolean;
+  size?: 'fit' | 'full';
 };
 export default async function GetAsset(props: asset) {
   const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
@@ -54,7 +55,7 @@ export default async function GetAsset(props: asset) {
   const imageData: ImageData = await res.json();
 
   return (
-    <figure className='w-full'>
+    <figure className={props.size != 'fit' ? 'w-full' : 'w-fit'}>
       <Image
         src={`https:${imageData.fields.file.url}`}
         height={imageData.fields.file.details.image.height}
