@@ -3,17 +3,18 @@ import { TOC2, TOC3 } from '@/app/docs/components/body';
 import Link from 'next/link';
 import { join } from 'path';
 import { useState } from 'react';
+import type { TOCEnteries } from '../(categories)/templates/doc';
 
 type PropData = {
   docsDirectoryPath: string;
-  folders: typeof TOC;
+  folders: Record<string, TOCEnteries>;
   author: string;
   MDXFilePath: string;
 };
 
 export function TOC(props: PropData) {
   return (
-    <div className='max-h-full overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
+    <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
       {Object.keys(props.folders).map((dir) => (
         <>
           <TOC2
@@ -119,14 +120,12 @@ export default function GlobalTOC(props: PropData) {
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>Category</p>
           <TOC {...props} />
-          <div className='pt-4 border-t bg-gray-0 border-t-gray-200 flex flex-col items-start justify-center'>
+          <div className='pt-4 border-t border-t-gray-200 flex flex-col items-start justify-center'>
             <p>Written by: {props.author}</p>
             <Link
               className='py-2 flex items-center gap-1'
               target='_blank'
-              href={`https://github.com/johnhodge/johnhodge/blob/${
-                process.env.VERCEL_ENV == 'production' ? 'main' : 'canary'
-              }/${props.MDXFilePath.replace(
+              href={`https://github.com/johnhodge/johnhodge/blob/canary/${props.MDXFilePath.replace(
                 /.*\/documentation\//,
                 'documentation/'
               )}`}>
