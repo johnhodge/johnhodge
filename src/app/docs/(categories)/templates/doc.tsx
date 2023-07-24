@@ -36,7 +36,9 @@ export async function generateMetadata(props: PropParams) {
 }
 
 export default function Doc(props: PropParams) {
-  const folders = readdirSync(props.docsDirectoryPath);
+  const folders = readdirSync(props.docsDirectoryPath).filter(
+    (folder) => folder != '_index.mdx'
+  );
   function getTOC(folders: string[]): Record<string, TOCEnteries> {
     const TOCItems: Record<string, TOCEnteries> = {};
     folders.forEach(
