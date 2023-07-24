@@ -48,7 +48,7 @@ export default function GlobalTOC(props: PropData) {
   }
   return (
     <>
-      <div className='md:hidden sticky z-40 top-20'>
+      <div className='md:hidden sticky z-30 top-20'>
         <svg
           onClick={handleClick}
           width='40'
