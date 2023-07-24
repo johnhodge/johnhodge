@@ -51,39 +51,52 @@ export default function GlobalTOC(props: PropData) {
       <div className='md:hidden sticky z-40 top-20'>
         <svg
           onClick={handleClick}
-          width='26'
-          height='30'
-          viewBox='0 0 26 30'
+          width='40'
+          height='44'
+          viewBox='0 0 40 44'
           fill='none'
-          xmlns='http://www.w3.org/2000/svg'>
+          xmlns='https://www.w3.org/2000/svg'>
           <rect
-            className='fill-gray-100 outline outline-gray-300'
-            x='26'
-            y='30'
-            width='26'
-            height='30'
-            rx='4'
-            transform='rotate(-180 26 30)'
+            x='38'
+            y='42'
+            width='36'
+            height='40'
+            rx='2'
+            transform='rotate(-180 38 42)'
+            className='fill-gray-100'
           />
           <path
-            d='M21 21L5 21'
+            d='M30 30L10 30'
             className='stroke-gray-900'
-            strokeWidth='2'
+            stroke-width='4'
+            stroke-linecap='round'
+          />
+          <path
+            d='M30 22L10 22'
+            className='stroke-gray-900'
+            strokeWidth='4'
             strokeLinecap='round'
           />
           <path
-            d='M21 15L5 15'
+            d='M30 14L10 14'
             className='stroke-gray-900'
-            strokeWidth='2'
+            strokeWidth='4'
             strokeLinecap='round'
           />
-          <path
-            d='M21 9L5 9'
-            className='stroke-gray-900'
+          <rect
+            x='38'
+            y='42'
+            width='36'
+            height='40'
+            rx='2'
+            transform='rotate(-180 38 42)'
+            className='stroke-gray-500'
             strokeWidth='2'
             strokeLinecap='round'
+            strokeLinejoin='round'
           />
         </svg>
+
         <div className='relative z-40 overflow-hidden'>
           <div
             className={`${
