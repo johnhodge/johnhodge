@@ -33,6 +33,7 @@ function createButton(link: string): GlobalButtonSettings {
     color: 'primary',
     link: link,
     text: 'Read more',
+    route: true,
   };
 }
 
@@ -71,28 +72,33 @@ export default async function Page() {
     );
 
   return (
-    <Article
-      id={'docs'}
-      headline={
-        matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data.title
-      }
-      subhead={
-        matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data.excerpt
-      }>
-      <div className='grid grid-cols-6 gap-4'>
-        {Object.keys(subPages).map((page) => (
-          <div className='col-span-6 lg:col-span-3 xl:col-span-2'>
-            <GlobalCard
-              verticalLine={false}
-              horizontalLine={true}
-              iconId={subPages[page].icon}
-              subheader={subPages[page].title}
-              longDescription={subPages[page].excerpt}
-              button={createButton(join('/docs', page))}
-            />
-          </div>
-        ))}
-      </div>
-    </Article>
+    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-100 to-100%'>
+      <Article
+        id={'docs'}
+        headline={
+          matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data.title
+        }
+        subhead={
+          matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data
+            .excerpt
+        }>
+        <div className='grid grid-cols-6 gap-4'>
+          {Object.keys(subPages).map((page) => (
+            <div
+              className='col-span-6 lg:col-span-3 xl:col-span-2'
+              key={subPages[page].icon}>
+              <GlobalCard
+                verticalLine={false}
+                horizontalLine={true}
+                iconId={subPages[page].icon}
+                subheader={subPages[page].title}
+                longDescription={subPages[page].excerpt}
+                button={createButton(join('/docs', page))}
+              />
+            </div>
+          ))}
+        </div>
+      </Article>
+    </div>
   );
 }
