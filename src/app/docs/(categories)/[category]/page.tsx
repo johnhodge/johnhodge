@@ -1,11 +1,10 @@
+import type { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/docs/(categories)/templates/doc';
-import { readFileSync, readdirSync } from 'fs';
-import matter from 'gray-matter';
+import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import type { GlobalButtonSettings } from '@/app/components/shared/button';
 
 type PropParams = {
   params: {
@@ -21,8 +20,7 @@ export async function generateMetadata(props: PropParams) {
     props.params.category.replace('.mdx', '')
   );
   const MDXFilePath = join(MDXFileDirectory, '_index.mdx');
-  const fileContents = readFileSync(join(MDXFilePath));
-  const { data } = matter(fileContents);
+  const { data } = GetDataContent(join(MDXFilePath));
   const metadata: Metadata = {
     title: data.title,
   };
@@ -54,14 +52,12 @@ export default async function Page(props: PropParams) {
   );
   const MDXFilePath = join(MDXDirectoryPath, '_index.mdx');
 
-  const subPageFiles = readdirSync(MDXDirectoryPath);
+  const subPageFiles = GetSubFolders(MDXDirectoryPath);
   subPageFiles.forEach(
     (file: string) =>
       (subPages[file] = {
-        title: matter(readFileSync(join(MDXDirectoryPath, file), 'utf-8')).data
-          .title,
-        descrption: matter(readFileSync(join(MDXDirectoryPath, file), 'utf-8'))
-          .data.excerpt,
+        title: GetDataContent(join(MDXDirectoryPath, file)).data.title,
+        descrption: GetDataContent(join(MDXDirectoryPath, file)).data.excerpt,
       })
   );
 
@@ -79,12 +75,10 @@ export default async function Page(props: PropParams) {
                 verticalLine={false}
                 horizontalLine={true}
                 subheader={
-                  matter(readFileSync(join(MDXDirectoryPath, page), 'utf-8'))
-                    .data.title
+                  GetDataContent(join(MDXDirectoryPath, page)).data.title
                 }
                 longDescription={
-                  matter(readFileSync(join(MDXDirectoryPath, page), 'utf-8'))
-                    .data.excerpt
+                  GetDataContent(join(MDXDirectoryPath, page)).data.excerpt
                 }
                 button={createButton(
                   join(props.params.category, page.replace('.mdx', ''))
