@@ -1,11 +1,11 @@
 import { H2, H3, TOC2, TOC3 } from '@/app/docs/components/body';
-import { readFileSync, readdirSync } from 'fs';
-import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { join } from 'path';
 import { ReactNode } from 'react';
 import GlobalTOC from '@/app/docs/components/toc';
+import GlobalCallout from '@/app/docs/components/callouts';
+import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 
 type PropParams = {
   params: {
@@ -26,8 +26,8 @@ export type TOCEnteries = {
 };
 
 export async function generateMetadata(props: PropParams) {
-  const fileContents = readFileSync(props.MDXFilePath);
-  const { data } = matter(fileContents);
+  const { data } = GetDataContent(props.MDXFilePath);
+
   const metadata: Metadata = {
     title: data.title,
   };
@@ -36,7 +36,7 @@ export async function generateMetadata(props: PropParams) {
 }
 
 export default function Doc(props: PropParams) {
-  const folders = readdirSync(props.docsDirectoryPath).filter(
+  const folders = GetSubFolders(props.docsDirectoryPath).filter(
     (folder) => folder != '_index.mdx'
   );
   function getTOC(folders: string[]): Record<string, TOCEnteries> {
@@ -46,17 +46,16 @@ export default function Doc(props: PropParams) {
         (TOCItems[folder] = {
           root: {
             fileName: '_index.mdx',
-            title: matter(
-              readFileSync(join(props.docsDirectoryPath, folder, '_index.mdx'))
+            title: GetDataContent(
+              join(props.docsDirectoryPath, folder, '_index.mdx')
             ).data.title,
           },
-          subPages: readdirSync(join(props.docsDirectoryPath, folder))
+          subPages: GetSubFolders(join(props.docsDirectoryPath, folder))
             .filter((subPage) => subPage != '_index.mdx')
             .map((page) => ({
               fileName: page,
-              title: matter(
-                readFileSync(join(props.docsDirectoryPath, folder, page))
-              ).data.title,
+              title: GetDataContent(join(props.docsDirectoryPath, folder, page))
+                .data.title,
             })),
         })
     );
@@ -64,8 +63,8 @@ export default function Doc(props: PropParams) {
   }
   getTOC(folders);
 
-  const fileContents = readFileSync(props.MDXFilePath);
-  const { data, content } = matter(fileContents);
+  const { data, content } = GetDataContent(props.MDXFilePath);
+
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6 border-b border-b-slate-800'>
       <GlobalTOC
@@ -99,6 +98,7 @@ export default function Doc(props: PropParams) {
                 )}
               />
             ),
+            GlobalCallout: (props) => <GlobalCallout {...props} />,
           }}
         />
         {props.children}
@@ -106,14 +106,16 @@ export default function Doc(props: PropParams) {
       <aside className='hidden md:block col-span-3'>
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>On this page</p>
-          <ul className='max-h-[calc(75dvh-110px)] overflow-y-auto prose prose-headings:font-black'>
+          <div className='max-h-[calc(75dvh-110px)] overflow-y-auto prose prose-headings:font-black'>
             <MDXRemote
               source={content}
               components={{
-                p: (props) => <span className='hidden' {...props} />,
-                ol: (props) => <span className='hidden' {...props} />,
-                ul: (props) => <span className='hidden' {...props} />,
-                pre: (props) => <span className='hidden' {...props} />,
+                a: () => null,
+                blockquote: () => null,
+                br: () => null,
+                code: () => null,
+                em: () => null,
+                h1: () => null,
                 h2: ({ children }: { children?: ReactNode }) => (
                   <TOC2
                     header={children}
@@ -134,9 +136,18 @@ export default function Doc(props: PropParams) {
                     )}
                   />
                 ),
+                hr: () => null,
+                img: () => null,
+                li: () => null,
+                ol: () => null,
+                p: () => null,
+                pre: () => null,
+                strong: () => null,
+                ul: () => null,
+                GlobalCallout: () => null,
               }}
             />
-          </ul>
+          </div>
         </div>
       </aside>
     </article>

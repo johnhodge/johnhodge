@@ -1,9 +1,9 @@
 'use client';
+import type { TOCEnteries } from '@/app/docs/(categories)/templates/doc';
 import { TOC2, TOC3, TOCHome } from '@/app/docs/components/body';
 import Link from 'next/link';
 import { join } from 'path';
 import { useState } from 'react';
-import type { TOCEnteries } from '../(categories)/templates/doc';
 
 type PropData = {
   docsDirectoryPath: string;
@@ -25,24 +25,22 @@ export function TOC(props: PropData) {
           data={homeData}
         />
         {Object.keys(props.folders).map((dir) => (
-          <>
+          <div key={dir}>
             <TOC2
-              key={props.folders[dir].root.title
-                .replace(' ', '-')
-                .toLowerCase()}
+              key={dir}
               base={join('/', 'docs', dir)}
               data={props.folders[dir].root}
             />
 
             {props.folders[dir].subPages.map((subPage) => (
               <TOC3
-                key={subPage.title.replace(' ', '-').toLowerCase()}
+                key={join(subPage.fileName)}
                 base={join('/', 'docs', dir)}
                 slug={subPage.fileName}
                 data={subPage}
               />
             ))}
-          </>
+          </div>
         ))}
       </div>
     </>
@@ -63,7 +61,7 @@ export default function GlobalTOC(props: PropData) {
       <div className='md:hidden sticky z-30 top-20'>
         <span
           onClick={handleClick}
-          className='rounded-lg min-w-fit inline-block p-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
+          className='font-emoji rounded-lg min-w-fit inline-block p-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
           📖
         </span>
 

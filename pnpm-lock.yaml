@@ -10,12 +10,9 @@ dependencies:
   '@mdx-js/loader':
     specifier: ^2.3.0
     version: 2.3.0(webpack@5.88.1)
-  '@mdx-js/react':
-    specifier: ^2.3.0
-    version: 2.3.0(react@18.2.0)
   '@next/mdx':
     specifier: ^13.4.9
-    version: 13.4.9(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
+    version: 13.4.9(@mdx-js/loader@2.3.0)
   '@tiptap/pm':
     specifier: ^2.0.3
     version: 2.0.3(@tiptap/core@2.0.3)
@@ -756,7 +753,7 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx@13.4.9(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
+  /@next/mdx@13.4.9(@mdx-js/loader@2.3.0):
     resolution: {integrity: sha512-6ALqgOUsHWFWCl5LaYM96RzjBb/+Ca8IxVLhyZ4ukOZkFlYXInJmVLZhXWDxes7b8iVMMKZNgvNJR9dKLaGAQw==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
@@ -768,7 +765,6 @@ packages:
         optional: true
     dependencies:
       '@mdx-js/loader': 2.3.0(webpack@5.88.1)
-      '@mdx-js/react': 2.3.0(react@18.2.0)
       source-map: 0.7.4
     dev: false
 
