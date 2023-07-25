@@ -12,42 +12,8 @@ type PropData = {
   MDXFilePath: string;
 };
 
-export function TOC(props: PropData) {
-  const homeData = { title: 'Docs Home' };
-  return (
-    <>
-      <p className='pb-4 text-xl font-black'>Contents</p>
-      <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
-        <TOCHome
-          key='docs-home'
-          base={join('/', 'docs')}
-          slug='/'
-          data={homeData}
-        />
-        {Object.keys(props.folders).map((dir) => (
-          <div key={dir}>
-            <TOC2
-              key={dir}
-              base={join('/', 'docs', dir)}
-              data={props.folders[dir].root}
-            />
-
-            {props.folders[dir].subPages.map((subPage) => (
-              <TOC3
-                key={join(subPage.fileName)}
-                base={join('/', 'docs', dir)}
-                slug={subPage.fileName}
-                data={subPage}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-
 export default function GlobalTOC(props: PropData) {
+  const homeData = { title: 'Docs Home' };
   const [click, setClick] = useState(false);
   function handleClick() {
     if (!click) {
@@ -61,7 +27,7 @@ export default function GlobalTOC(props: PropData) {
       <div className='md:hidden sticky z-30 top-20'>
         <span
           onClick={handleClick}
-          className='font-emoji rounded-lg min-w-fit inline-block p-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
+          className='font-emoji rounded-lg min-w-fit inline-block px-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
           📖
         </span>
 
@@ -93,13 +59,69 @@ export default function GlobalTOC(props: PropData) {
                 </clipPath>
               </defs>
             </svg>
-            <TOC {...props} />
+            <p className='pb-4 text-xl font-black'>Contents</p>
+            <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
+              <TOCHome
+                key='docs-home'
+                base={join('/', 'docs')}
+                slug='/'
+                data={homeData}
+              />
+              {Object.keys(props.folders).map((dir) => (
+                <div key={dir}>
+                  <span onClick={handleClick}>
+                    <TOC2
+                      key={dir}
+                      base={join('/', 'docs', dir)}
+                      data={props.folders[dir].root}
+                    />
+                  </span>
+
+                  {props.folders[dir].subPages.map((subPage) => (
+                    <span key={join(subPage.fileName)} onClick={handleClick}>
+                      <TOC3
+                        key={join(subPage.fileName)}
+                        base={join('/', 'docs', dir)}
+                        slug={subPage.fileName}
+                        data={subPage}
+                      />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
       <aside className='hidden md:block col-span-2'>
         <div className='sticky top-32'>
-          <TOC {...props} />
+          <p className='pb-4 text-xl font-black'>Contents</p>
+          <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
+            <TOCHome
+              key='docs-home'
+              base={join('/', 'docs')}
+              slug='/'
+              data={homeData}
+            />
+            {Object.keys(props.folders).map((dir) => (
+              <div key={dir}>
+                <TOC2
+                  key={dir}
+                  base={join('/', 'docs', dir)}
+                  data={props.folders[dir].root}
+                />
+
+                {props.folders[dir].subPages.map((subPage) => (
+                  <TOC3
+                    key={join(subPage.fileName)}
+                    base={join('/', 'docs', dir)}
+                    slug={subPage.fileName}
+                    data={subPage}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
           <div className='pt-4 border-t border-t-gray-200 flex flex-col items-start justify-center'>
             <p>Written by: {props.author}</p>
             <Link
