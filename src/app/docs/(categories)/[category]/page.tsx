@@ -37,6 +37,7 @@ function createButton(link: string): GlobalButtonSettings {
     color: 'primary',
     link: link,
     text: 'Read more',
+    route: true,
   };
 }
 

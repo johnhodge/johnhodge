@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type MdData = {
-  section?: string;
   title?: string;
   excerpt?: string;
   coverImage?: string;
@@ -65,6 +64,28 @@ export function H2(props: Props) {
   );
 }
 
+export function TOCHome(props: Props) {
+  const headerAnchor = props.header
+    ?.toString()
+    .replaceAll(' ', '-')
+    .replaceAll('.', '')
+    .toLowerCase();
+  return (
+    <Link
+      href={`${props.base}${
+        props.header
+          ? `/#${headerAnchor}`
+          : props.slug
+          ? `/${props.slug?.replace('.mdx', '')}`
+          : ''
+      }`}
+      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
+      <div id={headerAnchor} className='py-2 font-extrabold text-lg'>
+        {props.data ? props.data.title : props.header}
+      </div>
+    </Link>
+  );
+}
 export function TOC2(props: Props) {
   const headerAnchor = props.header
     ?.toString()
@@ -87,7 +108,6 @@ export function TOC2(props: Props) {
     </Link>
   );
 }
-
 export function TOC3(props: Props) {
   const headerAnchor = props.header
     ?.toString()
