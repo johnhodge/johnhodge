@@ -1,5 +1,5 @@
 'use client';
-import { TOC2, TOC3 } from '@/app/docs/components/body';
+import { TOC2, TOC3, TOCHome } from '@/app/docs/components/body';
 import Link from 'next/link';
 import { join } from 'path';
 import { useState } from 'react';
@@ -13,27 +13,39 @@ type PropData = {
 };
 
 export function TOC(props: PropData) {
+  const homeData = { title: 'Docs Home' };
   return (
-    <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
-      {Object.keys(props.folders).map((dir) => (
-        <>
-          <TOC2
-            key={props.folders[dir].root.title.replace(' ', '-').toLowerCase()}
-            base={join('/', 'docs', dir)}
-            data={props.folders[dir].root}
-          />
-
-          {props.folders[dir].subPages.map((subPage) => (
-            <TOC3
-              key={subPage.title.replace(' ', '-').toLowerCase()}
+    <>
+      <p className='pb-4 text-xl font-black'>Contents</p>
+      <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
+        <TOCHome
+          key='docs-home'
+          base={join('/', 'docs')}
+          slug='/'
+          data={homeData}
+        />
+        {Object.keys(props.folders).map((dir) => (
+          <>
+            <TOC2
+              key={props.folders[dir].root.title
+                .replace(' ', '-')
+                .toLowerCase()}
               base={join('/', 'docs', dir)}
-              slug={subPage.fileName}
-              data={subPage}
+              data={props.folders[dir].root}
             />
-          ))}
-        </>
-      ))}
-    </div>
+
+            {props.folders[dir].subPages.map((subPage) => (
+              <TOC3
+                key={subPage.title.replace(' ', '-').toLowerCase()}
+                base={join('/', 'docs', dir)}
+                slug={subPage.fileName}
+                data={subPage}
+              />
+            ))}
+          </>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -49,53 +61,11 @@ export default function GlobalTOC(props: PropData) {
   return (
     <>
       <div className='md:hidden sticky z-30 top-20'>
-        <svg
+        <span
           onClick={handleClick}
-          width='40'
-          height='44'
-          viewBox='0 0 40 44'
-          fill='none'
-          xmlns='https://www.w3.org/2000/svg'>
-          <rect
-            x='38'
-            y='42'
-            width='36'
-            height='40'
-            rx='2'
-            transform='rotate(-180 38 42)'
-            className='fill-gray-100'
-          />
-          <path
-            d='M30 30L10 30'
-            className='stroke-gray-900'
-            stroke-width='4'
-            stroke-linecap='round'
-          />
-          <path
-            d='M30 22L10 22'
-            className='stroke-gray-900'
-            strokeWidth='4'
-            strokeLinecap='round'
-          />
-          <path
-            d='M30 14L10 14'
-            className='stroke-gray-900'
-            strokeWidth='4'
-            strokeLinecap='round'
-          />
-          <rect
-            x='38'
-            y='42'
-            width='36'
-            height='40'
-            rx='2'
-            transform='rotate(-180 38 42)'
-            className='stroke-gray-500'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
+          className='rounded-lg min-w-fit inline-block p-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
+          📖
+        </span>
 
         <div className='relative z-40 overflow-hidden'>
           <div
@@ -131,7 +101,6 @@ export default function GlobalTOC(props: PropData) {
       </div>
       <aside className='hidden md:block col-span-2'>
         <div className='sticky top-32'>
-          <p className='pb-4 text-xl font-black'>Category</p>
           <TOC {...props} />
           <div className='pt-4 border-t border-t-gray-200 flex flex-col items-start justify-center'>
             <p>Written by: {props.author}</p>
