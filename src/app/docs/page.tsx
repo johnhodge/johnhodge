@@ -1,17 +1,15 @@
+import { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
-import { readFileSync, readdirSync } from 'fs';
-import matter from 'gray-matter';
+import Article from '@/app/templates/article';
+import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import Article from '../templates/article';
-import { GlobalButtonSettings } from '../components/shared/button';
 
 const docsDirectoryPath = join(cwd(), 'documentation');
 export async function generateMetadata() {
   const MDXFilePath = join(docsDirectoryPath, '_index.mdx');
-  const fileContents = readFileSync(join(MDXFilePath));
-  const { data } = matter(fileContents);
+  const { data } = GetDataContent(join(MDXFilePath));
   const metadata: Metadata = {
     title: data.title,
   };
@@ -39,34 +37,24 @@ function createButton(link: string): GlobalButtonSettings {
 
 export default async function Page() {
   const subPages: Record<string, SubPageData> = {};
-  const subPageDirs = readdirSync(docsDirectoryPath);
+  const subPageDirs = GetSubFolders(docsDirectoryPath);
   subPageDirs
     .filter((file: string) => file != '_index.mdx')
     .map((subPageDir: string) =>
-      readdirSync(join(docsDirectoryPath, subPageDir))
+      GetSubFolders(join(docsDirectoryPath, subPageDir))
         .filter((page) => page == '_index.mdx')
         .map(
           (subPage) =>
             (subPages[subPageDir] = {
               filename: subPage,
-              title: matter(
-                readFileSync(
-                  join(docsDirectoryPath, subPageDir, subPage),
-                  'utf-8'
-                )
+              title: GetDataContent(
+                join(docsDirectoryPath, subPageDir, subPage)
               ).data.title,
-              excerpt: matter(
-                readFileSync(
-                  join(docsDirectoryPath, subPageDir, subPage),
-                  'utf-8'
-                )
+              excerpt: GetDataContent(
+                join(docsDirectoryPath, subPageDir, subPage)
               ).data.excerpt,
-              icon: matter(
-                readFileSync(
-                  join(docsDirectoryPath, subPageDir, subPage),
-                  'utf-8'
-                )
-              ).data.icon,
+              icon: GetDataContent(join(docsDirectoryPath, subPageDir, subPage))
+                .data.icon,
             })
         )
     );
@@ -76,11 +64,10 @@ export default async function Page() {
       <Article
         id={'docs'}
         headline={
-          matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data.title
+          GetDataContent(join(docsDirectoryPath, '_index.mdx')).data.title
         }
         subhead={
-          matter(readFileSync(join(docsDirectoryPath, '_index.mdx'))).data
-            .excerpt
+          GetDataContent(join(docsDirectoryPath, '_index.mdx')).data.excerpt
         }>
         <div className='grid grid-cols-6 gap-4'>
           {Object.keys(subPages).map((page) => (

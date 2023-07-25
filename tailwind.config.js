@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        emoji: ['Apple Color Emoji'],
+      },
       spacing: {
         icon: '3rem',
       },
