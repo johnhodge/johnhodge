@@ -79,7 +79,7 @@ export function TOCHome(props: Props) {
           ? `/${props.slug?.replace('.mdx', '')}`
           : ''
       }`}
-      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
+      className='no-underline hover:text-primary-700 transition-colors ease-in-out duration-50'>
       <div id={headerAnchor} className='py-2 font-extrabold text-lg'>
         {props.data ? props.data.title : props.header}
       </div>
@@ -101,7 +101,7 @@ export function TOC2(props: Props) {
           ? `/${props.slug?.replace('.mdx', '')}`
           : ''
       }`}
-      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
+      className='no-underline hover:text-primary-700 transition-colors ease-in-out duration-50'>
       <div id={headerAnchor} className='scroll-mt-16 font-bold py-2'>
         {props.data ? props.data.title : props.header}
       </div>
@@ -123,7 +123,7 @@ export function TOC3(props: Props) {
           ? `/${props.slug?.replace('.mdx', '')}`
           : ''
       }`}
-      className='no-underline hover:text-secondary-600 transition-colors ease-in-out duration-50'>
+      className='no-underline hover:text-primary-700 transition-colors ease-in-out duration-50'>
       <div id={headerAnchor} className='scroll-mt-16 pl-2'>
         {props.data ? props.data.title : props.header}
       </div>

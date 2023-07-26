@@ -18,7 +18,7 @@ type PropsData = {
   postData?: PostData;
 };
 export default function GitHubData(props: PropsData) {
-  <div className='pt-4 border-t bg-gray-0 border-t-gray-200 flex flex-col items-start justify-center'>
+  <div className='pt-4 border-t bg-gray-0 border-t300 flex flex-col items-start justify-center'>
     <p>
       Written by: {props.author.firstName} {props.author.lastName}
     </p>
