@@ -53,7 +53,12 @@ export default function GlobalTOC(props: TOCData) {
             </svg>
             <p className='pb-4 text-xl font-black'>Contents</p>
             <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
-              <TOCHome key='docs-home' base={join('/', 'docs')} slug='/' />
+              <TOCHome
+                key='docs-home'
+                header='Docs Home'
+                base={join('/', 'docs')}
+                slug='/'
+              />
               {Object.keys(props.folders).map((dir) => (
                 <div key={dir}>
                   <span onClick={handleClick}>
