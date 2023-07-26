@@ -86,7 +86,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
           {props.subheader || props.shortDescription ? (
             <div
               className={`flex flex-col justify-center gap-4 ${
-                props.verticalLine ? 'border-l border-gray-950 pl-2' : ''
+                props.verticalLine ? 'border-l border-gray-900 pl-2' : ''
               }`}>
               {props.subheader ? (
                 <h3
@@ -111,7 +111,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
           )}
         </hgroup>
 
-        {props.horizontalLine ? <hr className='border-gray-950' /> : ''}
+        {props.horizontalLine ? <hr className='border-gray-900' /> : ''}
         {props.header ? (
           <h2
             className='text-2xl font-black

@@ -11,6 +11,20 @@ html {
   color: theme(colors.primary.600);
 }
 
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-select:focus-visible,
+.form-multiselect:focus-visible,
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.form-multiselect:focus {
+  border-color: theme(colors.blue.400);
+  outline: none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.075rem theme(colors.blue.400);
+}
+
 @media screen and (min-width: 2560px) {
   html {
     font-size: 28px;

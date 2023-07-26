@@ -159,22 +159,22 @@ export default function ContactForm() {
               htmlFor='firstname'
               className={`text-xl pt-4 pb-2 ${
                 errors.firstname
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               First name
             </label>
             <input
               placeholder='Your first name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.firstname
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
               {...register('firstname')}
             />
-            <p className='text-red-600' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.firstname?.message?.toString()}
             </p>
           </fieldset>
@@ -184,16 +184,16 @@ export default function ContactForm() {
               htmlFor='lastname'
               className={`text-xl pt-4 pb-2 ${
                 errors.lastname
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Last name
             </label>
             <input
               placeholder='Your last name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.lastname
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
@@ -209,16 +209,16 @@ export default function ContactForm() {
               htmlFor='companyName'
               className={`text-xl pt-4 pb-2 ${
                 errors.companyName
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Company name
             </label>
             <input
               placeholder='Your company name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.companyName
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
@@ -234,16 +234,16 @@ export default function ContactForm() {
               htmlFor='email'
               className={`text-xl pt-4 pb-2 ${
                 errors.email
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Company email
             </label>
             <input
               placeholder='Your company email'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.email
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='email'
@@ -259,15 +259,15 @@ export default function ContactForm() {
               htmlFor='hs_persona'
               className={`text-xl pt-4 pb-2 ${
                 errors.hs_persona
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Which option best describes you?
             </label>
             <select
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.hs_persona
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               defaultValue={'hs_persona_0'}
@@ -291,16 +291,16 @@ export default function ContactForm() {
               htmlFor='event_name'
               className={`text-xl pt-4 pb-2 ${
                 errors.event_name
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Event name
             </label>
             <input
               placeholder='The name of the event'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.event_name
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
@@ -316,15 +316,15 @@ export default function ContactForm() {
               htmlFor='event_date'
               className={`text-xl pt-4 pb-2 ${
                 errors.event_date
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Event date
             </label>
             <input
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.event_date
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='date'
@@ -340,15 +340,15 @@ export default function ContactForm() {
               htmlFor='event_audience'
               className={`text-xl pt-4 pb-2 ${
                 errors.event_audience
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Which option best describes the audience of this speech?
             </label>
             <select
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.event_audience
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               defaultValue={'event_audience_0'}
@@ -372,15 +372,15 @@ export default function ContactForm() {
               htmlFor='speech_type'
               className={`text-xl pt-4 pb-2 ${
                 errors.speech_type
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               Which option best describes the type of speech being requested?
             </label>
             <select
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.speech_type
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               defaultValue={'speech_type_0'}
@@ -404,16 +404,16 @@ export default function ContactForm() {
               htmlFor='speech_duration'
               className={`text-xl pt-4 pb-2 ${
                 errors.speech_duration
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               What is the expected speech duration (in minutes)?
             </label>
             <input
               placeholder='Expected speech duration in minutes'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.speech_duration
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='tel'
@@ -429,16 +429,16 @@ export default function ContactForm() {
               htmlFor='message'
               className={`text-xl pt-4 pb-2 ${
                 errors.message
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}>
               What other important information would you like to share?
             </label>
             <textarea
               placeholder='Additional context'
-              className={`bg-white-50 form-input text-xl px-9 py-6 h-40 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 h-40 rounded-3xl border-2 ${
                 errors.message
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               {...register('message')}

@@ -119,15 +119,15 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='First name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.firstName
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
               {...register('firstName')}
             />
-            <p className='text-red-600' role='alert'>
+            <p className='text-red-700' role='alert'>
               {errors.firstName?.message?.toString()}
             </p>
           </fieldset>
@@ -135,9 +135,9 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Last name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.lastName
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
@@ -151,9 +151,9 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Company name'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.companyName
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='text'
@@ -167,9 +167,9 @@ export default function ContactForm() {
           <fieldset className='flex flex-col'>
             <input
               placeholder='Email'
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.email
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               type='email'
@@ -182,9 +182,9 @@ export default function ContactForm() {
 
           <fieldset className='flex flex-col'>
             <select
-              className={`bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
+              className={`bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 ${
                 errors.hs_persona
-                  ? 'border-red-600 text-red-700'
+                  ? 'border-red-400 text-red-700'
                   : 'border-primary-400 text-primary-700'
               }`}
               defaultValue={'hs_persona_0'}
@@ -206,7 +206,7 @@ export default function ContactForm() {
           <fieldset className={'flex flex-col'}>
             <textarea
               placeholder='Message'
-              className='bg-white-50 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
+              className='bg-gray-0 form-input text-xl px-9 py-6 rounded-3xl border-2 border-primary-400 text-primary-700'
             />
           </fieldset>
 

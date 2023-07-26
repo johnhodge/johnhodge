@@ -50,7 +50,7 @@ export default function GlobalTOC(props: PropData) {
                   strokeWidth='4'
                   strokeLinecap='round'
                   strokeLinejoin='round'
-                  className='stroke-gray-950'
+                  className='stroke-gray-900'
                 />
               </g>
               <defs>
@@ -122,7 +122,7 @@ export default function GlobalTOC(props: PropData) {
               </div>
             ))}
           </div>
-          <div className='pt-4 border-t border-t-gray-200 flex flex-col items-start justify-center'>
+          <div className='pt-4 border-t border-t-gray-300 flex flex-col items-start justify-center'>
             <p>Written by: {props.author}</p>
             <Link
               className='py-2 flex items-center gap-1'

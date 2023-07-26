@@ -13,7 +13,7 @@ export default function Article(props: Hgroup) {
   return (
     <article
       id={props.id}
-      className='scroll-mt-16 mx-2 py-9 border-b border-gray-950'>
+      className='scroll-mt-16 border-b border-gray-900 py-9 mx-2 lg:mx-3'>
       <div className='flex flex-col-reverse gap-9 md:flex-row'>
         <div
           className={`flex flex-col items-start gap-9 ${

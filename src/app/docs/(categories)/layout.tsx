@@ -5,7 +5,7 @@ export default async function DocsLayout({
 }) {
   {
     return (
-      <section className='px-2 bg-gradient-to-b from-gray-0 from-60% to-primary-100 to-100%'>
+      <section className='px-2 md:px-3 bg-gradient-to-b from-gray-0 from-60% to-primary-100 to-100%'>
         {children}
       </section>
     );
