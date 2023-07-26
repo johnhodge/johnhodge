@@ -1,78 +1,91 @@
 import { H2, H3, TOC2, TOC3 } from '@/app/docs/components/body';
+import GlobalCallout from '@/app/docs/components/callouts';
+import GlobalTOC from '@/app/docs/components/toc';
+import { DynamicTemplate, TOCEnteries } from '@/app/types';
+import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { join } from 'path';
 import { ReactNode } from 'react';
-import GlobalTOC from '@/app/docs/components/toc';
-import GlobalCallout from '@/app/docs/components/callouts';
-import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 
-type PropParams = {
-  params: {
-    slug?: string;
-    category: string;
-  };
-  docsDirectoryPath: string;
-  MDXFilePath: string;
-  children?: ReactNode;
-};
-export type TOCPageData = {
-  fileName: string;
-  title: string;
-};
-export type TOCEnteries = {
-  root: TOCPageData;
-  subPages: TOCPageData[];
-};
-
-export async function generateMetadata(props: PropParams) {
-  const { data } = GetDataContent(props.MDXFilePath);
-
+export async function generateMetadata(props: DynamicTemplate) {
+  const { data } = GetDataContent(props.post.file.MDXFilePath);
   const metadata: Metadata = {
     title: data.title,
   };
-
   return metadata;
 }
 
-export default function Doc(props: PropParams) {
-  const folders = GetSubFolders(props.docsDirectoryPath).filter(
+export default function Doc(props: DynamicTemplate) {
+  const rootDir = props.post.file.rootDocsDirectory;
+  const folders = GetSubFolders(rootDir).filter(
     (folder) => folder != '_index.mdx'
   );
+
   function getTOC(folders: string[]): Record<string, TOCEnteries> {
     const TOCItems: Record<string, TOCEnteries> = {};
+
     folders.forEach(
       (folder: string) =>
         (TOCItems[folder] = {
           root: {
-            fileName: '_index.mdx',
-            title: GetDataContent(
-              join(props.docsDirectoryPath, folder, '_index.mdx')
-            ).data.title,
+            title: GetDataContent(join(rootDir, folder, '_index.mdx')).data
+              .title,
+            excerpt: GetDataContent(join(rootDir, folder, '_index.mdx')).data
+              .excerpt,
+            icon: GetDataContent(join(rootDir, folder, '_index.mdx')).data.icon,
+            date: GetDataContent(join(rootDir, folder, '_index.mdx')).data.date,
+            author: {
+              firstName: GetDataContent(join(rootDir, folder, '_index.mdx'))
+                .data.firstName,
+
+              lastName: GetDataContent(join(rootDir, folder, '_index.mdx')).data
+                .lastName,
+            },
+            file: {
+              rootDocsDirectory: rootDir,
+              containingDirectory: join(rootDir, folder),
+              fileName: '_index.mdx',
+              MDXFilePath: join(rootDir, folder, '_index.mdx'),
+            },
           },
-          subPages: GetSubFolders(join(props.docsDirectoryPath, folder))
+
+          subPages: GetSubFolders(join(rootDir, folder))
             .filter((subPage) => subPage != '_index.mdx')
             .map((page) => ({
-              fileName: page,
-              title: GetDataContent(join(props.docsDirectoryPath, folder, page))
-                .data.title,
+              title: GetDataContent(join(rootDir, folder, page)).data.title,
+              excerpt: GetDataContent(join(rootDir, folder, page)).data.excerpt,
+              icon: GetDataContent(join(rootDir, folder, page)).data.icon,
+              date: GetDataContent(join(rootDir, folder, page)).data.date,
+              author: {
+                firstName: GetDataContent(join(rootDir, folder, page)).data
+                  .firstName,
+                lastName: GetDataContent(join(rootDir, folder, page)).data
+                  .lastName,
+              },
+              file: {
+                rootDocsDirectory: rootDir,
+                containingDirectory: join(
+                  rootDir,
+                  folder,
+                  page.replace('.mdx', '')
+                ),
+                fileName: page,
+                MDXFilePath: join(rootDir, folder, page),
+              },
             })),
         })
     );
+
     return TOCItems;
   }
   getTOC(folders);
 
-  const { data, content } = GetDataContent(props.MDXFilePath);
+  const { data, content } = GetDataContent(props.post.file.MDXFilePath);
 
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6 border-b border-b-slate-800'>
-      <GlobalTOC
-        folders={getTOC(folders)}
-        docsDirectoryPath={props.docsDirectoryPath}
-        author={data.author.name}
-        MDXFilePath={props.MDXFilePath}
-      />
+      <GlobalTOC folders={getTOC(folders)} post={props.post} />
       <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-7'>
         <h1>{data.title}</h1>
         <MDXRemote
@@ -83,8 +96,8 @@ export default function Doc(props: PropParams) {
                 header={children}
                 base={join(
                   '/docs',
-                  props.params.category,
-                  props.params.slug ?? ''
+                  props.route.params.category,
+                  props.route.params.slug ?? ''
                 )}
               />
             ),
@@ -93,8 +106,8 @@ export default function Doc(props: PropParams) {
                 header={children}
                 base={join(
                   '/docs',
-                  props.params.category,
-                  props.params.slug ?? ''
+                  props.route.params.category,
+                  props.route.params.slug ?? ''
                 )}
               />
             ),
@@ -121,8 +134,8 @@ export default function Doc(props: PropParams) {
                     header={children}
                     base={join(
                       '/docs',
-                      props.params.category,
-                      props.params.slug ?? ''
+                      props.route.params.category,
+                      props.route.params.slug ?? ''
                     )}
                   />
                 ),
@@ -131,8 +144,8 @@ export default function Doc(props: PropParams) {
                     header={children}
                     base={join(
                       '/docs',
-                      props.params.category,
-                      props.params.slug ?? ''
+                      props.route.params.category,
+                      props.route.params.slug ?? ''
                     )}
                   />
                 ),
