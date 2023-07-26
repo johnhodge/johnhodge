@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         emoji: ['Apple Color Emoji'],
+        mono: ['var(--firaCode)'],
       },
       spacing: {
         icon: '3rem',
