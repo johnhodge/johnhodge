@@ -1,19 +1,11 @@
 'use client';
-import type { TOCEnteries } from '@/app/docs/(categories)/templates/doc';
 import { TOC2, TOC3, TOCHome } from '@/app/docs/components/body';
+import { TOCData } from '@/app/types';
 import Link from 'next/link';
 import { join } from 'path';
 import { useState } from 'react';
 
-type PropData = {
-  docsDirectoryPath: string;
-  folders: Record<string, TOCEnteries>;
-  author: string;
-  MDXFilePath: string;
-};
-
-export default function GlobalTOC(props: PropData) {
-  const homeData = { title: 'Docs Home' };
+export default function GlobalTOC(props: TOCData) {
   const [click, setClick] = useState(false);
   function handleClick() {
     if (!click) {
@@ -61,12 +53,7 @@ export default function GlobalTOC(props: PropData) {
             </svg>
             <p className='pb-4 text-xl font-black'>Contents</p>
             <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
-              <TOCHome
-                key='docs-home'
-                base={join('/', 'docs')}
-                slug='/'
-                data={homeData}
-              />
+              <TOCHome key='docs-home' base={join('/', 'docs')} slug='/' />
               {Object.keys(props.folders).map((dir) => (
                 <div key={dir}>
                   <span onClick={handleClick}>
@@ -78,11 +65,13 @@ export default function GlobalTOC(props: PropData) {
                   </span>
 
                   {props.folders[dir].subPages.map((subPage) => (
-                    <span key={join(subPage.fileName)} onClick={handleClick}>
+                    <span
+                      key={join(subPage.file.fileName)}
+                      onClick={handleClick}>
                       <TOC3
-                        key={join(subPage.fileName)}
+                        key={join(subPage.file.fileName)}
                         base={join('/', 'docs', dir)}
-                        slug={subPage.fileName}
+                        slug={subPage.file.fileName}
                         data={subPage}
                       />
                     </span>
@@ -99,9 +88,9 @@ export default function GlobalTOC(props: PropData) {
           <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
             <TOCHome
               key='docs-home'
+              header='Docs Home'
               base={join('/', 'docs')}
               slug='/'
-              data={homeData}
             />
             {Object.keys(props.folders).map((dir) => (
               <div key={dir}>
@@ -113,9 +102,9 @@ export default function GlobalTOC(props: PropData) {
 
                 {props.folders[dir].subPages.map((subPage) => (
                   <TOC3
-                    key={join(subPage.fileName)}
+                    key={join(subPage.file.fileName)}
                     base={join('/', 'docs', dir)}
-                    slug={subPage.fileName}
+                    slug={subPage.file.fileName}
                     data={subPage}
                   />
                 ))}
@@ -123,11 +112,14 @@ export default function GlobalTOC(props: PropData) {
             ))}
           </div>
           <div className='pt-4 border-t border-t-gray-300 flex flex-col items-start justify-center'>
-            <p>Written by: {props.author}</p>
+            <p>
+              Written by: {props.post.author.firstName}{' '}
+              {props.post.author.lastName}
+            </p>
             <Link
               className='py-2 flex items-center gap-1'
               target='_blank'
-              href={`https://github.com/johnhodge/johnhodge/blob/canary/${props.MDXFilePath.replace(
+              href={`https://github.com/johnhodge/johnhodge/blob/canary/${props.post.file.MDXFilePath.replace(
                 /.*\/documentation\//,
                 'documentation/'
               )}`}>
