@@ -1,20 +1,13 @@
+import { PostData } from '@/app/types';
 import Link from 'next/link';
+import { join } from 'path';
 import { ReactNode } from 'react';
 
-type MdData = {
-  title?: string;
-  excerpt?: string;
-  coverImage?: string;
-  date?: string;
-  author?: { name: string };
-  ogImage?: { url: string };
-};
-
-type Props = {
+type Header = {
   base: string;
   header?: ReactNode;
   children?: ReactNode;
-  data?: MdData;
+  data?: PostData;
   slug?: string;
 };
 
@@ -34,7 +27,7 @@ export default function LinkedHeader(props: LinkedHeaderProps) {
   );
 }
 
-export function H3(props: Props) {
+export function H3(props: Header) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -49,7 +42,7 @@ export function H3(props: Props) {
   );
 }
 
-export function H2(props: Props) {
+export function H2(props: Header) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -64,29 +57,18 @@ export function H2(props: Props) {
   );
 }
 
-export function TOCHome(props: Props) {
-  const headerAnchor = props.header
-    ?.toString()
-    .replaceAll(' ', '-')
-    .replaceAll('.', '')
-    .toLowerCase();
+export function TOCHome(props: Header) {
   return (
     <Link
-      href={`${props.base}${
-        props.header
-          ? `/#${headerAnchor}`
-          : props.slug
-          ? `/${props.slug?.replace('.mdx', '')}`
-          : ''
-      }`}
+      href={join(props.base, props.slug ?? '')}
       className='no-underline hover:text-primary-700 transition-colors ease-in-out duration-50'>
-      <div id={headerAnchor} className='py-2 font-extrabold text-lg'>
+      <div className='py-2 font-extrabold text-lg'>
         {props.data ? props.data.title : props.header}
       </div>
     </Link>
   );
 }
-export function TOC2(props: Props) {
+export function TOC2(props: Header) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -108,7 +90,7 @@ export function TOC2(props: Props) {
     </Link>
   );
 }
-export function TOC3(props: Props) {
+export function TOC3(props: Header) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
