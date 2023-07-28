@@ -77,6 +77,7 @@ export default async function Page(props: DynamicRoute) {
                 horizontalLine={true}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
+                buttonType='button'
                 button={createButton(
                   join(props.params.category, page.replace('.mdx', ''))
                 )}

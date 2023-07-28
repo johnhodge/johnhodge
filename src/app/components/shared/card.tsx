@@ -129,14 +129,14 @@ export default function GlobalCard(props: GlobalCardSettings) {
         )}
         {props.button ? (
           <div className='self-auto'>
-            {props.buttonType != 'popover' ? (
-              <GlobalButton {...props.button} />
-            ) : (
+            {props.buttonType != 'button' ? (
               <GlobalPopover
                 button={props.button}
                 card={props}
                 body={props.body}
               />
+            ) : (
+              <GlobalButton {...props.button} />
             )}
           </div>
         ) : (

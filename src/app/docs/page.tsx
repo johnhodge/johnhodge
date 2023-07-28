@@ -80,6 +80,7 @@ export default async function Page() {
                 iconId={subPages[page].icon}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
+                buttonType='button'
                 button={createButton(join('/docs', page))}
               />
             </div>
