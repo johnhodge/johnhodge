@@ -1,0 +1,70 @@
+---
+title: 'STAR Analysis'
+excerpt: 'Situation, Task, Action, Result summaries describe projects succinctly.'
+icon: '5kxfpzEXHIPNSZVKHNZX9L'
+date: '2023-07-18T05:35:07.322Z'
+author:
+  firstName: John
+  lastName: Hodge
+---
+
+import GlobalCallout from '@/src/app/docs/components/callouts';
+
+Lorem ipsum dolor sit amet, `consectetur adipiscing` elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget.
+
+<GlobalCallout
+  message="
+It's worth noting that Joey's a fat bastard who [literally](https://#) no one likes
+"
+  type='alert'
+/>
+<GlobalCallout
+  message="
+It's worth noting that Joey's a fat *bastard* who literally no one likes
+
+> Here's a quote from someone about something.
+
+"
+type='note'
+/>
+
+```javascript
+return (
+  <div
+    className={`my-4 p-4 rounded-lg flex align-top gap-2 border ${
+      color[props.type]
+    }`}>
+    <span className='font-emoji'>{icon[props.type]}</span>
+    <div className='prose-p:m-0 prose-'>
+      <MDXRemote source={props.message} />
+    </div>
+  </div>
+);
+```
+
+<GlobalCallout
+  message="
+It's worth noting that `Joey's a fat` bastard who literally no one likes
+1. Praesent elementum facilisis leo vel fringilla. 
+2. Congue mauris rhoncus aenean vel. 
+3. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+"
+  type='success'
+/>
+<GlobalCallout
+  message= "**Notice**:
+
+It's worth noting that Joey's a fat bastard who literally no one likes.
+
+---
+
+- Praesent elementum facilisis leo vel fringilla.
+- Congue mauris rhoncus aenean vel.
+- Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+  "
+  type='warning'
+  />
+
+## Lorem Ipsum
+
+Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
