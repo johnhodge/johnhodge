@@ -75,8 +75,9 @@ export interface Person extends BasicPerson {
 
 export type DynamicRoute = {
   params: {
+    documentation: string;
+    category?: string;
     slug?: string;
-    category: string;
   };
 };
 
@@ -98,12 +99,12 @@ type AuthorData = {
   lastName: string;
 };
 
-export type SubPageData = {
+export type BasicPostData = {
   title: string;
   excerpt: string;
 };
 
-export interface PostData extends SubPageData {
+export interface PostData extends BasicPostData {
   icon: string;
   date: string;
   author: AuthorData;
@@ -112,6 +113,8 @@ export interface PostData extends SubPageData {
 
 export type TOCData = {
   post: PostData;
+  route: DynamicRoute;
+  rootDocTitle: string;
   folders: Record<string, TOCEnteries>;
 };
 
