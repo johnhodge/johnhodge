@@ -5,10 +5,16 @@ import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
+import { DynamicRoute } from '../types';
 
-const docsDirectoryPath = join(cwd(), 'documentation');
-export async function generateMetadata() {
-  const MDXFilePath = join(docsDirectoryPath, '_index.mdx');
+const rootDirectory = join(cwd(), 'documentation');
+
+export async function generateMetadata(props: DynamicRoute) {
+  const rootDocsDirectory = join(
+    rootDirectory,
+    props.params.documentation.replace('.mdx', '')
+  );
+  const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetDataContent(join(MDXFilePath));
   const metadata: Metadata = {
     title: data.title,
@@ -35,25 +41,31 @@ function createButton(link: string): GlobalButtonSettings {
   };
 }
 
-export default async function Page() {
+export default async function Page(props: DynamicRoute) {
+  console.log(props);
+  const rootDocsDirectory = join(
+    '/',
+    rootDirectory,
+    props.params.documentation
+  );
   const subPages: Record<string, SubPageData> = {};
-  const subPageDirs = GetSubFolders(docsDirectoryPath);
+  const subPageDirs = GetSubFolders(rootDocsDirectory);
   subPageDirs
     .filter((file: string) => file != '_index.mdx')
     .map((subPageDir: string) =>
-      GetSubFolders(join(docsDirectoryPath, subPageDir))
+      GetSubFolders(join(rootDocsDirectory, subPageDir))
         .filter((page) => page == '_index.mdx')
         .map(
           (subPage) =>
             (subPages[subPageDir] = {
               filename: subPage,
               title: GetDataContent(
-                join(docsDirectoryPath, subPageDir, subPage)
+                join(rootDocsDirectory, subPageDir, subPage)
               ).data.title,
               excerpt: GetDataContent(
-                join(docsDirectoryPath, subPageDir, subPage)
+                join(rootDocsDirectory, subPageDir, subPage)
               ).data.excerpt,
-              icon: GetDataContent(join(docsDirectoryPath, subPageDir, subPage))
+              icon: GetDataContent(join(rootDocsDirectory, subPageDir, subPage))
                 .data.icon,
             })
         )
@@ -62,12 +74,12 @@ export default async function Page() {
   return (
     <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-100 to-100%'>
       <Article
-        id={'docs'}
+        id={props.params.documentation}
         headline={
-          GetDataContent(join(docsDirectoryPath, '_index.mdx')).data.title
+          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.title
         }
         subhead={
-          GetDataContent(join(docsDirectoryPath, '_index.mdx')).data.excerpt
+          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.excerpt
         }>
         <div className='grid grid-cols-6 gap-4'>
           {Object.keys(subPages).map((page) => (
@@ -81,7 +93,7 @@ export default async function Page() {
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
                 buttonType='button'
-                button={createButton(join('/docs', page))}
+                button={createButton(join(props.params.documentation, page))}
               />
             </div>
           ))}
