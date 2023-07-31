@@ -1,18 +1,22 @@
 import type { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
-import Doc from '@/app/docs/(categories)/templates/doc';
-import { DynamicRoute, PostData, SubPageData } from '@/app/types';
+import Doc from '@/app/[documentation]/(categories)/templates/doc';
+import { DynamicRoute, PostData, BasicPostData } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
-const rootDocsDirectory = join(cwd(), 'documentation');
+const rootDirectory = join(cwd(), 'documentation');
 
 export async function generateMetadata(props: DynamicRoute) {
+  const rootDocsDirectory = join(
+    rootDirectory,
+    props.params.documentation.replace('.mdx', '')
+  );
   const MDXFileDirectory = join(
     rootDocsDirectory,
-    props.params.category.replace('.mdx', '')
+    props.params.category ?? ''.replace('.mdx', '')
   );
   const MDXFilePath = join(MDXFileDirectory, '_index.mdx');
   const { data } = GetDataContent(join(MDXFilePath));
@@ -35,8 +39,12 @@ function createButton(link: string): GlobalButtonSettings {
 }
 
 export default async function Page(props: DynamicRoute) {
-  const subPages: Record<string, SubPageData> = {};
-  const containingDirectory = join(rootDocsDirectory, props.params.category);
+  const subPages: Record<string, BasicPostData> = {};
+  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
+  const containingDirectory = join(
+    rootDocsDirectory,
+    props.params.category ?? ''
+  );
   const MDXFilePath: string = join(containingDirectory, `_index.mdx`);
   const { data } = GetDataContent(join(MDXFilePath));
   const post: PostData = {
@@ -50,7 +58,7 @@ export default async function Page(props: DynamicRoute) {
     },
     file: {
       rootDocsDirectory: rootDocsDirectory,
-      containingDirectory: join(rootDocsDirectory, props.params.category),
+      containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
       fileName: `${props.params.slug}.mdx`,
       MDXFilePath: MDXFilePath,
     },
@@ -79,7 +87,7 @@ export default async function Page(props: DynamicRoute) {
                 longDescription={subPages[page].excerpt}
                 buttonType='button'
                 button={createButton(
-                  join(props.params.category, page.replace('.mdx', ''))
+                  join(props.params.category ?? '', page.replace('.mdx', ''))
                 )}
               />
             </div>

@@ -1,16 +1,17 @@
-import Doc from '@/app/docs/(categories)/templates/doc';
+import Doc from '@/app/[documentation]/(categories)/templates/doc';
 import { DynamicRoute, PostData } from '@/app/types';
 import { GetDataContent } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
-const rootDocsDirectory = join(cwd(), 'documentation');
+const rootDirectory = join(cwd(), 'documentation');
 
 export async function generateMetadata(props: DynamicRoute) {
+  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
   const MDXFilePath: string = join(
     rootDocsDirectory,
-    props.params.category.replace('.mdx', ''),
+    props.params.category ?? ''.replace('.mdx', ''),
     `${props.params.slug}.mdx`
   );
   const { data } = GetDataContent(join(MDXFilePath));
@@ -21,9 +22,10 @@ export async function generateMetadata(props: DynamicRoute) {
 }
 
 export default function Page(props: DynamicRoute) {
+  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
   const MDXFilePath: string = join(
     rootDocsDirectory,
-    props.params.category.replace('.mdx', ''),
+    props.params.category ?? ''.replace('.mdx', ''),
     `${props.params.slug}.mdx`
   );
   const { data } = GetDataContent(join(MDXFilePath));
@@ -38,7 +40,7 @@ export default function Page(props: DynamicRoute) {
     },
     file: {
       rootDocsDirectory: rootDocsDirectory,
-      containingDirectory: join(rootDocsDirectory, props.params.category),
+      containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
       fileName: `${props.params.slug}.mdx`,
       MDXFilePath: MDXFilePath,
     },
