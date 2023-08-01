@@ -18,6 +18,16 @@ export async function generateMetadata(props: DynamicRoute) {
   const { data } = GetDataContent(join(MDXFilePath));
   const metadata: Metadata = {
     title: data.title,
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+      googleBot: {
+        index: false,
+        follow: false,
+        nocache: true,
+      },
+    },
   };
 
   return metadata;
