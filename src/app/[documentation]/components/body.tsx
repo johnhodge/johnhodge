@@ -34,7 +34,7 @@ export function H3(props: Header) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <LinkedHeader href={`${props.base}/#${headerAnchor}`}>
+    <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
       <h3 id={headerAnchor} className='scroll-mt-16 font-black'>
         {props.header}
       </h3>
@@ -49,7 +49,7 @@ export function H2(props: Header) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <LinkedHeader href={`${props.base}/#${headerAnchor}`}>
+    <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
       <h2 id={headerAnchor} className='scroll-mt-16 font-black'>
         {props.header}
       </h2>

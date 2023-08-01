@@ -97,7 +97,7 @@ export default function Doc(props: DynamicTemplate) {
         route={props.route}
         rootDocTitle={rootDocTitle}
       />
-      <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline md:col-span-7'>
+      <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline before:prose-code:hidden after:prose-code:hidden md:col-span-7'>
         <h1>{data.title}</h1>
         <MDXRemote
           source={content}
@@ -162,6 +162,9 @@ export default function Doc(props: DynamicTemplate) {
                     )}
                   />
                 ),
+                h4: () => null,
+                h5: () => null,
+                h6: () => null,
                 hr: () => null,
                 img: () => null,
                 li: () => null,
