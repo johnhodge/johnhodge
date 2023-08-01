@@ -16,11 +16,11 @@ export default function GlobalCallout(props: CalloutData) {
 
   return (
     <div
-      className={`my-4 p-4 rounded-lg flex align-top gap-2 border ${
+      className={`p-4 my-4 rounded-lg flex align-top gap-2 border ${
         color[props.type]
       }`}>
       <span className='font-emoji'>{icon[props.type]}</span>
-      <div className='prose-slate prose-p:m-0 prose-hr:my-4 prose-a:text-blue-700'>
+      <div className='prose-slate prose-p:m-0 prose-p:mb-4 prose-hr:my-4 prose-a:text-blue-700 last-of-type:prose-p:mb-0 last-of-type:prose-li:mb-0 last-of-type:prose-ul:mb-0'>
         <MDXRemote source={props.message} />
       </div>
     </div>
