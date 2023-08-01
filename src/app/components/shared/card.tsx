@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import type { MediaImage } from '@/app/types';
 import GlobalPopover from './popover';
-import { GlobalButtonSettings } from './button';
-import MarkUp from '@/app/utils/markup';
+import GlobalButton, { GlobalButtonSettings } from './button';
+import MarkUp from '@/utils/markup';
+import GetAsset from '@/utils/asset';
 
 export type GlobalCardSettings = {
   logo?: MediaImage;
   icon?: MediaImage;
+  iconId?: string;
   iconAlign?: 'start' | 'center' | 'end';
   header?: string;
   subheader?: string;
@@ -14,6 +16,7 @@ export type GlobalCardSettings = {
   longDescription?: string;
   body?: string;
   button?: GlobalButtonSettings;
+  buttonType?: 'button' | 'popover';
   cta?: string;
   verticalLine: boolean;
   horizontalLine: boolean;
@@ -49,7 +52,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
 
       <div className='flex flex-col gap-4'>
         <hgroup className='flex gap-2'>
-          {props.icon?.url ? (
+          {props.icon ? (
             <figure
               className={`flex flex-col w-icon min-w-icon justify-${
                 props.iconAlign ? props.iconAlign : 'center'
@@ -70,13 +73,20 @@ export default function GlobalCard(props: GlobalCardSettings) {
                 dangerouslySetInnerHTML={{ __html: props.icon.description }}
               />
             </figure>
+          ) : props.iconId ? (
+            <GetAsset
+              figcaption={false}
+              assetId={props.iconId}
+              priority={true}
+              size='fit'
+            />
           ) : (
             ''
           )}
           {props.subheader || props.shortDescription ? (
             <div
               className={`flex flex-col justify-center gap-4 ${
-                props.verticalLine ? 'border-l border-gray-950 pl-2' : ''
+                props.verticalLine ? 'border-l border-gray-900 pl-2' : ''
               }`}>
               {props.subheader ? (
                 <h3
@@ -101,7 +111,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
           )}
         </hgroup>
 
-        {props.horizontalLine ? <hr className='border-gray-950' /> : ''}
+        {props.horizontalLine ? <hr className='border-gray-900' /> : ''}
         {props.header ? (
           <h2
             className='text-2xl font-black
@@ -119,11 +129,15 @@ export default function GlobalCard(props: GlobalCardSettings) {
         )}
         {props.button ? (
           <div className='self-auto'>
-            <GlobalPopover
-              button={props.button}
-              card={props}
-              body={props.body}
-            />
+            {props.buttonType != 'button' ? (
+              <GlobalPopover
+                button={props.button}
+                card={props}
+                body={props.body}
+              />
+            ) : (
+              <GlobalButton {...props.button} />
+            )}
           </div>
         ) : (
           ''

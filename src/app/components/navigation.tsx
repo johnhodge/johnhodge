@@ -25,7 +25,7 @@ export default function Navigation() {
   return (
     <div className='relative font-bold'>
       <div className='relative h-16'>
-        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-30'>
+        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-30 lg:px-3'>
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
@@ -50,19 +50,19 @@ export default function Navigation() {
                 cx='10.2461'
                 cy='2.49236'
                 r='1.75384'
-                className='fill-gray-950'
+                className='fill-gray-900'
               />
               <circle
                 cx='10.2461'
                 cy='12.0001'
                 r='1.75384'
-                className='fill-gray-950'
+                className='fill-gray-900'
               />
               <circle
                 cx='10.2461'
                 cy='21.5077'
                 r='1.75384'
-                className='fill-gray-950'
+                className='fill-gray-900'
               />
             </svg>
           </div>
@@ -88,7 +88,7 @@ export default function Navigation() {
           </div>
         </header>
       </div>
-      <div className='relative z-40 overflow-hidden'>
+      <div className='relative z-40 overflow-hidden md:hidden'>
         <nav
           className={`${
             !click ? 'translate-x-full ' : 'translate-x-0 '
@@ -107,7 +107,7 @@ export default function Navigation() {
                 strokeWidth='4'
                 strokeLinecap='round'
                 strokeLinejoin='round'
-                className='stroke-gray-950'
+                className='stroke-gray-900'
               />
             </g>
             <defs>
@@ -128,7 +128,7 @@ export default function Navigation() {
               </li>
             ))}
             <li>
-              <hr className='border-gray-950' />
+              <hr className='border-gray-900' />
             </li>
             <li onClick={handleClick}>
               <GlobalButton

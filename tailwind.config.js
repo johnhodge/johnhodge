@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        emoji: ['Apple Color Emoji'],
+        mono: ['var(--firaCode)'],
+      },
       spacing: {
         icon: '3rem',
       },
@@ -45,5 +49,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

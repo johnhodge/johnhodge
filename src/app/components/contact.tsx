@@ -1,7 +1,7 @@
 import type { Person } from '../types';
 import Article from '../templates/article';
 import ContactForm from './form';
-import GetAsset from '../utils/asset';
+import GetAsset from '../../utils/asset';
 
 export default async function Contact(data: Person) {
   return (

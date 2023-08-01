@@ -1,13 +1,15 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Inter, Fira_Code } from 'next/font/google';
 import { GetSiteMeta } from './graphql.query';
 import { Person } from './types';
 import { Metadata } from 'next';
 import Navigation from './components/navigation';
-import GetAsset from './utils/asset';
+import GetAsset from '../utils/asset';
 import Link from 'next/link';
 import Script from 'next/script';
+
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
+const firaCode = Fira_Code({ subsets: ['latin-ext'], variable: '--firaCode' });
 
 export type HeaderData = {
   Authorization: string;
@@ -39,7 +41,10 @@ export async function generateMetadata() {
 
   const metadata: Metadata = {
     metadataBase: new URL('https://johnhodge.com'),
-    title: title,
+    title: {
+      template: `%s | ${data.firstName} ${data.lastName}`,
+      default: sanitizedHeadline, // a default is required when creating a template
+    },
     description: sanitizedHeadline,
     openGraph: {
       type: 'website',
@@ -67,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P34JZK')`}
       </Script>
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${firaCode.variable}`}>
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe

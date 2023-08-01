@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type PersonMeta = {
   firstName: string;
   lastName: string;
@@ -70,3 +72,53 @@ export interface Person extends BasicPerson {
   clients: { items: [Clients] };
   testimonials: { items: [Testimonials] };
 }
+
+export type DynamicRoute = {
+  params: {
+    documentation: string;
+    category?: string;
+    slug?: string;
+  };
+};
+
+export type DynamicTemplate = {
+  route: DynamicRoute;
+  children?: ReactNode;
+  post: PostData;
+};
+
+export type FileData = {
+  rootDocsDirectory: string;
+  containingDirectory: string;
+  fileName: string;
+  MDXFilePath: string;
+};
+
+type AuthorData = {
+  firstName: string;
+  lastName: string;
+};
+
+export type BasicPostData = {
+  title: string;
+  excerpt: string;
+};
+
+export interface PostData extends BasicPostData {
+  icon: string;
+  date: string;
+  author: AuthorData;
+  file: FileData;
+}
+
+export type TOCData = {
+  post: PostData;
+  route: DynamicRoute;
+  rootDocTitle: string;
+  folders: Record<string, TOCEnteries>;
+};
+
+export type TOCEnteries = {
+  root: PostData;
+  subPages: PostData[];
+};

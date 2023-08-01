@@ -1,0 +1,163 @@
+---
+title: 'App Store Data'
+excerpt: 'Project I led as a Product Manager to consistently and reliably access canonical app store data values'
+icon: '01qZLsm2HSY1esaeCmVycV'
+date: '2023-07-31T23:56:06.452Z'
+author:
+  firstName: John
+  lastName: Hodge
+---
+
+import GlobalCallout from '@/src/app/docs/components/callouts';
+
+## Key Terms
+
+- **Bundle**: Application ID located in the RTB request at `app.bundle`.
+- **storeUrl**: Application page URL on the app store located in the RTB request at `app.storeurl` (I’m using camel case because I find it easier to read).
+- **Canonical store data**: The store data from the app store page.
+- **Canonical bundle**: The bundle ID that appears on the final resolved page. This value comes from a variety of locations depending on the app store. In this document, I’ll use `154157` pulled from Roku via the `<meta name="appstore:bundle_id" content="154157">` tag.
+- **Canonical storeUrl**: The app store URL on the final resolved page (after any redirects if they exist). This is the URL in the `canonical` meta tag. In this document, I’ll use this URL as an example:
+
+```
+https://channelstore.roku.com/details/059720877140ff1005a7044cc02a4262/watch-tnt
+```
+
+- **Variation data**: Data received in the bid request (usually `bundle` or `storeUrl`) that isn’t canonical or maliciously incorrect (it’s from a reputable source and isn’t IVT). We consider this data to represent premium inventory even though it might not follow the naming convention in the IAB spec exactly.
+
+<GlobalCallout
+  message='
+**Additional context**
+
+Some sellers represented their inventory for programmatic sales before the IAB spec was announced. For these sellers, changing the identifier used to represent their inventory can introduce a point of failure that could cost them a lot of money.
+
+Some sellers intentionally don’t use the canonical app store data because they don’t want buyers to cherry pick apps.
+
+It’s unlikely these orgs will update their IDs to match the spec, so we need our product to accommodate variation data.
+'
+type='success'
+/>
+
+## STAR Analysis
+
+This STAR analysis (situation, task, action, result) explains the product development work involved in creating an app store data crawler.
+
+### Situation
+
+<GlobalCallout message='Give context about the problem.' type='note' />
+
+Our system looks for `bundle`'s in the incoming request, that bundle is mapped to a publisher, and the publisher is targeted in the front-end. If a bundle is not mapped to a publisher, that inventory cannot be activated against.
+
+---
+
+Incoming data can appear differently from different publishers and sellers.
+
+- Some sellers intentionally show a fake `bundle` to represent all their inventory
+- Some sellers include malformed `bundle`’s either from legacy sales pipelines or on accident. A lot of this data is set manually in an ad server by a person, sometimes they’re just copying and pasting from a spreadsheet, there’s plenty of room for accidents.
+- It’s common for a `bundle` to have requests with multiple different `storeUrl`'s on accident (malformed `storeUrl`).
+
+This lack of data integrity makes it hard to scale how we access inventory since associating a canonical `bundle` and a publisher could miss many malformed `bundle`'s. Likewise, fully manual associations between a malformed `bundle` to a publisher can be labor intensive and error prone.
+
+To make matters more complicated, many `storeUrl`’s may be associated with one `bundle` (malformed or canonical). This can make it difficult to programmatically assign relationships accurately since determining the correct `bundle` and `storeUrl` association can be challenging. This is especially true when the `bundle` is an arbitrary ID. For example, if we see that requests for `bundle` `154157` can contain any one of several `storeUrls`, it’s hard to programmatically determine the correct `storeUrl` with any reasonable accuracy.
+
+As one more added complexity, if these associations have platform-wide impacts, any changes would be realized across the entire system (in the front-end, over API reports feeds, and in decisioning engines). Sensitivities like this, coupled with the fragile nature of data integrity, makes it nearly impossible to fully automate a solution safely. Some user intervention is required, but too much can make it preventatively difficult to create mappings quickly.
+
+This product was created alongside another product for managing publisher identities. While that tool enabled other teams to solve publisher identity resolution issues (instead of product managers and engineers), it didn’t necessarily help the users figure out which specific publisher should be mapped to a `bundle`. It also didn’t suggest potentially missing pub/bundle mappings.
+
+### Task
+
+<GlobalCallout
+  message='Describe what we needed to do to solve the problem.'
+  type='note'
+/>
+
+- Build a POC of a data gathering system that successfully captures and persists canonical app store data.
+
+<GlobalCallout
+  message='
+**Fun fact**
+I built this POC in Python, persisted the data in a text file, and submitted a PR to the corporate GitHub account (it’s probably still there) that explained how it works and shared supporting confluence docs. The VP of ENG reviewed it and in turn paired me with some dedicated engineers to build the full version in Go.
+'
+  type='success'
+/>
+
+- Build an automated system that gathers and persists raw canonical app store data from the stores.
+- Build a program that compares the canonical app store data against the data we’re receiving in the request and associate variation and canonical data.
+- Create a dashboard that uses the associated variation and canonical data to suggest mappings between `bundle`'s and publishers where one might be missing.
+- Make the export from the dashboard follow the same spec as the ingest feature used for managing publisher identities so users can easily export recommended associations from the dashboard and ingest them into the publisher identities platform to generate mappings at scale.
+
+### Action
+
+<GlobalCallout message='Explain how we solved the problem.' type='note' />
+
+My team (Supply Products) was responsible for creating and managing the dashboard that other teams would use to fix missing pub/bundle associations.
+
+For a visual, here’s roughly what the program architecture looked like. The items in orange represent tooling my team owned.
+
+![App Store Data Crawler](/img/app_store_data_crawler.svg)
+
+<GlobalCallout
+  message='
+**Notice**
+This diagram is *extremely* simplified for brevity and to comply with confidentiality. Most (if not all) of the squares in the app store crawler program are made up of several services.
+'
+  type='alert'
+/>
+
+#### Capturing and classifying canonical data and associating variation data with it
+
+- `storeUrl`'s were sourced from the incoming bid request data by way of internal logs with a scheduled query that I wrote and ENG tweaked, finalized, and tied to a storage bucket. This query included the `storeUrl`, `bundle`, and an aggregation of requests received for those combinations.
+- When a new file was dropped on the bucket, a pub/sub notification would go out to the main program that a new file was available.
+- This would then trigger the crawlers to request the URLs contained in the CSV.
+
+  - For Roku, we needed to accommodate some interesting behavior.
+
+    - Being as they use React with client-side hydration, we had to pause our crawler until certain page elements were in view.
+    - In the bid requests, it was common for us to receive a `storeUrl` like this:
+
+    ```
+    https://channelstore.roku.com/details/154157
+    ```
+
+    (`154157` is the `bundle` ID for the Watch TNT app)
+
+    The Roku servers would redirect this page to the canonical url:
+
+    ```
+    https://channelstore.roku.com/details/059720877140ff1005a7044cc02a4262/watch-tnt
+    ```
+
+    - It was very common for this redirect to fail and send our crawler to the wrong page. To combat this, we decided to not accept the first page our crawler resolved, and instead kept placing calls until we got 3 consecutive identical values in the `canonical` meta tag. We had thresholds for errors so we wouldn’t keep hitting a URL indefinitely.
+
+- If/when the page resolved we would push raw crawled data to a table of logs.
+- We would check if the resolved URL was the same as the one in the request. If it was, then we would label the one in the request as the canonical URL. If it wasn’t, then we would associate it as a variation of the canonical. Remember, the URL in the request resolved to this page 3 consecutive times. The app store itself is saying that they expect the URL in the request to represent this final URL, so we felt confident calling this the canonical URL.
+- We would then check if the `bundle` was the same as the one in the request. If it was, then we would label it is as the canonical `bundle` and if it wasn’t, then we would associate it as a variation of the canonical.
+- In addition to the canonical and variation data associations, we also pulled down other information about the apps like name, developer URL, description, rating, logos, downloads, genre, and any other data available.
+- This system ran asynchronously alongside the bidder and the rest of the platform. App store data doesn’t change that often, so we didn’t hit every URL that came through (we saw about 5-10M QPS). Instead, we applied a sample and limited calls if a URL already exists in our system. This way we could keep our app store data up-to-date without incurring high processing fees. Running our program parallel to our bidder kept our program out of the way of bidder functions that need to run in single digit milliseconds. This is the main reason we were able to run consecutive calls to the same URL (for Roku - described above) without having to worry about processing times.
+
+#### Use canonical data and variation data in dashboards
+
+- By this point, the hard part was mostly over.
+- Now that we have canonical `bundle` and `storeUrl` values and their variations in a database, we need to raise that data up to the user.
+- Our data set was stored in BigQuery. This system would duplicate rows and didn’t create nested arrays for variations. In other words, the output of two crawl jobs for the same page with different variation values might be represented like this:
+
+```
+| canon_bundle | variation_bundle   | canon_url                  | variation_url           | created_at   |
+| ------------ | ------------------ | -------------------------- | ----------------------- | ------------ |
+| 154157       | com.roku.tnt       | roku.com/details/watch-tnt | roku.com/details/154157 | 2023-07-27 … |
+| 154157       | com.roku.watch-tnt | roku.com/details/watch-tnt | roku.com/details/tnt    | 2023-07-27 … |
+```
+
+- I created a view that deduped records by using a window function to grab the data from the most recent crawl of a canonical `bundle`. Then I aggregated nested arrays of variation data for a canonical `bundle` (I did this for both `bundle` and `storeUrl` variations).
+- I didn’t push this view directly to the dashboard but instead used it to inform potentially missing relationships using logic similar to this:
+  - Assuming our existing mappings are reliable:
+    - If a canonical `bundle` is mapped to a publisher, then it seems reasonable to recommend that all of the `bundle` variations should be mapped to the same publisher.
+    - If a variation `bundle` is mapped to a publisher, then it seems reasonable to recommend that its canonical `bundle` should be mapped to the same publisher. And if that canonical `bundle` should be mapped to a publisher, then all of its `bundle` variations should be mapped to the publisher too.
+- The presentation of this data on the dashboard matched the CSV spec used on the publisher identity bulk ingest tool. This allowed the user to filter the dashboard for unmapped `bundle`'s that have a recommended publisher, review it for accuracy, export it to a CSV, making any changes as needed, and reimport the updated CSV into the publisher identity bulk ingest tool.
+
+### Result
+
+<GlobalCallout message='Explain the outcome of the solution.' type='note' />
+
+- The proportion of our inventory eligible for activation increased by more than 3x in just over a quarter after this tool became available.
+- Engineering and Product were no longer involved in assigning relationships between publishers and bundles. This freed them up to work on other products.
+- Teams responsible for managing these associations were able to do so with sensible recommendations based on existing associations. This allowed them to create more associations faster by avoiding time wasted trying to figure out what `bundle`'s should be mapped to what publishers.
