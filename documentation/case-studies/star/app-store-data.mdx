@@ -1,6 +1,6 @@
 ---
-title: 'App Store Data'
-excerpt: 'Project I led as a Product Manager to consistently and reliably access canonical app store data values'
+title: 'App Store Data Crawler'
+excerpt: 'This study discusses how we overcame inconsistent and outdated application data by decoupling bidding strategies from legacy sales configs.'
 icon: '01qZLsm2HSY1esaeCmVycV'
 date: '2023-07-31T23:56:06.452Z'
 author:
@@ -10,7 +10,14 @@ author:
 
 import GlobalCallout from '@/src/app/docs/components/callouts';
 
+This study discusses how we overcame inconsistent and outdated application data by decoupling bidding strategies from legacy sales configs.
+
 ## Key Terms
+
+<GlobalCallout
+  message="I don't always use Key Terms, but this study will be using these phrases a lot, so it'll be helpful to establish a common vocabulary."
+  type='note'
+/>
 
 - **Bundle**: Application ID located in the RTB request at `app.bundle`.
 - **storeUrl**: Application page URL on the app store located in the RTB request at `app.storeurl` (I’m using camel case because I find it easier to read).
@@ -52,16 +59,20 @@ Our system looks for `bundle`'s in the incoming request, that bundle is mapped t
 Incoming data can appear differently from different publishers and sellers.
 
 - Some sellers intentionally show a fake `bundle` to represent all their inventory
-- Some sellers include malformed `bundle`’s either from legacy sales pipelines or on accident. A lot of this data is set manually in an ad server by a person, sometimes they’re just copying and pasting from a spreadsheet, there’s plenty of room for accidents.
+- Some sellers include malformed `bundle`’s either from legacy sales pipelines or on accident. A lot of this data is set manually in an ad server by a person, sometimes they’re just copying and pasting from a spreadsheet, so there’s plenty of room for accidents.
 - It’s common for a `bundle` to have requests with multiple different `storeUrl`'s on accident (malformed `storeUrl`).
 
 This lack of data integrity makes it hard to scale how we access inventory since associating a canonical `bundle` and a publisher could miss many malformed `bundle`'s. Likewise, fully manual associations between a malformed `bundle` to a publisher can be labor intensive and error prone.
 
-To make matters more complicated, many `storeUrl`’s may be associated with one `bundle` (malformed or canonical). This can make it difficult to programmatically assign relationships accurately since determining the correct `bundle` and `storeUrl` association can be challenging. This is especially true when the `bundle` is an arbitrary ID. For example, if we see that requests for `bundle` `154157` can contain any one of several `storeUrls`, it’s hard to programmatically determine the correct `storeUrl` with any reasonable accuracy.
+---
+
+To make matters more complicated, many `storeUrl`’s may be associated with one `bundle` (malformed or canonical). This can make it difficult to programmatically assign relationships accurately since determining the correct `bundle` and `storeUrl` association can be challenging. This is especially true when the `bundle` is an arbitrary ID.
+
+For example, if we see that requests for `bundle` `154157` can contain several different `storeUrls`, it’s hard to programmatically determine which `storeUrl` is the correct one with any reasonable accuracy.
+
+---
 
 As one more added complexity, if these associations have platform-wide impacts, any changes would be realized across the entire system (in the front-end, over API reports feeds, and in decisioning engines). Sensitivities like this, coupled with the fragile nature of data integrity, makes it nearly impossible to fully automate a solution safely. Some user intervention is required, but too much can make it preventatively difficult to create mappings quickly.
-
-This product was created alongside another product for managing publisher identities. While that tool enabled other teams to solve publisher identity resolution issues (instead of product managers and engineers), it didn’t necessarily help the users figure out which specific publisher should be mapped to a `bundle`. It also didn’t suggest potentially missing pub/bundle mappings.
 
 ### Task
 
