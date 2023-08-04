@@ -3,6 +3,9 @@ import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: true,
+  },
   poweredByHeader: false,
   images: {
     loader: 'custom',
