@@ -122,3 +122,10 @@ export type TOCEnteries = {
   root: PostData;
   subPages: PostData[];
 };
+
+export type SendEmailSettings = {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+};
