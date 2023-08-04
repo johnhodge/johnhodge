@@ -1,5 +1,9 @@
 'use client';
-import { TOC2, TOC3, TOCHome } from '@/app/[documentation]/components/body';
+import {
+  TOC2,
+  TOC3,
+  TOCHome,
+} from '@/app/docs/[documentation]/components/body';
 import { TOCData } from '@/app/types';
 import { join } from 'path';
 import { useState } from 'react';
@@ -58,7 +62,7 @@ export default function GlobalTOC(props: TOCData) {
               <TOCHome
                 key='documentation-home'
                 header={`${props.rootDocTitle} Home`}
-                base={join('/', props.route.params.documentation)}
+                base={join('/docs', props.route.params.documentation)}
                 slug='/'
               />
               {Object.keys(props.folders).map((dir) => (
@@ -66,7 +70,11 @@ export default function GlobalTOC(props: TOCData) {
                   <span onClick={handleClick}>
                     <TOC2
                       key={dir}
-                      base={join('/', props.route.params.documentation, dir)}
+                      base={join(
+                        '/docs',
+                        props.route.params.documentation,
+                        dir
+                      )}
                       data={props.folders[dir].root}
                     />
                   </span>
@@ -77,7 +85,11 @@ export default function GlobalTOC(props: TOCData) {
                       onClick={handleClick}>
                       <TOC3
                         key={join(subPage.file.fileName)}
-                        base={join('/', props.route.params.documentation, dir)}
+                        base={join(
+                          '/docs',
+                          props.route.params.documentation,
+                          dir
+                        )}
                         slug={subPage.file.fileName}
                         data={subPage}
                       />
@@ -96,21 +108,21 @@ export default function GlobalTOC(props: TOCData) {
             <TOCHome
               key='documentation-home'
               header={`${props.rootDocTitle} Home`}
-              base={join('/', props.route.params.documentation)}
+              base={join('/docs', props.route.params.documentation)}
               slug='/'
             />
             {Object.keys(props.folders).map((dir) => (
               <div key={dir}>
                 <TOC2
                   key={dir}
-                  base={join('/', props.route.params.documentation, dir)}
+                  base={join('/docs', props.route.params.documentation, dir)}
                   data={props.folders[dir].root}
                 />
 
                 {props.folders[dir].subPages.map((subPage) => (
                   <TOC3
                     key={join(subPage.file.fileName)}
-                    base={join('/', props.route.params.documentation, dir)}
+                    base={join('/docs', props.route.params.documentation, dir)}
                     slug={subPage.file.fileName}
                     data={subPage}
                   />

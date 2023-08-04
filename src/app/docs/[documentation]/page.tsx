@@ -5,7 +5,7 @@ import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import { DynamicRoute } from '../types';
+import { DynamicRoute } from '../../types';
 
 const rootDirectory = join(cwd(), 'documentation');
 

@@ -1,6 +1,6 @@
-import { H2, H3, TOC2, TOC3 } from '@/app/[documentation]/components/body';
-import GlobalCallout from '@/app/[documentation]/components/callouts';
-import GlobalTOC from '@/app/[documentation]/components/toc';
+import { H2, H3, TOC2, TOC3 } from '@/app/docs/[documentation]/components/body';
+import GlobalCallout from '@/app/docs/[documentation]/components/callouts';
+import GlobalTOC from '@/app/docs/[documentation]/components/toc';
 import { DynamicTemplate, TOCEnteries } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
@@ -106,6 +106,7 @@ export default function Doc(props: DynamicTemplate) {
               <H2
                 header={children}
                 base={join(
+                  'docs',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
@@ -116,6 +117,7 @@ export default function Doc(props: DynamicTemplate) {
               <H3
                 header={children}
                 base={join(
+                  'docs',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
@@ -144,7 +146,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC2
                     header={children}
                     base={join(
-                      '/',
+                      '/docs',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''
@@ -155,7 +157,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC3
                     header={children}
                     base={join(
-                      '/',
+                      '/docs',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''
