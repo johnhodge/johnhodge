@@ -1,9 +1,9 @@
 'use client';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import SendEmail from '@/app/email';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import errorMap from 'zod/lib/locales/en';
 import mixpanel from 'mixpanel-browser';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
   persistence: 'localStorage',
@@ -51,7 +51,7 @@ const thanks: Array<string> = [
   "I'll be in touch as soon as I get back from grabbing a coffee.",
 ];
 
-const FormValues = z.object({
+export const FormValues = z.object({
   firstName: z.string().min(1, { message: 'First name is a required field.' }),
   lastName: z.string().min(1, { message: 'Last name is a required field.' }),
   companyName: z.optional(z.string()),
@@ -72,7 +72,7 @@ const FormValues = z.object({
   message: z.optional(z.string()),
 });
 
-type FormValueTypes = z.infer<typeof FormValues>;
+export type FormValueTypes = z.infer<typeof FormValues>;
 
 export default function ContactForm() {
   const {
@@ -83,6 +83,8 @@ export default function ContactForm() {
     resolver: zodResolver(FormValues),
   });
   const onSubmit: SubmitHandler<FormValueTypes> = (data) => {
+    SendEmail(data);
+
     mixpanel.identify(data.email);
     mixpanel.track('contact_form_submission', {
       distinct_id: data.email,
