@@ -123,6 +123,19 @@ export type TOCEnteries = {
   subPages: PostData[];
 };
 
+export type EmailData = {
+  recipient: {
+    firstName: string;
+    email: string;
+  };
+  sender: {
+    name: string;
+    email: string;
+  };
+  subject: string;
+  previewText: string;
+};
+
 export type SendEmailSettings = {
   from: string;
   to: string;
