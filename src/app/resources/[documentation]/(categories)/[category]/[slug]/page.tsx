@@ -1,4 +1,4 @@
-import Doc from '@/app/docs/[documentation]/(categories)/templates/doc';
+import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
 import { DynamicRoute, PostData } from '@/app/types';
 import { GetDataContent } from '@/utils/mdx';
 import { Metadata } from 'next';

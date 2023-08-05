@@ -1,6 +1,11 @@
-import { H2, H3, TOC2, TOC3 } from '@/app/docs/[documentation]/components/body';
-import GlobalCallout from '@/app/docs/[documentation]/components/callouts';
-import GlobalTOC from '@/app/docs/[documentation]/components/toc';
+import {
+  H2,
+  H3,
+  TOC2,
+  TOC3,
+} from '@/app/resources/[documentation]/components/body';
+import GlobalCallout from '@/app/resources/[documentation]/components/callouts';
+import GlobalTOC from '@/app/resources/[documentation]/components/toc';
 import { DynamicTemplate, TOCEnteries } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
@@ -143,7 +148,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC2
                     header={children}
                     base={join(
-                      '/docs',
+                      '/resources',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''
@@ -154,7 +159,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC3
                     header={children}
                     base={join(
-                      '/docs',
+                      '/resources',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''

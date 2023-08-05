@@ -3,7 +3,7 @@ import {
   TOC2,
   TOC3,
   TOCHome,
-} from '@/app/docs/[documentation]/components/body';
+} from '@/app/resources/[documentation]/components/body';
 import { TOCData } from '@/app/types';
 import { join } from 'path';
 import { useState } from 'react';
@@ -62,7 +62,7 @@ export default function GlobalTOC(props: TOCData) {
               <TOCHome
                 key='documentation-home'
                 header={`${props.rootDocTitle} Home`}
-                base={join('/docs', props.route.params.documentation)}
+                base={join('/resources', props.route.params.documentation)}
                 slug='/'
               />
               {Object.keys(props.folders).map((dir) => (
@@ -71,7 +71,7 @@ export default function GlobalTOC(props: TOCData) {
                     <TOC2
                       key={dir}
                       base={join(
-                        '/docs',
+                        '/resources',
                         props.route.params.documentation,
                         dir
                       )}
@@ -86,7 +86,7 @@ export default function GlobalTOC(props: TOCData) {
                       <TOC3
                         key={join(subPage.file.fileName)}
                         base={join(
-                          '/docs',
+                          '/resources',
                           props.route.params.documentation,
                           dir
                         )}
@@ -108,21 +108,29 @@ export default function GlobalTOC(props: TOCData) {
             <TOCHome
               key='documentation-home'
               header={`${props.rootDocTitle} Home`}
-              base={join('/docs', props.route.params.documentation)}
+              base={join('/resources', props.route.params.documentation)}
               slug='/'
             />
             {Object.keys(props.folders).map((dir) => (
               <div key={dir}>
                 <TOC2
                   key={dir}
-                  base={join('/docs', props.route.params.documentation, dir)}
+                  base={join(
+                    '/resources',
+                    props.route.params.documentation,
+                    dir
+                  )}
                   data={props.folders[dir].root}
                 />
 
                 {props.folders[dir].subPages.map((subPage) => (
                   <TOC3
                     key={join(subPage.file.fileName)}
-                    base={join('/docs', props.route.params.documentation, dir)}
+                    base={join(
+                      '/resources',
+                      props.route.params.documentation,
+                      dir
+                    )}
                     slug={subPage.file.fileName}
                     data={subPage}
                   />
