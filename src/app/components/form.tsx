@@ -1,4 +1,5 @@
 'use client';
+import { EmailData } from '@/app/types';
 import SendEmail from '@/utils/email';
 import { zodResolver } from '@hookform/resolvers/zod';
 import mixpanel from 'mixpanel-browser';
@@ -83,7 +84,19 @@ export default function ContactForm() {
     resolver: zodResolver(FormValues),
   });
   const onSubmit: SubmitHandler<FormValueTypes> = (data) => {
-    SendEmail(data);
+    const emailConfig: EmailData = {
+      recipient: {
+        firstName: data.firstName,
+        email: data.email,
+      },
+      sender: {
+        name: 'John Hodge',
+        email: 'info@johnhodge.coom',
+      },
+      previewText: `Hey ${data.firstName} I got your message and will follow up shortly.`,
+      subject: `Thanks for reaching out, ${data.firstName}!`,
+    };
+    SendEmail(emailConfig);
 
     mixpanel.identify(data.email);
     mixpanel.track('contact_form_submission', {

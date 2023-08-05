@@ -1,9 +1,10 @@
 'use client';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { EmailData } from '@/app/types';
+import SendEmail from '@/utils/email';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import errorMap from 'zod/lib/locales/en';
 import mixpanel from 'mixpanel-browser';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
   persistence: 'localStorage',
@@ -117,6 +118,20 @@ export default function ContactForm() {
     resolver: zodResolver(FormValues),
   });
   const onSubmit: SubmitHandler<FormValueTypes> = (data) => {
+    const emailConfig: EmailData = {
+      recipient: {
+        firstName: data.firstname,
+        email: data.email,
+      },
+      sender: {
+        name: 'John Hodge',
+        email: 'info@johnhodge.coom',
+      },
+      previewText: `Hey ${data.firstname} I got your request and will follow up shortly.`,
+      subject: 'Speaker request recieved',
+    };
+    SendEmail(emailConfig);
+
     mixpanel.identify(data.email);
     mixpanel.track('speaker_request_form_submission', {
       distinct_id: data.email,
