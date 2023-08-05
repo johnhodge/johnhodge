@@ -1,5 +1,5 @@
 'use client';
-import SendEmail from '@/app/email';
+import SendEmail from '@/utils/email';
 import { zodResolver } from '@hookform/resolvers/zod';
 import mixpanel from 'mixpanel-browser';
 import { SubmitHandler, useForm } from 'react-hook-form';
