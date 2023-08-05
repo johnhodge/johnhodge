@@ -17,7 +17,6 @@ export async function generateMetadata(props: DynamicTemplate) {
 }
 
 export default function Doc(props: DynamicTemplate) {
-  console.log(props);
   const rootDir = props.post.file.rootDocsDirectory;
   const folders = GetSubFolders(rootDir).filter(
     (folder) => folder != '_index.mdx'
@@ -86,8 +85,6 @@ export default function Doc(props: DynamicTemplate) {
   const rootDocTitle = GetDataContent(
     join(props.post.file.rootDocsDirectory, '_index.mdx')
   ).data.title;
-  console.log(rootDocTitle);
-  console.log(props);
 
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6 border-b border-b-slate-800'>

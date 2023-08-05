@@ -14,6 +14,5 @@ export default async function SendEmail(props: FormValueTypes) {
     subject: `Thanks for reaching out ${props.firstName}`,
     html: emailHtml,
   };
-  console.log('Function triggered:', new Date());
-  sendgrid.send(options);
+  await sendgrid.send(options);
 }

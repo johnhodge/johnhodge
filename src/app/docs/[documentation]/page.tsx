@@ -52,7 +52,6 @@ function createButton(link: string): GlobalButtonSettings {
 }
 
 export default async function Page(props: DynamicRoute) {
-  console.log(props);
   const rootDocsDirectory = join(
     '/',
     rootDirectory,
