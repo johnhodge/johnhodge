@@ -1,4 +1,3 @@
-import { FormValueTypes } from '@/app/components/form';
 import {
   Body,
   Button,
@@ -13,8 +12,9 @@ import {
   Section,
   Text,
 } from '@react-email/components';
+import { EmailData } from '@/app/types';
 
-export function Email(props: FormValueTypes) {
+export function Email(props: EmailData) {
   const date: string = new Date().toISOString();
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -85,10 +85,7 @@ export function Email(props: FormValueTypes) {
   return (
     <Html>
       <Head />
-      <Preview>
-        Hey {props.firstName}, I received your message and will be in touch
-        soon.
-      </Preview>
+      <Preview>{props.previewText}</Preview>
 
       <Body style={main}>
         <Section style={main}>
@@ -104,7 +101,7 @@ export function Email(props: FormValueTypes) {
             <Section style={{ paddingBottom: '20px' }}>
               <Row>
                 <Text style={heading}>
-                  Thanks for reaching out, {props.firstName}!
+                  Thanks for reaching out, {props.recipient.firstName}!
                 </Text>
                 <Text style={paragraph}>
                   I’ve received your message and will be in touch shortly to set
