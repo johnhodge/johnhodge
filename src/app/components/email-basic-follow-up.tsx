@@ -19,6 +19,7 @@ export function Email(props: EmailData) {
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : `http://192.168.0.19:8800`;
+
   const main = {
     backgroundColor: '#ffffff',
     fontFamily:
@@ -27,8 +28,8 @@ export function Email(props: EmailData) {
 
   const container = {
     margin: '0 auto',
-    padding: '20px 0 48px',
-    width: '95%',
+    padding: '20px 0',
+    width: '98%',
     maxWidth: '580px',
   };
 
@@ -64,6 +65,7 @@ export function Email(props: EmailData) {
 
   const logo = {
     width: 'auto',
+    maxHeight: '50px',
     margin: 'auto',
   };
 
@@ -72,7 +74,7 @@ export function Email(props: EmailData) {
     margin: '20px 0',
   };
 
-  const row = {
+  const full = {
     width: '100%',
   };
 
@@ -93,11 +95,14 @@ export function Email(props: EmailData) {
             <Section>
               <Img
                 style={logo}
-                src={`${baseUrl}/img/outlined_icon.svg`}
+                src='https://www.johnhodge.com/img/email_fallback.png'
                 height={50}
                 width={50}
+                alt='John Hodge'
+                srcSet={'https://www.johnhodge.com/img/outlined_icon.svg'}
               />
             </Section>
+
             <Section style={{ paddingBottom: '20px' }}>
               <Row>
                 <Text style={heading}>
@@ -123,7 +128,7 @@ export function Email(props: EmailData) {
             </Section>
 
             <Section>
-              <Row style={row}>
+              <Row style={full}>
                 <Hr style={hr} />
                 <Link href={baseUrl} style={link}>
                   Website
@@ -138,9 +143,9 @@ export function Email(props: EmailData) {
             </Section>
 
             <Section>
-              <Row style={row}>
+              <Row style={full}>
                 <Hr style={hr} />
-                <Text style={footer}>Email triggered at {date}</Text>
+                <Text style={footer}>Event timestamp: {date}</Text>
               </Row>
             </Section>
           </Container>
