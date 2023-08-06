@@ -22,6 +22,7 @@ export function Email(props: EmailData) {
 
   const main = {
     backgroundColor: '#ffffff',
+    color: '#000000',
     fontFamily:
       '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
   };
@@ -37,23 +38,21 @@ export function Email(props: EmailData) {
     fontSize: '32px',
     lineHeight: '1.3',
     fontWeight: '700',
-    color: '#000000',
   };
 
   const paragraph = {
     fontSize: '18px',
     lineHeight: '1.4',
-    color: '#334155',
   };
 
   const link = {
     ...paragraph,
-    color: '#047857',
+    color: '#059669',
     display: 'block',
   };
 
   const button = {
-    backgroundColor: '#047857',
+    backgroundColor: '#059669',
     borderRadius: '8px',
     color: '#fff',
     fontSize: '18px',
@@ -80,7 +79,7 @@ export function Email(props: EmailData) {
 
   const footer = {
     color: '#64748b',
-    fontSize: '14px',
+    fontSize: '12px',
     marginBottom: '10px',
   };
 
@@ -99,7 +98,7 @@ export function Email(props: EmailData) {
                 height={50}
                 width={50}
                 alt='John Hodge'
-                srcSet={'https://www.johnhodge.com/img/outlined_icon.svg'}
+                srcSet='https://www.johnhodge.com/img/outlined_icon.svg'
               />
             </Section>
 
@@ -121,7 +120,7 @@ export function Email(props: EmailData) {
                   pY={16}
                   pX={32}
                   style={button}
-                  href='https://meetings.hubspot.com/john378'>
+                  href='https://pages.johnhodge.com/meetings/john378'>
                   Book time with me!
                 </Button>
               </Row>
