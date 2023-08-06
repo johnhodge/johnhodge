@@ -16,5 +16,9 @@ export default async function SendEmail(props: EmailData) {
     subject: props.subject,
     html: emailHtml,
   };
-  await sendgrid.send(options);
+  try {
+    await sendgrid.send(options);
+  } catch (error) {
+    console.error(JSON.stringify(error));
+  }
 }

@@ -125,7 +125,7 @@ export default function ContactForm() {
       },
       sender: {
         name: 'John Hodge',
-        email: 'info@johnhodge.coom',
+        email: 'info@johnhodge.com',
       },
       previewText: `Hey ${data.firstname} I got your request and will follow up shortly.`,
       subject: 'Speaker request recieved',
