@@ -43,17 +43,19 @@ React Email compiles TSX files to email-friendly HTML and plain text.
 
 ### SendGrid
 
-SendGrid is the system powering the email sending infrastructure. Emails are sent from the `johnhodge.com` domain, and hyperlinks in emails are routed through `email.johnhodge.com`. These hyperlinks add tracking functionality that sends measurement data back to SendGrid.
+SendGrid is the system powering the email-sending infrastructure. Emails are sent from the `johnhodge.com` domain, and hyperlinks in emails are routed through `email.johnhodge.com`. These hyperlinks add tracking functionality that sends measurement data back to SendGrid.
 
 The current use of SendGrid is specifically focused on sending emails over API from events in the website. There are no marketing campaigns sending emails.
 
 ## Logo src and srcset use
 
 The email currently in use has one image in it. The recipient&rsquo;s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
+The email currently in use has one image in it. The recipient&rsquo;s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
 
 To use the SVG, the email client needs to...:
 
 - support the SVG file type. SVG markup isn&rsquo;t being used, so the client has to be able to parse a file.
+- support `srcset`. The `src` attributes passes a PNG because that file type is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
 - support `srcset`. The `src` attributes passes a PNG because that file type is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
 
 Clients that support HTML should also support `src` attributes in `img` elements, so sending the PNG in the `src` attribute should act as a good default for all clients.
@@ -71,5 +73,7 @@ Both image types are visible on light or dark themes.
 ## Plain text support
 
 Emails are sent in both HTML and plain text for clients that can&rsquo;t render HTML.
+Emails are sent in both HTML and plain text for clients that can&rsquo;t render HTML.
 
+SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
 SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
