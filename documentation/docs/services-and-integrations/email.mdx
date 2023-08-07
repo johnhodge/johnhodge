@@ -39,7 +39,7 @@ const logo = {
 
 The object is applied to a `style` prop on a [React Email component](https://react.email/docs/components). This is similar to how you would apply a class to an HTML element in traditional web development. These components simplify the process of coding emails that render properly in the most common browsers.
 
-React Email compiles TSX files to email friendly HTML and plain text.
+React Email compiles TSX files to email-friendly HTML and plain text.
 
 ### SendGrid
 
@@ -54,7 +54,7 @@ The email currently in use has one image in it. The recipient&rsquo;s email clie
 To use the SVG, the email client needs to...:
 
 - support the SVG file type. SVG markup isn&rsquo;t being used, so the client has to be able to parse a file.
-- support `srcset`. The `src` attributes passes a PNG because that filetype is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
+- support `srcset`. The `src` attributes passes a PNG because that file type is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
 
 Clients that support HTML should also support `src` attributes in `img` elements, so sending the PNG in the `src` attribute should act as a good default for all clients.
 
@@ -72,4 +72,4 @@ Both image types are visible on light or dark themes.
 
 Emails are sent in both HTML and plain text for clients that can&rsquo;t render HTML.
 
-SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with the plain text and HTML data.
+SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
