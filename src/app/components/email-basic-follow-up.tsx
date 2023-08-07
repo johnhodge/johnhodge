@@ -16,12 +16,14 @@ import { EmailData } from '@/app/types';
 
 export function Email(props: EmailData) {
   const date: string = new Date().toISOString();
+
   const baseUrl =
     process.env.VERCEL_ENV != 'production'
       ? process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
         : 'http://192.168.0.19:8800'
       : 'https://www.johnhodge.com';
+
 
   const main = {
     backgroundColor: '#ffffff',
