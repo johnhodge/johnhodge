@@ -81,7 +81,7 @@ export default async function Page(props: DynamicRoute) {
     );
 
   return (
-    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-100 to-100%'>
+    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-50 to-100%'>
       <Article
         id={props.params.documentation}
         headline={
