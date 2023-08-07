@@ -20,9 +20,8 @@ export function Email(props: EmailData) {
     process.env.VERCEL_ENV != 'production'
       ? process.env.VERCEL_URL
         ? `https://${process.env.VERCEL_URL}`
-        : `http://192.168.0.19:8800`
-      : `https://www.johnhodge.com`;
-  console.log(baseUrl);
+        : 'http://192.168.0.19:8800'
+      : 'https://www.johnhodge.com';
 
   const main = {
     backgroundColor: '#ffffff',
