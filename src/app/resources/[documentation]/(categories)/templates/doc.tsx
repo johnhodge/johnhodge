@@ -1,6 +1,11 @@
-import { H2, H3, TOC2, TOC3 } from '@/app/[documentation]/components/body';
-import GlobalCallout from '@/app/[documentation]/components/callouts';
-import GlobalTOC from '@/app/[documentation]/components/toc';
+import {
+  H2,
+  H3,
+  TOC2,
+  TOC3,
+} from '@/app/resources/[documentation]/components/body';
+import GlobalCallout from '@/app/resources/[documentation]/components/callouts';
+import GlobalTOC from '@/app/resources/[documentation]/components/toc';
 import { DynamicTemplate, TOCEnteries } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
@@ -17,7 +22,6 @@ export async function generateMetadata(props: DynamicTemplate) {
 }
 
 export default function Doc(props: DynamicTemplate) {
-  console.log(props);
   const rootDir = props.post.file.rootDocsDirectory;
   const folders = GetSubFolders(rootDir).filter(
     (folder) => folder != '_index.mdx'
@@ -86,8 +90,6 @@ export default function Doc(props: DynamicTemplate) {
   const rootDocTitle = GetDataContent(
     join(props.post.file.rootDocsDirectory, '_index.mdx')
   ).data.title;
-  console.log(rootDocTitle);
-  console.log(props);
 
   return (
     <article className='grid grid-cols-12 grid-rows-1 py-16 gap-6 border-b border-b-slate-800'>
@@ -97,7 +99,7 @@ export default function Doc(props: DynamicTemplate) {
         route={props.route}
         rootDocTitle={rootDocTitle}
       />
-      <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:no-underline before:prose-code:hidden after:prose-code:hidden md:col-span-7'>
+      <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:decoration-dotted hover:prose-a:decoration-solid before:prose-code:hidden after:prose-code:hidden md:col-span-7'>
         <h1>{data.title}</h1>
         <MDXRemote
           source={content}
@@ -106,6 +108,7 @@ export default function Doc(props: DynamicTemplate) {
               <H2
                 header={children}
                 base={join(
+                  'resources',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
@@ -116,6 +119,7 @@ export default function Doc(props: DynamicTemplate) {
               <H3
                 header={children}
                 base={join(
+                  'resources',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
@@ -144,7 +148,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC2
                     header={children}
                     base={join(
-                      '/',
+                      '/resources',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''
@@ -155,7 +159,7 @@ export default function Doc(props: DynamicTemplate) {
                   <TOC3
                     header={children}
                     base={join(
-                      '/',
+                      '/resources',
                       props.route.params.documentation,
                       props.route.params.category ?? '',
                       props.route.params.slug ?? ''

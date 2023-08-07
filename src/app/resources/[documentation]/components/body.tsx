@@ -18,7 +18,7 @@ type LinkedHeaderProps = {
 
 export default function LinkedHeader(props: LinkedHeaderProps) {
   return (
-    <Link href={props.href} className='relative group'>
+    <Link href={props.href} className='relative group no-underline'>
       <span className='hidden absolute -left-4 font-black text-lg group-hover:md:block'>
         ⌗
       </span>
@@ -35,7 +35,7 @@ export function H3(props: Header) {
     .toLowerCase();
   return (
     <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h3 id={headerAnchor} className='scroll-mt-16 font-black'>
+      <h3 id={headerAnchor} className='scroll-mt-16'>
         {props.header}
       </h3>
     </LinkedHeader>
@@ -50,7 +50,7 @@ export function H2(props: Header) {
     .toLowerCase();
   return (
     <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h2 id={headerAnchor} className='scroll-mt-16 font-black'>
+      <h2 id={headerAnchor} className='scroll-mt-16'>
         {props.header}
       </h2>
     </LinkedHeader>

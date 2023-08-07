@@ -5,7 +5,7 @@ import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import { DynamicRoute } from '../types';
+import { DynamicRoute } from '../../types';
 
 const rootDirectory = join(cwd(), 'documentation');
 
@@ -52,7 +52,6 @@ function createButton(link: string): GlobalButtonSettings {
 }
 
 export default async function Page(props: DynamicRoute) {
-  console.log(props);
   const rootDocsDirectory = join(
     '/',
     rootDirectory,
@@ -82,7 +81,7 @@ export default async function Page(props: DynamicRoute) {
     );
 
   return (
-    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-100 to-100%'>
+    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-50 to-100%'>
       <Article
         id={props.params.documentation}
         headline={

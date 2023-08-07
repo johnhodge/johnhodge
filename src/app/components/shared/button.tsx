@@ -27,7 +27,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
               : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
           } hover:scale-105 ease-in-out duration-150`}
           role='button'
-          href={props.link ?? ''}>
+          href={props.link ?? 'null'}>
           {props.text}
         </Link>
       ) : (
@@ -46,7 +46,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
               : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
           } hover:scale-105 ease-in-out duration-150`}
           role='button'
-          href={props.link ?? ''}>
+          href={props.link ?? 'null'}>
           {props.text}
         </a>
       )}
