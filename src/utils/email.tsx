@@ -21,7 +21,6 @@ export default async function SendEmail(props: EmailData) {
     text: emailText,
     html: emailHtml,
   };
-  console.log(options);
   try {
     await sendgrid.send(options);
   } catch (error) {
