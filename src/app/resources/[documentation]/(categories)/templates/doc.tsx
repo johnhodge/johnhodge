@@ -108,7 +108,7 @@ export default function Doc(props: DynamicTemplate) {
               <H2
                 header={children}
                 base={join(
-                  'docs',
+                  'resources',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
@@ -119,7 +119,7 @@ export default function Doc(props: DynamicTemplate) {
               <H3
                 header={children}
                 base={join(
-                  'docs',
+                  'resources',
                   props.route.params.documentation,
                   props.route.params.category ?? '',
                   props.route.params.slug ?? ''
