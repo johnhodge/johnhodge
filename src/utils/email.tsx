@@ -9,13 +9,19 @@ export default async function SendEmail(props: EmailData) {
   const emailHtml = render(<Email {...props} />, {
     pretty: true,
   });
+  const emailText = render(<Email {...props} />, {
+    pretty: true,
+    plainText: true,
+  });
 
   const options: SendEmailSettings = {
     from: `${props.sender.name} <${props.sender.email}>`,
     to: props.recipient.email,
     subject: props.subject,
+    text: emailText,
     html: emailHtml,
   };
+  console.log(options);
   try {
     await sendgrid.send(options);
   } catch (error) {
