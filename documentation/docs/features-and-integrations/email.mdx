@@ -1,0 +1,65 @@
+---
+title: 'Email'
+excerpt: 'Email development with SendGrid&rsquo;s API and React Email.'
+icon: ''
+date: '2023-08-07T01:49:08.985Z'
+author:
+  firstName: John
+  lastName: Hodge
+---
+
+import GlobalCallout from '@/app/resources/components/callouts';
+
+Emails are sent after a visitor submits a form. These follow up emails are built using React Email and deployed through the SendGrid API.
+
+## React Email
+
+The React Email library makes creating emails as easy as writing a React component. For a project that&rsquo;s fully managed with React components, this makes custom developed emails a lot less cumbersome. (This process can be quite daunting otherwise.)
+
+Styles are applied to emails with style objects that look similar to this:
+
+```javascript
+const logo = {
+  width: 'auto',
+  maxHeight: '50px',
+  margin: 'auto',
+};
+```
+
+The object is applied to a `style` prop on a [React Email component](https://react.email/docs/components).
+
+<GlobalCallout
+  message='While using [Tailwind is supported by React Email](https://react.email/docs/components/tailwind) and is used throughout the rest of this project, that system supports styling concepts that are not supported in some email clients. Using Tailwind is of interest, but more research is needed.'
+  type='alert'
+/>
+
+## SendGrid
+
+SendGrid emails are sent from the `johnhodge.com` domain. Hyperlinks in emails are routed through `email.johnhodge.com`.
+
+The current use of SendGrid is specifically focused on sending emails over API from events in the Next app. There are no marketing campaigns sending emails.
+
+## Logo src and srcset use
+
+The form follow up email has one image in it. The email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
+
+To use the SVG, the email client needs to...:
+
+- support the SVG file type. SVG markup isn&rsquo;t being used, so the client has to be able to parse a file.
+- support `srcset`. The `src` is a PNG because that filetype is supported by all clients, the SVG is available in the `srcset`.
+
+<GlobalCallout
+  message='SVG is only supported in a [little over half of email clients](https://css-tricks.com/a-guide-on-svg-support-in-email/), and it&rsquo;s unsupported by some major clients, like Gmail in browsers and the iOS app.'
+  type='note'
+/>
+
+Both image types are visible on light or dark themes.
+
+- PNG uses an icon with a white background (similar to the favicon)
+- SVG is a black logo with a white outline and a transparent background
+
+## Plain text support
+
+Emails are sent in both HTML and plain text for cleints that can&rsquo;t render HTML.
+
+SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with the plain text and HTML data.
