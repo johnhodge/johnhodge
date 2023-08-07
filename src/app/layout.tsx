@@ -1,10 +1,10 @@
-import './globals.css';
-import { Inter, Fira_Code } from 'next/font/google';
-import { GetSiteMeta } from './graphql.query';
-import { Person } from './types';
+import Navigation from '@/app/components/navigation';
+import '@/app/globals.css';
+import { GetSiteMeta } from '@/app/graphql.query';
+import { Person } from '@/app/types';
+import GetAsset from '@/utils/asset';
 import { Metadata } from 'next';
-import Navigation from './components/navigation';
-import GetAsset from '../utils/asset';
+import { Fira_Code, Inter } from 'next/font/google';
 import Link from 'next/link';
 import Script from 'next/script';
 
@@ -88,10 +88,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <footer className='flex justify-between items-center p-4 bg-gray-0 gap-2'>
           <div>
             ©{new Date().getFullYear()}{' '}
-            <Link
-              href='/'
-              title="Go to John's website"
-              className='underline decoration-dotted'>
+            <Link href='/' title='Go to John&rsquo;s website'>
               John Hodge
             </Link>
           </div>

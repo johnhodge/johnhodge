@@ -67,11 +67,11 @@ export default async function Home() {
         <Tech {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-to-gray-100 ${start} to-gray-0 ${end}`}>
+        className={`bg-gradient-to-b from-gray-50 ${start} to-gray-0 ${end}`}>
         <Skills {...data} />
       </div>
       <div
-        className={`bg-gradient-to-b from-gray-0 ${start} to-primary-100 ${end}`}>
+        className={`bg-gradient-to-b from-gray-0 ${start} to-primary-50 ${end}`}>
         <Contact {...data} />
       </div>
     </main>
