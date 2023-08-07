@@ -108,12 +108,12 @@ export function Email(props: EmailData) {
                   Thanks for reaching out, {props.recipient.firstName}!
                 </Text>
                 <Text style={paragraph}>
-                  I’ve received your message and will be in touch shortly to set
-                  up some time to chat.
+                  I&rsquo;ve received your message and will be in touch shortly
+                  to set up some time to chat.
                 </Text>
                 <Text style={paragraph}>
-                  Alternatively, you’re welcome to grab time on my calendar
-                  using the button below.
+                  Alternatively, you&rsquo;re welcome to grab time on my
+                  calendar using the button below.
                 </Text>
 
                 <Button
