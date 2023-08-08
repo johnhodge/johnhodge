@@ -91,7 +91,7 @@ export default function ContactForm() {
       },
       sender: {
         name: 'John Hodge',
-        email: 'info@johnhodge.com',
+        email: 'no_reply@johnhodge.com',
       },
       previewText: `Hey ${data.firstName} I got your message and will follow up shortly.`,
       subject: `Thanks for reaching out, ${data.firstName}!`,
