@@ -45,9 +45,9 @@ function createButton(link: string): GlobalButtonSettings {
     size: 'small',
     width: 'fit',
     color: 'primary',
-    link: link,
+    href: link,
     text: 'Read more',
-    route: true,
+    buttonType: 'route',
   };
 }
 
@@ -101,8 +101,9 @@ export default async function Page(props: DynamicRoute) {
                 iconId={subPages[page].icon}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
-                buttonType='button'
-                button={createButton(join(props.params.documentation, page))}
+                callToAction={createButton(
+                  join(props.params.documentation, page)
+                )}
               />
             </div>
           ))}

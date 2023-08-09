@@ -35,8 +35,8 @@ export default function Navigation() {
               width='fit'
               color='primary'
               text='Get on my cal'
-              link='/#contact'
-              route={true}
+              href='/#contact'
+              buttonType='route'
             />
             <svg
               className='ml-6 mr-2'
@@ -82,8 +82,8 @@ export default function Navigation() {
               width='fit'
               color='primary'
               text='Get on my cal'
-              link='/#contact'
-              route={true}
+              href='/#contact'
+              buttonType='route'
             />
           </div>
         </header>
@@ -136,8 +136,8 @@ export default function Navigation() {
                 width='full'
                 color='secondary'
                 text='Schedule a consultation'
-                link='/#contact'
-                route={true}
+                href='/#contact'
+                buttonType='route'
               />
             </li>
             <li onClick={handleClick}>
@@ -146,8 +146,8 @@ export default function Navigation() {
                 width='full'
                 color='gray'
                 text='Book me as a speaker'
-                link='/speaker-request'
-                route={true}
+                href='/speaker-request'
+                buttonType='route'
               />
             </li>
           </ul>

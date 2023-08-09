@@ -16,8 +16,7 @@ export default async function Employers(data: Person) {
     color: 'secondary',
     size: 'small',
     width: 'fit',
-    buttonType: 'link',
-    href: '/#contact',
+    buttonType: 'button',
   };
   return (
     <Article

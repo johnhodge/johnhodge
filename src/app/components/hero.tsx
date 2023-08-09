@@ -20,19 +20,19 @@ export default async function Hero(data: Person) {
       <div className='flex flex-wrap gap-4'>
         <GlobalButton
           text='Schedule a consultation'
-          link='/#contact'
+          href='/#contact'
           size='large'
           color='secondary'
           width='fit'
-          route={true}
+          buttonType='route'
         />
         <GlobalButton
           text='Book me as a speaker'
-          link='/speaker-request'
+          href='/speaker-request'
           size='large'
           color='gray'
           width='fit'
-          route={true}
+          buttonType='route'
         />
       </div>
     </Article>

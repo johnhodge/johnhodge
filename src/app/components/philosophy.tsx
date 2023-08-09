@@ -4,11 +4,12 @@ import GlobalCard from './shared/card';
 import { GlobalButtonSettings } from './shared/button';
 
 export default function Philosophy(data: Person) {
-  const button: GlobalButtonSettings = {
+  const openDialog: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',
     size: 'small',
     width: 'fit',
+    buttonType: 'button',
   };
   return (
     <Article
@@ -30,8 +31,7 @@ export default function Philosophy(data: Person) {
               body={philo.body}
               verticalLine={false}
               horizontalLine={true}
-              button={button}
-              cta='Schedule a consultation'
+              openDialog={openDialog}
             />
           </div>
         ))}

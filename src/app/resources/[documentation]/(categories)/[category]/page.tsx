@@ -32,9 +32,9 @@ function createButton(link: string): GlobalButtonSettings {
     size: 'small',
     width: 'fit',
     color: 'primary',
-    link: link,
+    href: link,
     text: 'Read more',
-    route: true,
+    buttonType: 'route',
   };
 }
 
@@ -85,8 +85,7 @@ export default async function Page(props: DynamicRoute) {
                 horizontalLine={true}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
-                buttonType='button'
-                button={createButton(
+                callToAction={createButton(
                   join(props.params.category ?? '', page.replace('.mdx', ''))
                 )}
               />
