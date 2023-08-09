@@ -9,23 +9,36 @@ type GlobalDialogSettings = {
   card: GlobalCardSettings;
 };
 export default function GlobalDialog(props: GlobalDialogSettings) {
-  console.log(props.card.openDialog);
   let [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
+  function closeDialog() {
     setIsOpen(false);
+  }
+
+  function visitCta() {
+    setIsOpen(false);
+    location.href = '/#contact';
   }
 
   function openModal() {
     setIsOpen(true);
   }
-  const closeDialog: GlobalButtonSettings = {
+  const closeDialogButton: GlobalButtonSettings = {
     size: 'small',
     width: 'fit',
     color: 'gray',
     text: 'Close',
     buttonType: 'button',
-    onClick: closeModal,
+    onClick: closeDialog,
+  };
+
+  const visitCtaButton: GlobalButtonSettings = {
+    size: props.card.dialogCallToAction?.size ?? 'small',
+    width: props.card.dialogCallToAction?.width ?? 'fit',
+    color: props.card.dialogCallToAction?.color ?? 'secondary',
+    text: props.card.dialogCallToAction?.text ?? 'Schedule a consultation',
+    buttonType: 'button',
+    onClick: visitCta,
   };
 
   return (
@@ -48,7 +61,7 @@ export default function GlobalDialog(props: GlobalDialogSettings) {
       )}
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as='div' className='relative z-10' onClose={closeModal}>
+        <Dialog as='div' className='relative z-10' onClose={closeDialog}>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -82,8 +95,8 @@ export default function GlobalDialog(props: GlobalDialogSettings) {
                     longDescription={props.card.body}
                     verticalLine={props.card.verticalLine}
                     horizontalLine={props.card.horizontalLine}
-                    closeDialog={closeDialog}
-                    callToAction={props.card.dialogCallToAction}
+                    closeDialog={closeDialogButton}
+                    callToAction={visitCtaButton}
                   />
                 </Dialog.Panel>
               </Transition.Child>
