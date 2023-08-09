@@ -1,4 +1,3 @@
-import DOMPurify from 'isomorphic-dompurify';
 type markdown = { markdown: string };
 
 export default function MarkUp({ markdown }: markdown) {
@@ -11,14 +10,11 @@ export default function MarkUp({ markdown }: markdown) {
             className='list-outside list-disc pl-4'
             key={p.replace(' ', '')}
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(p.replace('- ', '')),
+              __html: p.replace('- ', ''),
             }}
           />
         ) : (
-          <p
-            key={p.replace(' ', '')}
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(p) }}
-          />
+          <p key={p.replace(' ', '')} dangerouslySetInnerHTML={{ __html: p }} />
         )
       )}
     </div>
