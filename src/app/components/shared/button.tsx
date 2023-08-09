@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MouseEventHandler } from 'react';
 
 export type GlobalButtonSettings = {
   size: 'small' | 'large';
@@ -7,6 +8,7 @@ export type GlobalButtonSettings = {
   link?: string;
   text: string;
   route?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
 };
 export default function GlobalButton(props: GlobalButtonSettings) {
   return (
@@ -27,7 +29,8 @@ export default function GlobalButton(props: GlobalButtonSettings) {
               : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
           } hover:scale-105 ease-in-out duration-150`}
           role='button'
-          href={props.link ?? 'null'}>
+          onClick={props.onClick}
+          href={props.link ?? '#'}>
           {props.text}
         </Link>
       ) : (
@@ -46,7 +49,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
               : 'border-gray-400 from-gray-100 to-gray-50 text-gray-700'
           } hover:scale-105 ease-in-out duration-150`}
           role='button'
-          href={props.link ?? 'null'}>
+          href={props.link ?? '#'}>
           {props.text}
         </a>
       )}
