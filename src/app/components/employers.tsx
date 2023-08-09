@@ -9,6 +9,8 @@ export default async function Employers(data: Person) {
     color: 'primary',
     size: 'small',
     width: 'fit',
+    buttonType: 'route',
+    href: '/#contact',
   };
   return (
     <Article

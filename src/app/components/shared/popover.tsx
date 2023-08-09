@@ -15,13 +15,18 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
         className={`relative z-0 group focus-visible:outline-none ${
           props.button.size == 'small' ? 'rounded-lg' : 'rounded-3xl'
         }`}>
-        <GlobalButton
-          text={props.button.text}
-          color={props.button.color}
-          size={props.button.size}
-          link={props.button.link}
-          width={props.button.width}
-        />
+        {props.button.buttonType != 'button' ? (
+          <GlobalButton
+            text={props.button.text}
+            color={props.button.color}
+            size={props.button.size}
+            buttonType={props.button.buttonType}
+            href={props.button.href}
+            width={props.button.width}
+          />
+        ) : (
+          ''
+        )}
       </Popover.Button>
 
       <Popover.Overlay className='fixed inset-0 bg-black opacity-30 z-10' />
@@ -48,7 +53,8 @@ export default function GlobalPopover(props: GlobalPopoverSettings) {
                   size='small'
                   color='secondary'
                   width='fit'
-                  link='/#contact'
+                  buttonType='route'
+                  href='/#contact'
                 />
               ) : (
                 ''

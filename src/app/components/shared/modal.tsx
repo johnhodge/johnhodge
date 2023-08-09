@@ -18,17 +18,25 @@ export default function MyModal(props: ModalProps) {
   function openModal() {
     setIsOpen(true);
   }
+  const closeButton: GlobalButtonSettings = {
+    size: 'small',
+    width: 'fit',
+    color: 'primary',
+    text: 'Close',
+    buttonType: 'button',
+    onClick: closeModal,
+  };
 
   return (
     <>
-      <div onClick={openModal}>
-        <GlobalButton
-          size='large'
-          width='fit'
-          color='primary'
-          text='Hey there'
-        />
-      </div>
+      <GlobalButton
+        size='large'
+        width='fit'
+        color='primary'
+        text={props.title}
+        buttonType='button'
+        onClick={openModal}
+      />
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -53,22 +61,14 @@ export default function MyModal(props: ModalProps) {
                 leave='ease-in duration-200'
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'>
-                <Dialog.Panel className='bg-gradient-to-t to-gray-0 from-gray-100 shadow-md p-8 rounded-3xl flex flex-col gap-4 max-h-1/2-screen overflow-auto transition-all'>
+                <Dialog.Panel className=' transition-all'>
                   <GlobalCard
                     verticalLine={false}
                     horizontalLine={true}
                     subheader={props.title}
                     longDescription='This is a long description for some bullshit man'
+                    button={closeButton}
                   />
-
-                  <div className='mt-4'>
-                    <button
-                      type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={closeModal}>
-                      Got it, thanks!
-                    </button>
-                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
