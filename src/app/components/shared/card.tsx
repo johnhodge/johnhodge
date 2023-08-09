@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import type { MediaImage } from '@/app/types';
-import GlobalPopover from './popover';
 import GlobalButton, { GlobalButtonSettings } from './button';
 import MarkUp from '@/utils/markup';
 import GetAsset from '@/utils/asset';
+import GlobalDialog from './dialog';
 
 export type GlobalCardSettings = {
   logo?: MediaImage;
@@ -15,9 +15,10 @@ export type GlobalCardSettings = {
   shortDescription?: string;
   longDescription?: string;
   body?: string;
-  button?: GlobalButtonSettings;
-  buttonType?: 'button' | 'popover';
-  cta?: string;
+  closeDialog?: GlobalButtonSettings;
+  openDialog?: GlobalButtonSettings;
+  callToAction?: GlobalButtonSettings;
+  dialogCallToAction?: GlobalButtonSettings;
   verticalLine: boolean;
   horizontalLine: boolean;
   height?: string;
@@ -123,17 +124,35 @@ export default function GlobalCard(props: GlobalCardSettings) {
           ''
         )}
         {props.longDescription ? (
-          <MarkUp markdown={props.longDescription} />
-        ) : (
-          ''
-        )}
-        {props.button ? (
-          <div className='self-auto'>
-            <GlobalButton {...props.button} />
+          <div className='max-h-50-dscreen overflow-scroll'>
+            <MarkUp markdown={props.longDescription} />
           </div>
         ) : (
           ''
         )}
+        {props.openDialog ? (
+          <div className='self-auto'>
+            <GlobalDialog card={props} />
+          </div>
+        ) : (
+          ''
+        )}
+        <div className='flex gap-2'>
+          {props.closeDialog ? (
+            <div className='self-auto'>
+              <GlobalButton {...props.closeDialog} />
+            </div>
+          ) : (
+            ''
+          )}
+          {props.callToAction ? (
+            <div className='self-auto'>
+              <GlobalButton {...props.callToAction} />
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     </section>
   );

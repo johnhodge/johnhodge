@@ -20,7 +20,8 @@ module.exports = {
       },
       maxHeight: {
         dscreen: '100dvh',
-        '1/2-screen': '50vh',
+        '50-dscreen': '50dvh',
+        '50-screen': '50vh',
       },
       minWidth: {
         icon: '3rem',

@@ -10,7 +10,7 @@ export type GlobalButtonSettings = {
 
 type ButtonProps = {
   buttonType: 'button';
-  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 type LinkRouteProps = {
@@ -34,7 +34,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
     gray: 'border-gray-400 from-gray-100 to-gray-50 text-gray-700',
   };
 
-  return props.buttonType == 'link' ? (
+  return props.buttonType === 'link' ? (
     <a
       className={`${rootStyle} ${sizeStyle[props.size]} ${
         widthStyle[props.width]
@@ -42,7 +42,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
       href={props.href}>
       {props.text}
     </a>
-  ) : props.buttonType == 'route' ? (
+  ) : props.buttonType === 'route' ? (
     <Link
       className={`${rootStyle} ${sizeStyle[props.size]} ${
         widthStyle[props.width]
@@ -50,7 +50,7 @@ export default function GlobalButton(props: GlobalButtonSettings) {
       href={props.href}>
       {props.text}
     </Link>
-  ) : props.buttonType == 'button' ? (
+  ) : props.buttonType === 'button' ? (
     <button
       className={`${rootStyle} ${sizeStyle[props.size]} ${
         widthStyle[props.width]

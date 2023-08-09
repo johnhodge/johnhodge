@@ -9,7 +9,7 @@ import Skills from './components/skills';
 import Tech from './components/tech';
 import Philosophy from './components/philosophy';
 import Contact from './components/contact';
-import MyDialog from './components/shared/modal';
+import GlobalDialog from './components/shared/dialog';
 
 export type Headers = {
   Authorication: string;
@@ -46,8 +46,6 @@ export default async function Home() {
   const end = 'to-100%';
   return (
     <main>
-      <MyDialog title='Modal One' />
-      <MyDialog title='Modal Two' />
       <Hero {...data} />
       <div
         className={`bg-gradient-to-b from-gray-0 ${start} to-primary-50 ${end}`}>

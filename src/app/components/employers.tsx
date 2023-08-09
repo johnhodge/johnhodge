@@ -4,12 +4,19 @@ import GlobalCard from './shared/card';
 import { GlobalButtonSettings } from './shared/button';
 
 export default async function Employers(data: Person) {
-  const button: GlobalButtonSettings = {
+  const openDialog: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',
     size: 'small',
     width: 'fit',
-    buttonType: 'route',
+    buttonType: 'button',
+  };
+  const callToAction: GlobalButtonSettings = {
+    text: 'Schedule a consultation',
+    color: 'secondary',
+    size: 'small',
+    width: 'fit',
+    buttonType: 'link',
     href: '/#contact',
   };
   return (
@@ -32,8 +39,8 @@ export default async function Employers(data: Person) {
               body={employer.body}
               verticalLine={false}
               horizontalLine={true}
-              button={button}
-              cta='Schedule a consultation'
+              openDialog={openDialog}
+              dialogCallToAction={callToAction}
             />
           </div>
         ))}
