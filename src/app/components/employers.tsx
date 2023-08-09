@@ -1,7 +1,6 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import GlobalCard from './shared/card';
-import { GlobalButtonSettings } from './shared/button';
+import GlobalCard from '@/app/components/shared/card';
+import Article from '@/app/templates/article';
+import { GlobalButtonSettings, Person } from '@/app/types';
 
 export default async function Employers(data: Person) {
   const openDialog: GlobalButtonSettings = {

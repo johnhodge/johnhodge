@@ -1,6 +1,6 @@
-import type { MediaImage, Person } from '../types';
-import Article from '../templates/article';
-import GlobalButton from './shared/button';
+import GlobalButton from '@/app/components/shared/button';
+import Article from '@/app/templates/article';
+import type { MediaImage, Person } from '@/app/types';
 
 export default async function Hero(data: Person) {
   const headshot: MediaImage = {

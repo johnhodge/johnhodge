@@ -1,28 +1,9 @@
-import Image from 'next/image';
-import type { MediaImage } from '@/app/types';
-import GlobalButton, { GlobalButtonSettings } from './button';
-import MarkUp from '@/utils/markup';
+import GlobalButton from '@/app/components/shared/button';
+import GlobalDialog from '@/app/components/shared/dialog';
+import type { GlobalCardSettings } from '@/app/types';
 import GetAsset from '@/utils/asset';
-import GlobalDialog from './dialog';
-
-export type GlobalCardSettings = {
-  logo?: MediaImage;
-  icon?: MediaImage;
-  iconId?: string;
-  iconAlign?: 'start' | 'center' | 'end';
-  header?: string;
-  subheader?: string;
-  shortDescription?: string;
-  longDescription?: string;
-  body?: string;
-  closeDialog?: GlobalButtonSettings;
-  openDialog?: GlobalButtonSettings;
-  callToAction?: GlobalButtonSettings;
-  dialogCallToAction?: GlobalButtonSettings;
-  verticalLine: boolean;
-  horizontalLine: boolean;
-  height?: string;
-};
+import MarkUp from '@/utils/markup';
+import Image from 'next/image';
 
 export default function GlobalCard(props: GlobalCardSettings) {
   return (

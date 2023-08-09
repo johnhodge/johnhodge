@@ -1,9 +1,10 @@
 'use client';
 
+import GlobalButton from '@/app/components/shared/button';
+import GlobalCard from '@/app/components/shared/card';
+import type { GlobalButtonSettings, GlobalCardSettings } from '@/app/types';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import GlobalButton, { GlobalButtonSettings } from './button';
-import GlobalCard, { GlobalCardSettings } from './card';
 
 type GlobalDialogSettings = {
   card: GlobalCardSettings;

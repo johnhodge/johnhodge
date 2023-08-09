@@ -1,7 +1,7 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import GlobalCard from './shared/card';
-import { GlobalButtonSettings } from './shared/button';
+import GlobalCard from '@/app/components/shared/card';
+import Article from '@/app/templates/article';
+import type { Person } from '@/app/types';
+import { GlobalButtonSettings } from '@/app/types';
 
 export default function Philosophy(data: Person) {
   const openDialog: GlobalButtonSettings = {

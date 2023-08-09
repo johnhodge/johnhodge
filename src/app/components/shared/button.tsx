@@ -1,22 +1,5 @@
+import { GlobalButtonSettings } from '@/app/types';
 import Link from 'next/link';
-import { MouseEventHandler } from 'react';
-
-export type GlobalButtonSettings = {
-  size: 'small' | 'large';
-  width: 'full' | 'fit';
-  color: 'primary' | 'secondary' | 'gray';
-  text: string;
-} & (ButtonProps | LinkRouteProps);
-
-type ButtonProps = {
-  buttonType: 'button';
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
-};
-
-type LinkRouteProps = {
-  buttonType: 'link' | 'route';
-  href: string;
-};
 
 export default function GlobalButton(props: GlobalButtonSettings) {
   const rootStyle =

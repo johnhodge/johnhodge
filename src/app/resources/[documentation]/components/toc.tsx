@@ -4,10 +4,10 @@ import {
   TOC3,
   TOCHome,
 } from '@/app/resources/[documentation]/components/body';
+import GitHubData from '@/app/resources/[documentation]/components/github';
 import { TOCData } from '@/app/types';
 import { join } from 'path';
 import { useState } from 'react';
-import GitHubData from './github';
 
 export default function GlobalTOC(props: TOCData) {
   const [click, setClick] = useState(false);

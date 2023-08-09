@@ -1,11 +1,10 @@
-import { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
+import { DynamicRoute, GlobalButtonSettings } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import { DynamicRoute } from '../../types';
 
 const rootDirectory = join(cwd(), 'documentation');
 

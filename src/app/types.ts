@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export type PersonMeta = {
   firstName: string;
@@ -142,4 +142,40 @@ export type SendEmailSettings = {
   subject: string;
   html: string;
   text: string;
+};
+
+export type GlobalButtonSettings = {
+  size: 'small' | 'large';
+  width: 'full' | 'fit';
+  color: 'primary' | 'secondary' | 'gray';
+  text: string;
+} & (ButtonProps | LinkRouteProps);
+
+type ButtonProps = {
+  buttonType: 'button';
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+};
+
+type LinkRouteProps = {
+  buttonType: 'link' | 'route';
+  href: string;
+};
+
+export type GlobalCardSettings = {
+  logo?: MediaImage;
+  icon?: MediaImage;
+  iconId?: string;
+  iconAlign?: 'start' | 'center' | 'end';
+  header?: string;
+  subheader?: string;
+  shortDescription?: string;
+  longDescription?: string;
+  body?: string;
+  closeDialog?: GlobalButtonSettings;
+  openDialog?: GlobalButtonSettings;
+  callToAction?: GlobalButtonSettings;
+  dialogCallToAction?: GlobalButtonSettings;
+  verticalLine: boolean;
+  horizontalLine: boolean;
+  height?: string;
 };

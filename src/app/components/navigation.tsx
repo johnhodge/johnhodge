@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import GlobalButton from './shared/button';
+import GlobalButton from '@/app/components/shared/button';
 
 const links = [
   'Clients',

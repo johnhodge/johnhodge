@@ -1,15 +1,14 @@
+import Clients from '@/app/components/clients';
+import Contact from '@/app/components/contact';
+import Employers from '@/app/components/employers';
+import Hero from '@/app/components/hero';
+import Philosophy from '@/app/components/philosophy';
+import Skills from '@/app/components/skills';
+import Tech from '@/app/components/tech';
+import Testimonials from '@/app/components/testimonials';
+import { GetWebsiteData } from '@/app/graphql.query';
+import type { Person } from '@/app/types';
 import { Metadata } from 'next';
-import { GetWebsiteData } from './graphql.query';
-import type { Person } from './types';
-import Hero from './components/hero';
-import Clients from './components/clients';
-import Employers from './components/employers';
-import Testimonials from './components/testimonials';
-import Skills from './components/skills';
-import Tech from './components/tech';
-import Philosophy from './components/philosophy';
-import Contact from './components/contact';
-import GlobalDialog from './components/shared/dialog';
 
 export type Headers = {
   Authorication: string;

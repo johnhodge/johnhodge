@@ -1,7 +1,11 @@
-import type { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
-import { DynamicRoute, PostData, BasicPostData } from '@/app/types';
+import {
+  BasicPostData,
+  DynamicRoute,
+  GlobalButtonSettings,
+  PostData,
+} from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
