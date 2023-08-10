@@ -14,6 +14,14 @@ The dialog component in this project is named `GlobalDialog` and is used to comm
 
 This component is built using two other global components, [`GlobalButton`](button) and [`GlobalCard`](card), and is powered by [HeadlessUI](https://headlessui.com/react/dialog)
 
+## Component spec
+
+```
+<GlobalDialog {...props} />
+```
+
+The expected `{...props}` is an object in the shape of the `GlobalCardSettings` type.
+
 ## Global Components
 
 Being as this component is using `GlobalCard` and `GlobalButton` components, the behavior and style of these elements fit seamlessly in the website.
@@ -52,22 +60,22 @@ Here&apos;s what this functionality looks like:
 
 ```javascript dialog.tsx
 <GlobalCard
-  logo={props.card.logo}
-  icon={props.card.icon}
-  iconId={props.card.iconId}
-  iconAlign={props.card.iconAlign}
-  header={props.card.header}
-  subheader={props.card.subheader}
-  shortDescription={props.card.shortDescription}
-  longDescription={props.card.body}
-  verticalLine={props.card.verticalLine}
-  horizontalLine={props.card.horizontalLine}
+  logo={props.logo}
+  icon={props.icon}
+  iconId={props.iconId}
+  iconAlign={props.iconAlign}
+  header={props.header}
+  subheader={props.subheader}
+  shortDescription={props.shortDescription}
+  longDescription={props.body}
+  verticalLine={props.verticalLine}
+  horizontalLine={props.horizontalLine}
   closeDialog={closeDialogButton}
   callToAction={visitCtaButton}
 />
 ```
 
-Notice how most of those props are set using their identical `props.card.{prop_name}` counterpart except the `longDescription` (and some other buttons we&apos;ll discuss in the next section). This value is populated with data that&apos;s only sent to add more data that isn&apos;t used on the main site page (`props.card.body`).
+Notice how most of those props are set using their identical `props.{prop_name}` counterpart except the `longDescription` (and some other buttons we&apos;ll discuss in the next section). This value is populated with data that&apos;s only sent to add more data that isn&apos;t used on the main site page (`props.body`).
 
 By passing all the `prop` values, we can create dialogs that match the card they originated from regardless of what data is used on the card.
 
@@ -75,16 +83,16 @@ By passing all the `prop` values, we can create dialogs that match the card they
 
 The `GlobalButton` component is used to add functionality to the `GlobalDialog`. This functionality includes opening and closing the dialog and accessing calls to action (CTAs).
 
-If an object is present in `prop.card.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn&apos;t presented. But just like any other button, this is called with the `GlobalButton` component, like this:
+If an object is present in `prop.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn&apos;t presented. But just like any other button, this is called with the `GlobalButton` component, like this:
 
 ```javascript dialog.tsx
 {
-  props.card.openDialog ? (
+  props.openDialog ? (
     <GlobalButton
-      size={props.card.openDialog.size}
-      width={props.card.openDialog.width}
-      color={props.card.openDialog.color}
-      text={props.card.openDialog.text}
+      size={props.openDialog.size}
+      width={props.openDialog.width}
+      color={props.openDialog.color}
+      text={props.openDialog.text}
       buttonType='button'
       onClick={openModal}
     />
@@ -107,11 +115,11 @@ const openDialog: GlobalButtonSettings = {
   buttonType: 'button',
 };
 return (
-  //...some irrelevant code
+  //... collapsed irrelevant code
   <GlobalCard
     longDescription={testimonial.excerpt}
     icon={testimonial.author.headshot}
-    //...more irrelevant code
+    //... collapsed irrelevant code
     openDialog={openDialog}
   />
 );

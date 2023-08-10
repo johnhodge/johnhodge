@@ -113,7 +113,7 @@ export default function GlobalCard(props: GlobalCardSettings) {
         )}
         {props.openDialog ? (
           <div className='self-auto'>
-            <GlobalDialog card={props} />
+            <GlobalDialog {...props} />
           </div>
         ) : (
           ''

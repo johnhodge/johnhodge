@@ -6,10 +6,7 @@ import type { GlobalButtonSettings, GlobalCardSettings } from '@/app/types';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 
-type GlobalDialogSettings = {
-  card: GlobalCardSettings;
-};
-export default function GlobalDialog(props: GlobalDialogSettings) {
+export default function GlobalDialog(props: GlobalCardSettings) {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeDialog() {
@@ -34,29 +31,25 @@ export default function GlobalDialog(props: GlobalDialogSettings) {
   };
 
   const visitCtaButton: GlobalButtonSettings = {
-    size: props.card.dialogCallToAction?.size ?? 'small',
-    width: props.card.dialogCallToAction?.width ?? 'fit',
-    color: props.card.dialogCallToAction?.color ?? 'secondary',
-    text: props.card.dialogCallToAction?.text ?? 'Schedule a consultation',
+    size: props.dialogCallToAction?.size ?? 'small',
+    width: props.dialogCallToAction?.width ?? 'fit',
+    color: props.dialogCallToAction?.color ?? 'secondary',
+    text: props.dialogCallToAction?.text ?? 'Schedule a consultation',
     buttonType: 'button',
     onClick: visitCta,
   };
 
   return (
     <>
-      {props.card ? (
-        props.card.openDialog ? (
-          <GlobalButton
-            size={props.card.openDialog.size}
-            width={props.card.openDialog.width}
-            color={props.card.openDialog.color}
-            text={props.card.openDialog.text}
-            buttonType='button'
-            onClick={openModal}
-          />
-        ) : (
-          ''
-        )
+      {props.openDialog ? (
+        <GlobalButton
+          size={props.openDialog.size}
+          width={props.openDialog.width}
+          color={props.openDialog.color}
+          text={props.openDialog.text}
+          buttonType='button'
+          onClick={openModal}
+        />
       ) : (
         ''
       )}
@@ -90,16 +83,16 @@ export default function GlobalDialog(props: GlobalDialogSettings) {
                 leaveTo='opacity-0 scale-95'>
                 <Dialog.Panel className='transition-all max-w-5xl'>
                   <GlobalCard
-                    logo={props.card.logo}
-                    icon={props.card.icon}
-                    iconId={props.card.iconId}
-                    iconAlign={props.card.iconAlign}
-                    header={props.card.header}
-                    subheader={props.card.subheader}
-                    shortDescription={props.card.shortDescription}
-                    longDescription={props.card.body}
-                    verticalLine={props.card.verticalLine}
-                    horizontalLine={props.card.horizontalLine}
+                    logo={props.logo}
+                    icon={props.icon}
+                    iconId={props.iconId}
+                    iconAlign={props.iconAlign}
+                    header={props.header}
+                    subheader={props.subheader}
+                    shortDescription={props.shortDescription}
+                    longDescription={props.body}
+                    verticalLine={props.verticalLine}
+                    horizontalLine={props.horizontalLine}
                     closeDialog={closeDialogButton}
                     callToAction={visitCtaButton}
                   />
