@@ -19,7 +19,7 @@ type LinkedHeaderProps = {
 export default function LinkedHeader(props: LinkedHeaderProps) {
   return (
     <Link href={props.href} className='relative group no-underline'>
-      <span className='hidden absolute -left-4 font-black text-lg group-hover:md:block'>
+      <span className='hidden absolute -left-4 font-black text-lg z-0 group-hover:md:block'>
         ⌗
       </span>
       {props.children}

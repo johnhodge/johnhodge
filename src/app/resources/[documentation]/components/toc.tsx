@@ -20,10 +20,10 @@ export default function GlobalTOC(props: TOCData) {
   }
   return (
     <>
-      <div className='md:hidden sticky z-30 top-20'>
+      <div className='md:hidden sticky z-10 top-20'>
         <span
           onClick={handleClick}
-          className='font-emoji rounded-lg min-w-fit inline-block px-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700 '>
+          className='font-emoji rounded-lg min-w-fit inline-block px-1 text-3xl text-center border border-solid bg-gradient-to-b border-gray-400 from-gray-100 to-gray-50 text-gray-700'>
           📖
         </span>
 
