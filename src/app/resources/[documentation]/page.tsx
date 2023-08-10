@@ -1,11 +1,10 @@
-import { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
+import { DynamicRoute, GlobalButtonSettings } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-import { DynamicRoute } from '../../types';
 
 const rootDirectory = join(cwd(), 'documentation');
 
@@ -45,9 +44,9 @@ function createButton(link: string): GlobalButtonSettings {
     size: 'small',
     width: 'fit',
     color: 'primary',
-    link: link,
+    href: link,
     text: 'Read more',
-    route: true,
+    buttonType: 'route',
   };
 }
 
@@ -101,8 +100,9 @@ export default async function Page(props: DynamicRoute) {
                 iconId={subPages[page].icon}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
-                buttonType='button'
-                button={createButton(join(props.params.documentation, page))}
+                callToAction={createButton(
+                  join(props.params.documentation, page)
+                )}
               />
             </div>
           ))}

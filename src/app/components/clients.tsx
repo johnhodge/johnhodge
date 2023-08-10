@@ -1,6 +1,6 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import GlobalCard from './shared/card';
+import GlobalCard from '@/app/components/shared/card';
+import Article from '@/app/templates/article';
+import type { Person } from '@/app/types';
 
 export default function Client(data: Person) {
   return (

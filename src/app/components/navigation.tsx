@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import GlobalButton from './shared/button';
+import GlobalButton from '@/app/components/shared/button';
 
 const links = [
   'Clients',
@@ -25,7 +25,7 @@ export default function Navigation() {
   return (
     <div className='relative font-bold'>
       <div className='relative h-16'>
-        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 z-30 lg:px-3'>
+        <header className='fixed inset-x-0 flex justify-between items-center px-2 h-16 bg-gradient-to-b from-gray-0 to-gray-100 border-b border-b-gray-300 lg:px-3 z-10'>
           <Link className='text-xl font-black' href='/'>
             John Hodge
           </Link>
@@ -35,8 +35,8 @@ export default function Navigation() {
               width='fit'
               color='primary'
               text='Get on my cal'
-              link='/#contact'
-              route={true}
+              href='/#contact'
+              buttonType='route'
             />
             <svg
               className='ml-6 mr-2'
@@ -82,13 +82,13 @@ export default function Navigation() {
               width='fit'
               color='primary'
               text='Get on my cal'
-              link='/#contact'
-              route={true}
+              href='/#contact'
+              buttonType='route'
             />
           </div>
         </header>
       </div>
-      <div className='relative z-40 overflow-hidden md:hidden'>
+      <div className='relative overflow-hidden md:hidden z-20'>
         <nav
           className={`${
             !click ? 'translate-x-full ' : 'translate-x-0 '
@@ -136,8 +136,8 @@ export default function Navigation() {
                 width='full'
                 color='secondary'
                 text='Schedule a consultation'
-                link='/#contact'
-                route={true}
+                href='/#contact'
+                buttonType='route'
               />
             </li>
             <li onClick={handleClick}>
@@ -146,8 +146,8 @@ export default function Navigation() {
                 width='full'
                 color='gray'
                 text='Book me as a speaker'
-                link='/speaker-request'
-                route={true}
+                href='/speaker-request'
+                buttonType='route'
               />
             </li>
           </ul>

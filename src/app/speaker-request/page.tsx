@@ -1,7 +1,7 @@
+import ContactForm from '@/app/speaker-request/components/form';
+import Article from '@/app/templates/article';
+import GetAsset from '@/utils/asset';
 import { Metadata } from 'next';
-import Article from '../templates/article';
-import ContactForm from './components/form';
-import GetAsset from '../../utils/asset';
 
 export const metadata: Metadata = {
   alternates: {

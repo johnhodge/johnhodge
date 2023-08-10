@@ -1,6 +1,5 @@
-import GlobalButton from '../components/shared/button';
-import Image from 'next/image';
 import type { MediaImage, Person } from '@/app/types';
+import Image from 'next/image';
 type Hgroup = {
   id: string;
   headline: string;
