@@ -1,7 +1,7 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import ContactForm from './form';
-import GetAsset from '../../utils/asset';
+import ContactForm from '@/app/components/form';
+import Article from '@/app/templates/article';
+import type { Person } from '@/app/types';
+import GetAsset from '@/utils/asset';
 
 export default async function Contact(data: Person) {
   return (

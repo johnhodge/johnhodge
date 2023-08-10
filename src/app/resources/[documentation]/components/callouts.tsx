@@ -20,7 +20,7 @@ export default function GlobalCallout(props: CalloutData) {
         color[props.type]
       }`}>
       <span className='font-emoji'>{icon[props.type]}</span>
-      <div className='prose-slate prose-p:m-0 prose-p:mb-4 prose-hr:my-4 last-of-type:prose-p:mb-0 last-of-type:prose-li:mb-0 last-of-type:prose-ul:mb-0'>
+      <div className='prose-slate prose-p:m-0 prose-p:mb-4 prose-hr:my-4 last:mb-0'>
         <MDXRemote source={props.message} />
       </div>
     </div>

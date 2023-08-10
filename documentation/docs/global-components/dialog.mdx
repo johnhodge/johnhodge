@@ -1,0 +1,169 @@
+---
+title: 'Dialog'
+excerpt: 'Dialogs (aka modals) are used to communicate additional information about a concept succinctly and thoroughly.'
+icon: ''
+date: '2023-08-10T02:32:27.389Z'
+author:
+  firstName: John
+  lastName: Hodge
+---
+
+import GlobalCallout from '@/app/resources/components/callouts';
+
+The dialog component in this project is named `GlobalDialog` and is used to communicate additional information about a concept succinctly and thoroughly without requiring the user to leave their current page. This component should be used when there&apos;s more information than can fit in one or two short sentences, but there isn&apos;s enough content for an entire page.
+
+This component is built using two other global components, [`GlobalButton`](button) and [`GlobalCard`](card), and is powered by [HeadlessUI](https://headlessui.com/react/dialog)
+
+## Component spec
+
+```
+<GlobalDialog {...props} />
+```
+
+The expected `{...props}` is an object in the shape of the `GlobalCardSettings` type.
+
+<GlobalCallout 
+message= 'Another way to think about the `GlobalDialog` component is that it&apos;s just a `GlobalCard` with state.
+
+The props it takes are identical to the props sent to a `GlobalCard` and it looks exactly like a card when rendered.
+
+Through this lens, we can consider there being two parts to a `GlobalDialog`:
+
+- The buttons that set the state that brings it into and out of view
+- The card that appears and disappears when the state is toggled
+
+The only difference is that it doesn&apos;t render as a part of the main DOM when a page is loaded but instead is mounted when the state is activated.
+'
+
+type='note'
+/>
+
+## Global Components
+
+Since this component is built using `GlobalCard` and `GlobalButton` components, their behavior and style is used to make this component fit seamlessly in the website.
+
+### GlobalCard
+
+The `GlobalCard` component is being used to present the content of the dialog by passing data to the `GlobalDialog` in the `props.openDialog` object.
+
+To do this, there&apos;s a `GlobalDialog` component on the `GlobalCard` that calls the `GlobalDialog` component if there's data in the `props.openDialog` object using a basic ternary.
+
+This is handled like this:
+
+```javascript card.tsx
+{
+  props.openDialog ? (
+    <div className='self-auto'>
+      <GlobalDialog {...props} />
+    </div>
+  ) : (
+    ''
+  );
+}
+```
+
+You&apos;ll notice that the `GlobalDialog` component received all the props, not just the props from the `openDialog` object. This is so the dialog includes data that was sent to the card containing the `GlobalDialog` component. This is what allows the `GlobalDialog` to use the same header as the card it originated from.
+
+Using Luc&apos;s testimonial as an example (thanks Luc), notice that the original card in the background has the same header information and styling used in the dialog.
+
+![Testimonials](/img/testimonials_luc.png)
+
+This is achieved pretty easily since the `GlobalDialog` component simply calls an instance of `GlobalCard` and passes this data to those header elements (name, job title, company, and headshot).
+
+You&apos;ll also notice that the testimonial text is a little different. The original instance has a shorter excerpt, while the dialog instance is the full quote. Being as we&apos;re giving the `GlobalDialog` component access to all the data in `props` we can cherry-pick what data goes where in the `GlobalDialog` instance of `GlobalCard`.
+
+Here&apos;s what this functionality looks like:
+
+```javascript dialog.tsx
+<GlobalCard
+  logo={props.logo}
+  icon={props.icon}
+  iconId={props.iconId}
+  iconAlign={props.iconAlign}
+  header={props.header}
+  subheader={props.subheader}
+  shortDescription={props.shortDescription}
+  longDescription={props.body}
+  verticalLine={props.verticalLine}
+  horizontalLine={props.horizontalLine}
+  closeDialog={closeDialogButton}
+  callToAction={visitCtaButton}
+/>
+```
+
+Notice how most of those props are set using their identical `props.{prop_name}` counterpart except the `longDescription` (and some other buttons we&apos;ll discuss in the next section). This value is populated with data that&apos;s only sent to add more content that isn&apos;t used on the main site page (`props.body`).
+
+By passing all the `prop` values, we can create dialogs that match the card they originated from regardless of what data is used on the card.
+
+### GlobalButton
+
+The `GlobalButton` component is used to add functionality to the `GlobalDialog`. This functionality includes opening and closing the dialog and accessing calls to action (CTAs).
+
+If an object is present in `prop.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn&apos;t presented. And just like any other button, this is called with the `GlobalButton` component, like this:
+
+```javascript dialog.tsx
+{
+  props.openDialog ? (
+    <GlobalButton
+      size={props.openDialog.size}
+      width={props.openDialog.width}
+      color={props.openDialog.color}
+      text={props.openDialog.text}
+      buttonType='button'
+      onClick={openModal}
+    />
+  ) : (
+    ''
+  );
+}
+```
+
+The `openDialog` data is set on the originating source of the original `GlobalCard` component. Using Luc&apos;s testimonial as an example, on the `Testimonials` component, we first declare the `openDialog` button object and pass it in the `GlobalCard` component.
+
+Here&apos;s a simplified representation of this:
+
+```javascript testimonials.tsx
+const openDialog: GlobalButtonSettings = {
+  text: 'Read more',
+  color: 'primary',
+  size: 'small',
+  width: 'fit',
+  buttonType: 'button',
+};
+return (
+  //... collapsed irrelevant code
+  <GlobalCard
+    //... collapsed irrelevant code
+    openDialog={openDialog}
+  />
+);
+```
+
+By giving the `openDialog` a type of `GlobalButtonSettings`, we expect to treat it just like any other button on the website. And allowing this data to be set when calling the card enables the caller of the card (in this case that&apos;s the `Testimonials` component) to call the `GlobalDialog` component without needing to have direct access to it.
+
+The caller simply tells the `GlobalCard` to apply _this_ object to the `openDialog` prop and it passes it to the `GlobalDialog` component which then returns the button to open the dialog.
+
+The `GlobalButton` component is also used on the `GlobalCard` component inside the `GlobalDialog` component to close the `GlobalDialog` by passing `closeDialog` to the `onClick` event handler.
+
+## HeadlessUI
+
+The `GlobalDialog` component uses [HeadlessUI](https://headlessui.com/) because it has accessibility built in and supports custom styles.
+
+This allows users to open and close dialogs with their keyboards exclusively and supports other accessibility features.
+
+## Known limitations
+
+### CTA Linking
+
+The CTA on the `GlobalDialog` is controlled with a function that closes the dialog and uses `location.href` to drive traffic to the contact form. Using an anchor tag or [`Link`](https://nextjs.org/docs/pages/api-reference/components/link) component won&apos;t close the dialog box, so this function is used to set the open state. The `location.href` value is configured by setting the literal string of the location in the function, not passing it as a parameter.
+
+```javascript dialog.tsx
+function visitCta() {
+  setIsOpen(false);
+  location.href = '/#contact';
+}
+```
+
+This is because passing the `location.href` as a parameter requires the function to return a value, but returning a value leads to infinite redirect loops.
+
+The result of this configuration is that this CTA can only drive traffic to the contact form. I&apos;m sure there&apos;s an elegant solution to this, but for this website, I don&apos;t intend on using a CTA to drive traffic elsewhere yet, and that may never change.

@@ -1,7 +1,11 @@
-import type { GlobalButtonSettings } from '@/app/components/shared/button';
 import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
-import { DynamicRoute, PostData, BasicPostData } from '@/app/types';
+import {
+  BasicPostData,
+  DynamicRoute,
+  GlobalButtonSettings,
+  PostData,
+} from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
@@ -32,9 +36,9 @@ function createButton(link: string): GlobalButtonSettings {
     size: 'small',
     width: 'fit',
     color: 'primary',
-    link: link,
+    href: link,
     text: 'Read more',
-    route: true,
+    buttonType: 'route',
   };
 }
 
@@ -85,8 +89,7 @@ export default async function Page(props: DynamicRoute) {
                 horizontalLine={true}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
-                buttonType='button'
-                button={createButton(
+                callToAction={createButton(
                   join(props.params.category ?? '', page.replace('.mdx', ''))
                 )}
               />

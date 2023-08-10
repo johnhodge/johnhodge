@@ -1,6 +1,6 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import GlobalCard from './shared/card';
+import type { Person } from '@/app/types';
+import Article from '@/app/templates/article';
+import GlobalCard from '@/app/components/shared/card';
 
 export default function Tech(data: Person) {
   return (

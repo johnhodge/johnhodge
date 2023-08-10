@@ -1,14 +1,15 @@
-import type { Person } from '../types';
-import Article from '../templates/article';
-import GlobalCard from './shared/card';
-import { GlobalButtonSettings } from './shared/button';
+import GlobalCard from '@/app/components/shared/card';
+import Article from '@/app/templates/article';
+import type { Person } from '@/app/types';
+import { GlobalButtonSettings } from '@/app/types';
 
 export default function Testimonials(data: Person) {
-  const button: GlobalButtonSettings = {
+  const openDialog: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',
     size: 'small',
     width: 'fit',
+    buttonType: 'button',
   };
   return (
     <Article
@@ -31,8 +32,7 @@ export default function Testimonials(data: Person) {
               body={testimonial.body}
               verticalLine={false}
               horizontalLine={true}
-              button={button}
-              cta='Schedule a consultation'
+              openDialog={openDialog}
             />
           </div>
         ))}

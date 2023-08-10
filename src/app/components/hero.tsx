@@ -1,6 +1,6 @@
-import type { MediaImage, Person } from '../types';
-import Article from '../templates/article';
-import GlobalButton from './shared/button';
+import GlobalButton from '@/app/components/shared/button';
+import Article from '@/app/templates/article';
+import type { MediaImage, Person } from '@/app/types';
 
 export default async function Hero(data: Person) {
   const headshot: MediaImage = {
@@ -20,19 +20,19 @@ export default async function Hero(data: Person) {
       <div className='flex flex-wrap gap-4'>
         <GlobalButton
           text='Schedule a consultation'
-          link='/#contact'
+          href='/#contact'
           size='large'
           color='secondary'
           width='fit'
-          route={true}
+          buttonType='route'
         />
         <GlobalButton
           text='Book me as a speaker'
-          link='/speaker-request'
+          href='/speaker-request'
           size='large'
           color='gray'
           width='fit'
-          route={true}
+          buttonType='route'
         />
       </div>
     </Article>

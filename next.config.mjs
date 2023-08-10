@@ -57,6 +57,14 @@ const nextConfig = {
             key: 'x-powered-by',
             value: 'John Hodge',
           },
+          {
+            key: 'x-resource-docs',
+            value: 'https://www.johnhodge.com/resources/docs',
+          },
+          {
+            key: 'x-resource-case-studies',
+            value: 'https://www.johnhodge.com/resources/case-studies',
+          },
         ],
       },
     ];

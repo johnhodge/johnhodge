@@ -1,27 +1,9 @@
-import Image from 'next/image';
-import type { MediaImage } from '@/app/types';
-import GlobalPopover from './popover';
-import GlobalButton, { GlobalButtonSettings } from './button';
-import MarkUp from '@/utils/markup';
+import GlobalButton from '@/app/components/shared/button';
+import GlobalDialog from '@/app/components/shared/dialog';
+import type { GlobalCardSettings } from '@/app/types';
 import GetAsset from '@/utils/asset';
-
-export type GlobalCardSettings = {
-  logo?: MediaImage;
-  icon?: MediaImage;
-  iconId?: string;
-  iconAlign?: 'start' | 'center' | 'end';
-  header?: string;
-  subheader?: string;
-  shortDescription?: string;
-  longDescription?: string;
-  body?: string;
-  button?: GlobalButtonSettings;
-  buttonType?: 'button' | 'popover';
-  cta?: string;
-  verticalLine: boolean;
-  horizontalLine: boolean;
-  height?: string;
-};
+import MarkUp from '@/utils/markup';
+import Image from 'next/image';
 
 export default function GlobalCard(props: GlobalCardSettings) {
   return (
@@ -123,25 +105,35 @@ export default function GlobalCard(props: GlobalCardSettings) {
           ''
         )}
         {props.longDescription ? (
-          <MarkUp markdown={props.longDescription} />
-        ) : (
-          ''
-        )}
-        {props.button ? (
-          <div className='self-auto'>
-            {props.buttonType != 'button' ? (
-              <GlobalPopover
-                button={props.button}
-                card={props}
-                body={props.body}
-              />
-            ) : (
-              <GlobalButton {...props.button} />
-            )}
+          <div className='max-h-50-dscreen overflow-scroll'>
+            <MarkUp markdown={props.longDescription} />
           </div>
         ) : (
           ''
         )}
+        {props.openDialog ? (
+          <div className='self-auto'>
+            <GlobalDialog {...props} />
+          </div>
+        ) : (
+          ''
+        )}
+        <div className='flex gap-2'>
+          {props.closeDialog ? (
+            <div className='self-auto'>
+              <GlobalButton {...props.closeDialog} />
+            </div>
+          ) : (
+            ''
+          )}
+          {props.callToAction ? (
+            <div className='self-auto'>
+              <GlobalButton {...props.callToAction} />
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     </section>
   );
