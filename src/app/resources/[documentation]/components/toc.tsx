@@ -19,7 +19,6 @@ export default function GlobalTOC(props: TOCData) {
       setClick(false);
     }
   }
-  console.log(click);
   return (
     <>
       <div className='md:hidden sticky z-10 top-20'>
