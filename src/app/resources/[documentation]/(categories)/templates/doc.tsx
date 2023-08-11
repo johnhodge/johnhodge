@@ -48,6 +48,7 @@ export default function Doc(props: DynamicTemplate) {
                 .lastName,
             },
             file: {
+              rootDirectory: props.post.file.rootDirectory,
               rootDocsDirectory: rootDir,
               containingDirectory: join(rootDir, folder),
               fileName: '_index.mdx',
@@ -69,6 +70,7 @@ export default function Doc(props: DynamicTemplate) {
                   .lastName,
               },
               file: {
+                rootDirectory: props.post.file.rootDirectory,
                 rootDocsDirectory: rootDir,
                 containingDirectory: join(
                   rootDir,

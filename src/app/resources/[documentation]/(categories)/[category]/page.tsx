@@ -11,11 +11,12 @@ import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
-const rootDirectory = join(cwd(), 'documentation');
+const rootDirectory = 'resources';
+const rootDirectoryPath = join(cwd(), rootDirectory);
 
 export async function generateMetadata(props: DynamicRoute) {
   const rootDocsDirectory = join(
-    rootDirectory,
+    rootDirectoryPath,
     props.params.documentation.replace('.mdx', '')
   );
   const MDXFileDirectory = join(
@@ -44,7 +45,7 @@ function createButton(link: string): GlobalButtonSettings {
 
 export default async function Page(props: DynamicRoute) {
   const subPages: Record<string, BasicPostData> = {};
-  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
+  const rootDocsDirectory = join(rootDirectoryPath, props.params.documentation);
   const containingDirectory = join(
     rootDocsDirectory,
     props.params.category ?? ''
@@ -61,6 +62,7 @@ export default async function Page(props: DynamicRoute) {
       lastName: data.author.lastName,
     },
     file: {
+      rootDirectory: rootDirectory,
       rootDocsDirectory: rootDocsDirectory,
       containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
       fileName: `${props.params.slug}.mdx`,
