@@ -1,16 +1,17 @@
 import GlobalCard from '@/app/components/shared/card';
-import Article from '@/app/templates/article';
-import { DynamicRoute, GlobalButtonSettings } from '@/app/types';
+import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
+import { DynamicRoute, GlobalButtonSettings, PostData } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
-const rootDirectory = join(cwd(), 'documentation');
+const rootDirectory = 'resources';
+const rootDirectoryPath = join(cwd(), rootDirectory);
 
 export async function generateMetadata(props: DynamicRoute) {
   const rootDocsDirectory = join(
-    rootDirectory,
+    rootDirectoryPath,
     props.params.documentation.replace('.mdx', '')
   );
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
@@ -53,9 +54,29 @@ function createButton(link: string): GlobalButtonSettings {
 export default async function Page(props: DynamicRoute) {
   const rootDocsDirectory = join(
     '/',
-    rootDirectory,
+    rootDirectoryPath,
     props.params.documentation
   );
+  const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
+  const { data } = GetDataContent(join(MDXFilePath));
+  const post: PostData = {
+    title: data.title,
+    excerpt: data.excerpt,
+    date: data.date,
+    icon: data.icon,
+    author: {
+      firstName: data.author.firstName,
+      lastName: data.author.lastName,
+    },
+    file: {
+      rootDirectory: rootDirectory,
+      rootDocsDirectory: rootDocsDirectory,
+      containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
+      fileName: `${props.params.slug}.mdx`,
+      MDXFilePath: MDXFilePath,
+    },
+  };
+
   const subPages: Record<string, SubPageData> = {};
   const subPageDirs = GetSubFolders(rootDocsDirectory);
   subPageDirs
@@ -80,34 +101,28 @@ export default async function Page(props: DynamicRoute) {
     );
 
   return (
-    <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-50 to-100%'>
-      <Article
-        id={props.params.documentation}
-        headline={
-          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.title
-        }
-        subhead={
-          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.excerpt
-        }>
-        <div className='grid grid-cols-6 gap-4'>
-          {Object.keys(subPages).map((page) => (
-            <div
-              className='col-span-6 lg:col-span-3 xl:col-span-2'
-              key={subPages[page].icon}>
+    <Doc route={props} post={post}>
+      <div className='not-prose grid grid-cols-6 gap-4'>
+        {Object.keys(subPages)
+          .filter((key) => key != '_index.mdx')
+          .map((page) => (
+            <div className='col-span-6 lg:col-span-3' key={page}>
               <GlobalCard
                 verticalLine={false}
                 horizontalLine={true}
-                iconId={subPages[page].icon}
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
                 callToAction={createButton(
-                  join(props.params.documentation, page)
+                  join(
+                    props.params.documentation,
+                    props.params.category ?? '',
+                    page.replace('.mdx', '')
+                  )
                 )}
               />
             </div>
           ))}
-        </div>
-      </Article>
-    </div>
+      </div>
+    </Doc>
   );
 }
