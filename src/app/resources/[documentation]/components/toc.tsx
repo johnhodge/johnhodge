@@ -122,7 +122,7 @@ export default function GlobalTOC(props: TOCData) {
         <div className='sticky top-32'>
           <Link
             href={join('/', props.post.file.rootDirectory)}
-            className='pb-4 text-xl font-black'>
+            className='pb-4 text-xl font-black no-underline hover:text-primary-700 transition-colors ease-in-out duration-50'>
             {`${props.post.file.rootDirectory[0].toUpperCase()}${props.post.file.rootDirectory.substring(
               1
             )}`}
