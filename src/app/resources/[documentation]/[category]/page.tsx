@@ -1,5 +1,5 @@
 import GlobalCard from '@/app/components/shared/card';
-import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
+import Doc from '@/app/resources/[documentation]/templates/doc';
 import {
   BasicPostData,
   DynamicRoute,

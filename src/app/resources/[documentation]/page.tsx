@@ -1,5 +1,5 @@
 import GlobalCard from '@/app/components/shared/card';
-import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
+import Doc from '@/app/resources/[documentation]/templates/doc';
 import { DynamicRoute, GlobalButtonSettings, PostData } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
