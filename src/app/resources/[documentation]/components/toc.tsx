@@ -6,6 +6,7 @@ import {
 } from '@/app/resources/[documentation]/components/body';
 import GitHubData from '@/app/resources/[documentation]/components/github';
 import { TOCData } from '@/app/types';
+import Link from 'next/link';
 import { join } from 'path';
 import { useState } from 'react';
 
@@ -18,6 +19,7 @@ export default function GlobalTOC(props: TOCData) {
       setClick(false);
     }
   }
+  console.log(click);
   return (
     <>
       <div className='md:hidden sticky z-10 top-20'>
@@ -56,22 +58,36 @@ export default function GlobalTOC(props: TOCData) {
                   </clipPath>
                 </defs>
               </svg>
-              <p className='absolute text-xl font-black'>Contents</p>
+              <Link
+                href={join('/', props.post.file.rootDirectory)}
+                onClick={handleClick}
+                className='absolute text-xl font-black'>
+                {`${props.post.file.rootDirectory[0].toUpperCase()}${props.post.file.rootDirectory.substring(
+                  1
+                )}`}
+              </Link>
             </div>
             <div className='max-h-full py-6 overflow-y-auto prose z-40 overscroll-none'>
-              <TOCHome
-                key='documentation-home'
-                header={`${props.rootDocTitle} Home`}
-                base={join('/resources', props.route.params.documentation)}
-                slug='/'
-              />
+              <span onClick={handleClick}>
+                <TOCHome
+                  key='documentation-home'
+                  header={`${props.rootDocTitle} Home`}
+                  base={join(
+                    '/',
+                    props.post.file.rootDirectory,
+                    props.route.params.documentation
+                  )}
+                  slug='/'
+                />
+              </span>
               {Object.keys(props.folders).map((dir) => (
                 <div key={dir}>
                   <span onClick={handleClick}>
                     <TOC2
                       key={dir}
                       base={join(
-                        '/resources',
+                        '/',
+                        props.post.file.rootDirectory,
                         props.route.params.documentation,
                         dir
                       )}
@@ -86,7 +102,8 @@ export default function GlobalTOC(props: TOCData) {
                       <TOC3
                         key={join(subPage.file.fileName)}
                         base={join(
-                          '/resources',
+                          '/',
+                          props.post.file.rootDirectory,
                           props.route.params.documentation,
                           dir
                         )}
@@ -103,12 +120,22 @@ export default function GlobalTOC(props: TOCData) {
       </div>
       <aside className='hidden md:block col-span-2'>
         <div className='sticky top-32'>
-          <p className='pb-4 text-xl font-black'>Contents</p>
+          <Link
+            href={join('/', props.post.file.rootDirectory)}
+            className='pb-4 text-xl font-black'>
+            {`${props.post.file.rootDirectory[0].toUpperCase()}${props.post.file.rootDirectory.substring(
+              1
+            )}`}
+          </Link>
           <div className='max-h-full py-4 overflow-y-auto prose z-40 overscroll-none md:z-auto md:max-h-[calc(75dvh-110px)]'>
             <TOCHome
               key='documentation-home'
               header={`${props.rootDocTitle} Home`}
-              base={join('/resources', props.route.params.documentation)}
+              base={join(
+                '/',
+                props.post.file.rootDirectory,
+                props.route.params.documentation
+              )}
               slug='/'
             />
             {Object.keys(props.folders).map((dir) => (
@@ -116,7 +143,8 @@ export default function GlobalTOC(props: TOCData) {
                 <TOC2
                   key={dir}
                   base={join(
-                    '/resources',
+                    '/',
+                    props.post.file.rootDirectory,
                     props.route.params.documentation,
                     dir
                   )}
@@ -127,7 +155,8 @@ export default function GlobalTOC(props: TOCData) {
                   <TOC3
                     key={join(subPage.file.fileName)}
                     base={join(
-                      '/resources',
+                      '/',
+                      props.post.file.rootDirectory,
                       props.route.params.documentation,
                       dir
                     )}
