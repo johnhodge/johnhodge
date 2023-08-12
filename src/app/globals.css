@@ -25,12 +25,6 @@ html {
   box-shadow: 0 0 0 0.075rem theme(colors.blue.400);
 }
 
-#doc_article > * > img,
-#doc_article > pre {
-  box-shadow: theme(boxShadow.lg);
-  border-radius: theme(borderRadius.md);
-}
-
 @media screen and (min-width: 2560px) {
   html {
     font-size: 28px;
