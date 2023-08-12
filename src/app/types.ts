@@ -88,6 +88,7 @@ export type DynamicTemplate = {
 };
 
 export type FileData = {
+  rootDirectory: string;
   rootDocsDirectory: string;
   containingDirectory: string;
   fileName: string;

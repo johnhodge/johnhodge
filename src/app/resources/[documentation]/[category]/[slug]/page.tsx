@@ -1,14 +1,24 @@
-import Doc from '@/app/resources/[documentation]/(categories)/templates/doc';
+import Doc from '@/app/resources/[documentation]/templates/doc';
 import { DynamicRoute, PostData } from '@/app/types';
 import { GetDataContent } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
-const rootDirectory = join(cwd(), 'documentation');
+const rootDirectory = 'resources';
+const rootDirectoryPath = join(cwd(), rootDirectory);
+export async function generateStaticParams() {
+  return [
+    {
+      documentation: 'case-studies',
+      category: 'technical',
+      slug: 'app-store-data',
+    },
+  ];
+}
 
 export async function generateMetadata(props: DynamicRoute) {
-  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
+  const rootDocsDirectory = join(rootDirectoryPath, props.params.documentation);
   const MDXFilePath: string = join(
     rootDocsDirectory,
     props.params.category ?? ''.replace('.mdx', ''),
@@ -22,7 +32,7 @@ export async function generateMetadata(props: DynamicRoute) {
 }
 
 export default function Page(props: DynamicRoute) {
-  const rootDocsDirectory = join(rootDirectory, props.params.documentation);
+  const rootDocsDirectory = join(rootDirectoryPath, props.params.documentation);
   const MDXFilePath: string = join(
     rootDocsDirectory,
     props.params.category ?? ''.replace('.mdx', ''),
@@ -39,6 +49,7 @@ export default function Page(props: DynamicRoute) {
       lastName: data.author.lastName,
     },
     file: {
+      rootDirectory: rootDirectory,
       rootDocsDirectory: rootDocsDirectory,
       containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
       fileName: `${props.params.slug}.mdx`,
