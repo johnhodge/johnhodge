@@ -1,7 +1,7 @@
 'use client';
+import GlobalButton from '@/app/components/shared/button';
 import Link from 'next/link';
 import { useState } from 'react';
-import GlobalButton from '@/app/components/shared/button';
 
 const links = [
   'Clients',
@@ -66,7 +66,7 @@ export default function Navigation() {
               />
             </svg>
           </div>
-          <div className='max-md:hidden flex items-center'>
+          <div className='max-md:hidden flex gap-4 items-center'>
             <nav>
               <ul className='flex items-center gap-4'>
                 {links.map((link) => (
@@ -74,7 +74,6 @@ export default function Navigation() {
                     <Link href={`/#${link.toLowerCase()}`}>{link}</Link>
                   </li>
                 ))}
-                <li></li>
               </ul>
             </nav>
             <GlobalButton
@@ -116,41 +115,44 @@ export default function Navigation() {
               </clipPath>
             </defs>
           </svg>
-
-          <ul className='min-h-dscreen flex flex-col justify-evenly p-4'>
-            {links.map((link) => (
-              <li key={link.toLowerCase()} onClick={handleClick}>
-                <Link
-                  className='text-4xl font-extrabold block'
-                  href={`/#${link.toLowerCase()}`}>
-                  {link}
-                </Link>
+          <div className='min-h-dscreen p-4 landscape:grid landscape:grid-flow-col landscape:grid-cols-2'>
+            <ul className='min-h-[45dvh] flex flex-col justify-evenly landscape:col-span-1'>
+              {links.map((link) => (
+                <li key={link.toLowerCase()} onClick={handleClick}>
+                  <Link
+                    className='text-4xl font-extrabold block'
+                    href={`/#${link.toLowerCase()}`}>
+                    {link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className='min-h-[45dvh] flex flex-col justify-evenly landscape:col-span-1'>
+              <li className='landscape:hidden'>
+                <hr className='border-gray-900' />
               </li>
-            ))}
-            <li>
-              <hr className='border-gray-900' />
-            </li>
-            <li onClick={handleClick}>
-              <GlobalButton
-                size='large'
-                width='full'
-                color='secondary'
-                text='Schedule a consultation'
-                href='/#contact'
-                buttonType='route'
-              />
-            </li>
-            <li onClick={handleClick}>
-              <GlobalButton
-                size='large'
-                width='full'
-                color='gray'
-                text='Book me as a speaker'
-                href='/speaker-request'
-                buttonType='route'
-              />
-            </li>
-          </ul>
+              <li onClick={handleClick}>
+                <GlobalButton
+                  size='large'
+                  width='full'
+                  color='secondary'
+                  text='Schedule a consultation'
+                  href='/#contact'
+                  buttonType='route'
+                />
+              </li>
+              <li onClick={handleClick}>
+                <GlobalButton
+                  size='large'
+                  width='full'
+                  color='gray'
+                  text='Book me as a speaker'
+                  href='/speaker-request'
+                  buttonType='route'
+                />
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
