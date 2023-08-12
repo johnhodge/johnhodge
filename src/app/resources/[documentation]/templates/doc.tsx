@@ -101,9 +101,7 @@ export default function Doc(props: DynamicTemplate) {
         route={props.route}
         rootDocTitle={rootDocTitle}
       />
-      <section
-        id='doc_article'
-        className='col-span-12 prose max-w-none prose-headings:font-black prose-a:decoration-dotted hover:prose-a:decoration-solid before:prose-code:hidden after:prose-code:hidden md:col-span-7'>
+      <section className='col-span-12 prose max-w-none prose-headings:font-black prose-a:decoration-dotted hover:prose-a:decoration-solid before:prose-code:hidden after:prose-code:hidden md:col-span-7 prose-pre:shadow-lg prose-pre:rounded-md prose-img:shadow-lg prose-img:rounded-md'>
         <h1>{data.title}</h1>
         <MDXRemote
           source={content}
