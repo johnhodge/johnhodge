@@ -129,6 +129,9 @@ export default function Doc(props: DynamicTemplate) {
               />
             ),
             GlobalCallout: (props) => <GlobalCallout {...props} />,
+            img: (props) => (
+              <img src={props.src} alt={props.alt} title={props.alt} />
+            ),
           }}
         />
         {props.children}

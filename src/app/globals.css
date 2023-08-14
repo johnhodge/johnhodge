@@ -25,6 +25,10 @@ html {
   box-shadow: 0 0 0 0.075rem theme(colors.blue.400);
 }
 
+#callout *:last-child {
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 2560px) {
   html {
     font-size: 28px;
