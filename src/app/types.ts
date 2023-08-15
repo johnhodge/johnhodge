@@ -180,3 +180,12 @@ export type GlobalCardSettings = {
   horizontalLine: boolean;
   height?: string;
 };
+
+export type SiteMetadata = {
+  pageName: string;
+  description: string;
+  path: string;
+  index: boolean;
+  follow: boolean;
+  cache: boolean;
+};

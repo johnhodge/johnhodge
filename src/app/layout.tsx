@@ -1,62 +1,12 @@
 import Navigation from '@/app/components/navigation';
 import '@/app/globals.css';
-import { GetSiteMeta } from '@/app/graphql.query';
-import { Person } from '@/app/types';
 import GetAsset from '@/utils/asset';
-import { Metadata } from 'next';
 import { Fira_Code, Inter } from 'next/font/google';
 import Link from 'next/link';
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 const firaCode = Fira_Code({ subsets: ['latin-ext'], variable: '--firaCode' });
-
-export type HeaderData = {
-  Authorization: string;
-  'Content-Type': string;
-};
-
-const myHeaders: HeaderData = {
-  Authorization: `Bearer ${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`,
-  'Content-Type': 'application/json',
-};
-
-export async function generateMetadata() {
-  const graphql = JSON.stringify({
-    query: GetSiteMeta,
-    variables: {},
-  });
-  const response = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production`,
-    {
-      method: 'POST',
-      body: graphql,
-      headers: myHeaders,
-    }
-  );
-  const json = await response.json();
-  const data: Person = json.data.person;
-  const sanitizedHeadline = data.headline.replace(/<[^>]+>/g, '');
-  const title = `${data.firstName} ${data.lastName} | ${sanitizedHeadline}`;
-
-  const metadata: Metadata = {
-    metadataBase: new URL('https://johnhodge.com'),
-    title: {
-      template: `%s | ${data.firstName} ${data.lastName}`,
-      default: sanitizedHeadline, // a default is required when creating a template
-    },
-    description: sanitizedHeadline,
-    openGraph: {
-      type: 'website',
-      url: 'https://www.johnhodge.com',
-      title: title,
-      description: sanitizedHeadline,
-      siteName: `${data.firstName} ${data.lastName}`,
-    },
-  };
-
-  return metadata;
-}
 
 export default function RootLayout({
   children,

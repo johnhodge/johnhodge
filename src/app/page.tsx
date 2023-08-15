@@ -8,17 +8,21 @@ import Tech from '@/app/components/tech';
 import Testimonials from '@/app/components/testimonials';
 import { GetWebsiteData } from '@/app/graphql.query';
 import type { Person } from '@/app/types';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
+
+export const metadata: Metadata = GetMetadata({
+  pageName: 'Home',
+  description: 'Product professional and adtech nerd.',
+  path: '',
+  index: true,
+  follow: true,
+  cache: true,
+});
 
 export type Headers = {
   Authorication: string;
   'Content-Type': string;
-};
-
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/',
-  },
 };
 
 const headers = {
