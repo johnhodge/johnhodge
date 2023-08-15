@@ -139,7 +139,8 @@ export default function Doc(props: DynamicTemplate) {
       <aside className='hidden md:block col-span-3'>
         <div className='sticky top-32'>
           <p className='pb-4 text-xl font-black'>On this page</p>
-          <div className='max-h-[calc(75dvh-110px)] overflow-y-auto prose prose-headings:font-black'>
+          {/* the 81px is to make up for the height of the github section in the GlobalTOC */}
+          <div className='max-h-[calc((75dvh-110px)+81px)] overflow-y-auto prose prose-headings:font-black'>
             <MDXRemote
               source={content}
               components={{
