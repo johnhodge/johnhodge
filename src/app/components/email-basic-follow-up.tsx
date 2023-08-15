@@ -24,7 +24,6 @@ export function Email(props: EmailData) {
         : 'http://192.168.0.19:8800'
       : 'https://www.johnhodge.com';
 
-
   const main = {
     backgroundColor: '#ffffff',
     color: '#000000',
@@ -113,12 +112,12 @@ export function Email(props: EmailData) {
                   Thanks for reaching out, {props.recipient.firstName}!
                 </Text>
                 <Text style={paragraph}>
-                  I&rsquo;ve received your message and will be in touch shortly
-                  to set up some time to chat.
+                  I’ve received your message and will be in touch shortly to set
+                  up some time to chat.
                 </Text>
                 <Text style={paragraph}>
-                  Alternatively, you&rsquo;re welcome to grab time on my
-                  calendar using the button below.
+                  Alternatively, you’re welcome to grab time on my calendar
+                  using the button below.
                 </Text>
 
                 <Button

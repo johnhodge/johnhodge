@@ -1,6 +1,7 @@
 import Doc from '@/app/resources/[documentation]/templates/doc';
 import { DynamicRoute, PostData } from '@/app/types';
 import { GetDataContent } from '@/utils/mdx';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
@@ -25,9 +26,19 @@ export async function generateMetadata(props: DynamicRoute) {
     `${props.params.slug}.mdx`
   );
   const { data } = GetDataContent(join(MDXFilePath));
-  const metadata: Metadata = {
-    title: data.title,
-  };
+  const metadata: Metadata = GetMetadata({
+    pageName: data.title,
+    description: data.excerpt,
+    path: join(
+      rootDirectory,
+      props.params.documentation,
+      props.params.category ?? '',
+      props.params.slug ?? ''
+    ),
+    index: false,
+    follow: false,
+    cache: false,
+  });
   return metadata;
 }
 

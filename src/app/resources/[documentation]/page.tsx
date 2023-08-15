@@ -2,10 +2,10 @@ import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[documentation]/templates/doc';
 import { DynamicRoute, GlobalButtonSettings, PostData } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
-
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
 
@@ -16,19 +16,19 @@ export async function generateMetadata(props: DynamicRoute) {
   );
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetDataContent(join(MDXFilePath));
-  const metadata: Metadata = {
-    title: data.title,
-    robots: {
-      index: false,
-      follow: false,
-      nocache: true,
-      googleBot: {
-        index: false,
-        follow: false,
-        nocache: true,
-      },
-    },
-  };
+  const metadata: Metadata = GetMetadata({
+    pageName: data.title,
+    description: data.excerpt,
+    path: join(
+      rootDirectory,
+      props.params.documentation,
+      props.params.category ?? '',
+      props.params.slug ?? ''
+    ),
+    index: false,
+    follow: false,
+    cache: false,
+  });
 
   return metadata;
 }

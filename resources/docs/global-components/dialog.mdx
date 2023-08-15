@@ -1,6 +1,7 @@
 ---
 title: 'Dialog'
-excerpt: 'Dialogs (aka modals) are used to communicate additional information about a concept succinctly and thoroughly.'
+subhead: ''
+excerpt: 'Dialogs (aka modals) are used to communicate additional information about a concept succinctly.'
 icon: ''
 date: '2023-08-10T02:32:27.389Z'
 author:
@@ -10,7 +11,7 @@ author:
 
 import GlobalCallout from '@/app/resources/components/callouts';
 
-The dialog component in this project is named `GlobalDialog` and is used to communicate additional information about a concept succinctly and thoroughly without requiring the user to leave their current page. This component should be used when there&apos;s more information than can fit in one or two short sentences, but there isn&apos;s enough content for an entire page.
+The dialog component in this project is named `GlobalDialog` and is used to communicate additional information about a concept succinctly and thoroughly without requiring the user to leave their current page. This component should be used when there’s more information than can fit in one or two short sentences, but there isn’s enough content for an entire page.
 
 This component is built using two other global components, [`GlobalButton`](button) and [`GlobalCard`](card), and is powered by [HeadlessUI](https://headlessui.com/react/dialog)
 
@@ -23,7 +24,7 @@ This component is built using two other global components, [`GlobalButton`](butt
 The expected `{...props}` is an object in the shape of the `GlobalCardSettings` type.
 
 <GlobalCallout 
-message= 'Another way to think about the `GlobalDialog` component is that it&apos;s just a `GlobalCard` with state.
+message= 'Another way to think about the `GlobalDialog` component is that it’s just a `GlobalCard` with state.
 
 The props it takes are identical to the props sent to a `GlobalCard` and it looks exactly like a card when rendered.
 
@@ -32,7 +33,7 @@ Through this lens, we can consider there being two parts to a `GlobalDialog`:
 - The buttons that set the state that brings it into and out of view
 - The card that appears and disappears when the state is toggled
 
-The only difference is that it doesn&apos;t render as a part of the main DOM when a page is loaded but instead is mounted when the state is activated.
+The only difference is that it doesn’t render as a part of the main DOM when a page is loaded but instead is mounted when the state is activated.
 '
 
 type='note'
@@ -46,7 +47,7 @@ Since this component is built using `GlobalCard` and `GlobalButton` components, 
 
 The `GlobalCard` component is being used to present the content of the dialog by passing data to the `GlobalDialog` in the `props.openDialog` object.
 
-To do this, there&apos;s a `GlobalDialog` component on the `GlobalCard` that calls the `GlobalDialog` component if there's data in the `props.openDialog` object using a basic ternary.
+To do this, there’s a `GlobalDialog` component on the `GlobalCard` that calls the `GlobalDialog` component if there's data in the `props.openDialog` object using a basic ternary.
 
 This is handled like this:
 
@@ -62,17 +63,17 @@ This is handled like this:
 }
 ```
 
-You&apos;ll notice that the `GlobalDialog` component received all the props, not just the props from the `openDialog` object. This is so the dialog includes data that was sent to the card containing the `GlobalDialog` component. This is what allows the `GlobalDialog` to use the same header as the card it originated from.
+You’ll notice that the `GlobalDialog` component received all the props, not just the props from the `openDialog` object. This is so the dialog includes data that was sent to the card containing the `GlobalDialog` component. This is what allows the `GlobalDialog` to use the same header as the card it originated from.
 
-Using Luc&apos;s testimonial as an example (thanks Luc), notice that the original card in the background has the same header information and styling used in the dialog.
+Using Luc’s testimonial as an example (thanks Luc), notice that the original card in the background has the same header information and styling used in the dialog.
 
 ![Luc's testimonial](/img/testimonials_luc.png)
 
 This is achieved pretty easily since the `GlobalDialog` component simply calls an instance of `GlobalCard` and passes this data to those header elements (name, job title, company, and headshot).
 
-You&apos;ll also notice that the testimonial text is a little different. The original instance has a shorter excerpt, while the dialog instance is the full quote. Being as we&apos;re giving the `GlobalDialog` component access to all the data in `props` we can cherry-pick what data goes where in the `GlobalDialog` instance of `GlobalCard`.
+You’ll also notice that the testimonial text is a little different. The original instance has a shorter excerpt, while the dialog instance is the full quote. Being as we’re giving the `GlobalDialog` component access to all the data in `props` we can cherry-pick what data goes where in the `GlobalDialog` instance of `GlobalCard`.
 
-Here&apos;s what this functionality looks like:
+Here’s what this functionality looks like:
 
 ```javascript dialog.tsx
 <GlobalCard
@@ -91,7 +92,7 @@ Here&apos;s what this functionality looks like:
 />
 ```
 
-Notice how most of those props are set using their identical `props.{prop_name}` counterpart except the `longDescription` (and some other buttons we&apos;ll discuss in the next section). This value is populated with data that&apos;s only sent to add more content that isn&apos;t used on the main site page (`props.body`).
+Notice how most of those props are set using their identical `props.{prop_name}` counterpart except the `longDescription` (and some other buttons we’ll discuss in the next section). This value is populated with data that’s only sent to add more content that isn’t used on the main site page (`props.body`).
 
 By passing all the `prop` values, we can create dialogs that match the card they originated from regardless of what data is used on the card.
 
@@ -99,7 +100,7 @@ By passing all the `prop` values, we can create dialogs that match the card they
 
 The `GlobalButton` component is used to add functionality to the `GlobalDialog`. This functionality includes opening and closing the dialog and accessing calls to action (CTAs).
 
-If an object is present in `prop.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn&apos;t presented. And just like any other button, this is called with the `GlobalButton` component, like this:
+If an object is present in `prop.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn’t presented. And just like any other button, this is called with the `GlobalButton` component, like this:
 
 ```javascript dialog.tsx
 {
@@ -118,9 +119,9 @@ If an object is present in `prop.openDialog` then the the dialog button is retur
 }
 ```
 
-The `openDialog` data is set on the originating source of the original `GlobalCard` component. Using Luc&apos;s testimonial as an example, on the `Testimonials` component, we first declare the `openDialog` button object and pass it in the `GlobalCard` component.
+The `openDialog` data is set on the originating source of the original `GlobalCard` component. Using Luc’s testimonial as an example, on the `Testimonials` component, we first declare the `openDialog` button object and pass it in the `GlobalCard` component.
 
-Here&apos;s a simplified representation of this:
+Here’s a simplified representation of this:
 
 ```javascript testimonials.tsx
 const openDialog: GlobalButtonSettings = {
@@ -139,7 +140,7 @@ return (
 );
 ```
 
-By giving the `openDialog` a type of `GlobalButtonSettings`, we expect to treat it just like any other button on the website. And allowing this data to be set when calling the card enables the caller of the card (in this case that&apos;s the `Testimonials` component) to call the `GlobalDialog` component without needing to have direct access to it.
+By giving the `openDialog` a type of `GlobalButtonSettings`, we expect to treat it just like any other button on the website. And allowing this data to be set when calling the card enables the caller of the card (in this case that’s the `Testimonials` component) to call the `GlobalDialog` component without needing to have direct access to it.
 
 The caller simply tells the `GlobalCard` to apply _this_ object to the `openDialog` prop and it passes it to the `GlobalDialog` component which then returns the button to open the dialog.
 
@@ -155,7 +156,7 @@ This allows users to open and close dialogs with their keyboards exclusively and
 
 ### CTA Linking
 
-The CTA on the `GlobalDialog` is controlled with a function that closes the dialog and uses `location.href` to drive traffic to the contact form. Using an anchor tag or [`Link`](https://nextjs.org/docs/pages/api-reference/components/link) component won&apos;t close the dialog box, so this function is used to set the open state. The `location.href` value is configured by setting the literal string of the location in the function, not passing it as a parameter.
+The CTA on the `GlobalDialog` is controlled with a function that closes the dialog and uses `location.href` to drive traffic to the contact form. Using an anchor tag or [`Link`](https://nextjs.org/docs/pages/api-reference/components/link) component won’t close the dialog box, so this function is used to set the open state. The `location.href` value is configured by setting the literal string of the location in the function, not passing it as a parameter.
 
 ```javascript dialog.tsx
 function visitCta() {
@@ -166,4 +167,4 @@ function visitCta() {
 
 This is because passing the `location.href` as a parameter requires the function to return a value, but returning a value leads to infinite redirect loops.
 
-The result of this configuration is that this CTA can only drive traffic to the contact form. I&apos;m sure there&apos;s an elegant solution to this, but for this website, I don&apos;t intend on using a CTA to drive traffic elsewhere yet, and that may never change.
+The result of this configuration is that this CTA can only drive traffic to the contact form. I’m sure there’s an elegant solution to this, but for this website, I don’t intend on using a CTA to drive traffic elsewhere yet, and that may never change.

@@ -2,6 +2,7 @@ import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
 import { GlobalButtonSettings } from '@/app/types';
 import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
@@ -13,19 +14,14 @@ export async function generateMetadata() {
   const rootDocsDirectory = join(rootDirectoryPath);
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetDataContent(join(MDXFilePath));
-  const metadata: Metadata = {
-    title: data.title,
-    robots: {
-      index: false,
-      follow: false,
-      nocache: true,
-      googleBot: {
-        index: false,
-        follow: false,
-        nocache: true,
-      },
-    },
-  };
+  const metadata: Metadata = GetMetadata({
+    pageName: data.title,
+    description: data.excerpt,
+    path: 'resources',
+    index: false,
+    follow: false,
+    cache: false,
+  });
 
   return metadata;
 }
