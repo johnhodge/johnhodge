@@ -19,6 +19,9 @@ export function GetMetadata(param: SiteMetadata): Metadata {
       locale: 'en_US',
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+    },
     viewport: {
       width: 'device-width',
       initialScale: 1,

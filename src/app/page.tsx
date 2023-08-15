@@ -12,8 +12,9 @@ import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = GetMetadata({
-  pageName: 'Home',
-  description: 'Product professional and adtech nerd.',
+  pageName: 'Product professional and adtech nerd.',
+  description:
+    'John is a product professional and full stack advertising expert with relevant experience in media buying, media strategy, adtech solutions, architecture, integrations, programmatic tech, and connected-TV.',
   path: '',
   index: true,
   follow: true,
