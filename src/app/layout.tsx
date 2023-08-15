@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <footer className='flex justify-between items-center p-4 bg-gray-0 gap-2'>
           <div>
             ©{new Date().getFullYear()}{' '}
-            <Link href='/' title='Go to John&rsquo;s website'>
+            <Link href='/' title='Go to John’s website'>
               John Hodge
             </Link>
           </div>

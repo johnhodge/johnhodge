@@ -1,6 +1,6 @@
 ---
 title: 'Email'
-excerpt: 'Email rendering and routing with React Email and SendGrid&rsquo;s API.'
+excerpt: 'Email rendering and routing with React Email and SendGrid’s API.'
 icon: ''
 date: '2023-08-07T01:49:08.985Z'
 author:
@@ -10,7 +10,7 @@ author:
 
 import GlobalCallout from '@/app/resources/components/callouts';
 
-Emails are triggered after a visitor submits a form. The function that initiates this service (`SendEmail()`) is called as part of the form&rsquo;s submission handling process. The email service gets access to the data from the form submission by passing the form submission&rsquo;s response data as a parameter in the `SendEmail()` function call.
+Emails are triggered after a visitor submits a form. The function that initiates this service (`SendEmail()`) is called as part of the form’s submission handling process. The email service gets access to the data from the form submission by passing the form submission’s response data as a parameter in the `SendEmail()` function call.
 
 This parameter represents an object that contains all the information needed to send an email.
 
@@ -20,7 +20,7 @@ These emails are built using [React Email](https://react.email/) and deployed th
 
 ### React Email
 
-The React Email library makes creating emails as easy as writing a React component. For a project that&rsquo;s fully managed with React components, this makes the process of creating custom emails a lot less cumbersome. (This process can be quite daunting otherwise.)
+The React Email library makes creating emails as easy as writing a React component. For a project that’s fully managed with React components, this makes the process of creating custom emails a lot less cumbersome. (This process can be quite daunting otherwise.)
 
 Styles are applied to emails with style objects that look similar to this:
 
@@ -49,19 +49,19 @@ The current use of SendGrid is specifically focused on sending emails over API f
 
 ## Logo src and srcset use
 
-The email currently in use has one image in it. The recipient&rsquo;s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
-The email currently in use has one image in it. The recipient&rsquo;s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
+The email currently in use has one image in it. The recipient’s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
+The email currently in use has one image in it. The recipient’s email client has the ability to use a lightweight and infinitely scalable SVG or a PNG.
 
 To use the SVG, the email client needs to...:
 
-- support the SVG file type. SVG markup isn&rsquo;t being used, so the client has to be able to parse a file.
+- support the SVG file type. SVG markup isn’t being used, so the client has to be able to parse a file.
 - support `srcset`. The `src` attributes passes a PNG because that file type is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
 - support `srcset`. The `src` attributes passes a PNG because that file type is supported by almost all clients, the SVG is available in the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset).
 
 Clients that support HTML should also support `src` attributes in `img` elements, so sending the PNG in the `src` attribute should act as a good default for all clients.
 
 <GlobalCallout
-  message='SVG is only supported in [about 60% of email clients](https://css-tricks.com/a-guide-on-svg-support-in-email/), and it&rsquo;s unsupported by some major clients, like Gmail (in web browsers and the iOS app).'
+  message='SVG is only supported in [about 60% of email clients](https://css-tricks.com/a-guide-on-svg-support-in-email/), and it’s unsupported by some major clients, like Gmail (in web browsers and the iOS app).'
   type='note'
 />
 
@@ -72,8 +72,8 @@ Both image types are visible on light or dark themes.
 
 ## Plain text support
 
-Emails are sent in both HTML and plain text for clients that can&rsquo;t render HTML.
-Emails are sent in both HTML and plain text for clients that can&rsquo;t render HTML.
+Emails are sent in both HTML and plain text for clients that can’t render HTML.
+Emails are sent in both HTML and plain text for clients that can’t render HTML.
 
-SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
-SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email&rsquo;s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
+SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email’s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.
+SendGrid makes this pretty easy by supporting both [HTML and plain text](https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail#quick-start-hello-email) variations in the email’s options. When the email is triggered to send, SendGrid automatically creates a multi-part MIME email with plain text and HTML data.

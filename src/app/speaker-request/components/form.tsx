@@ -160,7 +160,7 @@ export default function ContactForm() {
       {isSubmitSuccessful ? (
         <>
           <h4 className='text-xl font-extrabold lg:text-2xl xl:text-3xl'>
-            Thank&apos;s for reaching out!
+            Thank’s for reaching out!
           </h4>
           <p>{thanks[getRandomIntInclusive(0, 4)]}</p>
         </>
