@@ -35,7 +35,7 @@ export function H3(props: Header) {
     .toLowerCase();
   return (
     <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h3 id={headerAnchor} className='scroll-mt-16'>
+      <h3 id={headerAnchor} className='scroll-mt-32'>
         {props.header}
       </h3>
     </LinkedHeader>
@@ -50,7 +50,7 @@ export function H2(props: Header) {
     .toLowerCase();
   return (
     <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h2 id={headerAnchor} className='scroll-mt-16'>
+      <h2 id={headerAnchor} className='scroll-mt-32'>
         {props.header}
       </h2>
     </LinkedHeader>
