@@ -84,7 +84,7 @@ export type DynamicRoute = {
 export type DynamicTemplate = {
   route: DynamicRoute;
   children?: ReactNode;
-  post: PostData;
+  post: PostFileData;
 };
 
 export type FileData = {
@@ -102,6 +102,7 @@ type AuthorData = {
 
 export type BasicPostData = {
   title: string;
+  subhead: string;
   excerpt: string;
 };
 
@@ -109,19 +110,22 @@ export interface PostData extends BasicPostData {
   icon: string;
   date: string;
   author: AuthorData;
+}
+
+export interface PostFileData extends PostData {
   file: FileData;
 }
 
 export type TOCData = {
-  post: PostData;
+  post: PostFileData;
   route: DynamicRoute;
   rootDocTitle: string;
   folders: Record<string, TOCEnteries>;
 };
 
 export type TOCEnteries = {
-  root: PostData;
-  subPages: PostData[];
+  root: PostFileData;
+  subPages: PostFileData[];
 };
 
 export type EmailData = {

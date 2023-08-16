@@ -1,7 +1,7 @@
 import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[documentation]/templates/doc';
-import { DynamicRoute, GlobalButtonSettings, PostData } from '@/app/types';
-import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import { DynamicRoute, GlobalButtonSettings, PostFileData } from '@/app/types';
+import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
@@ -15,7 +15,7 @@ export async function generateMetadata(props: DynamicRoute) {
     props.params.documentation.replace('.mdx', '')
   );
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
-  const { data } = GetDataContent(join(MDXFilePath));
+  const { data } = GetMdxDataContent(join(MDXFilePath));
   const metadata: Metadata = GetMetadata({
     pageName: data.title,
     description: data.excerpt,
@@ -58,9 +58,10 @@ export default async function Page(props: DynamicRoute) {
     props.params.documentation
   );
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
-  const { data } = GetDataContent(join(MDXFilePath));
-  const post: PostData = {
+  const { data } = GetMdxDataContent(join(MDXFilePath));
+  const post: PostFileData = {
     title: data.title,
+    subhead: data.subhead,
     excerpt: data.excerpt,
     date: data.date,
     icon: data.icon,
@@ -88,14 +89,7 @@ export default async function Page(props: DynamicRoute) {
           (subPage) =>
             (subPages[subPageDir] = {
               filename: subPage,
-              title: GetDataContent(
-                join(rootDocsDirectory, subPageDir, subPage)
-              ).data.title,
-              excerpt: GetDataContent(
-                join(rootDocsDirectory, subPageDir, subPage)
-              ).data.excerpt,
-              icon: GetDataContent(join(rootDocsDirectory, subPageDir, subPage))
-                .data.icon,
+              ...GetMdxData(join(rootDocsDirectory, subPageDir, subPage)),
             })
         )
     );

@@ -7,14 +7,14 @@ import {
 import GlobalCallout from '@/app/resources/[documentation]/components/callouts';
 import GlobalTOC from '@/app/resources/[documentation]/components/toc';
 import { DynamicTemplate, TOCEnteries } from '@/app/types';
-import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { join } from 'path';
 import { ReactNode } from 'react';
 
 export async function generateMetadata(props: DynamicTemplate) {
-  const { data } = GetDataContent(props.post.file.MDXFilePath);
+  const { data } = GetMdxDataContent(props.post.file.MDXFilePath);
   const metadata: Metadata = {
     title: data.title,
   };
@@ -34,19 +34,7 @@ export default function Doc(props: DynamicTemplate) {
       (folder: string) =>
         (TOCItems[folder] = {
           root: {
-            title: GetDataContent(join(rootDir, folder, '_index.mdx')).data
-              .title,
-            excerpt: GetDataContent(join(rootDir, folder, '_index.mdx')).data
-              .excerpt,
-            icon: GetDataContent(join(rootDir, folder, '_index.mdx')).data.icon,
-            date: GetDataContent(join(rootDir, folder, '_index.mdx')).data.date,
-            author: {
-              firstName: GetDataContent(join(rootDir, folder, '_index.mdx'))
-                .data.firstName,
-
-              lastName: GetDataContent(join(rootDir, folder, '_index.mdx')).data
-                .lastName,
-            },
+            ...GetMdxData(join(rootDir, folder, '_index.mdx')),
             file: {
               rootDirectory: props.post.file.rootDirectory,
               rootDocsDirectory: rootDir,
@@ -59,16 +47,7 @@ export default function Doc(props: DynamicTemplate) {
           subPages: GetSubFolders(join(rootDir, folder))
             .filter((subPage) => subPage != '_index.mdx')
             .map((page) => ({
-              title: GetDataContent(join(rootDir, folder, page)).data.title,
-              excerpt: GetDataContent(join(rootDir, folder, page)).data.excerpt,
-              icon: GetDataContent(join(rootDir, folder, page)).data.icon,
-              date: GetDataContent(join(rootDir, folder, page)).data.date,
-              author: {
-                firstName: GetDataContent(join(rootDir, folder, page)).data
-                  .firstName,
-                lastName: GetDataContent(join(rootDir, folder, page)).data
-                  .lastName,
-              },
+              ...GetMdxData(join(rootDir, folder, page)),
               file: {
                 rootDirectory: props.post.file.rootDirectory,
                 rootDocsDirectory: rootDir,
@@ -88,8 +67,8 @@ export default function Doc(props: DynamicTemplate) {
   }
   getTOC(folders);
 
-  const { data, content } = GetDataContent(props.post.file.MDXFilePath);
-  const rootDocTitle = GetDataContent(
+  const { data, content } = GetMdxDataContent(props.post.file.MDXFilePath);
+  const rootDocTitle = GetMdxDataContent(
     join(props.post.file.rootDocsDirectory, '_index.mdx')
   ).data.title;
 
