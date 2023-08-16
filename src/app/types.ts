@@ -102,6 +102,7 @@ type AuthorData = {
 
 export type BasicPostData = {
   title: string;
+  subhead: string;
   excerpt: string;
 };
 

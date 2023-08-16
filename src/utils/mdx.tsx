@@ -12,6 +12,7 @@ export function GetMdxBasicData(fileLocation: string): BasicPostData {
   const { data } = matter(fileContents);
   return {
     title: data.title,
+    subhead: data.subhead,
     excerpt: data.excerpt,
   };
 }
@@ -21,6 +22,7 @@ export function GetMdxData(fileLocation: string): PostData {
   const { data } = matter(fileContents);
   return {
     title: data.title,
+    subhead: data.subhead,
     excerpt: data.excerpt,
     icon: data.icon,
     date: data.date,
