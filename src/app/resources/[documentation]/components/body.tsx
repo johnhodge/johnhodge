@@ -1,4 +1,4 @@
-import { PostData } from '@/app/types';
+import { PostFileData } from '@/app/types';
 import Link from 'next/link';
 import { join } from 'path';
 import { ReactNode } from 'react';
@@ -7,7 +7,7 @@ type Header = {
   base: string;
   header?: ReactNode;
   children?: ReactNode;
-  data?: PostData;
+  data?: PostFileData;
   slug?: string;
 };
 

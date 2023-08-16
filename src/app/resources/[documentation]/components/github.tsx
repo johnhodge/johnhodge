@@ -1,7 +1,7 @@
+import type { PostFileData } from '@/app/types';
 import Link from 'next/link';
-import type { PostData } from '@/app/types';
 
-export default function GitHubData(props: PostData) {
+export default function GitHubData(props: PostFileData) {
   return (
     <div className='pt-4 border-t border-t-gray-900 flex flex-col items-start justify-center'>
       <p>

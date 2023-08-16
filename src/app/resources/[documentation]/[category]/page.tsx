@@ -70,6 +70,7 @@ export default async function Page(props: DynamicRoute) {
   const data = GetMdxData(join(MDXFilePath));
   const post: PostFileData = {
     title: data.title,
+    subhead: data.subhead,
     excerpt: data.excerpt,
     date: data.date,
     icon: data.icon,

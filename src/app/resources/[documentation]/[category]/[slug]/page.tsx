@@ -1,6 +1,6 @@
 import Doc from '@/app/resources/[documentation]/templates/doc';
-import { DynamicRoute, PostData } from '@/app/types';
-import { GetDataContent } from '@/utils/mdx';
+import { DynamicRoute, PostFileData } from '@/app/types';
+import { GetMdxDataContent } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
@@ -25,7 +25,7 @@ export async function generateMetadata(props: DynamicRoute) {
     props.params.category ?? ''.replace('.mdx', ''),
     `${props.params.slug}.mdx`
   );
-  const { data } = GetDataContent(join(MDXFilePath));
+  const { data } = GetMdxDataContent(join(MDXFilePath));
   const metadata: Metadata = GetMetadata({
     pageName: data.title,
     description: data.excerpt,
@@ -49,9 +49,10 @@ export default function Page(props: DynamicRoute) {
     props.params.category ?? ''.replace('.mdx', ''),
     `${props.params.slug}.mdx`
   );
-  const { data } = GetDataContent(join(MDXFilePath));
-  const post: PostData = {
+  const { data } = GetMdxDataContent(join(MDXFilePath));
+  const post: PostFileData = {
     title: data.title,
+    subhead: data.subhead,
     excerpt: data.excerpt,
     date: data.date,
     icon: data.icon,
