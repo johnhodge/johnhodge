@@ -8,17 +8,22 @@ import Tech from '@/app/components/tech';
 import Testimonials from '@/app/components/testimonials';
 import { GetWebsiteData } from '@/app/graphql.query';
 import type { Person } from '@/app/types';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
+
+export const metadata: Metadata = GetMetadata({
+  pageName: 'Product professional and adtech nerd.',
+  description:
+    'John is a product professional and full stack advertising expert with relevant experience in media buying, media strategy, adtech solutions, architecture, integrations, programmatic tech, and connected-TV.',
+  path: '',
+  index: true,
+  follow: true,
+  cache: true,
+});
 
 export type Headers = {
   Authorication: string;
   'Content-Type': string;
-};
-
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/',
-  },
 };
 
 const headers = {

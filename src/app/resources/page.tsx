@@ -1,7 +1,8 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
 import { GlobalButtonSettings } from '@/app/types';
-import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import { GetMdxBasicData, GetMdxData, GetSubFolders } from '@/utils/mdx';
+import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
@@ -12,20 +13,15 @@ const rootDirectoryPath = join(cwd(), rootDirectory);
 export async function generateMetadata() {
   const rootDocsDirectory = join(rootDirectoryPath);
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
-  const { data } = GetDataContent(join(MDXFilePath));
-  const metadata: Metadata = {
-    title: data.title,
-    robots: {
-      index: false,
-      follow: false,
-      nocache: true,
-      googleBot: {
-        index: false,
-        follow: false,
-        nocache: true,
-      },
-    },
-  };
+  const data = GetMdxData(join(MDXFilePath));
+  const metadata: Metadata = GetMetadata({
+    pageName: data.title,
+    description: data.excerpt,
+    path: 'resources',
+    index: false,
+    follow: false,
+    cache: false,
+  });
 
   return metadata;
 }
@@ -61,14 +57,7 @@ export default async function Page() {
           (subPage) =>
             (subPages[subPageDir] = {
               filename: subPage,
-              title: GetDataContent(
-                join(rootDocsDirectory, subPageDir, subPage)
-              ).data.title,
-              excerpt: GetDataContent(
-                join(rootDocsDirectory, subPageDir, subPage)
-              ).data.excerpt,
-              icon: GetDataContent(join(rootDocsDirectory, subPageDir, subPage))
-                .data.icon,
+              ...GetMdxData(join(rootDocsDirectory, subPageDir, subPage)),
             })
         )
     );
@@ -77,11 +66,9 @@ export default async function Page() {
     <div className='bg-gradient-to-b from-gray-0 from-60% to-secondary-50 to-100%'>
       <Article
         id='resources'
-        headline={
-          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.title
-        }
+        headline={GetMdxBasicData(join(rootDocsDirectory, '_index.mdx')).title}
         subhead={
-          GetDataContent(join(rootDocsDirectory, '_index.mdx')).data.subhead
+          GetMdxBasicData(join(rootDocsDirectory, '_index.mdx')).subhead
         }>
         <div className='grid grid-cols-6 gap-4'>
           {Object.keys(subPages).map((page) => (
