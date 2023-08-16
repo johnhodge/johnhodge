@@ -3,7 +3,7 @@ import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  profiler: true,
+  reactStrictMode: true,
   experimental: {
     serverActions: true,
   },
