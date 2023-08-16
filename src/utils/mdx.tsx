@@ -1,4 +1,4 @@
-import { PostData } from '@/app/types';
+import { BasicPostData, PostData } from '@/app/types';
 import { readFileSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
 
@@ -7,6 +7,15 @@ export function GetMdxDataContent(fileLocation: string) {
   const { data, content } = matter(fileContents);
   return { data, content };
 }
+export function GetMdxBasicData(fileLocation: string): BasicPostData {
+  const fileContents = readFileSync(fileLocation);
+  const { data } = matter(fileContents);
+  return {
+    title: data.title,
+    excerpt: data.excerpt,
+  };
+}
+
 export function GetMdxData(fileLocation: string): PostData {
   const fileContents = readFileSync(fileLocation);
   const { data } = matter(fileContents);

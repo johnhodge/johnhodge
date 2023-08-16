@@ -4,9 +4,14 @@ import {
   BasicPostData,
   DynamicRoute,
   GlobalButtonSettings,
-  PostData,
+  PostFileData,
 } from '@/app/types';
-import { GetDataContent, GetSubFolders } from '@/utils/mdx';
+import {
+  GetMdxBasicData,
+  GetMdxData,
+  GetMdxDataContent,
+  GetSubFolders,
+} from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
@@ -25,7 +30,7 @@ export async function generateMetadata(props: DynamicRoute) {
     props.params.category ?? ''.replace('.mdx', '')
   );
   const MDXFilePath = join(MDXFileDirectory, '_index.mdx');
-  const { data } = GetDataContent(join(MDXFilePath));
+  const { data } = GetMdxDataContent(join(MDXFilePath));
   const metadata: Metadata = GetMetadata({
     pageName: data.title,
     description: data.excerpt,
@@ -62,8 +67,8 @@ export default async function Page(props: DynamicRoute) {
     props.params.category ?? ''
   );
   const MDXFilePath: string = join(containingDirectory, `_index.mdx`);
-  const { data } = GetDataContent(join(MDXFilePath));
-  const post: PostData = {
+  const data = GetMdxData(join(MDXFilePath));
+  const post: PostFileData = {
     title: data.title,
     excerpt: data.excerpt,
     date: data.date,
@@ -85,8 +90,7 @@ export default async function Page(props: DynamicRoute) {
   subPageFiles.forEach(
     (file: string) =>
       (subPages[file] = {
-        title: GetDataContent(join(containingDirectory, file)).data.title,
-        excerpt: GetDataContent(join(containingDirectory, file)).data.excerpt,
+        ...GetMdxBasicData(join(containingDirectory, file)),
       })
   );
 
