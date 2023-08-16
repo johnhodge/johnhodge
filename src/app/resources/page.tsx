@@ -1,12 +1,7 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
 import { GlobalButtonSettings } from '@/app/types';
-import {
-  GetMdxBasicData,
-  GetMdxData,
-  GetMdxDataContent,
-  GetSubFolders,
-} from '@/utils/mdx';
+import { GetMdxBasicData, GetMdxData, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 import { join } from 'path';
@@ -18,7 +13,7 @@ const rootDirectoryPath = join(cwd(), rootDirectory);
 export async function generateMetadata() {
   const rootDocsDirectory = join(rootDirectoryPath);
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
-  const { data } = GetMdxDataContent(join(MDXFilePath));
+  const data = GetMdxData(join(MDXFilePath));
   const metadata: Metadata = GetMetadata({
     pageName: data.title,
     description: data.excerpt,
