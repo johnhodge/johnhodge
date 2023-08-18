@@ -11,8 +11,8 @@ export default function GitHubData(props: PostFileData) {
         className='py-2 flex items-center gap-1'
         target='_blank'
         href={`https://github.com/johnhodge/johnhodge/blob/canary/${props.file.MDXFilePath.replace(
-          /.*\/documentation\//,
-          'documentation/'
+          /.*\/resources\//,
+          'resources/'
         )}`}>
         <svg
           className='inline-block'
