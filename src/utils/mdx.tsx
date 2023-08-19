@@ -26,7 +26,10 @@ export function GetMdxData(fileLocation: string): PostData {
     excerpt: data.excerpt,
     icon: data.icon,
     date: data.date,
-    author: { firstName: data.firstName, lastName: data.lastName },
+    author: {
+      firstName: data.author.firstName,
+      lastName: data.author.lastName,
+    },
   };
 }
 
