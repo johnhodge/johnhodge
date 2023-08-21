@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <Article id='error' headline='Error' subhead='Soemthing went wrong'>
+    <Article id='error' headline='Error' subhead='Something went wrong'>
       <div className='flex flex-col gap-4'>
         <GlobalButton
           text='Try again'
