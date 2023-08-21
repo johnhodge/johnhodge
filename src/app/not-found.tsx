@@ -6,7 +6,7 @@ export default function NotFound() {
     <Article id='error-404' headline='404' subhead='Resource not found'>
       <div className='flex flex-col gap-4'>
         <p>
-          We can't find the resource you requested. Please double check the URL
+          We can’t find the resource you requested. Please double check the URL
           and try again.
         </p>
         <div className='flex gap-4'>
