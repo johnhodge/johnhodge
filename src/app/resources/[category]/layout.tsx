@@ -1,3 +1,4 @@
+export const dynamicParams = false;
 export default async function DocsLayout({
   children,
 }: {
