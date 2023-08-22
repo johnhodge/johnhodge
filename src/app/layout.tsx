@@ -5,6 +5,8 @@ import { Fira_Code, Inter } from 'next/font/google';
 import Link from 'next/link';
 import Script from 'next/script';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import Loading from '@/app/components/loading';
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 const firaCode = Fira_Code({ subsets: ['latin-ext'], variable: '--firaCode' });
@@ -38,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <Navigation />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <footer className='flex justify-between items-center p-4 bg-gray-0 gap-2'>
           <div>
             ©{new Date().getFullYear()}{' '}
