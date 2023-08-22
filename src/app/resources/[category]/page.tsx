@@ -1,18 +1,32 @@
 import GlobalCard from '@/app/components/shared/card';
-import Doc from '@/app/resources/[documentation]/templates/doc';
+import Doc from '@/app/resources/[category]/templates/doc';
 import { DynamicRoute, GlobalButtonSettings, PostFileData } from '@/app/types';
 import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
+import { readdirSync } from 'fs';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
+const allRoutes: DynamicRoute[] = [];
+const categoryRoutes = readdirSync(join(rootDirectoryPath)).filter(
+  (category) => category != '_index.mdx'
+);
+export function generateStaticParams() {
+  categoryRoutes.forEach((categoryRoute) =>
+    allRoutes.push({
+      category: categoryRoute,
+    })
+  );
 
-export async function generateMetadata(props: DynamicRoute) {
+  return allRoutes;
+}
+
+export async function generateMetadata({ params }: { params: DynamicRoute }) {
   const rootDocsDirectory = join(
     rootDirectoryPath,
-    props.params.documentation.replace('.mdx', '')
+    params.category.replace('.mdx', '')
   );
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetMdxDataContent(join(MDXFilePath));
@@ -21,9 +35,9 @@ export async function generateMetadata(props: DynamicRoute) {
     description: data.excerpt,
     path: join(
       rootDirectory,
-      props.params.documentation,
-      props.params.category ?? '',
-      props.params.slug ?? ''
+      params.category,
+      params.tag ?? '',
+      params.slug ?? ''
     ),
     index: false,
     follow: false,
@@ -51,12 +65,8 @@ function createButton(link: string): GlobalButtonSettings {
   };
 }
 
-export default async function Page(props: DynamicRoute) {
-  const rootDocsDirectory = join(
-    '/',
-    rootDirectoryPath,
-    props.params.documentation
-  );
+export default async function Page({ params }: { params: DynamicRoute }) {
+  const rootDocsDirectory = join('/', rootDirectoryPath, params.category);
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetMdxDataContent(join(MDXFilePath));
   const post: PostFileData = {
@@ -72,8 +82,8 @@ export default async function Page(props: DynamicRoute) {
     file: {
       rootDirectory: rootDirectory,
       rootDocsDirectory: rootDocsDirectory,
-      containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
-      fileName: `${props.params.slug}.mdx`,
+      containingDirectory: join(rootDocsDirectory, params.category ?? ''),
+      fileName: `${params.slug}.mdx`,
       MDXFilePath: MDXFilePath,
     },
   };
@@ -95,7 +105,7 @@ export default async function Page(props: DynamicRoute) {
     );
 
   return (
-    <Doc route={props} post={post}>
+    <Doc route={params} post={post}>
       <div className='not-prose grid grid-cols-6 gap-4'>
         {Object.keys(subPages)
           .filter((key) => key != '_index.mdx')
@@ -108,8 +118,8 @@ export default async function Page(props: DynamicRoute) {
                 longDescription={subPages[page].excerpt}
                 callToAction={createButton(
                   join(
-                    props.params.documentation,
-                    props.params.category ?? '',
+                    params.category,
+                    params.tag ?? '',
                     page.replace('.mdx', '')
                   )
                 )}

@@ -74,11 +74,9 @@ export interface Person extends BasicPerson {
 }
 
 export type DynamicRoute = {
-  params: {
-    documentation: string;
-    category?: string;
-    slug?: string;
-  };
+  category: string;
+  tag?: string;
+  slug?: string;
 };
 
 export type DynamicTemplate = {

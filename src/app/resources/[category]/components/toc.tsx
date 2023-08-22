@@ -3,8 +3,8 @@ import {
   TOC2,
   TOC3,
   TOCHome,
-} from '@/app/resources/[documentation]/components/body';
-import GitHubData from '@/app/resources/[documentation]/components/github';
+} from '@/app/resources/[category]/components/body';
+import GitHubData from '@/app/resources/[category]/components/github';
 import { TOCData } from '@/app/types';
 import Link from 'next/link';
 import { join } from 'path';
@@ -74,7 +74,7 @@ export default function GlobalTOC(props: TOCData) {
                   base={join(
                     '/',
                     props.post.file.rootDirectory,
-                    props.route.params.documentation
+                    props.route.category
                   )}
                   slug='/'
                 />
@@ -87,7 +87,7 @@ export default function GlobalTOC(props: TOCData) {
                       base={join(
                         '/',
                         props.post.file.rootDirectory,
-                        props.route.params.documentation,
+                        props.route.category,
                         dir
                       )}
                       data={props.folders[dir].root}
@@ -103,7 +103,7 @@ export default function GlobalTOC(props: TOCData) {
                         base={join(
                           '/',
                           props.post.file.rootDirectory,
-                          props.route.params.documentation,
+                          props.route.category,
                           dir
                         )}
                         slug={subPage.file.fileName}
@@ -133,7 +133,7 @@ export default function GlobalTOC(props: TOCData) {
               base={join(
                 '/',
                 props.post.file.rootDirectory,
-                props.route.params.documentation
+                props.route.category
               )}
               slug='/'
             />
@@ -144,7 +144,7 @@ export default function GlobalTOC(props: TOCData) {
                   base={join(
                     '/',
                     props.post.file.rootDirectory,
-                    props.route.params.documentation,
+                    props.route.category,
                     dir
                   )}
                   data={props.folders[dir].root}
@@ -156,7 +156,7 @@ export default function GlobalTOC(props: TOCData) {
                     base={join(
                       '/',
                       props.post.file.rootDirectory,
-                      props.route.params.documentation,
+                      props.route.category,
                       dir
                     )}
                     slug={subPage.file.fileName}

@@ -1,11 +1,6 @@
-import {
-  H2,
-  H3,
-  TOC2,
-  TOC3,
-} from '@/app/resources/[documentation]/components/body';
-import GlobalCallout from '@/app/resources/[documentation]/components/callouts';
-import GlobalTOC from '@/app/resources/[documentation]/components/toc';
+import { H2, H3, TOC2, TOC3 } from '@/app/resources/[category]/components/body';
+import GlobalCallout from '@/app/resources/[category]/components/callouts';
+import GlobalTOC from '@/app/resources/[category]/components/toc';
 import { DynamicTemplate, TOCEnteries } from '@/app/types';
 import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
@@ -14,7 +9,7 @@ import { join } from 'path';
 import { ReactNode } from 'react';
 
 export async function generateMetadata(props: DynamicTemplate) {
-  const { data } = GetMdxDataContent(props.post.file.MDXFilePath);
+  const data = GetMdxData(props.post.file.MDXFilePath);
   const metadata: Metadata = {
     title: data.title,
   };
@@ -90,9 +85,9 @@ export default function Doc(props: DynamicTemplate) {
                 header={children}
                 base={join(
                   'resources',
-                  props.route.params.documentation,
-                  props.route.params.category ?? '',
-                  props.route.params.slug ?? ''
+                  props.route.category,
+                  props.route.tag ?? '',
+                  props.route.slug ?? ''
                 )}
               />
             ),
@@ -101,9 +96,9 @@ export default function Doc(props: DynamicTemplate) {
                 header={children}
                 base={join(
                   'resources',
-                  props.route.params.documentation,
-                  props.route.params.category ?? '',
-                  props.route.params.slug ?? ''
+                  props.route.category,
+                  props.route.tag ?? '',
+                  props.route.slug ?? ''
                 )}
               />
             ),
@@ -134,9 +129,9 @@ export default function Doc(props: DynamicTemplate) {
                     header={children}
                     base={join(
                       '/resources',
-                      props.route.params.documentation,
-                      props.route.params.category ?? '',
-                      props.route.params.slug ?? ''
+                      props.route.category,
+                      props.route.tag ?? '',
+                      props.route.slug ?? ''
                     )}
                   />
                 ),
@@ -145,9 +140,9 @@ export default function Doc(props: DynamicTemplate) {
                     header={children}
                     base={join(
                       '/resources',
-                      props.route.params.documentation,
-                      props.route.params.category ?? '',
-                      props.route.params.slug ?? ''
+                      props.route.category,
+                      props.route.tag ?? '',
+                      props.route.slug ?? ''
                     )}
                   />
                 ),

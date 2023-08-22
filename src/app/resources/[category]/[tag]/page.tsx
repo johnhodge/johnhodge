@@ -1,45 +1,54 @@
 import GlobalCard from '@/app/components/shared/card';
-import Doc from '@/app/resources/[documentation]/templates/doc';
+import Doc from '@/app/resources/[category]/templates/doc';
 import {
   BasicPostData,
   DynamicRoute,
   GlobalButtonSettings,
   PostFileData,
 } from '@/app/types';
-import {
-  GetMdxBasicData,
-  GetMdxData,
-  GetMdxDataContent,
-  GetSubFolders,
-} from '@/utils/mdx';
+import { GetMdxBasicData, GetMdxData, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
+import { readdirSync } from 'fs';
 import { Metadata } from 'next';
 import { join } from 'path';
 import { cwd } from 'process';
 
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
+const allRoutes: DynamicRoute[] = [];
+const categoryRoutes = readdirSync(join(rootDirectoryPath)).filter(
+  (category) => category != '_index.mdx'
+);
 
-export async function generateMetadata(props: DynamicRoute) {
+export function generateStaticParams() {
+  categoryRoutes.forEach((categoryRoute) =>
+    readdirSync(join(rootDirectoryPath, categoryRoute))
+      .filter((docName) => docName != '_index.mdx')
+      .forEach((tagRoute) =>
+        allRoutes.push({
+          category: categoryRoute,
+          tag: tagRoute,
+        })
+      )
+  );
+  return allRoutes;
+}
+
+export async function generateMetadata({ params }: { params: DynamicRoute }) {
   const rootDocsDirectory = join(
     rootDirectoryPath,
-    props.params.documentation.replace('.mdx', '')
+    params.category.replace('.mdx', '')
   );
   const MDXFileDirectory = join(
     rootDocsDirectory,
-    props.params.category ?? ''.replace('.mdx', '')
+    params.tag ?? ''.replace('.mdx', '')
   );
   const MDXFilePath = join(MDXFileDirectory, '_index.mdx');
-  const { data } = GetMdxDataContent(join(MDXFilePath));
+  const data = GetMdxData(join(MDXFilePath));
   const metadata: Metadata = GetMetadata({
     pageName: data.title,
     description: data.excerpt,
-    path: join(
-      rootDirectory,
-      props.params.documentation,
-      props.params.category ?? '',
-      props.params.slug ?? ''
-    ),
+    path: join(rootDocsDirectory, params.tag ?? '', params.slug ?? ''),
     index: false,
     follow: false,
     cache: false,
@@ -58,14 +67,10 @@ function createButton(link: string): GlobalButtonSettings {
     buttonType: 'route',
   };
 }
-
-export default async function Page(props: DynamicRoute) {
+export default async function Page({ params }: { params: DynamicRoute }) {
   const subPages: Record<string, BasicPostData> = {};
-  const rootDocsDirectory = join(rootDirectoryPath, props.params.documentation);
-  const containingDirectory = join(
-    rootDocsDirectory,
-    props.params.category ?? ''
-  );
+  const rootDocsDirectory = join(rootDirectoryPath, params.category);
+  const containingDirectory = join(rootDocsDirectory, params.tag ?? '');
   const MDXFilePath: string = join(containingDirectory, `_index.mdx`);
   const data = GetMdxData(join(MDXFilePath));
   const post: PostFileData = {
@@ -81,8 +86,8 @@ export default async function Page(props: DynamicRoute) {
     file: {
       rootDirectory: rootDirectory,
       rootDocsDirectory: rootDocsDirectory,
-      containingDirectory: join(rootDocsDirectory, props.params.category ?? ''),
-      fileName: `${props.params.slug}.mdx`,
+      containingDirectory: join(rootDocsDirectory, params.category ?? ''),
+      fileName: `${params.slug}.mdx`,
       MDXFilePath: MDXFilePath,
     },
   };
@@ -96,7 +101,7 @@ export default async function Page(props: DynamicRoute) {
   );
 
   return (
-    <Doc route={props} post={post}>
+    <Doc route={params} post={post}>
       <div className='not-prose grid grid-cols-6 gap-4'>
         {Object.keys(subPages)
           .filter((key) => key != '_index.mdx')
@@ -108,7 +113,7 @@ export default async function Page(props: DynamicRoute) {
                 subheader={subPages[page].title}
                 longDescription={subPages[page].excerpt}
                 callToAction={createButton(
-                  join(props.params.category ?? '', page.replace('.mdx', ''))
+                  join(params.tag ?? '', page.replace('.mdx', ''))
                 )}
               />
             </div>

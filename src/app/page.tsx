@@ -22,7 +22,7 @@ export const metadata: Metadata = GetMetadata({
 });
 
 export type Headers = {
-  Authorication: string;
+  Authorization: string;
   'Content-Type': string;
 };
 
