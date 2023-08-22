@@ -4,9 +4,13 @@ import GetAsset from '@/utils/asset';
 import { Fira_Code, Inter } from 'next/font/google';
 import Link from 'next/link';
 import Script from 'next/script';
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' });
 const firaCode = Fira_Code({ subsets: ['latin-ext'], variable: '--firaCode' });
+export const metadata: Metadata = {
+  metadataBase: new URL('https://johnhodge.com'),
+};
 
 export default function RootLayout({
   children,

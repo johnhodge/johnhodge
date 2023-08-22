@@ -5,7 +5,6 @@ export function GetMetadata(param: SiteMetadata): Metadata {
   const siteName = 'John Hodge';
   const title = `${param.pageName} | ${siteName}`;
   return {
-    metadataBase: new URL('https://johnhodge.com'),
     title: title,
     description: param.description,
     alternates: {
