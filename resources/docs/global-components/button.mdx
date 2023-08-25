@@ -11,7 +11,103 @@ author:
 
 import GlobalCallout from '@/app/resources/components/callouts';
 
+The button component in this project is named `GlobalButton` and is used to style buttons for linking and user interactions.
+
+## Component spec
+
+There are three kinds of button `link`, `route`, and `button`. For `button`, the component will look similar to this:
+
+```javascript
+<GlobalButton
+  text='Try again'
+  size='small'
+  color='gray'
+  width='fit'
+  buttonType='button'
+  onClick={() => reset()}
+/>
+```
+
+For `link` or `route`, the component will look like this.
+
+```javascript
+<GlobalButton
+  text='Get in touch'
+  size='small'
+  color='primary'
+  width='fit'
+  buttonType='route' //or 'link'
+  href='#contact'
+/>
+```
+
 <GlobalCallout
-  message='This documentation is still being created'
+  message='The difference between `link` and `route` is that `link` uses a normal `<a>` tag while route uses the `<Link>` component from Nextjs to handle routing.'
+  type='note'
+/>
+
+For full spec, see the `types.ts` file.
+
+## Styling Buttons
+
+Button’s don’t accept a `className` prop (or similar). Styles are all applied using objects that map to values past through the props of the component.
+
+For example, width styles are configured on an object similar to this:
+
+```javascript
+const widthStyle = { fit: 'w-fit', full: 'w-full' };
+```
+
+And applied to HTML by calling the value from the corresponding key of the `width` prop, like this:
+
+```html
+<Link className={`${widthStyle[props.width]} ...`}>...</Link>
+```
+
+## Using Button types
+
+Each button type is meant to be used in set situations.
+
+### Route
+
+This component links pages together with a route that supports pre-fetching and client-side navigation. The result is a website that feels more like an application with seamless navigation between pages linked with this button type.
+
+This is the most common button type and is used to set up routing between pages.
+
+<GlobalCallout
+  message='This button type is powered using the [`Link` component available through Nextjs](https://nextjs.org/docs/app/api-reference/components/link), which simplifies the process of creating routes.'
+  type='note'
+/>
+
+### Link
+
+This component links pages together with a traditional anchor tag. The result is that the entire page has to load and there is no support for pre-fetching or client-side navigation. The result is that HTML is completely re-rendered for the linked destination.
+
+This component is uncommon and should only be used when specific needs require it.
+
+### Button
+
+This component supports on-page functionality that doesn’t link pages but rather supports events like [`onClick`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/onclick) to enable user interactions of some sort.
+
+## Global Components
+
+This component is used in both the [`GlobalCard`](card) and [`GlobalDialog`](dialog) components.
+
+### GlobalCard
+
+This component is used on the [`GlobalCard`](card) component to send buttons to the [`GlobalDialog`](dialog) component for closing the dialog and linking CTAs.
+
+### GlobalDialog
+
+This component is used on the [`GlobalDialog`](dialog) component as the button that opens the dialog.
+
+## Known Limitations
+
+### Prop Drilling
+
+<GlobalCallout
+  message='Prop drilling on this component is a broader concern that needs to be addressed with the [`GlobalCard`](card) component in mind.'
   type='alert'
 />
+
+The way this component is used on other components has led to prop drilling which has resulted in some cumbersome coding logic and messy ternary statements. This is an enhancement that’s being tracked against other items in the backlog.
