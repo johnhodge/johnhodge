@@ -45,7 +45,7 @@ Since this component is built using `GlobalCard` and `GlobalButton` components, 
 
 ### GlobalCard
 
-The `GlobalCard` component is being used to present the content of the dialog by passing data to the `GlobalDialog` in the `props.openDialog` object.
+The [`GlobalCard`](card) component is being used to present the content of the dialog by passing data to the `GlobalDialog` in the `props.openDialog` object.
 
 To do this, there’s a `GlobalDialog` component on the `GlobalCard` that calls the `GlobalDialog` component if there's data in the `props.openDialog` object using a basic ternary.
 
@@ -98,7 +98,7 @@ By passing all the `prop` values, we can create dialogs that match the card they
 
 ### GlobalButton
 
-The `GlobalButton` component is used to add functionality to the `GlobalDialog`. This functionality includes opening and closing the dialog and accessing calls to action (CTAs).
+The [`GlobalButton`](button) component is used to add functionality to the `GlobalDialog`. This functionality includes opening and closing the dialog and accessing calls to action (CTAs).
 
 If an object is present in `prop.openDialog` then the the dialog button is returned from the `GlobalDialog` component. Otherwise, that button isn’t presented. And just like any other button, this is called with the `GlobalButton` component, like this:
 
@@ -153,6 +153,8 @@ The `GlobalDialog` component uses [HeadlessUI](https://headlessui.com/) because 
 This allows users to open and close dialogs with their keyboards exclusively and supports other accessibility features.
 
 ## Known limitations
+
+The below known limitations have been added to Jira and are being prioritized against other competing initiatives.
 
 ### CTA Linking
 
