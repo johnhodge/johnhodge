@@ -120,13 +120,9 @@ export default function GlobalCard(props: GlobalCardSettings) {
         )}
         {props.closeDialog ? (
           <div className='flex gap-2'>
-            {props.closeDialog ? (
-              <div className='self-auto'>
-                <GlobalButton {...props.closeDialog} />
-              </div>
-            ) : (
-              ''
-            )}
+            <div className='self-auto'>
+              <GlobalButton {...props.closeDialog} />
+            </div>
             {props.callToAction ? (
               <div className='self-auto'>
                 <GlobalButton {...props.callToAction} />
