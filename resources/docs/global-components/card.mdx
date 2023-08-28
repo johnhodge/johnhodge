@@ -3,7 +3,7 @@ title: 'Card'
 subhead: ''
 excerpt: 'Cards are used to capture and organize information throughout the website and in dialogs.'
 icon: ''
-date: '2023-08-10T14:04:18.698Z'
+date: '2023-08-26T18:08:54.277Z'
 author:
   firstName: John
   lastName: Hodge
@@ -11,7 +11,130 @@ author:
 
 import GlobalCallout from '@/app/resources/components/callouts';
 
-<GlobalCallout
-  message='This documentation is still being created'
-  type='alert'
+The card component in this project is named `GlobalCard` and is used to establish consistent design across the website by allowing different kinds of data to be presented within a shared interface.
+
+## Component spec
+
+This component, combined with `GlobalButton` and `GlobalDialog`, is the foundation for most written content presented across the website.
+
+```javascript
+<GlobalCard
+  key={employer.clientsCollection.items[0].name}
+  logo={employer.clientsCollection.items[0].logo}
+  header={employer.jobTitle}
+  subheader={employer.clientsCollection.items[0].name}
+  longDescription={employer.headline}
+  body={employer.body}
+  verticalLine={false}
+  horizontalLine={true}
+  openDialog={openDialog}
+  dialogCallToAction={callToAction}
 />
+```
+
+For full spec, see the `types.ts` file.
+
+## Card design
+
+This component was designed in [Figma](https://figma.com) to be able to present headers, subheaders, logos, icons, descriptions, and other design elements.
+
+This image of the `GlobalCard` prototype shows all the possible data that could be passed.
+
+![GlobalCard prototype](/img/globalcard_component.png)
+
+Each of the options in the righthand sidebar was converted into `props` in the React component. When called, the component organizes the props passed to create the card. When data for an optional prop is missing, the HTML containing it is excluded.
+
+## Card Use Cases
+
+Some use cases for cards include displaying testimonials, employers, clients, skills, etc. These use cases can be boiled down to three main categories:
+
+- Sharing facts or figures with no interaction
+- Sharing high-level summaries with interaction support
+- Sharing more detailed information with interaction support
+
+### Sharing Facts or Figures
+
+This use case is best illustrated in the [clients](/#clients) section of the homepage. In this instance of the card, we set the `verticalLine` to `true`, the `horizontalLine` to `false`, and pass a `logo`, `subheader`, and `shortDescription`.
+
+![Xumo client card](/img/card_clients.png)
+
+The goal of this card is to quickly communicate impact and share other contextual information. In this example, a visitor can quickly see the kinds of clients I work with and how I measure success.
+
+### Sharing High-level Summaries
+
+This use case is best illustrated in the [employers](/#employers) section of the homepage. For brevity, I’m not going to go into the props passed to each use case. But you’ll notice that even though this card contains different information than the previous use case, the overall styling is consistent.
+
+![Madhive employer summary card](/img/card_employers.png)
+
+The goal of this card is to quickly share some high-level information that a visitor would care about without bogging down the website with too much content (I try to avoid large blocks of text on marketing collateral). In this example, if the visitor wants additional info, they can click the button to see more about my time at Madhive.
+
+### Sharing More Detailed Information
+
+This use case is best illustrated in the [testimonials](/#testimonials) section of the homepage. Like the previous use case, we have a way for users to access additional information by clicking a button. But this time, we’re using the `longDescription` to share a little more information on the card (while still keeping it short).
+
+![Luc’s testimonial](/img/card_testimonials.png)
+
+The goal of this card is to share information with a little more detail and a button to drill down even further. In this case, a testimonial excerpt from people I’ve worked with, and a button to see the full testimonial.
+
+## Global Components
+
+In addition to the use cases described above, this component is used alongside other global components.
+
+### GlobalButton
+
+[`GlobalButton`](button) components on cards are used to close `GlobalDialog` components and style CTAs.
+
+### GlobalDialog
+
+The [`GlobalDialog`](dialog) component is used if there’s an object past the `openDialog` prop and it places a button on the card to open a `GlobalDialog` panel.
+
+```javascript
+{
+  props.openDialog ? (
+    <div className='self-auto'>
+      <GlobalDialog {...props} />
+    </div>
+  ) : (
+    ''
+  );
+}
+```
+
+As discussed in the [`GlobalDialog`](dialog#globalcard) docs, this component is also styled with the `GlobalCard`, which makes its appearance consistent with the rest of the website.
+
+## Known Limitations
+
+These known limitations have been added to Jira and are being prioritized against other competing initiatives.
+
+### Prop Drilling
+
+The way this component is used on other components has led to prop drilling which has resulted in code that can be hard to reason about and messy ternary statements. See below for an example of messy ternaries present on the `GlobalCard` component.
+
+```javascript
+{
+  props.closeDialog || props.callToAction ? (
+    <div className='flex gap-2'>
+      {props.closeDialog ? (
+        <div className='self-auto'>
+          <GlobalButton {...props.closeDialog} />
+        </div>
+      ) : (
+        ''
+      )}
+      {props.callToAction ? (
+        <div className='self-auto'>
+          <GlobalButton {...props.callToAction} />
+        </div>
+      ) : (
+        ''
+      )}
+    </div>
+  ) : (
+    ''
+  );
+}
+```
+
+### Limited interactivity in these documents
+
+The images of components in this documentation page are nice but we could embed components to create a more engaging representation of the `GlobalCard` component. I’m considering setting up StoryBook and [embedding "Stories"](https://storybook.js.org/docs/react/sharing/embed) that users can interact with.
