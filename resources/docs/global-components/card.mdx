@@ -142,11 +142,15 @@ The way this component is used on other components has led to prop drilling whic
 
 ```javascript
 {
-  props.closeDialog ? (
+  props.closeDialog || props.callToAction ? (
     <div className='flex gap-2'>
-      <div className='self-auto'>
-        <GlobalButton {...props.closeDialog} />
-      </div>
+      {props.closeDialog ? (
+        <div className='self-auto'>
+          <GlobalButton {...props.closeDialog} />
+        </div>
+      ) : (
+        ''
+      )}
       {props.callToAction ? (
         <div className='self-auto'>
           <GlobalButton {...props.callToAction} />
