@@ -11,7 +11,7 @@ author:
 
 import GlobalCallout from '@/app/resources/components/callouts';
 
-The card component in this project is named `GlobalCard` and is used to style informational items.
+The card component in this project is named `GlobalCard` and is used to establish consistent design across the website by allowing different kinds of data to be presented within a shared interface.
 
 ## Component spec
 
@@ -32,51 +32,21 @@ This component, combined with `GlobalButton` and `GlobalDialog`, is the foundati
 />
 ```
 
-Due to the complexity of this component, it’s probably worth reviewing the type definiton.
-
-```javascript
-export type GlobalCardSettings = {
-  logo?: MediaImage,
-  icon?: MediaImage,
-  iconId?: string,
-  iconAlign?: 'start' | 'center' | 'end',
-  header?: string,
-  subheader?: string,
-  shortDescription?: string,
-  longDescription?: string,
-  body?: string,
-  closeDialog?: GlobalButtonSettings,
-  openDialog?: GlobalButtonSettings,
-  callToAction?: GlobalButtonSettings,
-  dialogCallToAction?: GlobalButtonSettings,
-  verticalLine: boolean,
-  horizontalLine: boolean,
-  height?: string,
-};
-```
-
 For full spec, see the `types.ts` file.
 
 ## Card design
 
-As with the `GlobalButton`, this component was designed in [Figma](https://figma.com) before being developed as a React component. Unlike the `GlobalButton` component, the card component had many different states.
+This component was designed in [Figma](https://figma.com) to be able to present headers, subheaders, logos, icons, descriptions, and other design elements.
 
 This image of the `GlobalCard` prototype shows all the possible data that could be passed.
 
 ![GlobalCard prototype](/img/globalcard_component.png)
 
-Each of the options in the righthand sidebar were converted into `props` in the React component. When called, the component organizes the props passed to create the card. When data for an optional prop is missing, the HTML containing it is excluded.
-
-<GlobalCallout
-  message='One of the goals of the `GlobalCard` was to establish consistent design across the website by allowing different kinds of data to be presented within a similar interface.'
-  type='note'
-/>
+Each of the options in the righthand sidebar was converted into `props` in the React component. When called, the component organizes the props passed to create the card. When data for an optional prop is missing, the HTML containing it is excluded.
 
 ## Card Use Cases
 
-There are a number of use cases for cards on the website like: displaying testimonials, employers, clients, skills, etc.
-
-These use cases can be boiled down to three main categories:
+Some use cases for cards include displaying testimonials, employers, clients, skills, etc. These use cases can be boiled down to three main categories:
 
 - Sharing facts or figures with no interaction
 - Sharing high-level summaries with interaction support
@@ -84,19 +54,19 @@ These use cases can be boiled down to three main categories:
 
 ### Sharing Facts or Figures
 
-This use case is best illustrated in the [clients](/#clients) section of the homepage. In this instance of the card, we set the `verticalLine` to `true`, the `horizontalLine` to `false` and pass a `logo`, `header`, and `shortDescription`.
+This use case is best illustrated in the [clients](/#clients) section of the homepage. In this instance of the card, we set the `verticalLine` to `true`, the `horizontalLine` to `false`, and pass a `logo`, `subheader`, and `shortDescription`.
 
 ![Xumo client card](/img/card_clients.png)
 
-The goal of this card is to quickly communicate impact and other contextual information. In this example, a visitor can quickly see the kinds of clients I work with and how I measure success.
+The goal of this card is to quickly communicate impact and share other contextual information. In this example, a visitor can quickly see the kinds of clients I work with and how I measure success.
 
 ### Sharing High-level Summaries
 
-This use case is best illustrated in the [employers](/#employers) section of the homepage. In this instance of the card, we see a different combination of items than we did in the previous example. For brevity, I’m not going to go into the props passed to each use case. But you’ll notice that even though this card contains different information than the previous use case, the overall styling is consistent.
+This use case is best illustrated in the [employers](/#employers) section of the homepage. For brevity, I’m not going to go into the props passed to each use case. But you’ll notice that even though this card contains different information than the previous use case, the overall styling is consistent.
 
 ![Madhive employer summary card](/img/card_employers.png)
 
-The goal of this card is to quickly share some high-level information that a visitor would care about without bogging down the website with too much content (I try to avoid large blocks of text on marketing collateral). In this example, if the visitor wants additional info, they can click the button to see more context about my time at Madhive.
+The goal of this card is to quickly share some high-level information that a visitor would care about without bogging down the website with too much content (I try to avoid large blocks of text on marketing collateral). In this example, if the visitor wants additional info, they can click the button to see more about my time at Madhive.
 
 ### Sharing More Detailed Information
 
@@ -104,7 +74,7 @@ This use case is best illustrated in the [testimonials](/#testimonials) section 
 
 ![Luc’s testimonial](/img/card_testimonials.png)
 
-The goal of this card is to share high-level information about something. In this case, a testimonial snippet of other people’s experience working with me, and a button to see the full testimonial.
+The goal of this card is to share information with a little more detail and a button to drill down even further. In this case, a testimonial excerpt from people I’ve worked with, and a button to see the full testimonial.
 
 ## Global Components
 
@@ -116,7 +86,7 @@ In addition to the use cases described above, this component is used alongside o
 
 ### GlobalDialog
 
-In addition to the `GlobalButton` to close the [`GlobalDialog`](dialog) and style CTAs, there’s also a reference to the `GlobalDialog` component directly on the `GlobalCard`.
+The [`GlobalDialog`](dialog) component is used if there’s an object past the `openDialog` prop and it places a button on the card to open a `GlobalDialog` panel.
 
 ```javascript
 {
@@ -130,15 +100,15 @@ In addition to the `GlobalButton` to close the [`GlobalDialog`](dialog) and styl
 }
 ```
 
-This component appears if there’s an object past to the `openDialog` prop and it places a button on the card to open a `GlobalDialog`. As discussed in the [`GlobalDialog`](dialog#globalcard) docs, this component is also powered with the `GlobalCard`, which makes it’s styling consistent with the rest of the website.
+As discussed in the [`GlobalDialog`](dialog#globalcard) docs, this component is also styled with the `GlobalCard`, which makes its appearance consistent with the rest of the website.
 
 ## Known Limitations
 
-The below known limitations have been added to Jira and are being prioritized against other competing initiatives.
+These known limitations have been added to Jira and are being prioritized against other competing initiatives.
 
 ### Prop Drilling
 
-The way this component is used on other components has led to prop drilling which has resulted in some cumbersome coding logic and messy ternary statements. See below for an example of messy ternaries present on the `GlobalCard` component.
+The way this component is used on other components has led to prop drilling which has resulted in code that can be hard to reason about and messy ternary statements. See below for an example of messy ternaries present on the `GlobalCard` component.
 
 ```javascript
 {
