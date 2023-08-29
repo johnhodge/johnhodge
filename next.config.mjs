@@ -10,7 +10,7 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     loader: 'custom',
-    loaderFile: './loader.js',
+    loaderFile: './loader.ts',
 
     remotePatterns: [
       {
