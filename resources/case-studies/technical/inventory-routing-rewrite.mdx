@@ -40,7 +40,7 @@ This STAR analysis (situation, task, action, result) explains the product develo
 
 Inventory sources, like deals and VAST tags, were routed using literal strings in hard code. This routing system was integral to the entire platform since it was responsible for directing incoming requests (inventory) to the appropriate demand. Misconfigurations would interrupt service to entire inventory sources and every piece of demand relying on them would stop delivering as a result.
 
-Many different kinds of criteria were supported with conditional logic flows and for loops (org-level access, campaign-level access, inventory for political or elections, advertiser-specific deals, etc.). There were also thousands of deals and VAST integrations in the system. These led to thousands of lines of code which became hard to navigate and prone to errors.
+Many different kinds of criteria were supported with conditional logic flows and for loops (organization-level access, campaign-level access, inventory for political or elections, advertiser-specific deals, etc.). There were also thousands of deals and VAST integrations in the system. These led to thousands of lines of code which became hard to navigate and prone to errors.
 
 Because of the above considerations, clients and account teams couldn’t self-manage inventory sources. As a result, the platform's SaaS offering was limited and the timeline to add new inventory was significantly longer than is acceptable. ENG was responsible for making these changes, and they frequently had competing priorities. Also, due to the sensitive nature of inventory routes, interacting with this code shouldn’t be rushed since mistakes can create duplicate work (at best), or interrupt service from new and existing inventory sources resulting in revenue loss.
 
@@ -73,7 +73,7 @@ Next, we built a safe environment for running long canaries against our updates 
 
 The output from these two functions was present in our Cloud Provider, but to make discrepancies more obvious ENG would send an alert to Slack when the outputs didn’t match. This ensured we were able to scale our diligence while we moved on to other phases. We used a two-week canary period, and if in that time no errors were raised to Slack, we deemed those program updates a success and moved on to the next set.
 
-#### Campaign level routes
+#### Campaign-level routes
 
 In this phase, we built logic to read the inventory ID from the database and apply inventory targeting logic to a campaign.
 
@@ -112,7 +112,7 @@ These routes represent the inventory that an organization has access to. In this
 
 With this in place, we were able to set varying levels of visibility and monetization rights safely and quickly with dashboards that displayed the permissions present on an inventory item.
 
-#### Advertiser level routes
+#### Advertiser-level routes
 
 Advertisers are just a specific kind of organization in the system, but their routes are nested inside their parent org. This means that while an advertiser (like Nike) can do work with many different organizations on our platform, there are different routes assigned to different instances of Nike based on the org they’re working with.
 
