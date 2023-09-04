@@ -30,7 +30,7 @@ This case study discusses how my team rebuilt the inventory routing service to u
   type='note'
 />
 
-- **Media Teams**: Teams responsible for purchasing inventory themself, or allowing other teams to purchase inventory. These might be agencies or advertisers, or publishers who whitelabel the platform to allow their agency or advertiser clients to place media buys.
+- **Media Teams**: Direct users of the platform. These might be agencies or advertisers, or publishers who whitelabel the platform to allow their agency or advertiser clients to place media buys. It’s most common that they’re publishers.
 
 - **Routes**: Functionality that connects requests from incoming inventory to demand that should be eligible to deliver into it. (Example: these routes will appropriately connect an advertiser’s demand to inventory from a deal that the advertiser is a buyer of.)
 
@@ -42,13 +42,15 @@ This STAR analysis (situation, task, action, result) explains the product develo
 
 <GlobalCallout message='Give context about the problem' type='note' />
 
-Inventory sources, like deals and VAST tags, had been routed using literal strings in hard code. This routing system was integral to the entire platform since it was responsible for directing incoming requests (inventory) to the appropriate demand. Misconfigurations would interrupt service to entire inventory sources and every piece of demand relying on them would encounter delivery issues as a result. These issues could range from the media team simply not seeing delivery on the deal, to the demand not delivering at all (if the demand is only routed to one inventory source).
+Inventory sources, like deals and VAST tags, had been routed using literal strings in hard code. This routing system was integral to the entire platform since it was responsible for directing incoming requests (inventory) to the appropriate demand. Misconfigurations would interrupt service to entire inventory sources and every piece of demand relying on them would encounter delivery issues as a result. These issues could range from the media team simply not seeing delivery on the deal, to the demand not delivering at all (if the demand is only routed to one inventory source, which is fairly common).
 
-Routes were configured to connect incoming requests to demand that should deliver into it. This was determined based on business criteria that was enforced with conditional logic flows and for loops. There were thousands of deals and VAST integrations in the system. Reflecting all of the business logic across several thousands of inventory sources with literal strings in hard code led to thousands of lines of code. This method became hard to manage and prone to errors.
+Routes were configured to connect incoming requests to demand that should deliver into it. This was determined based on business criteria that was enforced with conditional logic flows and `for` loops. There were thousands of deals and VAST integrations in the system. Reflecting all of the business logic across several thousands of inventory sources with literal strings in hard code led to thousands of lines of code. This method became hard to manage and prone to errors.
 
 Because of the above considerations, clients and internal account teams couldn’t self-manage inventory sources. As a result, the platform's SaaS offering was limited and the timeline to add new inventory was significantly longer than acceptable. Engineering was responsible for making routing changes, and they frequently had competing priorities. Also, due to the sensitive nature of inventory routes, interacting with this code shouldn’t be rushed since mistakes can create duplicate work (at best), or interrupt service resulting in revenue loss.
 
-Deals tended to represent inventory that would be sold to new demand, in addition to existing media transactions. Time spent not monetizing these deals translated to missed net new revenue opportunities.
+Deals tended to represent inventory that would be sold to new demand, in addition to existing demand. Time spent not monetizing these deals translated to missed net new revenue opportunities.
+
+Any enhancements we made could not interfere with existing behavior since existing routes were being used to enforce contracts and other business logic.
 
 ### Task
 
@@ -83,12 +85,12 @@ We used a two-week canary period. While an update was being canaried, engineers 
 
 #### Campaign-level routes
 
-In this phase, we built logic to read the inventory ID from the database and apply inventory targeting logic to a campaign.
+In this phase, we built logic to read the inventory ID from a database table with campaign configurations and apply inventory targeting logic to the associated campaign.
 
 To quickly capitalize on this new logic, we built an internal tool to allow other non-engineering teams to manage targeting inventory on campaigns.
 
 <GlobalCallout
-  message='This would eventually be represented in the front-end platform in a targeting widget when the user is creating a campaign.'
+  message='This functionality would be represented in the front-end platform in a targeting widget when the user is creating a campaign.'
   type='success'
 />
 
@@ -98,7 +100,7 @@ During our canary period, engineers would add new inventory IDs to the legacy ro
 
 In future phases, we’re going to need to associate hundreds of inventory IDs to organizations, to make these routes manageable, we’ll implement the concept of a hierarchy with parent-child relationships.
 
-For example, we would group the inventory owned by a media team, like Hearst, into one group. This will allow all of their inventory to be referenced with that group’s ID.
+For example, we would group the inventory owned by a media team into one group. This will allow all of their inventory to be referenced with that group’s ID.
 
 As usual, we would canary this functionality in the cloned version of the routing function. (I’m going to stop mentioning this step for brevity because every phase is accompanied by a canary period.)
 
@@ -116,14 +118,12 @@ For example, what happens when there are two groups targeted that have contradic
 
 After discussing with some users, we realized that there are use cases where the user expects the exclusion logic of one group to influence the inventory IDs of any other group being targeted. This would apply the exclusions of a group to the final aggregated targeted inventory items. Other users wanted the exclusion to only be applied to the group where it is set and not influence the final aggregated inventory items.
 
-<GlobalCallout
-  message='It might be worth calling out that a group can contain other groups. So I could have a group called `genre` that contains groups called `sports` and `comedy`. Each of those groups would then contain deals for sports or comedy inventory packages.'
-  type='note'
-/>
-
 We decided the best approach would be to apply all exclusions to the final aggregated list of targeted inventory items and raise an alert in the UI telling the user that there’s a conflict between the two groups. Then, the user can handle the conflict however best supports their needs. We landed on this approach since exclusions represented the most sensitive use case.
 
-For example, there may be a contractual agreement that identifies an inventory item that needs to be excluded in certain circumstances. Those circumstances may change depending on who’s booking the campaign, other inventory that’s being targeted, the time of year, the creative, and a myriad of other considerations.
+<GlobalCallout
+  message='The best case scenario would have been to use advanced combinations in the targeting widget itself. The level of effort this required wasn’t financially justifiable at the time.'
+  type='note'
+/>
 
 #### Organization-level routes
 
@@ -148,7 +148,7 @@ By treating the advertiser as a child of the media team organization, we were ab
 
 <GlobalCallout message='Explain the outcome of the solution' type='note' />
 
-We shortened the timeline to realize revenue on new inventory sources from about six weeks to about three days. Based on the average revenue realized per inventory source per month, this likely equated to over $5M per year (this is a fairly rough estimate).
+We shortened the timeline to realize revenue on new inventory sources from about six weeks to about three days. Based on the average revenue realized per inventory source per month, this likely equated to over $5M per year (this is a fairly rough estimate) and will grow over time.
 
 By reflecting routes in the database, forecasting engines could more accurately calculate the anticipated delivery of campaign configurations for not only the direct clients of the adtech provider (the media teams), but also the advertiser clients of those media teams.
 
