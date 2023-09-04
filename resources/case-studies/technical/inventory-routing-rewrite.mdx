@@ -1,0 +1,155 @@
+---
+title: 'Inventory Routing Rewrite'
+subhead: ''
+excerpt: 'This case study discusses how my team rebuilt the inventory routing service to unlock full self-service SaaS capabilities for clients of an enterprise B2B adtech provider.'
+icon: ''
+date: '2023-09-03T13:42:43.730Z'
+author:
+  firstName: John
+  lastName: Hodge
+---
+
+import GlobalCallout from '@/src/app/docs/components/callouts';
+
+<GlobalCallout
+  message='  
+  **My role:** Product Manager
+  
+  **Team structure:** Scrum team with software engineers, architects, QA engineers, and designers
+  
+  **Scope description:** I owned all products discussed (except the Access Controls products that are briefly mentioned)
+'
+/>
+
+This case study discusses how my team rebuilt the inventory routing service to unlock full self-service SaaS capabilities for clients of an enterprise adtech provider.
+
+## Key Terms
+
+<GlobalCallout
+  message='I don’t always use Key Terms, but this study will be using these phrases a lot, so it’ll be helpful to establish a common vocabulary.'
+  type='note'
+/>
+
+- **Media Teams**: Direct users of the platform. These might be agencies or advertisers, or publishers who whitelabel the platform to allow their agency or advertiser clients to place media buys. It’s most common that they’re publishers.
+
+- **Routes**: Functionality that connects requests from incoming inventory to demand that should be eligible to deliver into it. (Example: these routes will appropriately connect an advertiser’s demand to inventory from a deal that the advertiser is a buyer of.)
+
+## Star Analysis
+
+This STAR analysis (situation, task, action, result) explains the product development work involved in rewriting the inventory routing system.
+
+### Situation
+
+<GlobalCallout message='Give context about the problem' type='note' />
+
+Inventory sources, like deals and VAST tags, had been routed using literal strings in hard code. This routing system was integral to the entire platform since it was responsible for directing incoming requests (inventory) to the appropriate demand. Misconfigurations would interrupt service to entire inventory sources and every piece of demand relying on them would encounter delivery issues as a result. These issues could range from the media team simply not seeing delivery on the deal, to the demand not delivering at all (if the demand is only routed to one inventory source, which is fairly common).
+
+Routes were configured to connect incoming requests to demand that should deliver into it. This was determined based on business criteria that was enforced with conditional logic flows and `for` loops. There were thousands of deals and VAST integrations in the system. Reflecting all of the business logic across several thousands of inventory sources with literal strings in hard code led to thousands of lines of code. This method became hard to manage and prone to errors.
+
+Because of the above considerations, clients and internal account teams couldn’t self-manage inventory sources. As a result, the platform's SaaS offering was limited and the timeline to add new inventory was significantly longer than acceptable. Engineering was responsible for making routing changes, and they frequently had competing priorities. Also, due to the sensitive nature of inventory routes, interacting with this code shouldn’t be rushed since mistakes can create duplicate work (at best), or interrupt service resulting in revenue loss.
+
+Deals tended to represent inventory that would be sold to new demand, in addition to existing demand. Time spent not monetizing these deals translated to missed net new revenue opportunities.
+
+Any enhancements we made could not interfere with existing behavior since existing routes were being used to enforce contracts and other business logic.
+
+### Task
+
+<GlobalCallout
+  message='Describe what we needed to do to solve the problem.'
+  type='note'
+/>
+
+Represent business logic that considers all possible criteria required to match inventory and demand appropriately.
+
+Perform database architecture changes as needed and populate tables with the literal strings that were hard coded.
+
+Expose CRUD functions over API to allow database updates to be made with a front-end UI.
+
+Create front-end resources for users to add inventory to the database and target those inventory sources on campaigns, reports, and forecasts.
+
+### Action
+
+<GlobalCallout message='Explain how we solved the problem' type='note' />
+
+Due to the complexity of the requirements and sensitivity of the existing code, we ran this project with a phased approach. The phases are described below.
+
+#### Build testing infrastructure for quick wins and safe development
+
+First, we created some internal tooling for adding inventory to the database. This was a quick win that would allow non-engineers to push inventory to the database. While engineers would still need to create the routes, this would take the task of adding inventory to the database off their plate so they could focus on rewriting the routing service.
+
+Next, we built a safe environment for running canaries against our updates to the routing logic. To do this, we cloned the existing routing logic into its own function, applied changes, and compared the output of that function to the output of the legacy function, these should always match.
+
+The output from these two functions was present in the cloud provider’s logs. To make discrepancies more obvious, engineers made a service that would send an alert to Slack when the outputs didn’t match. This made it easy to stay diligent while we worked through the phases.
+
+We used a two-week canary period. While an update was being canaried, engineers would work locally on the next set of updates, and everyone kept a vigilant eye on Slack and logs for any alerts. If no discrepancies were raised to Slack or present in the logs during a test, we deemed those program updates a success and moved the next set of updates into the canary branch.
+
+#### Campaign-level routes
+
+In this phase, we built logic to read the inventory ID from a database table with campaign configurations and apply inventory targeting logic to the associated campaign.
+
+To quickly capitalize on this new logic, we built an internal tool to allow other non-engineering teams to manage targeting inventory on campaigns.
+
+<GlobalCallout
+  message='This functionality would be represented in the front-end platform in a targeting widget when the user is creating a campaign.'
+  type='success'
+/>
+
+During our canary period, engineers would add new inventory IDs to the legacy routing system to ensure that the new internal-facing tool behaved as expected.
+
+#### Inventory parent-child hierarchy
+
+In future phases, we’re going to need to associate hundreds of inventory IDs to organizations, to make these routes manageable, we’ll implement the concept of a hierarchy with parent-child relationships.
+
+For example, we would group the inventory owned by a media team into one group. This will allow all of their inventory to be referenced with that group’s ID.
+
+As usual, we would canary this functionality in the cloned version of the routing function. (I’m going to stop mentioning this step for brevity because every phase is accompanied by a canary period.)
+
+#### Exclusion logic
+
+The parent-child relationships created in the previous phase should accommodate exclusion logic. There are instances where a media team will want to target a set of broad groups, but they might want to exclude one (or a few) inventory items. Instead of needing to create entirely new groups, they’d like to be able to have a set of base groups and remove individual inventory items from them as needed.
+
+This led to some interesting discussions about how we should apply exclusion logic to the groups to achieve a desired end state and avoid creating any footguns.
+
+For example, what happens when there are two groups targeted that have contradictory rules? Suppose one group **included** inventory ID `123` and the other group **excluded** inventory ID `123`.
+
+- Do we apply it to the target or not?
+- Should we add the concept of priority on groups so that one can take precedence over another?
+- How else could the platform know which group should be overridden?
+
+After discussing with some users, we realized that there are use cases where the user expects the exclusion logic of one group to influence the inventory IDs of any other group being targeted. This would apply the exclusions of a group to the final aggregated targeted inventory items. Other users wanted the exclusion to only be applied to the group where it is set and not influence the final aggregated inventory items.
+
+We decided the best approach would be to apply all exclusions to the final aggregated list of targeted inventory items and raise an alert in the UI telling the user that there’s a conflict between the two groups. Then, the user can handle the conflict however best supports their needs. We landed on this approach since exclusions represented the most sensitive use case.
+
+<GlobalCallout
+  message='The best case scenario would have been to use advanced combinations in the targeting widget itself. The level of effort this required wasn’t financially justifiable at the time.'
+  type='note'
+/>
+
+#### Organization-level routes
+
+These routes represent all the inventory that an organization has access to. It’s also been referred to as the organization’s default inventory. This is inventory that gets applied to demand when no other inventory is targeted (a deal being targeted on a campaign will override this).
+
+<GlobalCallout
+  message='More specifically, these routes are configured for **media teams**. There are other kinds of organizations in the system, but media teams are the direct users and are tied to instances of the platform. Due to this, they’re treated a little bit differently than the organizations nested underneath them.'
+  type='note'
+/>
+
+In this phase, we needed to break down what that access should look like. This is because an organization might be getting access to inventory from a parent organization in the form of an inventory group. That parent organization might not want the child to have visibility into the specific inventory items contained within the group. This meant we would need to collaborate with the Access Controls product team to accommodate different levels of permissions.
+
+With this in place, we were able to set varying levels of visibility and monetization rights safely and quickly. We were also able to create dashboards that displayed the permissions present on an inventory item.
+
+#### Advertiser-level routes
+
+Advertisers are a type of organization in the system, just like media teams, but their routes are nested inside their parent organization (this would usually be a media team). This means that while an advertiser (like Nike) can do work with multiple different media teams, there are different routes assigned to different instances of Nike based on the media team they’re working with.
+
+By treating the advertiser as a child of the media team organization, we were able to apply the appropriate routes to specific advertisers and instances of advertisers. This meant that if Nike was booking a campaign, it would only buy into inventory that they sourced (in addition to the inventory made generally available across the platform). This inventory wouldn’t be available to campaigns booked by Lincoln.
+
+### Result
+
+<GlobalCallout message='Explain the outcome of the solution' type='note' />
+
+We shortened the timeline to realize revenue on new inventory sources from about six weeks to about three days. Based on the average revenue realized per inventory source per month, this likely equated to over $5M per year (this is a fairly rough estimate) and will grow over time.
+
+By reflecting routes in the database, forecasting engines could more accurately calculate the anticipated delivery of campaign configurations for not only the direct clients of the adtech provider (the media teams), but also the advertiser clients of those media teams.
+
+Engineers were no longer responsible for configuring routes. This freed them up to work on valuable and innovative enhancements and new product lines.
