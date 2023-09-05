@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = GetMetadata({
   pageName: 'Speaker request',
-  description: 'Book John as a speaker at your next event.',
+  description: 'Book me as a speaker at your next event.',
   path: 'speaker-request',
   index: true,
   follow: true,
@@ -18,7 +18,7 @@ export default async function SpeakerRequest() {
     <Article
       id='request'
       headline='Speaker request'
-      subhead='Let’s talk about it'>
+      subhead='Book me as a speaker at your next event'>
       <div className='grid grid-cols-6 gap-9 items-start'>
         <div className='col-span-6 md:col-span-4'>
           <ContactForm />
