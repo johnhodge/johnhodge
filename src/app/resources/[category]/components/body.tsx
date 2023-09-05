@@ -18,8 +18,8 @@ type LinkedHeaderProps = {
 
 export default function LinkedHeader(props: LinkedHeaderProps) {
   return (
-    <Link href={props.href} className='relative group no-underline'>
-      <span className='hidden absolute -left-4 font-black text-lg z-0 group-hover:md:block'>
+    <Link href={props.href} className='relative font-black group no-underline'>
+      <span className='hidden absolute margin-auto -left-4 text-lg z-0 group-hover:md:block'>
         ⌗
       </span>
       {props.children}
@@ -34,11 +34,11 @@ export function H3(props: Header) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h3 id={headerAnchor} className='scroll-mt-32'>
+    <h3 id={headerAnchor} className='scroll-mt-32'>
+      <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
         {props.header}
-      </h3>
-    </LinkedHeader>
+      </LinkedHeader>
+    </h3>
   );
 }
 
@@ -49,11 +49,11 @@ export function H2(props: Header) {
     .replaceAll('.', '')
     .toLowerCase();
   return (
-    <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
-      <h2 id={headerAnchor} className='scroll-mt-32'>
+    <h2 id={headerAnchor} className='scroll-mt-32'>
+      <LinkedHeader href={`/${props.base}/#${headerAnchor}`}>
         {props.header}
-      </h2>
-    </LinkedHeader>
+      </LinkedHeader>
+    </h2>
   );
 }
 

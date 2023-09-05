@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         emoji: ['Apple Color Emoji'],
         mono: ['var(--firaCode)'],
+        sans: ['var(--inter)'],
       },
       spacing: {
         icon: '3rem',
