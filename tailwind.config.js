@@ -9,7 +9,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        emoji: ['Apple Color Emoji'],
+        emoji: [
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
+        ],
         mono: ['var(--firaCode)'],
         sans: ['var(--inter)'],
       },
