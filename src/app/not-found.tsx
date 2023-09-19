@@ -24,7 +24,7 @@ export default function NotFound() {
             size='small'
             color='gray'
             width='fit'
-            buttonType='route'
+            buttonType='link'
           />
         </div>
       </div>
