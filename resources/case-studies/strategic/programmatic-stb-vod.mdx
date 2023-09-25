@@ -1,7 +1,7 @@
 ---
-title: 'Programmatic Set-Top-Box VOD'
+title: 'Programmatic Set-Top Box VOD'
 subhead: ''
-excerpt: 'This study discusses how my team innovated support for STB VOD on programmatic sales channels.'
+excerpt: 'This study discusses how multiple teams came together to innovate support for STB VOD on programmatic sales channels.'
 icon: ''
 date: '2023-08-14T13:27:48.225Z'
 author:
@@ -25,7 +25,63 @@ channels.{' '}
 
 ## STAR Analysis
 
+This STAR analysis (situation, task, action, result) explains the product development work involved in selling an MVPD's set-top box video-on-demand inventory programmatically.
+
+### Situation
+
+<GlobalCallout message='Give context about the problem' type='note' />
+
+Set-top box video-on-demand (STB VOD) inventory is transacted over its own protocol (VOD://) which makes it impossible to send a digital creative (like an mp4) to a STB and have it play out properly. The most common way to get a creative rendered on a STB VOD player is to talk to a salesperson at the multichannel video programming distributor (MVPD) to get the digital creative transcoded to a VOD creative. This is time-consuming and cumbersome, and results in undersold STB VOD inventory. If you’ve ever watched STB VOD and saw the same commercial over and over, this is likely an important culprit.
+
+While there are similar [solutions for Comcast](https://www.comcasttechnologysolutions.com/news/comcast-technology-solutions-and-freewheel-partner-bring-programmatic-advertising-demand) that support programmatic STB VOD sales workflows, this MVPD use case has some nuances that make the existing implementation unsuitable for their needs. the MVPD is part of the Trajectory footprint and as a result, has limitations imposed on its CDN usage. This is the exact opposite of the use case supported on the Canoe footprint where every MVPD has access to every creative. In Trajectory, an MVPD only has access to creatives that were transcoded for their footprint, those creatives are added to their partition of a CDN where a capacity limit is imposed.
+
+### Task
+
 <GlobalCallout
-  message='This study is currently being created. Please check back for updates.'
+  message='Describe what we needed to do to solve the problem.'
+  type='note'
+/>
+
+Allow the MVPD’s STB VOD inventory to be monetized programmatically from demand that’s booked in a DSP with a digital creative.
+
+Any creative pitched to their CDN should be from campaigns targeting the MVPD footprint. (The current state was to pitch every creative to every MVPD, this would break the CDN usage constraints imposed in Trajectory).
+
+### Action
+
+<GlobalCallout message='Explain how we solved the problem' type='note' />
+
+#### Update selling FreeWheel and create testing infrastructure
+
+To enable the instance of MRM responsible for handling demand to trigger the transcoding process, I needed to set some new features to allow for STB VOD transcoding to occur. This included adjustments to the player profile and the MRM instance itself.
+
+This is pretty specific information, so I’m intentionally being pretty vague here.
+
+#### Adjust integration between FreeWheel and Adstor to allow different behavior on Trajectory
+
+To change the current state of the Adstor integration to only pitch a creative to the MVPD where the original request was sent from, we need to include information in the request to Adstor identifying what MVPD this transcode is for.
+
+We only wanted to limit delivery to a specific CDN for MVPDs on the Trajectory footprint. To accomplish this, we created a mapping table of MVPDs and their footprint and we referenced the player profile for the player. If the player profile was registered to a Trajectory MVPD, we instructed Adstor to deliver the transcoded VOD URI to the MVPD destination. The act of specifying the specific MVPD destination would override any behavior that would send the creative to a pool of destinations. Delivering to a pool of destinations was the workflow used on Canoe that would break the Trajectory CDN limitations.
+
+#### Review and test workflow for expected behavior
+
+With the above changes in place, the expected workflow would be:
+
+- Ad request is sent from the MVPD player to MRM
+- Creative checks are run to ensure a VOD URI is needed and doesn’t already exist
+- Adstor API is called with a payload that identifies the destination (the MVPD)
+- Adstor delivers the VOD document to the destination CDN and receives the VOD URI in the API response
+- VOD creative rendition (VOD URI), is sent to a special MRM instance that's only used as a creative clearing house (CCH) for these transcoded VOD creatives
+- VOD creative rendition in the CCH is referenced as a virtual rendition in the selling MRM account. This virtual rendition is then used in ad responses back down to the player.
+
+<GlobalCallout
+  message='This workflow is intensely oversimplified and in some cases, I sacrificed precision for brevity and confidentiality. This is a generally accurate representation of the workflow, with several small caveats. If you know this integration inside and out, feel free to roast me in the comments.'
   type='alert'
 />
+
+![The MVPD STB VOD Workflow](/img/stb_vod_workflow.svg)
+
+### Result
+
+<GlobalCallout message='Explain the outcome of the solution' type='note' />
+
+Roughly 200M monthly impressions on the MVPD's STB VOD were made eligible for programmatic sales that were historically inaccessible to that demand channel.
