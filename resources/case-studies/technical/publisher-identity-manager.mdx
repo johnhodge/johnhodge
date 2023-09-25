@@ -41,7 +41,7 @@ Adding bundle to publisher associations has some considerations:
 
 - It’s a highly manual process that involves an account manager guessing what bundles should be tied to what publishers, sharing a spreadsheet with their best guess with engineers, and engineers pushing those associations over a script that creates database rows.
 - The existing process has no safety or validation measures, which can result in duplicate publishers (Discovery Channel vs. Discovery vs. The Discovery Channel), nothing is preventing one bundle from being tied to multiple publishers, among other issues.
-- The current state of mapping has a profit impact. Since most of the inventory for a publisher is inaccessible, there isn’t as much competition between sources as possible, meaning we’re lucky to get a good price.
+- The current state of mapping has a profit impact. Since most of the inventory for a publisher is inaccessible, there isn’t as much competition between sources as possible, meaning we’re fortunate if we manage to get the best possible price.
 
 ### Task
 
@@ -53,8 +53,8 @@ Adding bundle to publisher associations has some considerations:
 Build a platform that allows users to manage publisher identities safely and at scale. This platform should support the following:
 
 - Validation measures to ensure the publisher mapped to a bundle is the same one that already exists in our system.
-- Bulk ingest publisher to bundle mappings over CSV ingest.
-- Rename publishers and remove existing bundles from them (this effectively removes them from the user interface)
+- Bulk ingest publisher to bundle mappings over CSV.
+- Rename publishers and remove existing bundles from them (this effectively removes them from the user interface).
 
 ### Action
 
@@ -68,15 +68,15 @@ With some basic data validation and spreadsheet functions I was able to give the
 
 #### Publisher identity management platform
 
-In this platform, there was a page that listed all the publishers in the system with a button to create a new publisher and view a publisher’s profile page. In this profile page, a user can change the name and adjust the bundles associated with the publisher. This included adding new bundles and associating them with the publisher.
+In this platform, there was a page that listed all the publishers in the system with a button to create a new publisher and links to view a publisher’s profile page. In this profile page, a user can change the name and adjust the bundles to the system associated with the publisher. This included adding new bundles and associating them with the publisher.
 
 #### Publisher identity bulk management
 
 We created a program that would accept data from a CSV and push it to the database to manage publisher bundle associations at scale. This included…:
 
-- Adding new bundles and associating them to a publisher
-- Associating existing bundles to a publisher
-- removing bundle associations from a publisher
+- Adding new bundles to the system and associating them to a publisher.
+- Associating existing bundles to a publisher.
+- removing bundle associations from a publisher.
 
 This tool did not allow users to bulk create new publishers since that could cause issues with our front end if done at the level of scale supported by the ingest. Users could still create a new publisher in the platform and then reference it in a bulk ingest.
 
