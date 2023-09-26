@@ -1,8 +1,8 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
-import { GlobalButtonSettings, Person } from '@/app/types';
+import { GlobalButtonSettings, PersonData } from '@/app/types';
 
-export default async function Employers(data: Person) {
+export default async function Employers(data: PersonData) {
   const openDialog: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',

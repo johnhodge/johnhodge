@@ -1,9 +1,9 @@
 import ContactForm from '@/app/components/form';
 import Article from '@/app/templates/article';
-import type { Person } from '@/app/types';
+import type { PersonData } from '@/app/types';
 import GetAsset from '@/utils/asset';
 
-export default async function Contact(data: Person) {
+export default async function Contact(data: PersonData) {
   return (
     <Article
       id='contact'

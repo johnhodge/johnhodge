@@ -1,6 +1,11 @@
 import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[category]/templates/doc';
-import { DynamicRoute, GlobalButtonSettings, PostFileData } from '@/app/types';
+import {
+  DynamicRouteData,
+  GlobalButtonSettings,
+  PostFileData,
+  SubPageData,
+} from '@/app/types';
 import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { readdirSync } from 'fs';
@@ -9,7 +14,7 @@ import { join } from 'path';
 import { cwd } from 'process';
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
-const allRoutes: DynamicRoute[] = [];
+const allRoutes: DynamicRouteData[] = [];
 const categoryRoutes = readdirSync(join(rootDirectoryPath)).filter(
   (category) => category != '_index.mdx'
 );
@@ -23,7 +28,11 @@ export function generateStaticParams() {
   return allRoutes;
 }
 
-export async function generateMetadata({ params }: { params: DynamicRoute }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: DynamicRouteData;
+}) {
   const rootDocsDirectory = join(
     rootDirectoryPath,
     params.category.replace('.mdx', '')
@@ -47,13 +56,6 @@ export async function generateMetadata({ params }: { params: DynamicRoute }) {
   return metadata;
 }
 
-type SubPageData = {
-  filename: string;
-  title: string;
-  excerpt: string;
-  icon: string;
-};
-
 function createButton(link: string): GlobalButtonSettings {
   return {
     size: 'small',
@@ -65,7 +67,7 @@ function createButton(link: string): GlobalButtonSettings {
   };
 }
 
-export default async function Page({ params }: { params: DynamicRoute }) {
+export default async function Page({ params }: { params: DynamicRouteData }) {
   const rootDocsDirectory = join('/', rootDirectoryPath, params.category);
   const MDXFilePath = join(rootDocsDirectory, '_index.mdx');
   const { data } = GetMdxDataContent(join(MDXFilePath));
