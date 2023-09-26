@@ -1,8 +1,8 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
-import type { Person } from '@/app/types';
+import type { PersonData } from '@/app/types';
 
-export default function Client(data: Person) {
+export default function Client(data: PersonData) {
   return (
     <Article
       id='clients'

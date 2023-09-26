@@ -1,14 +1,7 @@
-import type { MediaImage, Person } from '@/app/types';
+import type { HeaderGroupData } from '@/app/types';
 import Image from 'next/image';
-type Hgroup = {
-  id: string;
-  headline: string;
-  subhead: string;
-  data?: Person;
-  headshot?: MediaImage;
-  children?: React.ReactNode;
-};
-export default function Article(props: Hgroup) {
+
+export default function Article(props: HeaderGroupData) {
   return (
     <article
       id={props.id}

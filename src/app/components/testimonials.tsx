@@ -1,9 +1,9 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
-import type { Person } from '@/app/types';
+import type { PersonData } from '@/app/types';
 import { GlobalButtonSettings } from '@/app/types';
 
-export default function Testimonials(data: Person) {
+export default function Testimonials(data: PersonData) {
   const openDialog: GlobalButtonSettings = {
     text: 'Read more',
     color: 'primary',

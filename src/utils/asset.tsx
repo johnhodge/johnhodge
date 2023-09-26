@@ -1,3 +1,4 @@
+import { AssetData } from '@/app/types';
 import Image from 'next/image';
 
 export type ImageData = {
@@ -43,13 +44,8 @@ export type ImageData = {
     };
   };
 };
-type asset = {
-  assetId: string;
-  figcaption: boolean;
-  priority: boolean;
-  size?: 'fit' | 'full';
-};
-export default async function GetAsset(props: asset) {
+
+export default async function GetAsset(props: AssetData) {
   const url = `https://cdn.contentful.com/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}/environments/production/assets/${props.assetId}?access_token=${process.env.PUBLIC_CONTENTFUL_CONTENT_DELIVERY_TOKEN}`;
   const res = await fetch(url);
   const imageData: ImageData = await res.json();

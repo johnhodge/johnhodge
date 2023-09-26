@@ -1,20 +1,6 @@
-import { PostFileData } from '@/app/types';
+import { HeaderData, LinkedHeaderProps } from '@/app/types';
 import Link from 'next/link';
 import { join } from 'path';
-import { ReactNode } from 'react';
-
-type Header = {
-  base: string;
-  header?: ReactNode;
-  children?: ReactNode;
-  data?: PostFileData;
-  slug?: string;
-};
-
-type LinkedHeaderProps = {
-  children: ReactNode;
-  href: string;
-};
 
 export default function LinkedHeader(props: LinkedHeaderProps) {
   return (
@@ -27,7 +13,7 @@ export default function LinkedHeader(props: LinkedHeaderProps) {
   );
 }
 
-export function H3(props: Header) {
+export function H3(props: HeaderData) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -42,7 +28,7 @@ export function H3(props: Header) {
   );
 }
 
-export function H2(props: Header) {
+export function H2(props: HeaderData) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -57,7 +43,7 @@ export function H2(props: Header) {
   );
 }
 
-export function TOCHome(props: Header) {
+export function TOCHome(props: HeaderData) {
   return (
     <Link
       href={join(props.base, props.slug ?? '')}
@@ -68,7 +54,7 @@ export function TOCHome(props: Header) {
     </Link>
   );
 }
-export function TOC2(props: Header) {
+export function TOC2(props: HeaderData) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')
@@ -90,7 +76,7 @@ export function TOC2(props: Header) {
     </Link>
   );
 }
-export function TOC3(props: Header) {
+export function TOC3(props: HeaderData) {
   const headerAnchor = props.header
     ?.toString()
     .replaceAll(' ', '-')

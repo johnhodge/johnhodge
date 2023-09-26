@@ -1,5 +1,5 @@
 import Doc from '@/app/resources/[category]/templates/doc';
-import { DynamicRoute, PostFileData } from '@/app/types';
+import { DynamicRouteData, PostFileData } from '@/app/types';
 import { GetMdxData } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { readdirSync } from 'fs';
@@ -9,7 +9,7 @@ import { cwd } from 'process';
 
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
-const allRoutes: DynamicRoute[] = [];
+const allRoutes: DynamicRouteData[] = [];
 const categoryRoutes = readdirSync(join(rootDirectoryPath)).filter(
   (category) => category != '_index.mdx'
 );
@@ -33,7 +33,11 @@ export function generateStaticParams() {
   return allRoutes;
 }
 
-export async function generateMetadata({ params }: { params: DynamicRoute }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: DynamicRouteData;
+}) {
   const { category, tag, slug } = params;
   const rootDocsDirectory = join(rootDirectoryPath, category);
   const MDXFilePath: string = join(
@@ -53,7 +57,7 @@ export async function generateMetadata({ params }: { params: DynamicRoute }) {
   return metadata;
 }
 
-export default function Page({ params }: { params: DynamicRoute }) {
+export default function Page({ params }: { params: DynamicRouteData }) {
   const { category, tag, slug } = params;
   const rootDocsDirectory = join(rootDirectoryPath, category);
   const MDXFilePath: string = join(

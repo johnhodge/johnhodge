@@ -1,6 +1,6 @@
-type markdown = { markdown: string };
+import { MarkdownData } from '@/app/types';
 
-export default function MarkUp({ markdown }: markdown) {
+export default function MarkUp({ markdown }: MarkdownData) {
   const markupList = markdown.split('\n').filter((line: string) => line != '');
   return (
     <div className='prose prose-slate'>
