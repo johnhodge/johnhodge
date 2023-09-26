@@ -2,7 +2,7 @@ import GlobalCard from '@/app/components/shared/card';
 import Doc from '@/app/resources/[category]/templates/doc';
 import {
   BasicPostData,
-  DynamicRoute,
+  DynamicRouteData,
   GlobalButtonSettings,
   PostFileData,
 } from '@/app/types';
@@ -15,7 +15,7 @@ import { cwd } from 'process';
 
 const rootDirectory = 'resources';
 const rootDirectoryPath = join(cwd(), rootDirectory);
-const allRoutes: DynamicRoute[] = [];
+const allRoutes: DynamicRouteData[] = [];
 const categoryRoutes = readdirSync(join(rootDirectoryPath)).filter(
   (category) => category != '_index.mdx'
 );
@@ -34,7 +34,11 @@ export function generateStaticParams() {
   return allRoutes;
 }
 
-export async function generateMetadata({ params }: { params: DynamicRoute }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: DynamicRouteData;
+}) {
   const rootDocsDirectory = join(
     rootDirectoryPath,
     params.category.replace('.mdx', '')
@@ -67,7 +71,7 @@ function createButton(link: string): GlobalButtonSettings {
     buttonType: 'route',
   };
 }
-export default async function Page({ params }: { params: DynamicRoute }) {
+export default async function Page({ params }: { params: DynamicRouteData }) {
   const subPages: Record<string, BasicPostData> = {};
   const rootDocsDirectory = join(rootDirectoryPath, params.category);
   const containingDirectory = join(rootDocsDirectory, params.tag ?? '');

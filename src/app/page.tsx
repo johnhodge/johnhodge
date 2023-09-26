@@ -7,7 +7,7 @@ import Skills from '@/app/components/skills';
 import Tech from '@/app/components/tech';
 import Testimonials from '@/app/components/testimonials';
 import { GetWebsiteData } from '@/app/graphql.query';
-import type { Person } from '@/app/types';
+import type { PersonData } from '@/app/types';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
 
@@ -45,7 +45,7 @@ export default async function Home() {
     }
   );
   const json = await response.json();
-  const data: Person = json.data.person;
+  const data: PersonData = json.data.person;
   const start = 'from-60%';
   const end = 'to-100%';
   return (

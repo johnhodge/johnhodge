@@ -1,4 +1,4 @@
-type ImageLoaderData = { src: string; quality: string; width: number };
+import { ImageLoaderData } from '@/app/types';
 
 // Docs: https://www.contentful.com/developers/docs/references/images-api/
 export default function contentfulLoader(props: ImageLoaderData) {

@@ -1,6 +1,6 @@
 import GlobalCard from '@/app/components/shared/card';
 import Article from '@/app/templates/article';
-import { GlobalButtonSettings } from '@/app/types';
+import { GlobalButtonSettings, SubPageData } from '@/app/types';
 import { GetMdxBasicData, GetMdxData, GetSubFolders } from '@/utils/mdx';
 import { GetMetadata } from '@/utils/sitemeta';
 import { Metadata } from 'next';
@@ -25,13 +25,6 @@ export async function generateMetadata() {
 
   return metadata;
 }
-
-type SubPageData = {
-  filename: string;
-  title: string;
-  excerpt: string;
-  icon: string;
-};
 
 function createButton(link: string): GlobalButtonSettings {
   return {

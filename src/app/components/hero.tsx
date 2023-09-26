@@ -1,9 +1,9 @@
 import GlobalButton from '@/app/components/shared/button';
 import Article from '@/app/templates/article';
-import type { MediaImage, Person } from '@/app/types';
+import type { MediaImageData, PersonData } from '@/app/types';
 
-export default async function Hero(data: Person) {
-  const headshot: MediaImage = {
+export default async function Hero(data: PersonData) {
+  const headshot: MediaImageData = {
     url: data.headshot.url,
     title: data.headshot.title,
     description: data.headshot.description,

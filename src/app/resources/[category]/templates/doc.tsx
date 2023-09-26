@@ -1,14 +1,14 @@
 import { H2, H3, TOC2, TOC3 } from '@/app/resources/[category]/components/body';
 import GlobalCallout from '@/app/resources/[category]/components/callouts';
 import GlobalTOC from '@/app/resources/[category]/components/toc';
-import { DynamicTemplate, TOCEnteries } from '@/app/types';
+import { DynamicTemplateData, TOCEnteryData } from '@/app/types';
 import { GetMdxData, GetMdxDataContent, GetSubFolders } from '@/utils/mdx';
 import { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { join } from 'path';
 import { ReactNode } from 'react';
 
-export async function generateMetadata(props: DynamicTemplate) {
+export async function generateMetadata(props: DynamicTemplateData) {
   const data = GetMdxData(props.post.file.MDXFilePath);
   const metadata: Metadata = {
     title: data.title,
@@ -16,14 +16,14 @@ export async function generateMetadata(props: DynamicTemplate) {
   return metadata;
 }
 
-export default function Doc(props: DynamicTemplate) {
+export default function Doc(props: DynamicTemplateData) {
   const rootDir = props.post.file.rootDocsDirectory;
   const folders = GetSubFolders(rootDir).filter(
     (folder) => folder != '_index.mdx'
   );
 
-  function getTOC(folders: string[]): Record<string, TOCEnteries> {
-    const TOCItems: Record<string, TOCEnteries> = {};
+  function getTOC(folders: string[]): Record<string, TOCEnteryData> {
+    const TOCItems: Record<string, TOCEnteryData> = {};
 
     folders.forEach(
       (folder: string) =>

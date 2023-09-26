@@ -1,12 +1,12 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
-export type PersonMeta = {
+export type PersonMetaData = {
   firstName: string;
   lastName: string;
   headline: string;
 };
 
-export type MediaImage = {
+export type MediaImageData = {
   url: string;
   title: string;
   description: string;
@@ -15,18 +15,17 @@ export type MediaImage = {
   contentType: string;
 };
 
-type BasicPost = {
-  title: string;
+export type HeroData = {
   headline: string;
-  body: string;
-  icon: MediaImage;
+  subhead: string;
+  headshot: MediaImageData;
 };
 
 type ClientsCollection = {
   items: [
     {
       name: string;
-      logo: MediaImage;
+      logo: MediaImageData;
     }
   ];
 };
@@ -46,7 +45,7 @@ type Clients = {
 type BasicPerson = {
   firstName: string;
   lastName: string;
-  headshot: MediaImage;
+  headshot: MediaImageData;
   employment: { items: [Employment] };
 };
 
@@ -56,31 +55,32 @@ type Testimonials = {
   author: BasicPerson;
 };
 
-export type HeroData = {
+type BasicEntry = {
+  title: string;
   headline: string;
-  subhead: string;
-  headshot: MediaImage;
+  body: string;
+  icon: MediaImageData;
 };
 
-export interface Person extends BasicPerson {
+export interface PersonData extends BasicPerson {
   sys: [Object];
   headline: string;
   subhead: string;
-  skills: { items: [BasicPost] };
-  technology: { items: [BasicPost] };
-  philosophy: { items: [BasicPost] };
+  skills: { items: [BasicEntry] };
+  technology: { items: [BasicEntry] };
+  philosophy: { items: [BasicEntry] };
   clients: { items: [Clients] };
   testimonials: { items: [Testimonials] };
 }
 
-export type DynamicRoute = {
+export type DynamicRouteData = {
   category: string;
   tag?: string;
   slug?: string;
 };
 
-export type DynamicTemplate = {
-  route: DynamicRoute;
+export type DynamicTemplateData = {
+  route: DynamicRouteData;
   children?: ReactNode;
   post: PostFileData;
 };
@@ -116,12 +116,12 @@ export interface PostFileData extends PostData {
 
 export type TOCData = {
   post: PostFileData;
-  route: DynamicRoute;
+  route: DynamicRouteData;
   rootDocTitle: string;
-  folders: Record<string, TOCEnteries>;
+  folders: Record<string, TOCEnteryData>;
 };
 
-export type TOCEnteries = {
+export type TOCEnteryData = {
   root: PostFileData;
   subPages: PostFileData[];
 };
@@ -165,8 +165,8 @@ type LinkRouteProps = {
 };
 
 export type GlobalCardSettings = {
-  logo?: MediaImage;
-  icon?: MediaImage;
+  logo?: MediaImageData;
+  icon?: MediaImageData;
   iconId?: string;
   iconAlign?: 'start' | 'center' | 'end';
   header?: string;
@@ -190,4 +190,50 @@ export type SiteMetadata = {
   index: boolean;
   follow: boolean;
   cache: boolean;
+};
+
+export type SubPageData = {
+  filename: string;
+  title: string;
+  excerpt: string;
+  icon: string;
+};
+
+export type HeaderData = {
+  base: string;
+  header?: ReactNode;
+  children?: ReactNode;
+  data?: PostFileData;
+  slug?: string;
+};
+
+export type LinkedHeaderProps = {
+  children: ReactNode;
+  href: string;
+};
+
+export type HeaderGroupData = {
+  id: string;
+  headline: string;
+  subhead: string;
+  data?: PersonData;
+  headshot?: MediaImageData;
+  children?: React.ReactNode;
+};
+
+export type ImageLoaderData = {
+  src: string;
+  quality: string;
+  width: number;
+};
+
+export type AssetData = {
+  assetId: string;
+  figcaption: boolean;
+  priority: boolean;
+  size?: 'fit' | 'full';
+};
+
+export type MarkdownData = {
+  markdown: string;
 };

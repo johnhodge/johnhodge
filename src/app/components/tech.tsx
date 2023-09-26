@@ -1,8 +1,8 @@
-import type { Person } from '@/app/types';
+import type { PersonData } from '@/app/types';
 import Article from '@/app/templates/article';
 import GlobalCard from '@/app/components/shared/card';
 
-export default function Tech(data: Person) {
+export default function Tech(data: PersonData) {
   return (
     <Article id='tech' headline='Tech' subhead='See what I use' data={data}>
       <div className='flex flex-wrap gap-4'>
