@@ -11,12 +11,7 @@ mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
   track_pageview: true,
 });
 
-type OptionData = {
-  value: string;
-  label: string;
-};
-
-const personas: OptionData[] = [
+const personas: { value: string; label: string }[] = [
   { label: 'Adtech Provider', value: 'hs_persona_1' },
   { label: 'Programmer', value: 'hs_persona_2' },
   { label: 'Distributor', value: 'hs_persona_3' },
@@ -24,7 +19,7 @@ const personas: OptionData[] = [
   { label: 'Other', value: 'hs_persona_5' },
 ];
 
-const audience_type: OptionData[] = [
+const audience_type: { value: string; label: string }[] = [
   { label: 'Product management', value: 'product_management' },
   { label: 'Adtech vendors', value: 'adtect_vendor' },
   { label: 'Major TV programmer executives', value: 'programmer_executive' },
@@ -34,7 +29,7 @@ const audience_type: OptionData[] = [
   { label: 'Other', value: 'other' },
 ];
 
-const speech_type: OptionData[] = [
+const speech_type: { value: string; label: string }[] = [
   { label: 'Keynote', value: 'keynote' },
   { label: 'Break-out/workshop', value: 'breakout' },
   { label: 'Panel discussion', value: 'panel_discussion' },
@@ -290,7 +285,7 @@ export default function ContactForm() {
               <option key={'hs_persona_0'} value='hs_persona_0' disabled>
                 Select
               </option>
-              {personas.map((option: OptionData) => (
+              {personas.map((option: { value: string; label: string }) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -371,7 +366,7 @@ export default function ContactForm() {
               <option key={'event_audience'} value='event_audience_0' disabled>
                 Select
               </option>
-              {audience_type.map((option: OptionData) => (
+              {audience_type.map((option: { value: string; label: string }) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -403,7 +398,7 @@ export default function ContactForm() {
               <option key={'speech_type'} value='speech_type_0' disabled>
                 Select
               </option>
-              {speech_type.map((option: OptionData) => (
+              {speech_type.map((option: { value: string; label: string }) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>

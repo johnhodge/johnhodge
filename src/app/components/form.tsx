@@ -11,12 +11,7 @@ mixpanel.init('bbbc07c83f8fe3711eb32fd5243041aa', {
   track_pageview: true,
 });
 
-type OptionData = {
-  value: string;
-  label: string;
-};
-
-const options: OptionData[] = [
+const options: { value: string; label: string }[] = [
   {
     label: 'Adtech Provider',
     value: 'hs_persona_1',
@@ -73,7 +68,7 @@ export const FormValues = z.object({
   message: z.optional(z.string()),
 });
 
-export type FormValueTypes = z.infer<typeof FormValues>;
+type FormValueTypes = z.infer<typeof FormValues>;
 
 export default function ContactForm() {
   const {
@@ -207,7 +202,7 @@ export default function ContactForm() {
               <option key={'hs_persona_0'} value='hs_persona_0' disabled>
                 Which option describes you?
               </option>
-              {options.map((option: OptionData) => (
+              {options.map((option: { value: string; label: string }) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
