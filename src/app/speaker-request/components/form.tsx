@@ -51,8 +51,8 @@ const thanks: Array<string> = [
 ];
 
 const FormValues = z.object({
-  firstname: z.string().min(1, { message: 'First name is a required field.' }),
-  lastname: z.string().min(1, { message: 'Last name is a required field.' }),
+  firstname: z.string().min(1, { message: 'First name is a required field' }),
+  lastname: z.string().min(1, { message: 'Last name is a required field' }),
   companyName: z.optional(z.string()),
   hs_persona: z.enum(
     [
@@ -66,9 +66,9 @@ const FormValues = z.object({
   ),
   email: z
     .string()
-    .min(1, { message: 'Email is a required field.' })
-    .email({ message: 'Email format is invalid.' }),
-  event_name: z.string().min(1, { message: 'Event name is a required field.' }),
+    .min(1, { message: 'Email is a required field' })
+    .email({ message: 'Email format is invalid' }),
+  event_name: z.string().min(1, { message: 'Event name is a required field' }),
   event_date: z.coerce
     .date()
     .min(new Date(), { message: 'Please pick a date in the future' }),
@@ -94,8 +94,8 @@ const FormValues = z.object({
   ),
   speech_duration: z.coerce
     .number({
-      // required_error: 'Speech duration is a required field.',
-      // invalid_type_error: 'Speech duration is a required field.',
+      required_error: 'Speech duration is a required field',
+      invalid_type_error: 'Speech duration should be an integer',
     })
     .min(30, { message: 'Please enter a value that is least 30 minutes' })
     .int({ message: 'Please enter a whole number of minutes' }),

@@ -48,8 +48,8 @@ const thanks: Array<string> = [
 ];
 
 export const FormValues = z.object({
-  firstName: z.string().min(1, { message: 'First name is a required field.' }),
-  lastName: z.string().min(1, { message: 'Last name is a required field.' }),
+  firstName: z.string().min(1, { message: 'First name is a required field' }),
+  lastName: z.string().min(1, { message: 'Last name is a required field' }),
   companyName: z.optional(z.string()),
   hs_persona: z.enum(
     [
@@ -63,8 +63,8 @@ export const FormValues = z.object({
   ),
   email: z
     .string()
-    .min(1, { message: 'Email is a required field.' })
-    .email({ message: 'Email format is invalid.' }),
+    .min(1, { message: 'Email is a required field' })
+    .email({ message: 'Email format is invalid' }),
   message: z.optional(z.string()),
 });
 
