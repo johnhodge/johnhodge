@@ -4,9 +4,6 @@ import createMDX from '@next/mdx';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    serverActions: true,
-  },
   poweredByHeader: false,
   images: {
     loader: 'custom',

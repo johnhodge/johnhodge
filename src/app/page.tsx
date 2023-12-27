@@ -8,8 +8,8 @@ import Tech from '@/app/components/tech';
 import Testimonials from '@/app/components/testimonials';
 import { GetWebsiteData } from '@/app/graphql.query';
 import type { PersonData } from '@/app/types';
-import { GetMetadata } from '@/utils/sitemeta';
-import { Metadata } from 'next';
+import { GetMetadata, GetViewport } from '@/utils/sitemeta';
+import { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = GetMetadata({
   pageName: 'Product professional and adtech nerd.',
@@ -20,6 +20,7 @@ export const metadata: Metadata = GetMetadata({
   follow: true,
   cache: true,
 });
+export const viewport: Viewport = GetViewport();
 
 export type Headers = {
   Authorization: string;

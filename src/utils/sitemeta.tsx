@@ -1,5 +1,6 @@
 import { SiteMetadata } from '@/app/types';
 import { Metadata } from 'next';
+import { Viewport } from 'next';
 
 const domain =
   process.env.VERCEL_ENV === 'development'
@@ -28,11 +29,6 @@ export function GetMetadata(param: SiteMetadata): Metadata {
     twitter: {
       card: 'summary_large_image',
     },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
-    },
     robots: {
       index: param.index,
       follow: param.follow,
@@ -44,5 +40,13 @@ export function GetMetadata(param: SiteMetadata): Metadata {
       },
     },
     manifest: `${domain}/manifest.json`,
+  };
+}
+
+export function GetViewport(): Viewport {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
   };
 }
