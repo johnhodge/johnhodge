@@ -51,7 +51,7 @@ module.exports = {
           950: colors.slate['950'],
           1000: '#000000',
         },
-        primary: colors.emerald,
+        primary: colors.blue,
         secondary: colors.orange,
       },
     },
